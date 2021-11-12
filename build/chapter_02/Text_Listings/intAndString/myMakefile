@@ -1,0 +1,24 @@
+# Build intAndString program
+
+objects = intAndString.o
+cflags = -g -Wall -masm=intel
+genasm = -S -Wall -masm=intel -fcf-protection=none \
+-fno-asynchronous-unwind-tables
+
+intAndString: $(objects)
+	gcc $(objects) -o $@
+
+intAndString.o: intAndString.c
+	gcc -c $(cflags) $<
+
+intAndString.s: intAndString.c
+	gcc $(genasm) -o temp $<
+	expand -t 8 temp > $@
+	rm temp
+
+.PHONY: clean allclean
+clean:
+	rm *~ *.o
+allclean:
+	rm *~ *.o intAndString
+

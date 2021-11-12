@@ -1,0 +1,6 @@
+           automatic   static   global
+                   x        y        z
+In main:          12       34       56
+In addConst:    1078     1090     1056
+In addConst:    1078     2090     2056
+In main:          12       34     2056

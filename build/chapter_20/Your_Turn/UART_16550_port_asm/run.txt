@@ -1,0 +1,9 @@
+bob@Ubuntu-bob:~/NoStarch/x-86/progs/working/chapter_20/Your_Turn/UART_16550_C$ make UART_functions.o
+gcc -c -O0 -Wall -masm=intel -g UART_functions.c
+bob@Ubuntu-bob:~/NoStarch/x-86/progs/working/chapter_20/Your_Turn/UART_16550_C$ make UART_echo.o
+gcc -c -O0 -Wall -masm=intel -g UART_echo.c
+bob@Ubuntu-bob:~/NoStarch/x-86/progs/working/chapter_20/Your_Turn/UART_16550_C$ ld -e myProg -o UART_echo UART_echo.o UART_functions.o
+bob@Ubuntu-bob:~/NoStarch/x-86/progs/working/chapter_20/Your_Turn/UART_16550_C$ ./UART_echo 
+Segmentation fault (core dumped)
+bob@Ubuntu-bob:~/NoStarch/x-86/progs/working/chapter_20/Your_Turn/UART_16550_C$ 
+

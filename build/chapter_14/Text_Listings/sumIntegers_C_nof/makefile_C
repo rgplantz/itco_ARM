@@ -1,0 +1,32 @@
+# Build sumInts program
+
+objects = sumInts.o addTwo.o
+cflags = -g -c -Wall -masm=intel
+genasm = -S -Wall -masm=intel -fno-asynchronous-unwind-tables \
+-fcf-protection=none
+
+sumInts: $(objects) addTwo.h
+	gcc $ -o sumInts $(objects)
+
+sumInts.o: sumInts.c addTwo.h
+	gcc $(cflags) sumInts.c
+
+addTwo.o: addTwo.c addTwo.h
+	gcc $(cflags) addTwo.c
+
+sumInts.s: sumInts.c addTwo.h
+	gcc $(genasm) -o temp sumInts.c
+	expand -t 8 temp > sumInts.s
+	rm temp
+
+addTwo.s: addTwo.c addTwo.h
+	gcc $(genasm) -o temp addTwo.c
+	expand -t 8 temp > addTwo.s
+	rm temp
+
+.PHONY: clean allclean
+clean:
+	rm *~ *.o
+allclean:
+	rm *~ *.o sumInts
+

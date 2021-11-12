@@ -1,0 +1,36 @@
+# Build countTwo program
+
+OBJECTS = countTwo.o count.o countx.o
+CFLAGS = -O0 -Wall -masm=intel -g
+ASMFLAGS = -O0 -Wall -masm=intel -fno-asynchronous-unwind-tables \
+-fcf-protection=none
+
+countTwo: $(OBJECTS)
+	gcc -o countTwo $(OBJECTS)
+
+countTwo.o: countTwo.c count.h countx.h
+	gcc -c $(CFLAGS) countTwo.c
+
+count.o: count.c count.h
+	gcc -c $(CFLAGS) count.c
+
+countx.o: countx.c countx.h
+	gcc -c $(CFLAGS) countx.c
+
+countTwo.s: countTwo.c count.h
+	gcc -S $(ASMFLAGS) countTwo.c
+
+count.s: count.c count.h
+	gcc -S $(ASMFLAGS) count.c
+
+countx.s: countx.c countx.h
+	gcc -S $(ASMFLAGS) countx.c
+
+.PHONY: clean
+clean:
+	rm *~ *.o
+
+.PHONY: allclean	
+allclean:
+	rm *~ *.o *.s countTwo
+	

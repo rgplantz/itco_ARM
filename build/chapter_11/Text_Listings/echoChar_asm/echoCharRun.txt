@@ -1,0 +1,84 @@
+(gdb) br 28
+Breakpoint 1 at 0x692: file echoChar.s, line 28.
+(gdb) run
+Starting program: /home/bob/NoStarch/intel/progs/chap12/echoChar 
+
+Breakpoint 1, main () at echoChar.s:28
+28	        mov     edx, promptSz # prompt size
+(gdb) i r rbp rsp
+rbp            0x7fffffffdf80	0x7fffffffdf80
+rsp            0x7fffffffdf70	0x7fffffffdf70
+(gdb) x/16xb 0x7fffffffdf70
+0x7fffffffdf70:	0x60	0xe0	0xff	0xff	0xff	0x7f	0x00	0x00
+0x7fffffffdf78:	0x00	0x00	0x00	0x00	0x00	0x00	0x00	0x00
+(gdb) x/2xg 0x7fffffff80
+0x7fffffff80:	Cannot access memory at address 0x7fffffff80
+(gdb) x/2xg 0x7fffffffdf80
+0x7fffffffdf80:	0x00005555555546f0	0x00007ffff7a05b97
+
+
+
+
+(gdb) br 36
+Breakpoint 2 at 0x5555555546b6: file echoChar.s, line 36.
+(gdb) br 38
+Breakpoint 3 at 0x5555555546bb: file echoChar.s, line 38.
+(gdb) br 39
+Breakpoint 4 at 0x5555555546c0: file echoChar.s, line 39.
+(gdb) cont
+Continuing.
+Enter one character: 
+Breakpoint 2, main () at echoChar.s:36
+36	        call    read@PLT      # invoke read function
+(gdb) i r rdx rsi rdi
+rdx            0x1	1
+rsi            0x7fffffffdf7f	140737488347007
+rdi            0x0	0
+(gdb) x/16xb 0x7fffffffdf70
+0x7fffffffdf70:	0x60	0xe0	0xff	0xff	0xff	0x7f	0x00	0x00
+0x7fffffffdf78:	0x00	0x00	0x00	0x00	0x00	0x00	0x00	0x00
+(gdb) cont
+Continuing.
+a
+
+Breakpoint 3, main () at echoChar.s:38
+38	        mov     edx, msgSz    # message size
+(gdb) 
+Continuing.
+
+Breakpoint 4, main () at echoChar.s:39
+39	        lea     rsi, msg[rip] # address of message text string
+(gdb) x/16xb 0x7fffffffdf70
+0x7fffffffdf70:	0x60	0xe0	0xff	0xff	0xff	0x7f	0x00	0x00
+0x7fffffffdf78:	0x00	0x00	0x00	0x00	0x00	0x00	0x00	0x61
+
+
+
+
+(gdb) br 49
+Breakpoint 5 at 0x5555555546e9: file echoChar.s, line 49.
+(gdb) cont
+Continuing.
+You entered: a
+Breakpoint 5, main () at echoChar.s:49
+49	        mov     rsp, rbp      # delete local variables
+(gdb) i r rbp rsp
+rbp            0x7fffffffdf80	0x7fffffffdf80
+rsp            0x7fffffffdf70	0x7fffffffdf70
+(gdb) si
+50	        pop     rbp           # restore caller's frame pointer
+(gdb) i r rbp rsp
+rbp            0x7fffffffdf80	0x7fffffffdf80
+rsp            0x7fffffffdf80	0x7fffffffdf80
+(gdb) x/16xb 0x7fffffffdf70
+0x7fffffffdf70:	0x60	0xe0	0xff	0xff	0xff	0x7f	0x00	0x00
+0x7fffffffdf78:	0x00	0x00	0x00	0x00	0x00	0x00	0x00	0x61
+(gdb) 
+
+
+bob@bob-MS-7522:~/NoStarch/intel/progs/chap12$ ./echoChar
+Enter one character: a
+You entered: abob@bob-MS-7522:~/NoStarch/intel/progs/chap12$ 
+bob@bob-MS-7522:~/NoStarch/intel/progs/chap12$ 
+
+

@@ -1,0 +1,33 @@
+Reading symbols from ./addDoubles...
+(gdb) l 50
+45	        movsd   xmm1, y[rbp]    # load y
+46	        movsd   xmm2, xmm0      # compute
+47	        addsd   xmm2, xmm1      #     x + y
+48	        lea     rdi, printFormat[rip]
+49	        mov     eax, 3          # 3 xmm regs.
+50	        call    printf@plt
+51	
+52	        mov     eax, 0      # return 0;
+53	        mov     rcx, qword ptr canary[rbp]
+54	        xor     rcx, qword ptr fs:40
+(gdb) b 50
+Breakpoint 1 at 0x11d8: file addDoubles.s, line 50.
+(gdb) r
+Starting program: /home/bob/NoStarch/x-86/progs/working/chapter_19/Your_Turn/addDoubles_asm/addDoubles 
+Enter a number: 123.4
+Enter a number: 567.8
+
+Breakpoint 1, main () at addDoubles.s:50
+50	        call    printf@plt
+(gdb) p $xmm0.v2_double
+$1 = {123.40000000000001, 0}
+(gdb) p $xmm1.v2_double
+$2 = {567.79999999999995, 0}
+(gdb) p $xmm2.v2_double
+$3 = {691.19999999999993, 0}
+(gdb) c
+Continuing.
+123.400000 + 567.800000 = 691.200000
+[Inferior 1 (process 7221) exited normally]
+(gdb) 
+

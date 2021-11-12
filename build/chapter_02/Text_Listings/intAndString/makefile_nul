@@ -1,0 +1,10 @@
+# Build intAndString program
+
+intAndString: intAndString.o
+
+.PHONY: clean allclean
+clean:
+	rm *~ *.o
+allclean:
+	rm *~ *.o intAndString
+

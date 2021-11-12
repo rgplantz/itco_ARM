@@ -1,0 +1,17 @@
+# Build sumInts program
+
+objects = sumInts.o addTwo.o
+cflags = -g -c -Wall -masm=intel
+
+sumInts: $(objects)
+	gcc $ -o sumInts $(objects)
+
+sumInts.o: sumInts.c addTwo.h
+	gcc $(cflags) sumInts.c
+
+.PHONY: clean allclean
+clean:
+	rm *~ *.o
+allclean:
+	rm *~ *.o sumInts
+

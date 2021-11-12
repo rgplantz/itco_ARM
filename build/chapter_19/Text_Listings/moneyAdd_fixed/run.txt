@@ -1,0 +1,19 @@
+bob@bob-MS-7522:~/NoStarch/x-86/progs_working/chap19/moneyAdd_asm$ ./moneyAdd 
+Enter money
+    Dollars: 42949672
+      Cents: 95
+Enter money
+    Dollars: 0
+      Cents: 0
+Total = $42949672.95
+bob@bob-MS-7522:~/NoStarch/x-86/progs_working/chap19/moneyAdd_asm$ ./moneyAdd 
+Enter money
+    Dollars: 42949672  
+      Cents: 95
+Enter money
+    Dollars: 0
+      Cents: 1
+Total = $0.0
+bob@bob-MS-7522:~/NoStarch/x-86/progs_working/chap19/moneyAdd_asm$ 
+
+

@@ -1,0 +1,165 @@
+bob@bob-MS-7522:~/NoStarch/progs/chap08$ gcc -g -O0 -Wall -o inches2feet -masm=intel inches2feet.c
+
+bob@bob-MS-7522:~/NoStarch/progs/chap08$ gdb ./inches2feet 
+GNU gdb (Ubuntu 8.1-0ubuntu3) 8.1.0.20180409-git
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from ./inches2feet...done.
+(gdb) li
+1	/* inches2feet.c
+2	 * Converts inches to feet and inches.
+3	 */
+4	
+5	#include <stdio.h>
+6	#define inchesPerFoot 12
+7	
+8	int main(void)
+9	{
+10	  register int feet;
+(gdb) 
+11	  register int inchesRem;
+12	  int inches;
+13	  int *ptr;
+14	
+15	  ptr = &inches;
+16	
+17	  printf("Enter inches: ");
+18	  scanf("%i", ptr);
+19	  
+20	  feet = inches / inchesPerFoot;
+(gdb) 
+21	  inchesRem = inches % inchesPerFoot;
+22	  printf("%i\" = %i' %i\"\n", inches, feet, inchesRem);
+23	
+24	  return 0;
+25	}
+
+
+(gdb) br 17
+Breakpoint 1 at 0x73c: file inches2feet.c, line 17.
+(gdb) br 20
+Breakpoint 2 at 0x765: file inches2feet.c, line 20.
+
+
+
+(gdb) run
+Starting program: /home/bob/NoStarch/progs/chap10/inches2feet 
+
+Breakpoint 1, main () at inches2feet.c:17
+17	  printf("Enter inches: ");
+(gdb) i r
+rax            0x7fffffffdf6c	140737488346988
+rbx            0x0	0
+rcx            0x5555555547e0	93824992233440
+rdx            0x7fffffffe088	140737488347272
+rsi            0x7fffffffe078	140737488347256
+rdi            0x1	1
+rbp            0x7fffffffdf90	0x7fffffffdf90
+rsp            0x7fffffffdf60	0x7fffffffdf60
+r8             0x7ffff7dd0d80	140737351847296
+r9             0x7ffff7dd0d80	140737351847296
+r10            0x2	2
+r11            0x7	7
+r12            0x555555554610	93824992232976
+r13            0x7fffffffe070	140737488347248
+r14            0x0	0
+r15            0x0	0
+rip            0x55555555473c	0x55555555473c <main+34>
+eflags         0x246	[ PF ZF IF ]
+cs             0x33	51
+ss             0x2b	43
+ds             0x0	0
+es             0x0	0
+fs             0x0	0
+gs             0x0	0
+
+
+(gdb) print &feet
+Address requested for identifier "feet" which is in register $r12
+(gdb) print &inchesRem
+Address requested for identifier "inchesRem" which is in register $rbx
+(gdb) print &inches
+$1 = (int *) 0x7fffffffdf6c
+(gdb) print &ptr
+$2 = (int **) 0x7fffffffdf70
+
+
+(gdb) i r $rbx $r12
+rbx            0x0	0
+r12            0x555555554610	93824992232976
+
+
+(gdb) cont
+Continuing.
+Enter inches: 123
+
+Breakpoint 2, main () at inches2feet.c:20
+20	  feet = inches / inchesPerFoot;
+
+
+(gdb) print inches
+$3 = 123
+
+
+(gdb) n
+21	  inchesRem = inches % inchesPerFoot;
+(gdb) n
+22	  printf("%i\" = %i' %i\"\n", inches, feet, inchesRem);
+(gdb) i r $rbx $r12
+rbx            0x3	3
+r12            0xa	10
+(gdb) print $rbx
+$4 = 3
+(gdb) print $r12
+$5 = 10
+(gdb) print feet
+$6 = 10
+(gdb) print inchesRem
+$7 = 3
+
+
+(gdb) i r
+rax            0x78	120
+rbx            0x3	3
+rcx            0x3	3
+rdx            0xa	10
+rsi            0x1	1
+rdi            0x0	0
+rbp            0x7fffffffdf90	0x7fffffffdf90
+rsp            0x7fffffffdf60	0x7fffffffdf60
+r8             0x0	0
+r9             0x0	0
+r10            0x7ffff7b82cc0	140737349430464
+r11            0x555555554875	93824992233589
+r12            0xa	10
+r13            0x7fffffffe070	140737488347248
+r14            0x0	0
+r15            0x0	0
+rip            0x5555555547a1	0x5555555547a1 <main+135>
+eflags         0x206	[ PF IF ]
+cs             0x33	51
+ss             0x2b	43
+ds             0x0	0
+es             0x0	0
+fs             0x0	0
+gs             0x0	0
+
+
+(gdb) cont
+Continuing.
+123" = 10' 3"
+[Inferior 1 (process 2373) exited normally]
+(gdb) q
+bob@bob-MS-7522:~/NoStarch/progs/chap10$ 
+

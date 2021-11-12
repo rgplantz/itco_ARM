@@ -1,0 +1,71 @@
+(gdb) b main
+Breakpoint 1 at 0x1129: file doNothingProg.c, line 6.
+(gdb) i r rax rbp rsp rip
+The program has no registers now.
+(gdb) r
+Starting program: /home/bob/NoStarch/x-86/progs/working/chapter_10/doNothingProg_C/doNothingProg 
+
+Breakpoint 1, main () at doNothingProg.c:6
+6	{
+(gdb) i r rax rbp rsp rip
+rax            0x555555555129      93824992235817
+rbp            0x0                 0x0
+rsp            0x7fffffffdea8      0x7fffffffdea8
+rip            0x555555555129      0x555555555129 <main>
+(gdb) s
+7	  return 0;
+(gdb) i r rax rbp rsp rip
+rax            0x555555555129      93824992235817
+rbp            0x7fffffffdea0      0x7fffffffdea0
+rsp            0x7fffffffdea0      0x7fffffffdea0
+rip            0x555555555131      0x555555555131 <main+8>
+(gdb) s
+8	}
+(gdb) i r rax rbp rsp rip
+rax            0x0                 0
+rbp            0x7fffffffdea0      0x7fffffffdea0
+rsp            0x7fffffffdea0      0x7fffffffdea0
+rip            0x555555555136      0x555555555136 <main+13>
+(gdb) s
+__libc_start_main (main=0x555555555129 <main>, argc=1, argv=0x7fffffffdf98, 
+    init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, 
+    stack_end=0x7fffffffdf88) at ../csu/libc-start.c:342
+342	../csu/libc-start.c: No such file or directory.
+(gdb) 
+
+
+
+(gdb) b *main
+Breakpoint 1 at 0x1129: file doNothingProg.c, line 6.
+(gdb) r
+Starting program: /home/bob/NoStarch/x-86/progs/working/chapter_10/doNothingProg_C/doNothingProg 
+
+Breakpoint 1, main () at doNothingProg.c:6
+6	{
+(gdb) i r rax rbp rsp rip
+rax            0x555555555129      93824992235817
+rbp            0x0                 0x0
+rsp            0x7fffffffdea8      0x7fffffffdea8
+rip            0x555555555129      0x555555555129 <main>
+(gdb) s
+7	  return 0;
+(gdb) i r rax rbp rsp rip
+rax            0x555555555129      93824992235817
+rbp            0x7fffffffdea0      0x7fffffffdea0
+rsp            0x7fffffffdea0      0x7fffffffdea0
+rip            0x555555555131      0x555555555131 <main+8>
+(gdb) s
+8	}
+(gdb) i r rax rbp rsp rip
+rax            0x0                 0
+rbp            0x7fffffffdea0      0x7fffffffdea0
+rsp            0x7fffffffdea0      0x7fffffffdea0
+rip            0x555555555136      0x555555555136 <main+13>
+(gdb) s
+__libc_start_main (main=0x555555555129 <main>, argc=1, argv=0x7fffffffdf98, 
+    init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, 
+    stack_end=0x7fffffffdf88) at ../csu/libc-start.c:342
+342	../csu/libc-start.c: No such file or directory.
+(gdb) 
+
+

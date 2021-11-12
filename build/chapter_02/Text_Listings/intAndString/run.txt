@@ -1,0 +1,11 @@
+bob@bob-MS-7522:~/NoStarch/x-86/progs/working/chapter_02/intAndString$ make
+gcc -c -g -Wall -masm=intel intAndString.c
+gcc intAndString.o -o intAndString
+bob@bob-MS-7522:~/NoStarch/x-86/progs/working/chapter_02/intAndString$ ./intAndString
+
+
+bob@bob-MS-7522:~/NoStarch/x-86/progs/working/chapter_02/intAndString$ make -f makefile_nul 
+cc    -c -o intAndString.o intAndString.c
+cc   intAndString.o   -o intAndString
+bob@bob-MS-7522:~/NoStarch/x-86/progs/working/chapter_02/intAndString$ make allclean
+

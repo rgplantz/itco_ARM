@@ -1,0 +1,51 @@
+GAS LISTING doNothingProg_full.s 			page 1
+
+
+   1              		.file	"doNothingProg.c"
+   2              		.intel_syntax noprefix
+   3              		.text
+   4              		.globl	main
+   5              		.type	main, @function
+   6              	main:
+   7              	.LFB0:
+   8              		.cfi_startproc
+   9 0000 F30F1EFA 		endbr64
+  10 0004 55       		push	rbp
+  11              		.cfi_def_cfa_offset 16
+  12              		.cfi_offset 6, -16
+  13 0005 4889E5   		mov	rbp, rsp
+  14              		.cfi_def_cfa_register 6
+  15 0008 B8000000 		mov	eax, 0
+  15      00
+  16 000d 5D       		pop	rbp
+  17              		.cfi_def_cfa 7, 8
+  18 000e C3       		ret
+  19              		.cfi_endproc
+  20              	.LFE0:
+  21              		.size	main, .-main
+  22              		.ident	"GCC: (Ubuntu 9.3.0-10ubuntu2) 9.3.0"
+  23              		.section	.note.GNU-stack,"",@progbits
+  24              		.section	.note.gnu.property,"a"
+  25              		.align 8
+  26 0000 04000000 		.long	 1f - 0f
+  27 0004 10000000 		.long	 4f - 1f
+  28 0008 05000000 		.long	 5
+  29              	0:
+  30 000c 474E5500 		.string	 "GNU"
+  31              	1:
+  32              		.align 8
+  33 0010 020000C0 		.long	 0xc0000002
+  34 0014 04000000 		.long	 3f - 2f
+  35              	2:
+  36 0018 03000000 		.long	 0x3
+  37              	3:
+  38 001c 00000000 		.align 8
+  39              	4:
+GAS LISTING doNothingProg_full.s 			page 2
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 doNothingProg.c
+doNothingProg_full.s:6      .text:0000000000000000 main
+
+NO UNDEFINED SYMBOLS

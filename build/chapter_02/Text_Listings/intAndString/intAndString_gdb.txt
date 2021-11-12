@@ -1,0 +1,118 @@
+bob@bob-MS-7522:~/NoStarch/intel/progs/chap02/intAndString$ gdb ./intAndString 
+GNU gdb (Ubuntu 9.1-0ubuntu1) 9.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from ./intAndString...
+(gdb) li
+1	/* intAndString.c
+2	 * Using printf to display an integer and a text string.
+3	 */
+4	
+5	#include <stdio.h>
+6	
+7	int main(void)
+8	{
+9	  unsigned int anInt;
+10	  char aString[50];
+(gdb) 
+11	
+12	  printf("Enter a hexadecimal value: ");
+13	  scanf("%x", &anInt);
+14	  printf("Enter it again: ");
+15	  scanf("%s", aString);
+16	  
+17	  printf("The integer is %u and the string is %s\n", anInt, aString);
+18	
+19	  return 0;
+20	}
+(gdb) 
+
+
+
+(gdb) b 17
+Breakpoint 1 at 0x11f6: file intAndString.c, line 17.
+(gdb) run
+Starting program: /home/bob/NoStarch/intel/progs/chap02/intAndString/intAndString 
+Enter a hexadecimal value: 123abc
+Enter it again: 123abc
+
+Breakpoint 1, main () at intAndString.c:17
+17	  printf("The integer is %u and the string is %s\n", anInt, aString);
+(gdb) 
+
+
+
+
+(gdb) print anInt
+$1 = 1194684
+(gdb) print aString
+$2 = "123abc\000\177\000"
+(gdb) 
+
+
+(gdb) printf "anInt = %i = %#x\n", anInt, anInt
+anInt = 1194684 = 0x123abc
+(gdb) printf "aString = 0x%s\n", aString
+aString = 0x123abc
+
+
+
+(gdb) help x
+Examine memory: x/FMT ADDRESS.
+ADDRESS is an expression for the memory address to examine.
+FMT is a repeat count followed by a format letter and a size letter.
+Format letters are o(octal), x(hex), d(decimal), u(unsigned decimal),
+  t(binary), f(float), a(address), i(instruction), c(char), s(string)
+  and z(hex, zero padded on the left).
+Size letters are b(byte), h(halfword), w(word), g(giant, 8 bytes).
+The specified number of objects of the specified size are printed
+according to the format.  If a negative number is specified, memory is
+examined backward from the address.
+
+Defaults for format and size letters are those previously used.
+Default count is 1.  Default address is following last thing printed
+with this command or "print".
+(gdb) print &anInt
+$3 = (unsigned int *) 0x7fffffffde88
+(gdb) x/1dw 0x7fffffffde88
+0x7fffffffde88:	1194684
+(gdb) x/1xw 0x7fffffffde88
+0x7fffffffde88:	0x00123abc
+(gdb) x/4xb 0x7fffffffde88
+0x7fffffffde88:	0xbc	0x3a	0x12	0x00
+
+
+
+(gdb) print &aString
+$4 = (char (*)[50]) 0x7fffffffde8e
+(gdb) x/10c 0x7fffffffde8e
+0x7fffffffde8e:	49 '1'	50 '2'	51 '3'	97 'a'	98 'b'	99 'c'	0 '\000'	127 '\177'
+0x7fffffffde96:	0 '\000'	0 '\000'
+(gdb) x/10xb 0x7fffffffde8e
+0x7fffffffde8e:	0x31	0x32	0x33	0x61	0x62	0x63	0x00	0x7f
+0x7fffffffde96:	0x00	0x00
+(gdb) 
+
+
+
+
+(gdb) cont
+Continuing.
+The integer is 1194684 and the string is 123abc
+[Inferior 1 (process 2634) exited normally]
+(gdb) q
+bob@bob-MS-7522:~/NoStarch/intel/progs/chap02/intAndString$ 
+
+

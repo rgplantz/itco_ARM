@@ -1,0 +1,77 @@
+bob@bob-MS-7522:~/NoStarch/intel/progs/chap12$ gdb ./helloWorld
+GNU gdb (Ubuntu 8.1-0ubuntu3) 8.1.0.20180409-git
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from ./helloWorld...done.
+(gdb) br *main
+Breakpoint 1 at 0x64a: file helloWorld.s, line 18.
+(gdb) run
+Starting program: /home/bob/NoStarch/intel/progs/chap12/helloWorld 
+
+Breakpoint 1, main () at helloWorld.s:18
+18	        push    rbp             # save caller's base pointer
+(gdb) i r rbp rsp
+rbp            0x555555554670	0x555555554670 <__libc_csu_init>
+rsp            0x7fffffffdf78	0x7fffffffdf78
+(gdb) x/2xg 0x7fffffffdf70
+0x7fffffffdf70:	0x0000000000000000	0x00007ffff7a05b97
+(gdb) si
+19	        mov     rbp, rsp        # our base pointer
+(gdb) si
+21	        mov     edx, msgLength  # message length       
+(gdb) i r rbp rsp
+rbp            0x7fffffffdf70	0x7fffffffdf70
+rsp            0x7fffffffdf70	0x7fffffffdf70
+(gdb) x/2xg 0x7fffffffdf70
+0x7fffffffdf70:	0x0000555555554670	0x00007ffff7a05b97
+(gdb) br 24
+Breakpoint 2 at 0x55555555465f: file helloWorld.s, line 24.
+(gdb) cont
+Continuing.
+
+Breakpoint 2, main () at helloWorld.s:24
+24	        call    write@PLT       # write message
+(gdb) i r rdx rsi rdi
+rdx            0xe	14
+rsi            0x5555555546f4	93824992233204
+rdi            0x1	1
+(gdb) x/15c 0x5555555546f4
+0x5555555546f4:	72 'H'	101 'e'	108 'l'	108 'l'	111 'o'	44 ','	32 ' '	87 'W'
+0x5555555546fc:	111 'o'	114 'r'	108 'l'	100 'd'	33 '!'	10 '\n'	0 '\000'
+(gdb) br 29
+Breakpoint 3 at 0x55555555466a: file helloWorld.s, line 29.
+(gdb) cont
+Continuing.
+Hello, World!
+
+Breakpoint 3, main () at helloWorld.s:29
+29	        ret                     # back to caller
+(gdb) i r rbp rsp rip
+rbp            0x555555554670	0x555555554670 <__libc_csu_init>
+rsp            0x7fffffffdf78	0x7fffffffdf78
+rip            0x55555555466a	0x55555555466a <main+32>
+(gdb) si
+__libc_start_main (main=0x55555555464a <main>, argc=1, argv=0x7fffffffe058, 
+    init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, 
+    stack_end=0x7fffffffe048) at ../csu/libc-start.c:344
+344	../csu/libc-start.c: No such file or directory.
+(gdb) i r rbp rsp rip
+rbp            0x555555554670	0x555555554670 <__libc_csu_init>
+rsp            0x7fffffffdf80	0x7fffffffdf80
+rip            0x7ffff7a05b97	0x7ffff7a05b97 <__libc_start_main+231>
+(gdb) cont
+Continuing.
+[Inferior 1 (process 5977) exited normally]
+(gdb) 
+

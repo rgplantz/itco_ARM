@@ -1,0 +1,21 @@
+bob@bob-MS-7522:~/NoStarch/x-86/progs/working/chapter_14/sumIntegers_C_nof$ make
+gcc -g -c -Wall -masm=intel sumInts.c
+gcc -g -c -Wall -masm=intel addTwo.c
+gcc -o sumInts sumInts.o addTwo.o
+bob@bob-MS-7522:~/NoStarch/x-86/progs/working/chapter_14/sumIntegers_C_nof$ 
+
+
+
+bob@bob-MS-7522:~/NoStarch/x-86/progs/working/chapter_14/sumIntegers_C_nof$ make -f badMakefile
+gcc -g -c -Wall -masm=intel sumInts.c
+cc    -c -o addTwo.o addTwo.c
+gcc -o sumInts sumInts.o addTwo.o
+bob@bob-MS-7522:~/NoStarch/x-86/progs/working/chapter_14/sumIntegers_C_nof$ 
+
+
+bob@bob-MS-7522:~/NoStarch/x-86/progs/working/chapter_14/sumIntegers_C_nof$ ./sumInts
+Enter an integer: 123
+Enter an integer: 456
+123 + 456 = 579
+bob@bob-MS-7522:~/NoStarch/x-86/progs/working/chapter_14/sumIntegers_C_nof$ 
+
