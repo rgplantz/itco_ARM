@@ -1,5 +1,0 @@
-bob@bob-MS-7522:~/NoStarch/intel/progs/chap02/echoChar$ ./echoChar
-Enter one character: a
-You entered: abob@bob-MS-7522:~/NoStarch/intel/progs/chap02/echoChar$ 
-bob@bob-MS-7522:~/NoStarch/intel/progs/chap02/echoChar$ 
-
