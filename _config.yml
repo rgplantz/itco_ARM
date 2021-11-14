@@ -22,7 +22,7 @@ title: Introduction to Computer Organization, ARM
 email: rgplantz@outlook.com
 description: >- # this means to ignore newlines until "baseurl:"
   Resources for Introduction to Computer Organization, ARM.
-baseurl: "/itco_x86-64" # the subpath of your site, e.g. /blog
+baseurl: "/itco_ARM" # the subpath of your site, e.g. /blog
 url: "https:rgplantz.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
 github_username:  rgplantz
