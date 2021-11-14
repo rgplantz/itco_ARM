@@ -5,7 +5,7 @@ title: Chapter 4
 
 ## Chapter 4
 
-### Page aa
+### Page 66
 1.  Associativity of AND and OR is shown in Tables 4-3 and 4-4 in the book.
 2.  AND and OR identity values
 
@@ -112,3 +112,10 @@ title: Chapter 4
     | `1` | `0` |     `1`    |      `0`      |   `0`  |   `1`  |        `0`          |
     | `1` | `1` |     `1`    |      `0`      |   `0`  |   `0`  |        `0`          |
 
+### Page 87
+1. a
+2. b
+3. c
+4. d
+5. e
+6. f

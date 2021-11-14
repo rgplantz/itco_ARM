@@ -5,7 +5,7 @@ title: Chapter 3
 
 ## Chapter 3
 
-### Page aa
+### Page 42
 1. Four bits are required to store a single decimal digit.
    Many codes could be used. This one uses the binary number system.
 
@@ -73,7 +73,7 @@ title: Chapter 3
         Let difference<sub>i</sub> = x<sub>i</sub> − y<sub>i</sub>
 </pre>
 
-### Page bb
+### Page 49
 1. Signed decimal to two's complement binary.
 <pre>
     If x >= 0
@@ -103,7 +103,7 @@ title: Chapter 3
    * -256 = `0xff00`
    * -32767 `0x8001`
 
-### Page cc
+### Page 54
 1. Three-bit arithmetic using Decoder Ring
    * Start at the tic mark for 1, move 3 tic marks CW, giving `100` = 4. We did not pass the tic mark at the top, so `CF` = `0`, and the result is right.
    * Start at the tic mark for 3, move 4 tic marks CW, giving `111` = 7. We did not pass the tic mark at the top, so `CF` = `0`, and the result is right.

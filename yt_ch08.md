@@ -1,23 +1,11 @@
 ---
 layout: default
-title: Chapter 10
+title: Chapter 8
 ---
 
-## Chapter 10
+## Chapter 8
 
-### Page aa
-1.  After setting `rbp` equal to `rsp`, the program does n't change either of the regsters. So the `mov rsp, rbp` instruction does not change the contents of the registers. When we change the program to return 123, `gdb` ends with the message
-    
-    `Inferior 1 (process 4891) exited with code 0173]`
-    
-    The exit code begins with a `0` showing that it's in the octal base: 173<sub>8</sub> = 123<sub>10</sub>
-2.  xxx
-3.  yyy
-4.  zzz
-5.  
-
-
-### Page bb
+### Page 176
 We start with a truth table that shows the relationships between the signals and the input to the D flip-flop.
         
 |Store|d<sub>i</sub>|r<sub>i</sub>|D<sub>i</sub>|

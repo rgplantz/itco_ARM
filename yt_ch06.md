@@ -5,11 +5,11 @@ title: Chapter 6
 
 ## Chapter 6
 
-### Page aa
+### Page 120
 The circuit for the four status flags is
 ![](./assets/images/ch_06/status_flags.svg)
 
-### Page bb
+### Page 123
 Instead of selecting one output line like the decoder in Figure 6-8, a BCD to seven-segment decoder selects several of the seven output lines for each 4-bit BCD input.
 
 We start with a truth table that shows which segments are activated to display the numeral, 0 -- 9, corresponding to the four x<sub>i</sub> BCD bits.
@@ -63,7 +63,7 @@ This leads to a circuit for our decoder.
 
 ![](./assets/images/ch_06/7segment_decoder.svg)
 
-### Page cc
+### Page 132
   We start with a truth table that shows the relationship of x compared to y. (Remember that GT and LT refer to signed values.)
         
 |x<sub>1</sub>|x<sub>0</sub>|y<sub>1</sub>|y<sub>0</sub>| EQ | GT | LT |

@@ -32,5 +32,5 @@ No Your Turn exercises in Chapter 7,
 
 ## Source Code Files
 If you wish, you can download the source code files for both the Listings in the text and my solutions to the Your Turn programming exercises in a single
-[zipped file](https://github.com/rgplantz/itco_x86-64/zipball/main/),
-or you can [view them](https://github.com/rgplantz/itco_x86-64/) on GitHub.
+[zipped file](https://github.com/rgplantz/itco_ARM/zipball/main/),
+or you can [view them](https://github.com/rgplantz/itco_ARM/) on GitHub.
