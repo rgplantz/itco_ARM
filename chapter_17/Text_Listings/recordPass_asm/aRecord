@@ -1,0 +1,7 @@
+# aRecord.h
+# Declaration of a record.
+# This record takes 12 bytes.
+        .equ    aChar,0
+        .equ    anInt,4
+        .equ    anotherChar,8
+        
