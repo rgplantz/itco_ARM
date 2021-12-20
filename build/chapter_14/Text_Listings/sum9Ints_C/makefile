@@ -1,10 +1,8 @@
 # Build sum9Ints program
 
 objects = sum9Ints.o addNine.o
-genasm = -S -Wall -masm=intel -fno-asynchronous-unwind-tables \
--fcf-protection=none
-
-CFLAGS = -g -Wall -masm=intel
+genasm = -S -Wall -g0
+CFLAGS = -g -Wall
 CC = gcc
 
 sum9Ints: $(objects) addNine.h
