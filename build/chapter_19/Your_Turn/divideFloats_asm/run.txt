@@ -1,6 +1,0 @@
-bob@Ubuntu-bob:~/NoStarch/x-86/progs/working/chapter_19/Your_Turn/divideFloats_asm$ ./divideFloats 
-Enter a number: 123
-Enter a number: 0
-123.000000 / 0.000000 = inf
-bob@Ubuntu-bob:~/NoStarch/x-86/progs/working/chapter_19/Your_Turn/divideFloats_asm$ 
-
