@@ -13,15 +13,11 @@ int main(void)
   printf("Enter an integer: ");
   scanf("%i", &y);
 
-  asm("mov edi, %2\n"
-      "add edi, %3\n"
-      "seto al\n"
-      "movzx eax, al\n"
-      "mov %1, eax\n"
-      "mov %0, edi"
+  asm ("adds %w0, %w2, %w3\n"
+      "csinc %w1, wzr, wzr, vc\n"
       : "=rm" (z), "=rm" (overflow)
       : "rm" (x), "rm" (y)
-      : "rax", "rdx", "cc");
+      : "w0", "w1");
 
   printf("%i + %i = %i\n", x, y, z);
   if (overflow)
