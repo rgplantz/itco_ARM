@@ -8,7 +8,7 @@
 #define INTMASK 0x0f
 #define NUL '\0'
 
-int decToUInt(char *stringPtr, unsigned int *intPtr)
+int decToUInt(unsigned int *intPtr, char *stringPtr)
 {
   int radix = 10;
   char current;

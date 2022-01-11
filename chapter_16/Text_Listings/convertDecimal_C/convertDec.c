@@ -16,7 +16,7 @@ int main()
   writeStr("Enter an unsigned integer: ");
   readLn(theString, MAX);
 
-  decToUInt(theString, &theInt);
+  decToUInt(&theInt, theString);
   printf("\"%s\" is stored as 0x%x\n", theString, theInt);
    
   return 0;

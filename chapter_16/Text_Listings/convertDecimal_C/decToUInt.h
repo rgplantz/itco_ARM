@@ -5,6 +5,6 @@
  
 #ifndef DECTOUINT_H
 #define DECTOUINT_H
-int decToUInt(char *stringPtr, unsigned int *intPtr);
+int decToUInt(unsigned int *intPtr, char *stringPtr);
 #endif
 
