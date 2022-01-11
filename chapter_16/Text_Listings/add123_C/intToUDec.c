@@ -8,14 +8,15 @@
 #define MAX 12
 #define NUL '\0'
 
-void intToUDec(char *decString, unsigned int theInt)
+int intToUDec(char *decString, unsigned int theInt)
 {
   int radix = 10;
+  int count = -1;   // allow for NUL char
   char reverseArray[MAX];
   char digit;
   char *ptr = reverseArray;
    
-  *ptr = NUL;  // start with termination char
+  *ptr = NUL;       // start with termination char
   ptr++;
   do
   {
@@ -25,10 +26,12 @@ void intToUDec(char *decString, unsigned int theInt)
     theInt = theInt / radix;
     ptr++;
   } while (theInt > 0);
-  do           // reverse the string
+  do                // reverse the string
   {
     ptr--;
     *decString = *ptr;
     decString++;
+    count++;
   } while (*ptr != NUL);
+  return count;
 }
