@@ -16,7 +16,7 @@ int main()
   writeStr("Enter an unsigned integer: ");
   readLn(theString, MAX);
 
-  decToUInt(theString, &theInt);
+  decToUInt(&theInt, theString);
   theInt += 123;
   intToUDec(theString, theInt);
    

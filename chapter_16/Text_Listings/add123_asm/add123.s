@@ -33,8 +33,8 @@ main:
         add     x0, sp, theString
         mov     w1, MAX
         bl      readLn
-        add     x1, sp, theInt
-        add     x0, sp, theString
+        add     x1, sp, theString
+        add     x0, sp, theInt
         bl      decToUInt
         ldr     w1, [sp, theInt]
         add     w1, w1, CONSTANT

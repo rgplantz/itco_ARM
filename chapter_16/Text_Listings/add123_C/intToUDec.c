@@ -17,20 +17,19 @@ int intToUDec(char *decString, unsigned int theInt)
   char *ptr = reverseArray;
    
   *ptr = NUL;       // start with termination char
-  ptr++;
   do
   {
+    ptr++;
     digit = theInt % radix;
     digit = ASCII | digit;
     *ptr = digit;
     theInt = theInt / radix;
-    ptr++;
   } while (theInt > 0);
   do                // reverse the string
   {
-    ptr--;
     *decString = *ptr;
     decString++;
+    ptr--;
     count++;
   } while (*ptr != NUL);
   return count;

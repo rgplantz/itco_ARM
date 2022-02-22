@@ -6,11 +6,7 @@
  *       call    writestr
  * returns number of characters written
  */
- 
-
 #ifndef WRITESTR_H
 #define WRITESTR_H
-
 int writeStr(char *);
-
 #endif
