@@ -1,9 +1,8 @@
 /* helloWorld.c
- * Hello World program using the write() system call.
+ * Hello World program using the write system call.
  */
 
 #include <unistd.h>
-
 int main(void)
 {
 
