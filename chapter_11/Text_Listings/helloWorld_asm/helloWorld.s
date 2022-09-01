@@ -19,8 +19,7 @@ main:
         stp     fp, lr, [sp, -frameSize]! // create our stack frame
         mov     fp, sp                    // set our frame pointer
         mov     x2, msgLength             // number of characters
-        adrp    x0, message               // address of page
-        add     x1, x0, :lo12:message     // plus offset in page
+        adr     x0, message               // address of text string
         mov     w0, STDOUT                // standard out file no.
         bl      write
         mov     w0, 0                     // return value
