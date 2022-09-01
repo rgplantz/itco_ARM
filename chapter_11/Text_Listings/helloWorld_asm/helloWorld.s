@@ -19,7 +19,7 @@ main:
         stp     fp, lr, [sp, -frameSize]! // create our stack frame
         mov     fp, sp                    // set our frame pointer
         mov     x2, msgLength             // number of characters
-        adr     x0, message               // address of text string
+        adr     x1, message               // address of text string
         mov     w0, STDOUT                // standard out file no.
         bl      write
         mov     w0, 0                     // return value
