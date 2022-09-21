@@ -2,11 +2,12 @@
 // Echos characters typed on keyboard
         .arch armv8-a
 // Useful constants
-        .equ    STDIN,0
-        .equ    STDOUT,1
+        .equ    STDIN, 0
+        .equ    STDOUT, 1
 // Stack frame
-        .equ    aChar,31
-        .equ    frameSize,32
+        .equ    outChar, 30
+        .equ    inChar, 31
+        .equ    frameSize, 32
 // Code
         .text
         .section        .rodata
@@ -31,9 +32,12 @@ main:
         bl      write
 
         mov     x2, 1                     // one character
-        add     x1, sp, aChar             // place to store it
+        add     x1, sp, inChar            // place to store it
         mov     x0, STDIN                 // read keyboard
         bl      read
+
+        ldr     w0, [sp, inChar]          // load char
+        str     w0, [sp, outChar]         // and store it
 
         mov     x2, msgLength             // number of characters
         adrp    x0, message               // address of page
@@ -42,7 +46,7 @@ main:
         bl      write
 
         mov     x2, 1                     // one character
-        add     x1, sp, aChar             // place it's stored
+        add     x1, sp, outChar           // place it's stored
         mov     x0, STDOUT                // write on screen
         bl      write
 
