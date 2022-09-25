@@ -28,8 +28,8 @@ main:
         add     x0, x0, :lo12:inputFormat
         bl      __isoc99_scanf
         ldr     w0, [sp, x]   // get x
-        add     w0, w0, 1     // add one
-        str     w0, [sp, x]   // x++;
+        add     w1, w0, 1     // add one
+        str     w1, [sp, x]   // x++;
         adrp    x0, result    // address of format string
         add     x0, x0, :lo12:result
         bl      printf
