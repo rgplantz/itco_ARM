@@ -6,12 +6,12 @@
 
 int main(void)
 {
-  int x, y;
+  int x;
 
   printf("Enter an integer: ");
   scanf("%i", &x);
-  y = x + 1;
-  printf("Result: %i\n", y);
+  x++;
+  printf("Result: %i\n", x);
 
   return 0;
 }

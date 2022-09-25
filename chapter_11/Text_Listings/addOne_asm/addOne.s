@@ -2,8 +2,7 @@
 // Adds one to an integer.
         .arch armv8-a
 // Stack frame
-        .equ    x, 24
-        .equ    y, 28
+        .equ    x, 28
         .equ    frameSize, 32
 // Constants 
         .section        .rodata
@@ -29,8 +28,8 @@ main:
         add     x0, x0, :lo12:inputFormat
         bl      __isoc99_scanf
         ldr     w0, [sp, x]   // get x
-        add     w1, w0, 1     // add one
-        str     w1, [sp, y]   // y = x + 1;
+        add     w0, w0, 1     // add one
+        str     w0, [sp, y]   // x++;
         adrp    x0, result    // address of format string
         add     x0, x0, :lo12:result
         bl      printf
