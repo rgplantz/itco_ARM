@@ -1,5 +1,5 @@
-/* addOne.c
- * Adds one to an integer.
+/* incInt.c
+ * Increments an integer.
  */
 
 #include <stdio.h>

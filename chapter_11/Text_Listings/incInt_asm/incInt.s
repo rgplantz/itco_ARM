@@ -1,5 +1,5 @@
-// addOne.s
-// Adds one to an integer.
+// incInt.s
+// Increments an integer.
         .arch armv8-a
 // Stack frame
         .equ    x, 28
