@@ -46,7 +46,7 @@ main:
         sub     w3, w0, w1                // subtract them
         str     w3, [sp, diff]            // diff = x - y
 
-        ldr     w2, [sp, sum]             // sum
+        ldr     w2, [sp, diff]            // sum
         ldr     w1, [sp, sum]             // difference
         adr     x0, result                // address of format string
         bl      printf
