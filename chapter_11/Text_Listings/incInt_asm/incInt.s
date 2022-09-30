@@ -23,7 +23,6 @@ main:
 
         adr     x0, prompt                // prompt user
         bl      printf
-
         add     x1, sp, x                 // address for input
         adr     x0, inputFormat           // scanf format string
         bl      scanf
