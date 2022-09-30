@@ -36,18 +36,14 @@ main:
         adr     x0, inputFormat           // scanf format string
         bl      scanf
 
-        ldr     w0, [sp, x]               // get x
-        ldr     w1, [sp, y]               // and y
-        add     w3, w0, w1                // add them
-        str     w3, [sp, sum]             // sum = x + y
+        add     x3, sp, diff              // place for difference
+        add     x2, sp, sum               // place for sum
+        ldr     x1, [sp, y]               // y
+        ldr     x0, [sp, x]               // x
+        bl      sumDiff                   // do arithmetic
 
-        ldr     w0, [sp, x]               // get x
-        ldr     w1, [sp, y]               // and y
-        sub     w3, w0, w1                // subtract them
-        str     w3, [sp, diff]            // diff = x - y
-
-        ldr     w2, [sp, sum]             // sum
-        ldr     w1, [sp, sum]             // difference
+        ldr     w2, [sp, diff]            // difference
+        ldr     w1, [sp, sum]             // sum
         adr     x0, result                // address of format string
         bl      printf
 
