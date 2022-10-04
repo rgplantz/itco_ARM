@@ -20,7 +20,9 @@ main:
         mov     w0, 0x1234                // a constant
         str     w0, [sp, x]
 
-        ldr     w1, [sp, x]               // get x
+        ldr     w19, [sp, x]              // get x
+        mov     w1, w19                   // second argument
+        add     w1, w19, 0                // same instruction?
         adrp    x0, result                // page of format string
         add     x0, x0, :lo12:result      // plus offset in page
         adr     x0, result                // show other way
