@@ -22,7 +22,7 @@ main:
 
         ldr     w21, [sp, x]          // get x
         mov     w1, w21               // second argument
-        add     w1, w21, 0            // same instruction?
+        add     w1, w21, 0            // another way
         adrp    x0, result            // page of format string
         add     x0, x0, :lo12:result  // plus offset in page
         adr     x0, result            // show other way
