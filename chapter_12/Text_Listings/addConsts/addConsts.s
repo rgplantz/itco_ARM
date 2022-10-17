@@ -27,7 +27,7 @@ main:
         orr     w2, wzr, w20          // alias
         mov     w1, w19               // get 1st constant
         adrp    x0, format            // format string page
-        add     x0, x0, :lo12:format  // offset in page
+        add     x0, :lo12:format      // offset in page
         adr     x0, format            // assume on same page
         bl      printf
 
