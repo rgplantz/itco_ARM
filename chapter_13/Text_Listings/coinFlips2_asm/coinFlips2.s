@@ -31,7 +31,7 @@ forLoop:
         bl      random                // no, get random number
         mov     w1, MIDDLE            // half way
         cmp     w1, w0                // above or below middle?
-        b.gt    tails                 // above -> tails
+        b.hi    tails                 // above -> tails
         adr     x0, headsMsg          // below -> heads message
         bl      puts                  // print message
         b       continue              // skip else part
