@@ -2,8 +2,8 @@
 // Writes Hello, World! one character at a time
         .arch armv8-a
 // Useful constants
-        .equ    NUL,wzr                   // use zero register
-        .equ    STDOUT,1
+        .equ    NUL, 0
+        .equ    STDOUT, 1
 // Stack frame
         .equ    frame,16
 // Code
@@ -19,13 +19,12 @@ message:
 main:
         stp     fp, lr, [sp, -frame]! // create our stack frame
         mov     fp, sp                // set our frame pointer
-        mov     x2, promptLength      // number of characters
-        adr     x0, message           // address of page
+        adr     x19, message          // address of message
 whileLoop:
         ldrb    w0, [x19]             // load character
         cmp     w0, NUL               // end of string?
         b.eq    allDone               // yes
-        mov     w2, STDOUT            // no, one char
+        mov     w2, 1                 // no, one char
         mov     x1, x19               // address of char
         mov     x0, STDOUT            // write on screen
         bl      write
