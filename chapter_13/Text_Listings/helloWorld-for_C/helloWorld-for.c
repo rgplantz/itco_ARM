@@ -9,7 +9,7 @@ int main(void)
 {
   char *stringPtr;
 
-  for (; *stringPtr != NUL; stringPtr++)
+  for (stringPtr = "Hello, World!\n"; *stringPtr != NUL; stringPtr++)
   {
     write(STDOUT_FILENO, stringPtr, 1);
   }
