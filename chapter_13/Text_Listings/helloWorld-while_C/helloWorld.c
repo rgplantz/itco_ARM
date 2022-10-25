@@ -14,6 +14,5 @@ int main(void)
     write(STDOUT_FILENO, stringPtr, 1);
     stringPtr++;
   }
-
   return 0;
 }
