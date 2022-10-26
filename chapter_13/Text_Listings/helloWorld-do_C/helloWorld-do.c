@@ -1,5 +1,5 @@
 /* helloWorld1-do.c
- * Hello World program using the write() system call
+ * Hello World program using the write system call
  * one character at a time.
  */
 #include <unistd.h>
@@ -13,8 +13,7 @@ int main(void)
   {
     write(STDOUT_FILENO, stringPtr, 1);
     stringPtr++;
-  }
-  while (*stringPtr != NUL);
+  } while (*stringPtr != NUL);
 
   return 0;
 }
