@@ -1,4 +1,4 @@
-/* helloWorld1-do.c
+/* helloWorld-do.c
  * Hello World program using the write system call
  * one character at a time.
  */
