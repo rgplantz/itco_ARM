@@ -1,7 +1,6 @@
 /* coinFlips2.c
  * Flips a coin, heads or tails.
  */
-
 #include <stdio.h>
 #include <stdlib.h>
 
