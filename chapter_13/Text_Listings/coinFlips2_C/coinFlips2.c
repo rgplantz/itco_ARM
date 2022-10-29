@@ -13,9 +13,13 @@ int main()
   {
     randomNumber = random();
     if (randomNumber < RAND_MAX/2)
+    {
       puts("heads");
+    }
     else
+    {
       puts("tails");
+    }
   }
 
   return 0;
