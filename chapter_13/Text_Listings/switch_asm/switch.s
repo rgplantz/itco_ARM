@@ -44,6 +44,10 @@ forLoop:
         mov     w0, NTIMES            // total number of times
         cmp     w19, w0               // is i at end?
         b.hs    allDone               // yes
+one:
+two:
+three:
+over:
         adr     x0, oneMsg            // 
         bl      puts                  // print message
         b       continue              // skip else part
