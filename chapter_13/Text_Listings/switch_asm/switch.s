@@ -44,13 +44,25 @@ forLoop:
         mov     w0, NTIMES            // total number of times
         cmp     w19, w0               // is i at end?
         b.hs    allDone               // yes
+        adr     x0, brTable           // no, address of branch table
+        add     x0, x0, x19, lsl 3    // plus offset in table
+        ldr     x0, [x0]              // load address from table
+        br      x0                    //     and branch there
 one:
+        adr     x0, oneMsg            // = 1
+        bl      puts                  // write on screen
+        b       continue
 two:
+        adr     x0, twoMsg            // = 2
+        bl      puts                  // write on screen
+        b       continue
 three:
+        adr     x0, threeMsg          // = 3
+        bl      puts                  // write on screen
+        b       continue
 over:
-        adr     x0, oneMsg            // 
-        bl      puts                  // print message
-        b       continue              // skip else part
+        adr     x0, overMsg           // > 3
+        bl      puts                  // write on screen
 continue:
         add     w19, w19, 1           // i++;
         b       forLoop               // and continue loop
