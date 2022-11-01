@@ -1,17 +1,16 @@
 // helloWorld.s
 // Writes Hello, World! one character at a time
         .arch armv8-a
-// Useful constants
+// Useful names
         .equ    NUL, 0
         .equ    STDOUT, 1
 // Stack frame
         .equ    frame,16
-// Code
-        .text
+// Constant data
         .section        .rodata
-        .align  3
 message:
         .string "Hello, World!\n"
+// Code
         .text
         .align  2
         .global main

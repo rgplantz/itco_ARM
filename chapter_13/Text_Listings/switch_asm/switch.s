@@ -1,13 +1,12 @@
 // switch.s
 // Three-way selection
         .arch armv8-a
-// Useful constants
+// Useful names
         .equ    NTIMES, 10          // number of loops
 // Stack frame
         .equ    save19, 28
         .equ    frame, 32
-// Code
-        .text
+// Constant data
         .section        .rodata
 oneMsg:
         .string "i = 1"
@@ -30,7 +29,7 @@ brTable:
         .quad   over
         .quad   over                // need an entry for
         .quad   over                // each possibility
-// Program code
+// Code
         .text
         .align  2
         .global main

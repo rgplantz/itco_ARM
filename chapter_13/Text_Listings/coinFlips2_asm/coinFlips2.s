@@ -1,19 +1,19 @@
 // coinFlips2.s
 // Flips a coin, heads or tails.
         .arch armv8-a
-// Useful constants
+// Useful names
         .equ    NTIMES,10             // number of flips
         .equ    MIDDLE,1073741823     // RAND_MAX/2
 // Stack frame
         .equ    save19, 28
         .equ    frame,32
-// Code
-        .text
+// Constant data
         .section        .rodata
 headsMsg:
         .string "heads"
 tailsMsg:
         .string "tails"
+// Code
         .text
         .align  2
         .global main
