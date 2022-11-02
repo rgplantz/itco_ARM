@@ -2,9 +2,10 @@
 // Three-way selection
         .arch armv8-a
 // Useful names
-        .equ    NTIMES, 10          // number of loops
+        .equ    NTIMES, 10            // number of loops
+        .equ    DEFAULT, 4            // default case
 // Stack frame
-        .equ    save19, 28
+        .equ    save19, 24
         .equ    frame, 32
 // Constant data
         .section        .rodata
@@ -19,17 +20,11 @@ overMsg:
 // Branch table
         .align  3
 brTable:
-        .quad   one                 // addresses where messages
-        .quad   two                 // are printed
+        .quad   one                   // addresses where messages
+        .quad   two                   // are printed
         .quad   three
-        .quad   over
-        .quad   over
-        .quad   over
-        .quad   over
-        .quad   over
-        .quad   over                // need an entry for
-        .quad   over                // each possibility
-// Code
+        .quad   default
+// Program code
         .text
         .align  2
         .global main
@@ -37,14 +32,17 @@ brTable:
 main:
         stp     fp, lr, [sp, -frame]! // create our stack frame
         mov     fp, sp                // set our frame pointer
-        str     w19, [sp, save19]     // save for i local var.
-        mov     w19, 0                // i = 0
+        str     x19, [sp, save19]     // save for i local var.
+        mov     x19, 0                // i = 0
 forLoop:
-        mov     w0, NTIMES            // total number of times
-        cmp     w19, w0               // is i at end?
+        mov     x0, NTIMES            // total number of times
+        cmp     x19, x0               // is i at end?
         b.hs    allDone               // yes
-        adr     x0, brTable           // no, address of branch table
-        add     x0, x0, x19, lsl 3    // plus offset in table
+        mov     x1, DEFAULT-1         // -1 for indexing
+        cmp     x19, x1               // at default case?
+        csel    x2, x1, x19, hs       // high or same -> yes
+        adr     x0, brTable           // address of branch table
+        add     x0, x0, x2, lsl 3     // plus offset in table
         ldr     x0, [x0]              // load address from table
         br      x0                    //     and branch there
 one:
@@ -59,14 +57,14 @@ three:
         adr     x0, threeMsg          // = 3
         bl      puts                  // write on screen
         b       continue
-over:
+default:
         adr     x0, overMsg           // > 3
         bl      puts                  // write on screen
 continue:
-        add     w19, w19, 1           // i++;
+        add     x19, x19, 1           // i++;
         b       forLoop               // and continue loop
 allDone:
         mov     w0, wzr               // return 0
-        ldr     w19, [sp, save19]     // restore reg.
+        ldr     x19, [sp, save19]     // restore reg.
         ldp     fp, lr, [sp], frame   // restore fp, lr, sp
         ret                           // back to caller
