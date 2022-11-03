@@ -41,7 +41,7 @@ forLoop:
         cmp     x19, x20              // no, default case?
         csel    x1, x20, x19, hs      // high or same -> yes
         adr     x0, brTable           // address of branch table
-        sub     x1, x1, 1             // table numbered from 0
+        sub     x1, x1, 1             // table offset from 0
         add     x0, x0, x1, lsl 3     // plus address offset in table
         ldr     x0, [x0]              // load address from table
         br      x0                    //     and branch there
