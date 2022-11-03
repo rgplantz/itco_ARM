@@ -64,6 +64,6 @@ continue:
         b       forLoop               // and continue loop
 allDone:
         mov     w0, wzr               // return 0
-        ldr     x19, [sp, save19]     // restore reg.
+        ldr     x19, x20, [sp, saveReg] // restore reg.
         ldp     fp, lr, [sp], frame   // restore fp, lr, sp
         ret                           // back to caller
