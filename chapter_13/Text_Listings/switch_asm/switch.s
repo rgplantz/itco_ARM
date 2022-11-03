@@ -5,7 +5,7 @@
         .equ    NTIMES, 10            // number of loops
         .equ    DEFAULT, 4            // default case
 // Stack frame
-        .equ    save19, 24
+        .equ    saveReg, 16
         .equ    frame, 32
 // Constant data
         .section        .rodata
@@ -32,17 +32,16 @@ brTable:
 main:
         stp     fp, lr, [sp, -frame]! // create our stack frame
         mov     fp, sp                // set our frame pointer
-        str     x19, [sp, save19]     // save for i local var.
-        mov     x19, 0                // i = 0
+        stp     x19, x20, [sp, saveReg] // save for caller
+        mov     x19, 1                // i = 1
+        mov     x20, DEFAULT          // default case
 forLoop:
-        mov     x0, NTIMES            // total number of times
-        cmp     x19, x0               // is i at end?
-        b.hs    allDone               // yes
-        mov     x1, DEFAULT-1         // -1 for indexing
-        cmp     x19, x1               // at default case?
-        csel    x2, x1, x19, hs       // high or same -> yes
+        cmp     x19, NTIMES           // is i at end?
+        b.hi    allDone               // yes
+        cmp     x19, x20              // no, default case?
+        csel    x1, x20, x19, hs      // high or same -> yes
         adr     x0, brTable           // address of branch table
-        add     x0, x0, x2, lsl 3     // plus offset in table
+        add     x0, x0, x1, lsl 3     // plus offset in table
         ldr     x0, [x0]              // load address from table
         br      x0                    //     and branch there
 one:
