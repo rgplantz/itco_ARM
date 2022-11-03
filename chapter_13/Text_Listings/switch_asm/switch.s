@@ -3,7 +3,7 @@
         .arch armv8-a
 // Useful names
         .equ    NTIMES, 10            // number of loops
-        .equ    DEFAULT, 4            // default case
+        .equ    DEFAULT, 3            // default case
 // Stack frame
         .equ    saveReg, 16
         .equ    frame, 32
@@ -33,7 +33,7 @@ main:
         stp     fp, lr, [sp, -frame]! // create our stack frame
         mov     fp, sp                // set our frame pointer
         stp     x19, x20, [sp, saveReg] // save for caller
-        mov     x19, 1                // i = 1
+        mov     x19, 0                // i = 1
         mov     x20, DEFAULT          // default case
 forLoop:
         cmp     x19, NTIMES           // is i at end?
