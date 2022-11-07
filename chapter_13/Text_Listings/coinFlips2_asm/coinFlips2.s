@@ -3,7 +3,7 @@
         .arch armv8-a
 // Useful names
         .equ    NTIMES,10             // number of flips
-        .equ    MIDDLE,1073741823     // RAND_MAX/2
+        .equ    RAND_MID,1073741823   // RAND_MAX/2
 // Stack frame
         .equ    save19, 28
         .equ    frame,32
@@ -28,7 +28,7 @@ forLoop:
         cmp     w19, w0               // is i at end?
         b.hs    allDone               // yes
         bl      random                // no, get random number
-        mov     w1, MIDDLE            // half way
+        mov     w1, RAND_MID          // half way
         cmp     w1, w0                // above or below middle?
         b.hi    tails                 // above -> tails
         adr     x0, headsMsg          // below -> heads message
