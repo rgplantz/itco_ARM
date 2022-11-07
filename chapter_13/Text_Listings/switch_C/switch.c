@@ -5,13 +5,11 @@
 
 int main(void)
 {
-  register int selector;
-  register int i;
+  int i;
 
   for (i = 1; i <= 10; i++)
   {
-    selector = i;
-    switch (selector)
+    switch (i)
     {
       case 1:
         puts("i = 1");
