@@ -1,7 +1,6 @@
 /* sumIntsGlobal.c
  * Adds two integers using global variables
  */
-
 #include <stdio.h>
 #include "addTwoGlobal.h"
 
