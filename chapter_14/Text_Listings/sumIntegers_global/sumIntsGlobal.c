@@ -5,14 +5,10 @@
 #include "addTwoGlobal.h"
 
 /* Define global variables. */
-int x = 0, y = 0, z;
+int x = 123, y = 456, z;
 
 int main(void)
 {
-  printf("Enter an integer: ");
-  scanf("%i", &x);
-  printf("Enter an integer: ");
-  scanf("%i", &y);
   addTwo();
   printf("%i + %i = %i\n", x, y, z);
 
