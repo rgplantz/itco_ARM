@@ -1,7 +1,6 @@
 /* addTwoGlobal.h
- * Adds two integers and deterimines overflow.
+ * Adds two global integers.
  */
-
 #ifndef ADDTWOGLOBAL_H
 #define ADDTWOGLOBAL_H
 void addTwo(void);
