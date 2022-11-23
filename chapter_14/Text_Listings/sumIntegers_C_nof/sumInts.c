@@ -1,7 +1,6 @@
 /* sumInts.c
  * Adds two integers using local variables
  */
-
 #include <stdio.h>
 #include "addTwo.h"
 
