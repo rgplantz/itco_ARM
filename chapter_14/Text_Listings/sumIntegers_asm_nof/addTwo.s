@@ -12,16 +12,16 @@
 // Code
         .text
         .align  2
-        .global main
-        .type   main, %function
-main:
+        .global addTwo
+        .type   addTwo, %function
+addTwo:
         stp     fp, lr, [sp, -frame]!     // create our stack frame
         mov     fp, sp                    // set our frame pointer
         stp     x19, x20, [sp, saveRegs]  // save for local vars
 
         mov     x20, x2                   // for output
-        add     x19, x0, x19              // compute sum
-        str     x19, [x20]                // output sum
+        add     w19, w0, w1               // compute sum
+        str     w19, [x20]                // output sum
 
         mov     w0, wzr                   // return 0
         ldp     x19, x20, [sp, saveRegs]  // restore reg.
