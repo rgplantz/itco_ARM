@@ -1,6 +1,6 @@
-/* switch.c
- * Three-way selection.
- */
+// switch.c
+// Three-way selection.
+
 #include <stdio.h>
 
 int main(void)

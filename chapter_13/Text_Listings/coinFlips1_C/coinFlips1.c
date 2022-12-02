@@ -1,6 +1,6 @@
-/* coinFlips1.c
- * Flips a coin, heads.
- */
+// coinFlips1.c
+// Flips a coin, shows heads.
+
 #include <stdio.h>
 #include <stdlib.h>
 

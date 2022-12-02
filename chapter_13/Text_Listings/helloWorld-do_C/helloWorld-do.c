@@ -1,7 +1,7 @@
-/* helloWorld-do.c
- * Hello World program using the write system call
- * one character at a time.
- */
+// helloWorld-do.c
+// Hello World program using the write system call
+// one character at a time.
+
 #include <unistd.h>
 #define NUL '\x00'
 
