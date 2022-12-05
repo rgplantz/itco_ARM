@@ -5,7 +5,7 @@
         .equ    NTIMES,10             // number of flips
         .equ    RAND_MID,1073741823   // RAND_MAX/2
 // Stack frame
-        .equ    save19, 28
+        .equ    save19, 24
         .equ    frame,32
 // Constant data
         .section        .rodata
@@ -21,7 +21,7 @@ tailsMsg:
 main:
         stp     fp, lr, [sp, -frame]! // create our stack frame
         mov     fp, sp                // set our frame pointer
-        str     w19, [sp, save19]     // save for i local var.
+        str     x19, [sp, save19]     // save for i local var.
         mov     w19, wzr              // i = 0;
 forLoop:
         mov     w0, NTIMES            // total number of times
@@ -42,6 +42,6 @@ continue:
         b       forLoop               // and continue loop
 allDone:
         mov     w0, wzr               // return 0
-        ldr     w19, [sp, save19]     // restore reg.
+        ldr     x19, [sp, save19]     // restore reg.
         ldp     fp, lr, [sp], frame   // restore fp, lr, sp
         ret                           // back to caller
