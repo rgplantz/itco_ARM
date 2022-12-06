@@ -5,15 +5,13 @@
 #include <unistd.h>
 #define NUL '\x00'
 
-int main(void)
-{
-  char *stringPtr = "Hello, World!\n";
+int main(void) {
+    char *stringPtr = "Hello, World!\n";
 
-  while (*stringPtr != NUL) 
-  {
-    write(STDOUT_FILENO, stringPtr, 1);
-    stringPtr++;
-  }
+    while (*stringPtr != NUL)  {
+        write(STDOUT_FILENO, stringPtr, 1);
+        stringPtr++;
+    }
 
-  return 0;
+    return 0;
 }
