@@ -8,7 +8,7 @@ int addEleven(int one, int two, int three, int four, int five, int six,
                 int seven, int eight, int nine, int ten, int eleven) {
     int sum;
 
-    puts("Adding them.");
+    puts("Adding them");
     sum = one + two + three + four + five + six
             + seven + eight + nine + ten + eleven;
     return sum;
