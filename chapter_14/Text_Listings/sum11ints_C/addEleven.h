@@ -1,5 +1,5 @@
 // addEleven.h
-// Computes sum of eleven integers.
+// Adds eleven integers and returns the sum.
 
 #ifndef ADDELEVEN_H
 #define ADDELEVEN_H
