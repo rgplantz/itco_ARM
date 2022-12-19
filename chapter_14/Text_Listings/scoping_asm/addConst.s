@@ -1,5 +1,5 @@
-// addTwo.s
-// Adds two integers and outputs sum.
+// addConst.s
+// Adds constant to automatic, static, global variables.
         .arch armv8-a
 // Useful names
         .equ    INITX, 78

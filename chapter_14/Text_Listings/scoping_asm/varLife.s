@@ -1,5 +1,6 @@
-// addTwo.s
-// Adds two integers and outputs sum.
+// varLife.s
+// Compares scope and lifetime of automatic, static,
+// and global variables.
         .arch armv8-a
 // Useful names
         .equ    INITX, 12
