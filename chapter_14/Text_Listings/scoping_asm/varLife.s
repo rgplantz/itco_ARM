@@ -4,7 +4,7 @@
 // Useful names
         .equ    INITX, 12
         .equ    INITY, 34
-        .equ    INITZ, 57
+        .equ    INITZ, 56
 // Stack frame
         .equ    x, 24
         .equ    y, 28
@@ -16,12 +16,7 @@
         .type   z, %object
         .size   z, 4
 z:
-        .word   56
-        .align  2
-        .type   main_y, %object
-        .size   main_y, 4
-main_y:
-        .word   90
+        .word   INITZ
         .section        .rodata
 heading0:
         .string "           automatic   static   global"
@@ -40,14 +35,14 @@ main:
         mov     w0, INITX
         str     w0, [sp, x]             // x = INITX;
         mov     w0, INITY
-        str     w0, [sp, x]             // y = INITY;
+        str     w0, [sp, y]             // y = INITY;
         adr     x0, heading0            // print 2-line header
         bl      puts
         adr     x0, heading1
         bl      puts
 
         adr     x0, z 
-        ldr     w3, [x0]                // local global z
+        ldr     w3, [x0]                // global z
         ldr     w2, [sp, y]             // local y
         ldr     w1, [sp, x]             // and local x
         adr     x0, msg                 // show values

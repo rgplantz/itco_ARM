@@ -14,7 +14,7 @@
         .type   addConst_y, %object
         .size   addConst_y, 4
 addConst_y:
-        .word   90
+        .word   INITY
         .section        .rodata
 msg:
         .string "In addConst:%8i %8i %8i\n"
@@ -30,9 +30,8 @@ addConst:
         add     w0, w0, ADDITION        // add constant
         str     w0, [sp, x]             // x += ADDITION;
         adr     x0, addConst_y
-        ldr     w0, [x0]                // load our y
-        add     w1, w0, ADDITION        // add constant
-        adr     x0, addConst_y
+        ldr     w1, [x0]                // load our y
+        add     w1, w1, ADDITION        // add constant
         str     w1, [x0]                // y += ADDITION;    
         adrp    x0, :got:z              // z page number
         ldr     x0, [x0, :got_lo12:z]   // z address
