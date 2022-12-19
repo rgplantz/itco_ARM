@@ -34,13 +34,15 @@ addConst:
         add     w1, w0, ADDITION        // add constant
         adr     x0, addConst_y
         str     w1, [x0]                // y += ADDITION;    
-        adr     x0, :got:z              // assume near enough
-        ldr     w0, [x0]                // load z
-        add     w1, w0, ADDITION        // add constant
+        adrp    x0, :got:z              // z page number
+        ldr     x0, [x0, :got_lo12:z]   // z address
+        ldr     w1, [x0]                // load z
+        add     w1, w1, ADDITION        // add constant
         str     w1, [x0]                // z += ADDITION;
 
-        adr     x0, :got:z
-        ldr     w3, [x0]                // load global z
+        adrp    x0, :got:z              // z page number
+        ldr     x0, [x0, :got_lo12:z]   // z address
+        ldr     w3, [x0]                // load z
         adr     x0, addConst_y
         ldr     w2, [x0]                // load our y
         ldr     w1, [sp, x]             // load our x
