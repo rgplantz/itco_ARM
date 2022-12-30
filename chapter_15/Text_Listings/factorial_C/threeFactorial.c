@@ -1,4 +1,4 @@
-// computeFactorial.c
+// threeFactorial.c
 // Computes 3!
 
 #include <stdio.h>
@@ -13,4 +13,3 @@ int main(void) {
 
     return 0;
 }
-
