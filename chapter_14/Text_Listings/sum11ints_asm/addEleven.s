@@ -17,10 +17,10 @@
         .equ    two, 40
         .equ    one, 44
         .equ    sum, 60
-        .equ    nine, 64
+        .equ    frame, 64             // end of our frame
+        .equ    nine, 64              // stack args.
         .equ    ten, 72
         .equ    eleven, 80
-        .equ    frame, 96
 // Constant data
         .section        .rodata
         .align  3
@@ -61,10 +61,10 @@ addEleven:
         ldr     w0, [sp, nine]
         add     w1, w1, w0
         ldr     w0, [sp, ten]
-        add     w0, w1, w0
-        ldr     w1, [sp, addEleven]
-        add     w0, w1, w0
-        str     w0, [sp, sum]         // store sum
+        add     w1, w1, w0
+        ldr     w0, [sp, eleven]
+        add     w1, w1, w0
+        str     w1, [sp, sum]         // store sum
         adr     x0, msg               // tell user we're done
         bl      puts
 
