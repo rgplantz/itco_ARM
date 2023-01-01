@@ -5,6 +5,7 @@
         .equ    arg11, 0
         .equ    arg10, 8
         .equ    arg11, 12
+        .equ    frameRec, 32
         .equ    total, 48
         .equ    k, 52
         .equ    j, 56
@@ -28,8 +29,9 @@ format:
         .global main
         .type   main, %function
 main:
-        stp     fp, lr, [sp, -frame]! // create our stack frame
-        add     fp, sp, local         // set our frame pointer
+        sub     sp, sp, frame         // allocate our stack frame
+        stp     fp, lr, [sp, frameRec]  // create frame record
+        add     fp, sp, frameRec      // set our frame pointer
         mov     w0, 1                 // store values in local vars.
         str     w0, [sp, a]
         mov     w0, 2
@@ -73,5 +75,7 @@ main:
         bl      printf                // print result
         mov     w0, wzr               // return 0;
 
-        ldp     fp, lr, [sp], frame   // restore fp, lr, sp
+        mov     w0, wzr               // return 0;
+        ldp     fp, lr, [sp, frameRec]  // restore fp, lr, sp
+        add     sp, sp, frame         // deallocate our stack frame
         ret                           // back to caller
