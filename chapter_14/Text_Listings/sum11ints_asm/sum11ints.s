@@ -2,9 +2,9 @@
 // Sums the integers 1 - 11.
         .arch armv8-a
 // Stack frame
-        .equ    arg11, 0
+        .equ    arg9, 0
         .equ    arg10, 8
-        .equ    arg11, 12
+        .equ    arg11, 16
         .equ    frameRec, 32
         .equ    total, 48
         .equ    k, 52
