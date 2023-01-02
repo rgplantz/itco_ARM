@@ -1,4 +1,4 @@
-// .ssum11ints.s
+// .sum11ints.s
 // Sums the integers 1 - 11.
         .arch armv8-a
 // Stack frame
