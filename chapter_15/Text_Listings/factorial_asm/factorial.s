@@ -2,7 +2,7 @@
 // Computes n!
 // Calling sequence:
 //    w0 <- n
-//    returns n x (n - 1)
+//    returns n!
         .arch armv8-a
 // Stack frame
         .equ    n, 16
