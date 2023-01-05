@@ -17,8 +17,8 @@ factorial:
         mov     fp, sp                // set our frame pointer
 
         str     w0, [sp, n]           // save n
+        mov     w1, w0                // and make a copy
         mov     w0, 1                 // assume base case, 0! = 1
-        ldr     w1, [sp, n]           // get n
         cbz     w1, baseCase          // check for base case
         sub     w0, w1, 1             // no,
         bl      factorial             //    compute (n - 1)!
