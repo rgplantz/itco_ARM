@@ -1,6 +1,5 @@
-/* addTwo.h
- * Adds two integers and deterimines overflow.
- */
+// addTwo.h
+// Adds two integers; returns overflow T or F
 
 #ifndef ADDTWO_H
 #define ADDTWO_H
