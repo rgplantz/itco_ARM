@@ -2,7 +2,6 @@
 // Adds two integers and detects overflow
 
 #include <stdio.h>
-#include "addTwo.h"
 
 int main(void) {
     int x, y, z, overflow;
@@ -11,10 +10,12 @@ int main(void) {
     scanf("%i", &x);
     printf("Enter an integer: ");
     scanf("%i", &y);
-    overflow = addTwo(x, y, &z);
+    z = x + y;
     printf("%i + %i = %i\n", x, y, z);
-    if (overflow)
+    if (((a > 0) && (b > 0) && (sum < 0)) ||
+            ((a < 0) && (b < 0) && (sum > 0))) {
         printf("*** Overflow occurred ***\n");
+    }
 
     return 0;
 }
