@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 int main(void) {
-    int x, y, z, overflow;
+    int x, y, z;
   
     printf("Enter an integer: ");
     scanf("%i", &x);
@@ -12,8 +12,8 @@ int main(void) {
     scanf("%i", &y);
     z = x + y;
     printf("%i + %i = %i\n", x, y, z);
-    if (((a > 0) && (b > 0) && (sum < 0)) ||
-            ((a < 0) && (b < 0) && (sum > 0))) {
+    if (((x > 0) && (y > 0) && (z < 0)) ||
+            ((x < 0) && (y < 0) && (z > 0))) {
         printf("*** Overflow occurred ***\n");
     }
 
