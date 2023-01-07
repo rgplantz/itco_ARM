@@ -14,7 +14,7 @@ int main(void) {
     overflow = addTwo(x, y, &z);
     printf("%i + %i = %i\n", x, y, z);
     if (overflow)
-        printf("*** Overflow occurred ***\n");
+        printf("** Overflow occurred **\n");
 
     return 0;
 }
