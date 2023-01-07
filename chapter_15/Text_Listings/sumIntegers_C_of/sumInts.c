@@ -5,7 +5,7 @@
 #include "addTwo.h"
 
 int main(void) {
-    int x = 0, y = 0, z, overflow;
+    int x, y, z, overflow;
   
     printf("Enter an integer: ");
     scanf("%i", &x);
