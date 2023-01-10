@@ -1,5 +1,5 @@
 // addTwo.c
-// Adds two integers; returns overflow T or F
+// Adds  a and b, outputs sum to c; returns overflow T or F
 
 #include "addTwo.h"
 
