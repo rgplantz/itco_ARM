@@ -14,7 +14,7 @@ int main(void)
   scanf("%i", &y);
 
   asm ("adds %w0, %w2, %w3\n"
-      "csinc %w1, wzr, wzr, vc\n"
+      "cinc %w1, wzr, vs\n"
       : "=rm" (z), "=rm" (overflow)
       : "rm" (x), "rm" (y)
       : "w0", "w1");

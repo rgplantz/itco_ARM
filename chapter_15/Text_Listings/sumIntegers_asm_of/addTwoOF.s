@@ -1,5 +1,5 @@
 // addTwoOF.s
-// Adds two integers outputs; returns overflow T or F
+// Adds two integers outputs  sum; returns overflow T or F
 // Calling sequence:
 //    w0 <- integer a
 //    w0 <- integer b
