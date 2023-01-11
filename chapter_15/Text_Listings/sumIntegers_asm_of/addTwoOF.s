@@ -14,5 +14,5 @@
 addTwo:
         adds    w1, w0, w1            // add, set condition flags
         cinc    w0, wzr, vs           // overflow flag
-        str     w1, [x3]              // store output
+        str     w1, [x2]              // store output
         ret                           // back to caller
