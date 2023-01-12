@@ -14,10 +14,11 @@ int main(void)
   scanf("%i", &y);
 
   asm ("adds %w0, %w2, %w3\n"
-      "csinc %w1, wzr, wzr, vc\n"
-      : "=rm" (z), "=rm" (overflow)
-      : "rm" (x), "rm" (y)
-      : "w0", "w1");
+      "csinc w0, wzr, wzr, vc\n"
+      "str w0, %1\n"
+      : "=r" (z), "=m" (overflow)
+      : "r" (x), "r" (y)
+      : "w0");
 
   printf("%i + %i = %i\n", x, y, z);
   if (overflow)
