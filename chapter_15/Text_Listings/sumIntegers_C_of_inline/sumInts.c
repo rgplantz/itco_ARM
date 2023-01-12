@@ -1,17 +1,15 @@
-/* sumInts.c
- * Adds two integers
- */
+// sumInts.c
+// Adds two integers, shows if overflow
 
 #include <stdio.h>
 
-int main(void)
-{
-  int x = 0, y = 0, z, overflow;
+int main(void) {
+    int x, y, z, overflow;
   
-  printf("Enter an integer: ");
-  scanf("%i", &x);
-  printf("Enter an integer: ");
-  scanf("%i", &y);
+    printf("Enter an integer: ");
+    scanf("%i", &x);
+    printf("Enter an integer: ");
+    scanf("%i", &y);
 
   asm ("adds %w0, %w2, %w3\n"
       "csinc w0, wzr, wzr, vc\n"
@@ -20,9 +18,9 @@ int main(void)
       : "r" (x), "r" (y)
       : "w0");
 
-  printf("%i + %i = %i\n", x, y, z);
-  if (overflow)
-    printf("*** Overflow occurred ***\n");
+    printf("%i + %i = %i\n", x, y, z);
+    if (overflow)
+        printf("*** Overflow occurred ***\n");
 
-  return 0;
+    return 0;
 }
