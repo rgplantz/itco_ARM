@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 int main(void) {
-    int x, y, z, overflow;
+    register int x, y, z, overflow;
   
     printf("Enter an integer: ");
     scanf("%i", &x);
@@ -12,9 +12,8 @@ int main(void) {
     scanf("%i", &y);
 
     asm ("adds %w0, %w2, %w3\n"
-        "csinc w0, wzr, wzr, vc\n"
-        "str w0, %1\n"
-        : "=r" (z), "=m" (overflow)
+        "csinc %w1, wzr, wzr, vc\n"
+        : "=r" (z), "=r" (overflow)
         : "r" (x), "r" (y)
         : "w0");
 
