@@ -11,12 +11,12 @@ int main(void) {
     printf("Enter an integer: ");
     scanf("%i", &y);
 
-  asm ("adds %w0, %w2, %w3\n"
-      "csinc w0, wzr, wzr, vc\n"
-      "str w0, %1\n"
-      : "=r" (z), "=m" (overflow)
-      : "r" (x), "r" (y)
-      : "w0");
+    asm ("adds %w0, %w2, %w3\n"
+        "csinc w0, wzr, wzr, vc\n"
+        "str w0, %1\n"
+        : "=r" (z), "=m" (overflow)
+        : "r" (x), "r" (y)
+        : "w0");
 
     printf("%i + %i = %i\n", x, y, z);
     if (overflow)
