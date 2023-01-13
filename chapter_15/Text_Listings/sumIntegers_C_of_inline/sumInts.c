@@ -4,7 +4,8 @@
 #include <stdio.h>
 
 int main(void) {
-    register int x, y, z, overflow;
+    int x, y, z;
+    register int overflow;
   
     printf("Enter an integer: ");
     scanf("%i", &x);
