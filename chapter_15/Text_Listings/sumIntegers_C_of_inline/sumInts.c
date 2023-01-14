@@ -13,8 +13,8 @@ int main(void) {
 
     asm ("adds %w0, %w2, %w3\n"
         "csinc %w1, wzr, wzr, vc\n"
-        : "=r" (z), "=r" (overflow)
-        : "m" (x), "m" (y));
+        : "=mr" (z), "=mr" (overflow)
+        : "mr" (x), "mr" (y));
 
     printf("%i + %i = %i\n", x, y, z);
     if (overflow)
