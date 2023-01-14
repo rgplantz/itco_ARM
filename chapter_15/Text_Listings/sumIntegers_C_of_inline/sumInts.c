@@ -12,7 +12,7 @@ int main(void) {
     scanf("%i", &y);
 
     asm ("adds %w0, %w2, %w3\n"
-        "csinc %w1, wzr, wzr, vc\n"
+        "csinc %w1, wzr, wzr, vc"
         : "=mr" (z), "=mr" (overflow)
         : "mr" (x), "mr" (y));
 
