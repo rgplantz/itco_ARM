@@ -4,8 +4,8 @@
 #include <stdio.h>
 
 int main(void) {
-    int x, y, z;
-    register int overflow;
+    int x, y;
+    register int z, overflow;
   
     printf("Enter an integer: ");
     scanf("%i", &x);
@@ -15,7 +15,7 @@ int main(void) {
     asm ("adds %w0, %w2, %w3\n"
         "csinc %w1, wzr, wzr, vc\n"
         : "=r" (z), "=r" (overflow)
-        : "r" (x), "r" (y);
+        : "m" (x), "m" (y);
 
     printf("%i + %i = %i\n", x, y, z);
     if (overflow)
