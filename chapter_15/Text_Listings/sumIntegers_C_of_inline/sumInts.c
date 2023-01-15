@@ -12,7 +12,7 @@ int main(void) {
     scanf("%i", &y);
 
     asm ("adds %w0, %w2, %w3\n"
-        "cinc %w1, wzr, vc"
+        "cinc %w1, wzr, vs"
         : "=r" (z), "=r" (overflow)
         : "r" (x), "r" (y));
 
