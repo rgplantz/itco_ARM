@@ -1,7 +1,6 @@
-// sumUIntsC.c
-// Adds two unsigned integers, shows if carry
+// sumUIntsIL.c
+// Adds two integers, shows if carry
 #include <stdio.h>
-#include "addTwoU.h"
 
 int main(void) {
     unsigned int x, y, z, carry;
@@ -10,7 +9,11 @@ int main(void) {
     scanf("%u", &x);
     printf("Enter an integer: ");
     scanf("%u", &y);
-    carry = addTwoU(x, y, &z);
+    asm ("adds %w0, %w2, %w3\n"
+        "csinc %w1, wzr, wzr, cc"
+        : "=r" (z), "=r" (carry)
+        : "r" (x), "r" (y));
+
     printf("%u + %u = %u\n", x, y, z);
     if (carry)
         printf("** Carry occurred **\n");
