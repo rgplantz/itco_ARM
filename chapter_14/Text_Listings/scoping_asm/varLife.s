@@ -1,4 +1,3 @@
-// varLife.s
 // Compares scope and lifetime of automatic, static,
 // and global variables.
         .arch armv8-a

@@ -1,4 +1,3 @@
-// addConst.s
 // Adds constant to automatic, static, global variables.
         .arch armv8-a
 // Useful names
@@ -15,7 +14,7 @@
         .size   y, 4
 y:
         .word   INITY
-        .section        .rodata
+        .section  .rodata
 msg:
         .string "In addConst:%8i %8i %8i\n"
         .text
