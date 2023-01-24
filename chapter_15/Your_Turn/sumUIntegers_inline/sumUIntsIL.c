@@ -10,7 +10,7 @@ int main(void) {
     printf("Enter an integer: ");
     scanf("%u", &y);
     asm ("adds %w0, %w2, %w3\n"
-        "csinc %w1, wzr, wzr, cc"
+        "cinc %w1, wzr, cs"
         : "=r" (z), "=r" (carry)
         : "r" (x), "r" (y));
 

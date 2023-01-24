@@ -11,9 +11,9 @@
 // Code
         .data
         .align  2
-        .type   addConst_y, %object
-        .size   addConst_y, 4
-addConst_y:
+        .type   y, %object
+        .size   y, 4
+y:
         .word   INITY
         .section        .rodata
 msg:
@@ -29,7 +29,7 @@ addConst:
         mov     w0, INITX
         add     w0, w0, ADDITION        // add constant
         str     w0, [sp, x]             // x += ADDITION;
-        adr     x0, addConst_y
+        adr     x0, y
         ldr     w1, [x0]                // load our y
         add     w1, w1, ADDITION        // add constant
         str     w1, [x0]                // y += ADDITION;    
@@ -42,7 +42,7 @@ addConst:
         adrp    x0, :got:z              // z page number
         ldr     x0, [x0, :got_lo12:z]   // z address
         ldr     w3, [x0]                // load z
-        adr     x0, addConst_y
+        adr     x0, y
         ldr     w2, [x0]                // load our y
         ldr     w1, [sp, x]             // load our x
         adr     x0, msg                 // message
