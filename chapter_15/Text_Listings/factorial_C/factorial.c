@@ -1,4 +1,3 @@
-// factorial.c
 // returns n x (n - 1)!
 
 #include "factorial.h"
@@ -9,5 +8,5 @@ unsigned int factorial(unsigned int n) {
     if (n != 0)
         current = n * factorial(n - 1);
 
-  return current;
+    return current;
 }

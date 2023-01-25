@@ -1,4 +1,3 @@
-// addTwoOF.s
 // Adds two integers outputs  sum; returns overflow T or F
 // Calling sequence:
 //    w0 <- integer a

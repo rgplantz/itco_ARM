@@ -1,4 +1,3 @@
-// sumInts.c
 // Adds two integers, shows if overflow
 
 #include <stdio.h>

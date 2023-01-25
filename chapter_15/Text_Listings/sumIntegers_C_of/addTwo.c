@@ -1,4 +1,3 @@
-// addTwo.c
 // Adds  a and b, outputs sum to c; returns overflow T or F
 
 #include "addTwo.h"

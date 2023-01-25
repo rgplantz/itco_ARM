@@ -1,4 +1,3 @@
-// threeFactorial.c
 // Computes 3!
 
 #include <stdio.h>
