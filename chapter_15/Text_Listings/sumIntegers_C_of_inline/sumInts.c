@@ -17,7 +17,7 @@ int main(void) {
 
     printf("%i + %i = %i\n", x, y, z);
     if (overflow)
-        printf("*** Overflow occurred ***\n");
+        printf("** Overflow occurred **\n");
 
     return 0;
 }
