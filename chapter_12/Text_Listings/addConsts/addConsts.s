@@ -1,4 +1,3 @@
-// addConsts.s
 // Adds three constants to show some machine code.
         .arch armv8-a
 // Stack frame
