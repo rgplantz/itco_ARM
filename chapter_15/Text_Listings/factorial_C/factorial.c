@@ -1,4 +1,4 @@
-// returns n x (n - 1)!
+// returns n!
 
 #include "factorial.h"
 
