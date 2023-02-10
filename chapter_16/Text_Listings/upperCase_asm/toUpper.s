@@ -13,9 +13,9 @@
 // Program code
         .text
         .align  2
-        .global decToUInt
-        .type   decToUInt, %function
-decToUInt:
+        .global toUpper
+        .type   toUpper, %function
+toUpper:
         stp     fp, lr, [sp, -frame]! // create our stack frame
         mov     fp, sp                // set our frame pointer
         stp     x19, x20, [sp, save1920]  // save registers
@@ -26,11 +26,12 @@ decToUInt:
         mov     w21, wzr              // counter = 0;
 convertLup:
         ldrb    w0, [x19]             // load character
-        and     w0, w0, UPPERMASK     // mask to upper
-        strb    w5, [x20]             // store result
+        movz    w1, UPPERMASK         // our mask
+        and     w0, w0, w1            // mask to upper
+        strb    w0, [x20]             // store result
         cbz     w0, allDone           // all done if NUL char
         add     x19, x19, 1           // increment source pointer
-        add     x19, x19, 1           //        destination pointer
+        add     x20, x20, 1           //        destination pointer
         add     w21, w21, 1           //        and counter
         b       convertLup            // and continue
 allDone:
