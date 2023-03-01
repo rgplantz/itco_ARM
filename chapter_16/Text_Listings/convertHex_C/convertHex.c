@@ -1,12 +1,11 @@
-// convertHex.c
-// Gets hex number from user and stores it as int.
+// Gets hex number from user and stores it as int
 
 #include <stdio.h>
 #include "writeStr.h"
 #include "readLn.h"
 #include "hexToInt.h"
 
-#define MAX 20
+#define MAX 17
 
 int main() {
     char theString[MAX];
