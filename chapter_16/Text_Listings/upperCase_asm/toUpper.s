@@ -5,7 +5,7 @@
 //    returns number of characters converted
         .arch armv8-a
 // Useful constants
-        .equ    UPPERMASK, 0xdf
+        .equ    UPMASK, 0xdf
 // Stack frame
         .equ    save1920, 16
         .equ    save21, 32
@@ -26,7 +26,7 @@ toUpper:
         mov     w21, wzr              // counter = 0;
 convertLup:
         ldrb    w0, [x19]             // load character
-        movz    w1, UPPERMASK         // our mask
+        movz    w1, UPMASK            // our mask
         and     w0, w0, w1            // mask to upper
         strb    w0, [x20]             // store result
         cbz     w0, allDone           // all done if NUL char
