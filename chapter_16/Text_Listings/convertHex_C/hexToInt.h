@@ -5,4 +5,3 @@
 #define HEXTOINT_H
 int hexToInt(char *stringPtr, long int *intPtr);
 #endif
-
