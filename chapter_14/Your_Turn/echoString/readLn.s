@@ -1,4 +1,3 @@
-// readLn.s
 // Reads a line (through the '\n') from standard input. Has
 // a size limit. Extra characters and '\n' are ignored. Stores
 // NUL-terminated C string.
@@ -13,8 +12,7 @@
         .equ    NUL, 0
         .equ    LF, 10          // '\n' in Linux
 // Stack frame
-        .equ    save19, 16
-        .equ    save20, 24
+        .equ    save1920, 16
         .equ    save21, 32
         .equ    frame, 48 
 // The code
@@ -24,8 +22,7 @@
         .type   readLn, %function
 readLn:
         stp     fp, lr, [sp, -frame]! // our stack frame
-        str     x19, [sp, save19]     // preserve regs
-        str     x20, [sp, save20]
+        stp     x19, x20, [sp, save1920]  // preserve regs
         str     x21, [sp, save21]
         mov     x19, x0               // address of string
         mov     w20, wzr              // count = 0
@@ -37,20 +34,20 @@ readLoop:
         mov     x1, x19               // place to store current char
         mov     w0, STDIN             // read from keyboard
         bl      read
+
         ldrb    w0, [x19]             // get just read char
         cmp     w0, LF                // return key?
-        b.eq    endOfString           // yes, mark end of string
-        cmp     w20, w21              // is caller's array full?
+        b.eq    endOfInput            // yes, mark end of string
+        cmp     w20, w21              // no, is caller's array full?
         b.ge    readLoop              // yes, read but don't keep
         add     x19, x19, 1           // no, next byte
         add     w20, w20, 1           // count++
         b       readLoop              // back to reading
-endOfString:
+endOfInput:
         mov     w0, NUL               // string terminator
         strb    w0, [x19]
         mov     w0, w20               // return count;
-        ldr     x19, [sp, save19]     // restore regs
-        ldr     w20, [sp, save20]
+        ldp     x19, x20, [sp, save1920]  // restore regs
         ldr     w21, [sp, save21]
         ldp     fp, lr, [sp], frame   // undo stack frame
         ret                           // back to caller
