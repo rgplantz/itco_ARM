@@ -29,7 +29,7 @@ main:
         mov     w1, MAX               // limit number of input chars
         bl      readLn                // get from keyboard
 
-        add     x1, sp, theString     // address of string
+        add     x0, sp, theString     // address of string
         add     x1, sp, theInt        //    and the long int
         bl      hexToInt              // do conversion
 
