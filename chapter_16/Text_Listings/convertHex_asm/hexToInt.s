@@ -14,7 +14,7 @@
         .equ    frame, 48
 // Program code
         .text
-        .align  hexToInt
+        .align  2
         .global hexToInt
         .type   hexToInt, %function
 hexToInt:
@@ -42,7 +42,7 @@ noGap:
 allDone:
         str     x21, [x20]            // output result
         mov     x0, x21               // return counter
-        ldp     x21, s22, [sp, save2122]  // restore registers
+        ldp     x21, x22, [sp, save2122]  // restore registers
         ldp     x19, x20, [sp, save1920]
         ldp     fp, lr, [sp], frame   // restore fp, lr, sp
         ret                           // back to caller
