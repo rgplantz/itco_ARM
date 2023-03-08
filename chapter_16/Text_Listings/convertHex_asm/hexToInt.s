@@ -23,9 +23,9 @@ hexToInt:
         stp     x19, x20, [sp, save1920]  // save registers
         stp     x21, x22, [sp, save2122]
 
-        mov     x19, x0               // source pointer
-        mov     x20, x1               // destination pointer
-        mov     w21, wzr              // result = 0
+        mov     x19, x0               // string pointer
+        mov     x20, x1               // output location
+        mov     x21, wzr              // result = 0
         mov     w22, wzr              // counter = 0;
 convertLup:
         ldrb    w0, [x19]             // load character
@@ -37,7 +37,7 @@ noGap:
         lsl     w21, w21, 4           // make room for it
         orr     w21, w21, w0          // insert new 4-bit integer
         add     x19, x19, 1           // increment source pointer
-        add     w21, w21, 1           //        and counter
+        add     w22, w22, 1           //        and counter
         b       convertLup            // and continue
 allDone:
         str     x21, [x20]            // output result
