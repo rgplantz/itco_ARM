@@ -29,6 +29,7 @@ hexToInt:
         mov     w22, wzr              // counter = 0;
 convertLup:
         ldrb    w0, [x19]             // load character
+        cbz     w0, allDone           // NUL character
         cmp     w0, '9                // numeral?
         b.ls    noGap                 // yes
         sub     w0, w0, GAP           // no, remove gap
