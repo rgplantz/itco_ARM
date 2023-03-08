@@ -26,15 +26,16 @@ toUpper:
         mov     w21, wzr              // counter = 0;
 convertLup:
         ldrb    w0, [x19]             // load character
-        movz    w1, UPMASK            // our mask
+        cbz     w0, allDone           // all done if NUL char
+        movz    w1, UPMASK            // if not, do masking
         and     w0, w0, w1            // mask to upper
         strb    w0, [x20]             // store result
-        cbz     w0, allDone           // all done if NUL char
         add     x19, x19, 1           // increment source pointer
         add     x20, x20, 1           //        destination pointer
         add     w21, w21, 1           //        and counter
         b       convertLup            // and continue
 allDone:
+        strb    w0, [x20]             // NUL got us here
         mov     x0, x21               // return counter
         ldr     x21, [sp, save21]     // restore registers
         ldp     x19, x20, [sp, save1920]
