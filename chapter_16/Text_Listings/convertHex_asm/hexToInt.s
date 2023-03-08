@@ -25,7 +25,7 @@ hexToInt:
 
         mov     x19, x0               // string pointer
         mov     x20, x1               // output location
-        mov     x21, wzr              // result = 0
+        mov     x21, xzr              // result = 0
         mov     w22, wzr              // counter = 0;
 convertLup:
         ldrb    w0, [x19]             // load character
