@@ -33,7 +33,8 @@ main:
         add     x1, sp, theInt        //    and the long int
         bl      hexToInt              // do conversion
 
-        ldr     x1, [sp, theInt]      // load long int
+        ldr     x2, [sp, theInt]      // load long int
+        ldr     x1, [sp, theInt]      // printf shows this copy in hex
         adr     x0, format            // format string
         bl      printf
 
