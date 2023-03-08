@@ -35,8 +35,8 @@ convertLup:
         sub     w0, w0, GAP           // no, remove gap
 noGap:
         and     w0, w0, INTPART       // 4-bit integer
-        lsl     w21, w21, 4           // make room for it
-        orr     w21, w21, w0          // insert new 4-bit integer
+        lsl     x21, x21, 4           // make room for it
+        orr     x21, x21, w0          // insert new 4-bit integer
         add     x19, x19, 1           // increment source pointer
         add     w22, w22, 1           //        and counter
         b       convertLup            // and continue
