@@ -37,7 +37,7 @@ readLoop:
 
         ldrb    w0, [x19]             // get just read char
         cmp     w0, LF                // return key?
-        b.eq    endOfInput            // yes, mark end of string
+        b.eq    endOfInput            // yes, end of input
         cmp     w20, w21              // no, is caller's array full?
         b.ge    readLoop              // yes, read but don't keep
         add     x19, x19, 1           // no, next byte
