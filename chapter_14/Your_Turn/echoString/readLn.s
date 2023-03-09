@@ -9,7 +9,7 @@
         .arch   armv8-a
 // Useful constants
         .equ    STDIN, 0
-        .equ    NUL, 0
+        .equ    NUL, '\0
         .equ    LF, 10          // '\n' in Linux
 // Stack frame
         .equ    save1920, 16
@@ -37,7 +37,7 @@ readLoop:
 
         ldrb    w0, [x19]             // get just read char
         cmp     w0, LF                // return key?
-        b.eq    endOfInput            // yes, end of string
+        b.eq    endOfInput            // yes, mark end of string
         cmp     w20, w21              // no, is caller's array full?
         b.ge    readLoop              // yes, read but don't keep
         add     x19, x19, 1           // no, next byte
