@@ -37,7 +37,7 @@ readLoop:
 
         ldrb    w0, [x19]             // get just read char
         cmp     w0, LF                // return key?
-        b.eq    endOfInput            // yes, mark end of string
+        b.eq    endOfInput            // yes, end of string
         cmp     w20, w21              // no, is caller's array full?
         b.ge    readLoop              // yes, read but don't keep
         add     x19, x19, 1           // no, next byte
@@ -45,7 +45,7 @@ readLoop:
         b       readLoop              // back to reading
 endOfInput:
         mov     w0, NUL               // string terminator
-        strb    w0, [x19]
+        strb    w0, [x19]             // replace LF
         mov     w0, w20               // return count;
         ldp     x19, x20, [sp, save1920]  // restore regs
         ldr     w21, [sp, save21]
