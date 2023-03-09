@@ -9,7 +9,7 @@
         .arch   armv8-a
 // Useful constants
         .equ    STDIN, 0
-        .equ    NUL, '\0
+        .equ    NUL, 0
         .equ    LF, 10          // '\n' in Linux
 // Stack frame
         .equ    save1920, 16
