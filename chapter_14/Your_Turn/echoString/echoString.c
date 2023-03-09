@@ -9,7 +9,7 @@ int main(void) {
     char text[BUFFSZ];
 
     writeStr("Enter some text: ");
-    readLn(text, BUFFSZ);
+    readLn(text, MAX);
     writeStr("You entered: ");
     writeStr(text);
     writeStr("\n");

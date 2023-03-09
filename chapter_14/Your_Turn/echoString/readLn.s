@@ -1,9 +1,9 @@
-// Reads a line (through the '\n') from standard input. Has
-// a size limit. Extra characters and '\n' are ignored. Stores
-// NUL-terminated C string.
+// Reads a line (through the '\n') from standard input. Does not
+// store '\n' and any characters beyond maximum. Appends NUL at
+// end of stored characters. Allow maximum + 1 for character storage.
 // Calling sequence:
 //        x0 <- address of place to store string
-//        w1 <- string buffer size
+//        w1 <- maximum characters to store
 // returns number of characters read
 
         .arch   armv8-a
@@ -26,8 +26,7 @@ readLn:
         str     x21, [sp, save21]
         mov     x19, x0               // address of string
         mov     w20, wzr              // count = 0
-        mov     w21, w1               // buffer length
-        sub     w21, w21, 1           // make room for NUL
+        mov     w21, w1               // max chars
 
 readLoop:
         mov     w2, 1                 // read 1 byte
