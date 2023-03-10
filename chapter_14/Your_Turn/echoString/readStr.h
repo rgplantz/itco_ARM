@@ -6,7 +6,7 @@
 //        w1 <- maximum characters to store
 // returns number of characters read
 
-#ifndef READLN_H
-#define READLN_H
-int readLn(char *, int);
+#ifndef READSTR_H
+#define READSTR_H
+int readStr(char *, int);
 #endif
