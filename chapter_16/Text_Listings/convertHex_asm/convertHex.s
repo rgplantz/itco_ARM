@@ -1,7 +1,7 @@
 // Gets hex number from user and stores it as long int
         .arch armv8-a
 // Useful constant
-        .equ    MAX, 17               // character storage limit
+        .equ    MAX, 16
 // Stack frame
         .equ    theInt, 16
         .equ    theString, 24
@@ -27,7 +27,7 @@ main:
 
         add     x0, sp, theString     // place to store string
         mov     w1, MAX               // limit number of input chars
-        bl      readLn                // get from keyboard
+        bl      readStr               // get from keyboard
 
         add     x0, sp, theString     // address of string
         add     x1, sp, theInt        //    and the long int
