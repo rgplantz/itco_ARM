@@ -13,7 +13,7 @@
 prompt:
         .string "Enter up to 16 hex characters: "
 format:
-        .string "%lx = %li\n"
+        .string "0x%lx = %li\n"
         .text
         .align  2
         .global main
