@@ -1,10 +1,10 @@
 // Converts alphabetic characters to uppercase
         .arch armv8-a
 // Useful constant
-        .equ    MAX,50                    // character storage limit
+        .equ    MAX,50                // character limit
 // Stack frame
         .equ    theString, 16
-        .equ    frame, 80
+        .equ    frame, 80             // allows >51 bytes
 // Code
         .text
         .section        .rodata
@@ -27,7 +27,7 @@ main:
 
         add     x0, sp, theString     // place to store string
         mov     w1, MAX               // limit number of input chars
-        bl      readLn                // get from keyboard
+        bl      readStr               // get from keyboard
 
         add     x1, sp, theString     // address of string
         mov     x0, x1                // replace it
