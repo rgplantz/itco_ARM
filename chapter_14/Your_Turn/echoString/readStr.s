@@ -18,9 +18,9 @@
 // The code
         .text
         .align  2
-        .global readLn
-        .type   readLn, %function
-readLn:
+        .global readStr
+        .type   readStr, %function
+readStr:
         stp     fp, lr, [sp, -frame]! // our stack frame
         stp     x19, x20, [sp, save1920]  // preserve regs
         str     x21, [sp, save21]
