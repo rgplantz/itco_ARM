@@ -6,10 +6,10 @@
 #include "hexToInt.h"
 
 #define MAX 16
-#define BUFFSZ MAX+1
+#define ARRAYSZ MAX+1
 
 int main() {
-    char theString[BUFFSZ];
+    char theString[ARRAYSZ];
     long int theInt;
     
     writeStr("Enter up to 16 hex characters: ");
