@@ -5,10 +5,10 @@
 #include "writeStr.h"
 #include "readStr.h"
 #define MAX 50
-#define BUFFSZ MAX+1
+#define ARRAYSZ MAX+1
 
 int main(void) {
-    char myString[BUFFSZ];
+    char myString[ARRAYSZ];
    
     writeStr("Enter up to 50 alphabetic characters: ");
     readStr(myString, MAX);

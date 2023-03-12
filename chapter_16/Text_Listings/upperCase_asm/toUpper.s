@@ -35,7 +35,7 @@ convertLup:
         add     w21, w21, 1           //        and counter
         b       convertLup            // and continue
 allDone:
-        strb    w0, [x20]             // NUL got us here
+        strb    w0, [x20]             // terminating NUL got us here
         mov     x0, x21               // return counter
         ldr     x21, [sp, save21]     // restore registers
         ldp     x19, x20, [sp, save1920]
