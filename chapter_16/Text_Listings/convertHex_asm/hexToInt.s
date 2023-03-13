@@ -1,5 +1,4 @@
 // Converts hex character string to long int
-// Returns number of characters converted
 // Calling sequence
 //    x0 <- pointer to hex character string to convert
 //    x1 <- pointer to long int result
