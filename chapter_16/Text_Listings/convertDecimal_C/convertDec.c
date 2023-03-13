@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include "writeStr.h"
-#include "readLn.h"
+#include "readStr.h"
 #include "decToUInt.h"
 #define MAX 10
 #define ARRAYSZ MAX+1
@@ -14,7 +14,7 @@ int main(void) {
     unsigned int theInt;
     
     writeStr("Enter an unsigned integer: ");
-    readLn(theString, MAX);
+    readStr(theString, MAX);
 
     decToUInt(&theInt, theString);
     printf("\"%s\" is stored as 0x%x\n", theString, theInt);
