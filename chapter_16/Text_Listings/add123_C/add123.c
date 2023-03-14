@@ -4,7 +4,7 @@
  */
 
 #include "writeStr.h"
-#include "readLn.h"
+#include "readStr.h"
 #include "decToUInt.h"
 #include "intToUDec.h"
 #define MAX 11
@@ -14,7 +14,7 @@ int main()
   unsigned int theInt;
    
   writeStr("Enter an unsigned integer: ");
-  readLn(theString, MAX);
+  readStr(theString, MAX);
 
   decToUInt(&theInt, theString);
   theInt += 123;
