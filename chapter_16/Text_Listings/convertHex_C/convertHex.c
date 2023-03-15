@@ -16,6 +16,6 @@ int main() {
     readStr(theString, MAX);
 
     hexToInt(theString, &theInt);
-    printf(0x%x = %i\n, theInt, theInt);
+    printf("0x%x = %i\n", theInt, theInt);
     return 0;
 }
