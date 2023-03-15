@@ -1,19 +1,19 @@
-// Gets hex number from user and stores it as long int
+// Gets hex number from user and stores it as int
         .arch armv8-a
 // Useful constant
         .equ    MAX, 16
 // Stack frame
         .equ    theInt, 16
-        .equ    theString, 24
-        .equ    frame, 48
+        .equ    theString, 20
+        .equ    frame, 32
 // Code
         .text
         .section  .rodata
         .align  3
 prompt:
-        .string "Enter up to 16 hex characters: "
+        .string "Enter up to 8 hex characters: "
 format:
-        .string "0x%lx = %li\n"
+        .string "0x%x = %i\n"
         .text
         .align  2
         .global main
@@ -30,11 +30,11 @@ main:
         bl      readStr               // get from keyboard
 
         add     x0, sp, theString     // address of string
-        add     x1, sp, theInt        //    and the long int
+        add     w1, sp, theInt        //    and the int
         bl      hexToInt              // do conversion
 
-        ldr     x2, [sp, theInt]      // load long int
-        ldr     x1, [sp, theInt]      // printf shows this copy in hex
+        ldr     w2, [sp, theInt]      // load int
+        ldr     w1, [sp, theInt]      // printf shows this copy in hex
         adr     x0, format            // format string
         bl      printf
 

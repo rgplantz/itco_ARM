@@ -24,7 +24,7 @@ hexToInt:
 
         mov     x19, x0               // string pointer
         mov     x20, x1               // output location
-        mov     x21, xzr              // result = 0
+        mov     w21, wzr              // result = 0
         mov     w22, wzr              // counter = 0;
 convertLup:
         ldrb    w0, [x19]             // load character
@@ -34,14 +34,14 @@ convertLup:
         sub     w0, w0, GAP           // no, remove gap
 noGap:
         and     x0, x0, INTPART       // 4-bit integer
-        lsl     x21, x21, 4           // make room for it
-        orr     x21, x21, x0          // insert new 4-bit integer
+        lsl     w21, w21, 4           // make room for it
+        orr     w21, w21, x0          // insert new 4-bit integer
         add     x19, x19, 1           // increment source pointer
         add     w22, w22, 1           //        and counter
         b       convertLup            // and continue
 allDone:
-        str     x21, [x20]            // output result
-        mov     x0, x21               // return counter
+        str     w21, [x20]            // output result
+        mov     w0, w22               // return counter
         ldp     x21, x22, [sp, save2122]  // restore registers
         ldp     x19, x20, [sp, save1920]
         ldp     fp, lr, [sp], frame   // restore fp, lr, sp
