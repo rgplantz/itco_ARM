@@ -7,21 +7,24 @@
 #define NUL '\0'
 
 int hexToInt(char *stringPtr, int *intPtr) {
-    *intPtr = 0;
     char current;
-    int count = 0;
+    int result;
+    int count;
 
+    count = 0;
+    result = 0;
     current = *stringPtr;
     while (current != NUL) {
         if (current > '9') {
             current -= GAP;
         }
         current = current & INTPART;
-        *intPtr = *intPtr << 4;
-        *intPtr |= current;
+        result = result << 4;
+        result |= current;
         stringPtr++;
         count++;
         current = *stringPtr;
     }
+    *intPtr = result;
     return count;
 }

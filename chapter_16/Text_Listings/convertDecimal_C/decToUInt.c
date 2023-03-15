@@ -10,8 +10,9 @@
 int decToUInt(unsigned int *intPtr, char *stringPtr) {
     char current;
     unsigned int result;
-    int count = 0;
+    int count;
     
+    count = 0;
     result = 0;
     current = *stringPtr;
     while (current != NUL) {
