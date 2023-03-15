@@ -11,6 +11,7 @@ int intToUDec(char *decString, unsigned int theInt) {
     int count;
     char reverseDec[ARRAYSZ];
     char digit;
+    char *ptr;
     
     ptr = reverseDec;   // point to local char array
     *ptr = NUL;         // start with termination char
