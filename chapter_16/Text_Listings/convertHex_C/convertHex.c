@@ -1,4 +1,4 @@
-// Gets hex number from user and stores it as long int
+// Gets hex number from user and stores it as int
 
 #include <stdio.h>
 #include "writeStr.h"
