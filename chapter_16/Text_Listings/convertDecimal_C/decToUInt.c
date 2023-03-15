@@ -9,17 +9,19 @@
 
 int decToUInt(unsigned int *intPtr, char *stringPtr) {
     char current;
+    unsigned int result;
     int count = 0;
     
-    *intPtr = 0;
+    result = 0;
     current = *stringPtr;
     while (current != NUL) {
         current = current & INTMASK;
-        *intPtr = *intPtr * RADIX;
-        *intPtr += (int)current;
+        result = RADIX * result;
+        result += (int)current;
         stringPtr++;
         count++;
         current = *stringPtr;
     }
+    *intPtr = result;
     return count;
 }
