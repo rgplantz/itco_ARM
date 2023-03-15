@@ -12,7 +12,7 @@ int main() {
     char theString[ARRAYSZ];
     int theInt;
     
-    writeStr("Enter up to %i hex characters: ", MAX);
+    writeStr("Enter up to 8 hex characters: ");
     readStr(theString, MAX);
 
     hexToInt(theString, &theInt);
