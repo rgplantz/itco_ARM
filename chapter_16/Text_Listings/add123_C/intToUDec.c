@@ -1,36 +1,35 @@
-/* intToUDec.c
- * Converts an int to corresponding unsigned text
- * string representation.
- */
+// Converts an int to corresponding unsigned text
+// string representation. Returns number of characters.
 
 #include "intToUDec.h"
+#define ARRAYSZ 11
 #define ASCII 0x30
-#define MAX 12
+#define RADIX 10
 #define NUL '\0'
 
-int intToUDec(char *decString, unsigned int theInt)
-{
-  int radix = 10;
-  int count = -1;   // allow for NUL char
-  char reverseArray[MAX];
-  char digit;
-  char *ptr = reverseArray;
-   
-  *ptr = NUL;       // start with termination char
-  do
-  {
-    ptr++;
-    digit = theInt % radix;
-    digit = ASCII | digit;
-    *ptr = digit;
-    theInt = theInt / radix;
-  } while (theInt > 0);
-  do                // reverse the string
-  {
-    *decString = *ptr;
-    decString++;
-    ptr--;
-    count++;
-  } while (*ptr != NUL);
-  return count;
+int intToUDec(char *decString, unsigned int theInt) {
+    int count;
+    char reverseDec[ARRAYSZ];
+    char digit;
+    
+    ptr = reverseDec;   // point to local char array
+    *ptr = NUL;         // start with termination char
+    do {
+        ptr++;
+        digit = theInt % RADIX;
+        digit = ASCII | digit;
+        *ptr = digit;
+        theInt = theInt / RADIX;
+    } while (theInt > 0);
+
+    count = 0;          // reverse the string
+    while (*ptr != NUL) {
+        *decString = *ptr;
+        decString++;
+        ptr--;
+        count++;
+    }
+    *decString = *ptr;  // copy termination char
+
+    return count;
 }
