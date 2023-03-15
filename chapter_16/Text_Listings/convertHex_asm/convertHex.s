@@ -25,12 +25,12 @@ main:
         adr     x0, prompt            // prompt message
         bl      writeStr              // ask for input
 
-        add     x0, sp, theString     // place to store string
         mov     w1, MAX               // limit number of input chars
+        add     x0, sp, theString     // place to store string
         bl      readStr               // get from keyboard
 
+        add     x1, sp, theInt        // place to store int
         add     x0, sp, theString     // address of string
-        add     w1, sp, theInt        //    and the int
         bl      hexToInt              // do conversion
 
         ldr     w2, [sp, theInt]      // load int

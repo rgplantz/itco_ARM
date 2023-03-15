@@ -1,7 +1,7 @@
-// Converts hex character string to long int
+// Converts hex character string to int
 // Calling sequence
 //    x0 <- pointer to hex character string to convert
-//    x1 <- pointer to long int result
+//    x1 <- pointer to int result
 //    returns number of characters converted
         .arch armv8-a
 // Useful constants
