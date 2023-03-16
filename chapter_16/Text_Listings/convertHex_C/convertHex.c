@@ -11,7 +11,7 @@
 int main() {
     char theString[ARRAYSZ];
     long int theInt;
-    
+
     writeStr("Enter up to 16 hex characters: ");
     readStr(theString, MAX);
 
