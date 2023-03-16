@@ -1,5 +1,5 @@
-// Reads decimal number from keyboard and displays how
-// it's stored in hexadecimal.
+// Reads decimal number from keyboard and displays in
+// hexadecimal how it's stored .
 
 #include <stdio.h>
 #include "writeStr.h"
