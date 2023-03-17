@@ -3,5 +3,5 @@
  
 #ifndef HEXTOINT_H
 #define HEXTOINT_H
-int hexToInt(char *stringPtr, long int *intPtr);
+int hexToInt(long int *intPtr, char *stringPtr);
 #endif

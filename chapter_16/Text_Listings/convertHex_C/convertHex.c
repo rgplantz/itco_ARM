@@ -15,7 +15,7 @@ int main() {
     writeStr("Enter up to 16 hex characters: ");
     readStr(theString, MAX);
 
-    hexToInt(theString, &theInt);
+    hexToInt(&theInt, theString);
     printf("0x%lx = %li\n", theInt, theInt);
     return 0;
 }

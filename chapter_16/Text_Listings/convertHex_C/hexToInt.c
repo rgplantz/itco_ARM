@@ -6,7 +6,7 @@
 #define INTPART 0x0f  // also works for lowercase
 #define NUL '\0'
 
-int hexToInt(char *stringPtr, long int *intPtr) {
+int hexToInt(long int *intPtr, char *stringPtr) {
     char current;
     long int result;
     int count;
