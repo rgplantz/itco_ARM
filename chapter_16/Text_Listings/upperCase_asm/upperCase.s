@@ -33,7 +33,7 @@ main:
         mov     x0, x1                // replace it
         bl      toUpper               // do conversion
 
-        adr     x0, result            // show result
+        adr     x0, result            // message
         bl      writeStr
         add     x0, sp, theString     // converted string
         bl      writeStr
