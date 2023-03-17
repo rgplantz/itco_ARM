@@ -2,5 +2,5 @@
  
 #ifndef TOUPPER_H
 #define TOUPPER_H
-int toUpper(char *srcPtr, char *destPtr);
+int toUpper(char *destPtr, char *srcPtr);
 #endif

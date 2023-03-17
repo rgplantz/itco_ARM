@@ -4,7 +4,7 @@
 #define UPMASK 0xdf
 #define NUL '\0'
 
-int toUpper(char *srcPtr, char *destPtr) {
+int toUpper(char *destPtr, char *srcPtr) {
     int count = 0;
   
     while (*srcPtr != NUL) {
