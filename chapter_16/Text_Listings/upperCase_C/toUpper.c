@@ -13,7 +13,7 @@ int toUpper(char *destPtr, char *srcPtr) {
         destPtr++;
         count++;
     }
-    *destPtr = *srcPtr;
+    *destPtr = *srcPtr;   // include NUL
   
     return count;
 }
