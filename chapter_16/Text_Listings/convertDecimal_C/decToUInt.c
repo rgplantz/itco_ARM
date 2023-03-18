@@ -18,7 +18,7 @@ int decToUInt(unsigned int *intPtr, char *stringPtr) {
     while (current != NUL) {
         current = current & INTMASK;
         result = RADIX * result;
-        result += (int)current;
+        result += (unsigned int)current;
         stringPtr++;
         count++;
         current = *stringPtr;
