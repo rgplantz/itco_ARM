@@ -27,7 +27,7 @@ main:
 
         mov     w1, MAX                   // limit number of input chars
         add     x0, sp, theString         // place to store string
-        bl      readLn                    // get from keyboard
+        bl      readStr                    // get from keyboard
 
         add     x1, sp, theString         // address of string
         add     x0, sp, theInt            // place to store the int
