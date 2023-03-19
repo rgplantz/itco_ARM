@@ -1,11 +1,11 @@
 // Gets decimal number from user and stores it as unsigned int
         .arch armv8-a
 // Useful constant
-        .equ    MAX,10                    // character storage limit
+        .equ    MAX, 10                   // character storage limit
 // Stack frame
-        .equ    theInt,16
-        .equ    theString,20
-        .equ    frameSize,32
+        .equ    theInt, 16
+        .equ    theString, 20
+        .equ    frameSize, 32
 // Code
         .text
         .section        .rodata
