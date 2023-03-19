@@ -1,4 +1,4 @@
-// Gets decimal number from user and stores it as unsigned int.
+// Gets decimal number from user and stores it as unsigned int
 
 #include <stdio.h>
 #include "writeStr.h"

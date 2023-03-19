@@ -1,6 +1,4 @@
-// convertDec.s
-// Reads decimal number from keyboad and displays how
-// it's stored in hexadecimal.
+// Gets decimal number from user and stores it as unsigned int
         .arch armv8-a
 // Useful constant
         .equ    MAX,12                    // character storage limit
@@ -24,12 +22,11 @@ format:
 main:
         stp     fp, lr, [sp, -frameSize]! // create stack frame
         mov     fp, sp                    // our frame pointer
-        adrp    x0, prompt                // page of prompt message
-        add     x0, x0, :lo12:prompt      // plus offset in page
+        adr     x0, prompt                // prompt message
         bl      writeStr                  // ask for input
 
-        add     x0, sp, theString         // place to store string
         mov     w1, MAX                   // limit number of input chars
+        add     x0, sp, theString         // place to store string
         bl      readLn                    // get from keyboard
 
         add     x1, sp, theString         // address of string
@@ -38,8 +35,7 @@ main:
 
         ldr     w2, [sp, theInt]          // load the int
         add     x1, sp, theString         // input text string
-        adrp    x0, format                // page of prompt message
-        add     x0, x0, :lo12:format      // plus offset in page
+        adr     x0, format                // format message
         bl      printf                    // show results
         mov     w0, 0                     // return 0;
         ldp     x29, x30, [sp], frameSize // undo stack frame
