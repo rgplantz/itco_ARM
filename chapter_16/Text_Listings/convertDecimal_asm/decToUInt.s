@@ -1,4 +1,3 @@
-// decToUInt.s
 // Convert decimal text string to unsigned int
 // Calling sequence
 //    x0 <- place to store unsigned int
