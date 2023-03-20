@@ -1,4 +1,4 @@
-// Converts an int to corresponding unsigned text
+// Converts an int to corresponding unsigned decimal text
 // string representation. Returns number of characters.
 
 #include "intToUDec.h"
@@ -24,12 +24,12 @@ int intToUDec(char *decString, unsigned int theInt) {
     } while (theInt > 0);
 
     count = 0;          // reverse the string
-    while (*ptr != NUL) {
+    do {
         *decString = *ptr;
         decString++;
         ptr--;
         count++;
-    }
+    } while (*ptr != NUL)
     *decString = *ptr;  // copy termination char
 
     return count;
