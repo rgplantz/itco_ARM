@@ -1,4 +1,3 @@
-// add123.c
 // Reads an unsigned int from user, adds 123,
 // and displays the result.
 
