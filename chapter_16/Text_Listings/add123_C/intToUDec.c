@@ -29,7 +29,7 @@ int intToUDec(char *decString, unsigned int theInt) {
         decString++;
         ptr--;
         count++;
-    } while (*ptr != NUL)
+    } while (*ptr != NUL);
     *decString = *ptr;  // copy termination char
 
     return count;
