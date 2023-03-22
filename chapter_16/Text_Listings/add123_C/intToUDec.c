@@ -18,8 +18,7 @@ int intToUDec(char *decString, unsigned int theInt) {
     do {
         ptr++;
         digit = theInt % RADIX;
-        digit = ASCII | digit;
-        *ptr = digit;
+        *ptr = ASCII | digit;
         theInt = theInt / RADIX;
     } while (theInt > 0);
 
