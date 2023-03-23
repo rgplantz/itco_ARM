@@ -20,7 +20,7 @@ int intToUDec(char *decString, unsigned int theInt) {
         remainder = theInt - RADIX * dividend;
         theInt = dividend;
         ptr++;
-        *ptr = (char) ASCII | digit;
+        *ptr = (char) ASCII | remainder;
     } while (theInt > 0);
 
     count = 0;          // reverse the string
