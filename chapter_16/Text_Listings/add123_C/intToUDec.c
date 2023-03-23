@@ -10,17 +10,16 @@
 int intToUDec(char *decString, unsigned int theInt) {
     int count;
     char reverseDec[ARRAYSZ];
-    unsigned int dividend, remainder;
+    char digit;
     char *ptr;
     
     ptr = reverseDec;   // point to local char array
     *ptr = NUL;         // start with termination char
     do {
-        dividend = theInt / RADIX;
-        remainder = theInt - RADIX * dividend;
-        theInt = dividend;
         ptr++;
-        *ptr = (char) ASCII | digit;
+        digit = theInt % RADIX;
+        *ptr = ASCII | digit;
+        theInt = theInt / RADIX;
     } while (theInt > 0);
 
     count = 0;          // reverse the string
