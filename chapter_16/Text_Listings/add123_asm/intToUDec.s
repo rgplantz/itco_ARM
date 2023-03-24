@@ -6,10 +6,10 @@
 //    returns number of characters in string
         .arch armv8-a
 // Useful constants
-        .equ    BASE,10               // number base
-        .equ    INT2CHAR,0x30         // ascii zero
+        .equ    RADIX, 10             // number base
+        .equ    INT2CHAR, 0x30        // ascii zero
 // Stack frame
-        .equ    frameSize,32          // for reversed string
+        .equ    frameSize, 32         // for reversed string
 // Code
         .text
         .align  2
@@ -17,15 +17,14 @@
         .type   intToUDec, %function
 intToUDec:
         sub     sp, sp, frameSize     // place for local string
-        mov     w2, BASE              // decimal
+        mov     w2, RADIX             // decimal
         mov     w3, 0                 // count = 0
         mov     x4, sp                // pointer to local string
         strb    wzr, [x4]             // store NUL
         add     x4, x4, 1             // and increment pointer
 doWhile:
         udiv    w5, w1, w2            // compute quotient
-        mul     w6, w5, w2            // w6 = BASE X quotient
-        sub     w7, w1, w6            // w7 = remainder
+        msub    w6, w5, w2, w1        // w6 = quotient - RADIX * quotient
         orr     w7, w7, INT2CHAR      // convert to ascii
         strb    w7, [x4]              // store character
         add     x4, x4, 1             // increment pointer
