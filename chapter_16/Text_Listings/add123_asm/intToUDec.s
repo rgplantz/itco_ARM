@@ -25,8 +25,8 @@ intToUDec:
 doWhile:
         udiv    w5, w1, w2            // compute quotient
         msub    w6, w5, w2, w1        // w6 = quotient - RADIX * quotient
-        orr     w7, w7, INT2CHAR      // convert to ascii
-        strb    w7, [x4]              // store character
+        orr     w6, w6, INT2CHAR      // convert to ascii
+        strb    w6, [x4]              // store character
         add     x4, x4, 1             // increment pointer
         add     w3, w3, 1             // increment counter
         mov     w1, w5                // remove remainder
