@@ -32,7 +32,7 @@ main:
         bl      writeStr
         add     x0, sp, theString
         mov     w1, MAX
-        bl      readLn
+        bl      readStr
         add     x1, sp, theString
         add     x0, sp, theInt
         bl      decToUInt
