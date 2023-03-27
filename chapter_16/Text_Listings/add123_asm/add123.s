@@ -4,9 +4,9 @@
         .equ    CONSTANT, 123             // number to add
         .equ    MAX, 11                   // maximum digits
 // Stack frame
-        .equ    theInt,28
-        .equ    theString,32
-        .equ    frameSize,48
+        .equ    theInt, 28
+        .equ    theString, 32
+        .equ    frame, 48
 // Code
         .text
         .section        .rodata
