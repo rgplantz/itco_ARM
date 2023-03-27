@@ -1,5 +1,5 @@
-// intToUDec.s
-// Convert unsigned int to decimal text string
+// Converts an int to corresponding unsigned decimal text
+// string representation.
 // Calling sequence
 //    x0 <- place to store string
 //    w1 <- the int

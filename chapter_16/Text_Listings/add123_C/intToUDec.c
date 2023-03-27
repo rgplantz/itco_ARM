@@ -1,4 +1,4 @@
-// Converts an unsigned int to corresponding decimal text
+// Converts an int to corresponding unsigned decimal text
 // string representation. Returns number of characters.
 
 #include "intToUDec.h"
