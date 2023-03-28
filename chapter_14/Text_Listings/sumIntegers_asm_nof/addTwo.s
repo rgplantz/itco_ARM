@@ -1,4 +1,3 @@
-// addTwo.s
 // Adds two integers and outputs sum.
 // Calling sequence:
 //    w0 <- integer
@@ -8,7 +7,7 @@
         .arch armv8-a
 // Stack frame
         .equ    regs, 16
-        .equ    frame,32
+        .equ    frame, 32
 // Code
         .text
         .align  2
@@ -24,6 +23,6 @@ addTwo:
         str     w19, [x20]            // output sum
 
         mov     w0, wzr               // return 0
-        ldp     x19, x20, [sp, regs]  // restore reg.
+        ldp     x19, x20, [sp, regs]  // restore regs
         ldp     fp, lr, [sp], frame   // restore fp, lr, sp
         ret                           // back to caller
