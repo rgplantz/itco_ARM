@@ -26,7 +26,7 @@ hexToInt:
         mov     x20, x1               // output location
         mov     w21, wzr              // result = 0
         mov     w22, wzr              // counter = 0;
-convertLup:
+convertLoop:
         ldrb    w0, [x19]             // load character
         cbz     w0, allDone           // NUL character?
         cmp     w0, '9                // numeral?
@@ -38,7 +38,7 @@ noGap:
         orr     w21, w21, w0          // insert new 4-bit integer
         add     x19, x19, 1           // increment source pointer
         add     w22, w22, 1           //        and counter
-        b       convertLup            // and continue
+        b       convertLoop           // and continue
 allDone:
         str     w21, [x20]            // output result
         mov     w0, w22               // return counter

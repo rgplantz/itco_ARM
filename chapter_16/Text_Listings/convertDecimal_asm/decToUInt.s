@@ -29,7 +29,7 @@ decToUInt:
         mov     w21, RADIX
         mov     w22, wzr              // count = 0;
         mov     w23, wzr              // result = 0;
-convertLup:
+convertLoop:
         ldrb    w0, [x20]             // load character
         cbz     w0, allDone           // NUL char?
         and     w0, w0, INTMASK       // no, mask to integer
@@ -37,7 +37,7 @@ convertLup:
         add     w23, w23, w0          // add new integer
         add     w22, w22, 1           // count++;
         add     x20, x20, 1           // stringPtr++;
-        b       convertLup            // and continue
+        b       convertLoop           // and continue
 allDone:
         str     w23, [x19]            // output result
         mov     w0, w22               // return counter

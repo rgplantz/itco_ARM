@@ -24,7 +24,7 @@ toUpper:
         mov     x19, x0               // destination pointer
         mov     x20, x1               // source pointer
         mov     w21, wzr              // counter = 0;
-convertLup:
+convertLoop:
         ldrb    w0, [x20]             // load character
         cbz     w0, allDone           // all done if NUL char
         movz    w1, UPMASK            // if not, do masking
@@ -33,7 +33,7 @@ convertLup:
         add     x19, x19, 1           // increment destination pointer
         add     x20, x20, 1           //        source pointer
         add     w21, w21, 1           //        and counter
-        b       convertLup            // and continue
+        b       convertLoop           // and continue
 allDone:
         strb    w0, [x19]             // terminating NUL got us here
         mov     x0, x21               // return counter
