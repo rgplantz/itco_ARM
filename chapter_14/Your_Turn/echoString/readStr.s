@@ -44,7 +44,7 @@ readLoop:
         b       readLoop              // back to reading
 endOfInput:
         mov     w0, NUL               // string terminator
-        strb    w0, [x19]             // replace LF
+        strb    wzr, [x19]            // replace LF
         mov     w0, w20               // return count;
         ldp     x19, x20, [sp, save1920]  // restore regs
         ldr     w21, [sp, save21]
