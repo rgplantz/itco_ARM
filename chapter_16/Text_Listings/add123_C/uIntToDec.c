@@ -1,13 +1,13 @@
 // Converts an int to corresponding unsigned decimal text
 // string representation. Returns number of characters.
 
-#include "intToUDec.h"
+#include "uIntToDec.h"
 #define ARRAYSZ 11
 #define ASCII 0x30
 #define RADIX 10
 #define NUL '\0'
 
-int intToUDec(char *decString, unsigned int theInt) {
+int uIntToDec(char *decString, unsigned int theInt) {
     int count;
     char reverseDec[ARRAYSZ];
     char digit;

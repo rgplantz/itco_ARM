@@ -3,8 +3,8 @@
 
 #include "writeStr.h"
 #include "readStr.h"
-#include "decToUInt.h"
-#include "intToUDec.h"
+#include "uDecToInt.h"
+#include "uIntToDec.h"
 #define MAX 10
 #define ARRAYSZ MAX+1
 
@@ -15,9 +15,9 @@ int main(void) {
     writeStr("Enter an unsigned integer: ");
     readStr(theString, MAX);
 
-    decToUInt(&theInt, theString);
+    uDecToInt(&theInt, theString);
     theInt += 123;
-    intToUDec(theString, theInt);
+    uIntToDec(theString, theInt);
     
     writeStr("The result is: ");
     writeStr(theString);
