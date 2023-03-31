@@ -31,7 +31,7 @@ main:
 
         add     x1, sp, theString         // address of string
         add     x0, sp, theInt            // place to store the int
-        bl      decToUInt                 // do conversion
+        bl      uDecToInt                 // do conversion
 
         ldr     w2, [sp, theInt]          // load the int
         add     x1, sp, theString         // input text string
