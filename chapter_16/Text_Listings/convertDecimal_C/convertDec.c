@@ -1,7 +1,6 @@
 // Gets decimal integer from user and stores it as an int
 
 #include <stdio.h>
-#include <stdbool.h>
 #include "writeStr.h"
 #include "readStr.h"
 #include "decToInt.h"
