@@ -9,7 +9,7 @@
 #define NUL '\0'
 
 int decToInt(int *intPtr, char *stringPtr) {
-    int negative = false;       // assume positive
+    bool negative = false;       // assume positive
     int result = 0;
     int count = 0;
     char current = *stringPtr;  // get first character
