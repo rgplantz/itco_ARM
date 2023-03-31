@@ -2,6 +2,7 @@
 // Returns number of decimal characters
 
 #include <stdio.h>
+#include <stdbool.h>
 #include "decToInt.h"
 #define INTMASK 0x0f
 #define RADIX 10
