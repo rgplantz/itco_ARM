@@ -1,21 +1,21 @@
-// Gets decimal number from user and stores it as unsigned int
+// Gets decimal integer from user and stores it as an int
 
 #include <stdio.h>
 #include "writeStr.h"
 #include "readStr.h"
-#include "uDecToInt.h"
-#define MAX 10
+#include "decToInt.h"
+#define MAX 11
 #define ARRAYSZ MAX+1
 
 int main(void) {
 #define ARRAYSZ MAX+1
     char theString[MAX];
-    unsigned int theInt;
+    int theInt;
     
-    writeStr("Enter an unsigned integer: ");
+    writeStr("Enter an integer: ");
     readStr(theString, MAX);
 
-    uDecToInt(&theInt, theString);
+    decToInt(&theInt, theString);
     printf("\"%s\" is stored as 0x%x\n", theString, theInt);
     
     return 0;
