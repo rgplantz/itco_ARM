@@ -2,12 +2,12 @@
 // Returns number of characters.
 
 #include <stdio.h>
-#include "decToUInt.h"
+#include "uDecToInt.h"
 #define INTMASK 0x0f
 #define RADIX 10
 #define NUL '\0'
 
-int decToUInt(unsigned int *intPtr, char *stringPtr) {
+int uDecToInt(unsigned int *intPtr, char *stringPtr) {
     char current;
     unsigned int result;
     int count;
