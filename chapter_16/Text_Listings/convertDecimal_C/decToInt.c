@@ -27,8 +27,8 @@ int decToInt(int *intPtr, char *stringPtr) {
         result = RADIX * result;
         result += (int)current;
         stringPtr++;
-        count++;
         current = *stringPtr;
+        count++;
     }
 
     if (negative) {
