@@ -11,7 +11,7 @@
         .section        .rodata
         .align  3
 prompt:
-        .string "Enter an unsigned integer: "
+        .string "Enter an integer: "
         .align  3
 format:
         .string "\"%s\" is stored as 0x%x\n"
