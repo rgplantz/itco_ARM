@@ -22,7 +22,7 @@ int decToInt(int *intPtr, char *stringPtr) {
 
     while (*stringPtr != NUL) {
         result = RADIX * result;
-        result += (int)*stringPtr & INTMASK;
+        result += (int)(*stringPtr & INTMASK);
         stringPtr++;
         count++;
     }
