@@ -15,9 +15,9 @@
 // Program code
         .text
         .align  2
-        .global uDecToInt
-        .type   uDecToInt, %function
-uDecToInt:
+        .global decToInt
+        .type   decToInt, %function
+decToInt:
         stp     fp, lr, [sp, -frame]! // create our stack frame
         mov     fp, sp                // set our frame pointer
         stp     x19, x20, [sp, save1920]  // save registers
