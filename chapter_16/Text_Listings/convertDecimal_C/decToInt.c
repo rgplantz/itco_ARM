@@ -12,7 +12,6 @@ int decToInt(int *intPtr, char *stringPtr) {
     bool negative = false;       // assume positive
     int result = 0;
     int count = 0;
-    char current;
 
     if (*stringPtr == '-') {
         negative = true;
@@ -21,13 +20,11 @@ int decToInt(int *intPtr, char *stringPtr) {
         stringPtr++;
     }
 
-    current = *stringPtr;
-    while (current != NUL) {
+    while (*stringPtr != NUL) {
         result = RADIX * result;
-        result += (int)(current & INTMASK);
+        result += (int)(*stringPtr & INTMASK);
         stringPtr++;
         count++;
-        current = *stringPtr;
     }
 
     if (negative) {
