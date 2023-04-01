@@ -1,7 +1,7 @@
 // Gets decimal number from user and stores it as unsigned int
         .arch armv8-a
 // Useful constant
-        .equ    MAX, 10                   // character storage limit
+        .equ    MAX, 11                   // character storage limit
 // Stack frame
         .equ    theInt, 16
         .equ    theString, 20
@@ -31,7 +31,7 @@ main:
 
         add     x1, sp, theString         // address of string
         add     x0, sp, theInt            // place to store the int
-        bl      uDecToInt                 // do conversion
+        bl      decToInt                 // do conversion
 
         ldr     w2, [sp, theInt]          // load the int
         add     x1, sp, theString         // input text string
