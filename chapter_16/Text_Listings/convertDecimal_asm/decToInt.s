@@ -53,7 +53,7 @@ convertLoop:
         b       convertLoop           // and continue
 allDone:
         cbz     w24, positive         // check negative flag
-        neg     w24, w24              // negate if flag is true
+        neg     w23, w23              // negate if flag is true
 positive:
         str     w23, [x19]            // output result
         mov     w0, w22               // return counter
