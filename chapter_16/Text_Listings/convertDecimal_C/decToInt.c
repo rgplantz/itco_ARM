@@ -12,22 +12,18 @@ int decToInt(int *intPtr, char *stringPtr) {
     bool negative = false;       // assume positive
     int result = 0;
     int count = 0;
-    char current = *stringPtr;  // get first character
 
-    if (current == '-') {
+    if (*stringPtr == '-') {
         negative = true;
         stringPtr++;
-    } else if (current == '+') {
+    } else if (*stringPtr == '+') {
         stringPtr++;
     }
 
-    current = *stringPtr;
-    while (current != NUL) {
-        current = current & INTMASK;
+    while (*stringPtr != NUL) {
         result = RADIX * result;
-        result += (int)current;
+        result += (int)*stringPtr & INTMASK;
         stringPtr++;
-        current = *stringPtr;
         count++;
     }
 
