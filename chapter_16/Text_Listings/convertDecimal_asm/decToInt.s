@@ -36,7 +36,7 @@ uDecToInt:
         b.ne    checkPos              // no, check for plus sign
         mov     x24, 1                // yes, negative = true;
         add     x20, x20, 1           // increment string pointer
-        back    convertLoop           // and convert numerals
+        b       convertLoop           // and convert numerals
 checkPos:
         cmp     w0, '+                // plus sign?
         b.ne    convertLoop           // no, convert numerals
