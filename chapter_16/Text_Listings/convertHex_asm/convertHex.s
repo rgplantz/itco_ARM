@@ -1,4 +1,4 @@
-// Gets hex number from user and stores it as int
+// Gets hex number from user and stores it as an int
         .arch armv8-a
 // Useful constant
         .equ    MAX, 8
