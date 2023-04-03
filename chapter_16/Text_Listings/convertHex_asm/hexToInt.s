@@ -1,4 +1,4 @@
-// Converts hex character string to long int
+// Converts hex character string to int
 // Calling sequence
 //    x0 <- pointer to hex character string to convert
 //    x1 <- pointer to int result
@@ -7,10 +7,6 @@
 // Useful constants
         .equ    INTPART, 0x0f         // also works for lowercase
         .equ    GAP, 0x07             // between numerals and alpha
-// Stack frame
-        .equ    save1920, 16
-        .equ    save2122, 32
-        .equ    frame, 48
 // Program code
         .text
         .align  2
