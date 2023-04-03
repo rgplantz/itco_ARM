@@ -18,23 +18,23 @@ decToInt:
         mov     w4, wzr               // negative = false;
         mov     w5, RADIX             // handy to have in reg
 
-        ldrb    w0, [x1]              // load first character
-        cmp     w0, '-                // minus sign?
+        ldrb    w6, [x1]              // load first character
+        cmp     w6, '-                // minus sign?
         b.ne    checkPos              // no, check for plus sign
         mov     x4, 1                 // yes, negative = true;
         add     x1, x1, 1             // increment string pointer
         b       convertLoop           // and convert numerals
 checkPos:
-        cmp     w0, '+                // plus sign?
+        cmp     w6, '+                // plus sign?
         b.ne    convertLoop           // no, convert numerals
         add     x1, x1, 1             // yes, skip over it
 
 convertLoop:
-        ldrb    w0, [x1]              // load character
-        cbz     w0, allDone           // NUL char?
-        and     w0, w0, INTMASK       // no, mask to integer
+        ldrb    w6, [x1]              // load character
+        cbz     w6, allDone           // NUL char?
+        and     w6, w6, INTMASK       // no, mask to integer
         mul     w3, w3, w5            // result times RADIX
-        add     w3, w3, w0            // add new integer
+        add     w3, w3, w6            // add new integer
         add     w2, w2, 1             // count++;
         add     x1, x1, 1             // stringPtr++;
         b       convertLoop           // and continue
