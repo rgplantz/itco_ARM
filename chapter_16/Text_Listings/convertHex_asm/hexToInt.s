@@ -1,7 +1,7 @@
 // Converts hex character string to int
 // Calling sequence
-//    x0 <- pointer to hex character string to convert
-//    x1 <- pointer to int result
+//    x0 <- pointer to int result
+//    x1 <- pointer to hex character string to convert
 //    returns number of characters converted
         .arch armv8-a
 // Useful constants
@@ -16,7 +16,7 @@ hexToInt:
         mov     w2, wzr               // result = 0
         mov     w3, wzr               // counter = 0;
 convertLoop:
-        ldrb    w4, [x0]              // load character
+        ldrb    w4, [x1]              // load character
         cbz     w4, allDone           // NUL character?
         cmp     w4, '9                // numeral?
         b.ls    noGap                 // yes
@@ -25,10 +25,10 @@ noGap:
         and     w4, w4, INTPART       // 4-bit integer
         lsl     w2, w2, 4             // make room for it
         orr     w2, w2, w4            // insert new 4-bit integer
-        add     x0, x0, 1             // increment source pointer
+        add     x1, x1, 1             // increment source pointer
         add     w3, w3, 1             //        and counter
         b       convertLoop           // and continue
 allDone:
-        str     w2, [x1]              // output result
+        str     w2, [x0]              // output result
         mov     w0, w3                // return counter
         ret                           // back to caller

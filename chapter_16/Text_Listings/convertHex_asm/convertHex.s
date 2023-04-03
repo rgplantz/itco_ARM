@@ -29,8 +29,8 @@ main:
         add     x0, sp, theString     // place to store string
         bl      readStr               // get from keyboard
 
-        add     x1, sp, theInt        // place to store int
-        add     x0, sp, theString     // address of string
+        add     x1, sp, theString     // address of string
+        add     x0, sp, theInt        // place to store int
         bl      hexToInt              // do conversion
 
         ldr     w2, [sp, theInt]      // load int
