@@ -1,4 +1,4 @@
-// Gets decimal number from user and stores it as unsigned int
+// Gets decimal number from user and stores it as an int
         .arch armv8-a
 // Useful constant
         .equ    MAX, 11                   // character storage limit
