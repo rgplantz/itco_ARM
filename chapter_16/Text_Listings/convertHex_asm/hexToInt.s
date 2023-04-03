@@ -17,7 +17,7 @@
         .global hexToInt
         .type   hexToInt, %function
 hexToInt:
-        mov     x2, xzr               // result = 0
+        mov     x2, zr                // result = 0
         mov     w3, wzr               // counter = 0;
 convertLoop:
         ldrb    w4, [x0]              // load character
