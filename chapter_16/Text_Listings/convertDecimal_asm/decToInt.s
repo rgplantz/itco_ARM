@@ -31,14 +31,14 @@ checkPos:
 
 convertLoop:
         ldrb    w6, [x1]              // load character
-        cbz     w6, allDone           // NUL char?
+        cbz     w6, checkSign         // NUL char?
         and     w6, w6, INTMASK       // no, mask to integer
         mul     w3, w3, w5            // result times RADIX
         add     w3, w3, w6            // add new integer
         add     w2, w2, 1             // count++;
         add     x1, x1, 1             // stringPtr++;
         b       convertLoop           // and continue
-allDone:
+checkSign:
         cbz     w4, positive          // check negative flag
         neg     w3, w3                // negate if flag is true
 positive:
