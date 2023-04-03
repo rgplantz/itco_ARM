@@ -4,8 +4,8 @@
         .equ    MAX, 8
 // Stack frame
         .equ    theInt, 16
-        .equ    theString, 24
-        .equ    frame, 48
+        .equ    theString, 20
+        .equ    frame, 32
 // Code
         .text
         .section  .rodata
