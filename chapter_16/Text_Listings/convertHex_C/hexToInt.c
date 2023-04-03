@@ -1,4 +1,4 @@
-// Converts hex character string to long int
+// Converts hex character string to int
 // Returns number of characters
  
 #include "hexToInt.h"
@@ -6,9 +6,9 @@
 #define INTPART 0x0f  // also works for lowercase
 #define NUL '\0'
 
-int hexToInt(long int *intPtr, char *stringPtr) {
+int hexToInt(int *intPtr, char *stringPtr) {
     char current;
-    long int result;
+    int result;
     int count;
 
     count = 0;

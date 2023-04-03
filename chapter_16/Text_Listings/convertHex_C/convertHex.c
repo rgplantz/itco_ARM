@@ -1,21 +1,21 @@
-// Gets hex number from user and stores it as long int
+// Gets hex number from user and stores it as int
 
 #include <stdio.h>
 #include "writeStr.h"
 #include "readStr.h"
 #include "hexToInt.h"
 
-#define MAX 16
+#define MAX 8
 #define ARRAYSZ MAX+1
 
 int main() {
     char theString[ARRAYSZ];
-    long int theInt;
+    int theInt;
 
     writeStr("Enter up to 8 hex characters: ");
     readStr(theString, MAX);
 
     hexToInt(&theInt, theString);
-    printf("0x%lx = %li\n", theInt, theInt);
+    printf("0x%x = %i\n", theInt, theInt);
     return 0;
 }
