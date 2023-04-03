@@ -28,7 +28,7 @@ convertLoop:
 noGap:
         and     w4, w4, INTPART       // 4-bit integer
         lsl     x2, x2, 4             // make room for it
-        orr     x2, x2, x4            // insert new 4-bit integer
+        orr     x2, x2, w4            // insert new 4-bit integer
         add     x0, x0, 1             // increment source pointer
         add     w3, w3, 1             //        and counter
         b       convertLoop           // and continue
