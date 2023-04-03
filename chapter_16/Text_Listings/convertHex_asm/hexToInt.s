@@ -1,4 +1,4 @@
-// Converts hex character string to long int
+// Converts hex character string to int
 // Calling sequence
 //    x0 <- pointer to hex character string to convert
 //    x1 <- pointer to int result
@@ -17,22 +17,32 @@
         .global hexToInt
         .type   hexToInt, %function
 hexToInt:
-        mov     x2, zr                // result = 0
-        mov     w3, wzr               // counter = 0;
+        stp     fp, lr, [sp, -frame]! // create our stack frame
+        mov     fp, sp                // set our frame pointer
+        stp     x19, x20, [sp, save1920]  // save registers
+        stp     x21, x22, [sp, save2122]
+
+        mov     x19, x0               // string pointer
+        mov     x20, x1               // output location
+        mov     w21, wzr              // result = 0
+        mov     w22, wzr              // counter = 0;
 convertLoop:
-        ldrb    w4, [x0]              // load character
-        cbz     w4, allDone           // NUL character?
-        cmp     w4, '9                // numeral?
+        ldrb    w0, [x19]             // load character
+        cbz     w0, allDone           // NUL character?
+        cmp     w0, '9                // numeral?
         b.ls    noGap                 // yes
-        sub     w4, w4, GAP           // no, remove gap
+        sub     w0, w0, GAP           // no, remove gap
 noGap:
-        and     w4, w4, INTPART       // 4-bit integer
-        lsl     x2, x2, 4             // make room for it
-        orr     x2, x2, w4            // insert new 4-bit integer
-        add     x0, x0, 1             // increment source pointer
-        add     w3, w3, 1             //        and counter
+        and     w0, w0, INTPART       // 4-bit integer
+        lsl     w21, w21, 4           // make room for it
+        orr     w21, w21, w0          // insert new 4-bit integer
+        add     x19, x19, 1           // increment source pointer
+        add     w22, w22, 1           //        and counter
         b       convertLoop           // and continue
 allDone:
-        str     x2, [x1]              // output result
-        mov     w0, w3                // return counter
+        str     w21, [x20]            // output result
+        mov     w0, w22               // return counter
+        ldp     x21, x22, [sp, save2122]  // restore registers
+        ldp     x19, x20, [sp, save1920]
+        ldp     fp, lr, [sp], frame   // restore fp, lr, sp
         ret                           // back to caller
