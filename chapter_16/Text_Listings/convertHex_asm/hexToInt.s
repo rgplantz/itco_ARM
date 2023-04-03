@@ -17,7 +17,7 @@
         .global hexToInt
         .type   hexToInt, %function
 hexToInt:
-        mov     x2, zr                // result = 0
+        mov     w2, wzr               // result = 0
         mov     w3, wzr               // counter = 0;
 convertLoop:
         ldrb    w4, [x0]              // load character
@@ -27,12 +27,12 @@ convertLoop:
         sub     w4, w4, GAP           // no, remove gap
 noGap:
         and     w4, w4, INTPART       // 4-bit integer
-        lsl     x2, x2, 4             // make room for it
-        orr     x2, x2, w4            // insert new 4-bit integer
+        lsl     w2, w2, 4             // make room for it
+        orr     w2, w2, w4            // insert new 4-bit integer
         add     x0, x0, 1             // increment source pointer
         add     w3, w3, 1             //        and counter
         b       convertLoop           // and continue
 allDone:
-        str     x2, [x1]              // output result
+        str     w2, [x1]              // output result
         mov     w0, w3                // return counter
         ret                           // back to caller
