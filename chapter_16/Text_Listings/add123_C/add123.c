@@ -1,23 +1,23 @@
-// Reads an unsigned int from user, adds 123,
+// Reads an int from user, adds 123,
 // and displays the result.
 
 #include "writeStr.h"
 #include "readStr.h"
-#include "uDecToInt.h"
-#include "uIntToDec.h"
-#define MAX 10
+#include "decToInt.h"
+#include "intToDec.h"
+#define MAX 11
 #define ARRAYSZ MAX+1
 
 int main(void) {
     char theString[ARRAYSZ];
-    unsigned int theInt;
+    int theInt;
     
-    writeStr("Enter an unsigned integer: ");
+    writeStr("Enter an integer: ");
     readStr(theString, MAX);
 
-    uDecToInt(&theInt, theString);
+    decToInt(&theInt, theString);
     theInt += 123;
-    uIntToDec(theString, theInt);
+    intToDec(theString, theInt);
     
     writeStr("The result is: ");
     writeStr(theString);
