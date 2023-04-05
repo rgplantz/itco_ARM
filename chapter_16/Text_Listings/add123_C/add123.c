@@ -16,7 +16,7 @@ int main(void) {
     readStr(theString, MAX);
 
     decToInt(&theInt, theString);
-    theInt -= 123;
+    theInt += 123;
     intToDec(theString, theInt);
     
     writeStr("The result is: ");
