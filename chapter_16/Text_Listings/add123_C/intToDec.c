@@ -10,10 +10,11 @@
 
 int intToDec(char *decString, int theInt) {
     char reverseDec[ARRAYSZ];
+    int count;
     char digit;
     char *ptr;
+    unsigned int working = (unsigned)theInt;
     bool negative = false;
-    int count;
     
     if (theInt < 0) {
         negative = true;
@@ -23,10 +24,10 @@ int intToDec(char *decString, int theInt) {
     *ptr = NUL;         // start with termination char
     do {
         ptr++;
-        digit = (char)(theInt % RADIX);
+        digit = (char)(working % RADIX);
         *ptr = ASCII | digit;
-        theInt = theInt / RADIX;
-    } while (theInt > 0);
+        working = working / RADIX;
+    } while (working > 0);
 
     count = 0;
     if (negative) {
