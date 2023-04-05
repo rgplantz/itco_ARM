@@ -1,14 +1,14 @@
 // Converts an int to corresponding decimal text
 // string representation. Returns number of characters.
 
+#include <stdbool.h>
 #include "intToDec.h"
-#inlucde <stdbool.h>
-#define ARRAYSZ 11
+#define ARRAYSZ 12
 #define ASCII 0x30
 #define RADIX 10
 #define NUL '\0'
 
-int uIntToDec(char *decString, int theInt) {
+int intToDec(char *decString, int theInt) {
     int count;
     char reverseDec[ARRAYSZ];
     char digit;
