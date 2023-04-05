@@ -1,4 +1,4 @@
-// Reads an int from user, adds 123,
+// Reads an int from user, subtracts 123,
 // and displays the result.
 
 #include "writeStr.h"

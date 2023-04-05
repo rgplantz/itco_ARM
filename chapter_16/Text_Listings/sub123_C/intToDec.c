@@ -20,7 +20,8 @@ int intToDec(char *decString, int theInt) {
         negative = true;
         theInt = -theInt;
     }
-    working = (unsigned)theInt;    ptr = reverseDec;   // point to local char array
+    working = (unsigned)theInt; // use unsigned
+    ptr = reverseDec;   // point to local char array
     *ptr = NUL;         // start with termination char
     do {
         ptr++;
