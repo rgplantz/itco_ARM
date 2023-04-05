@@ -13,14 +13,14 @@ int intToDec(char *decString, int theInt) {
     int count;
     char digit;
     char *ptr;
-    unsigned int working = (unsigned)theInt;
+    unsigned int working;
     bool negative = false;
     
     if (theInt < 0) {
         negative = true;
         theInt = -theInt;
     }
-    ptr = reverseDec;   // point to local char array
+    working = (unsigned)theInt;    ptr = reverseDec;   // point to local char array
     *ptr = NUL;         // start with termination char
     do {
         ptr++;
