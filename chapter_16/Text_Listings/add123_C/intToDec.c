@@ -9,11 +9,11 @@
 #define NUL '\0'
 
 int intToDec(char *decString, int theInt) {
-    int count;
     char reverseDec[ARRAYSZ];
     char digit;
     char *ptr;
     bool negative = false;
+    int count;
     
     if (theInt < 0) {
         negative = true;
@@ -28,16 +28,17 @@ int intToDec(char *decString, int theInt) {
         theInt = theInt / RADIX;
     } while (theInt > 0);
 
+    count = 0;
     if (negative) {
-        *ptr = "-";
-        ptr++;
+        *decString = "-";
+        count++;
+        decString++;
     }
-    count = 0;          // reverse the string
-    do {
+    do {                // reverse the string
         *decString = *ptr;
+        count++;
         decString++;
         ptr--;
-        count++;
     } while (*ptr != NUL);
     *decString = *ptr;  // copy termination char
 
