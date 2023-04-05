@@ -30,7 +30,7 @@ int intToDec(char *decString, int theInt) {
 
     count = 0;
     if (negative) {
-        *decString = "-";
+        *decString = '-';
         count++;
         decString++;
     }
