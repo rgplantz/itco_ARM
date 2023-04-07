@@ -20,7 +20,7 @@ int hexToInt(int *intPtr, char *stringPtr) {
         }
         current = current & INTPART;
         result = result << 4;
-        result |= (int)current;
+        result |= current;
         stringPtr++;
         count++;
         current = *stringPtr;
