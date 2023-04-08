@@ -14,10 +14,8 @@ int intToDec(char *decString, int theInt) {
     char *ptr;
     unsigned int working;
     int count = 0;
-    bool negative = false;
     
     if (theInt < 0) {
-        negative = true;
         theInt = -theInt;
         *decString = '-';
         count++;
