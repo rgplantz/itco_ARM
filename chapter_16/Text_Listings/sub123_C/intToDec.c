@@ -1,7 +1,6 @@
 // Converts an int to corresponding decimal text
 // string representation. Returns number of characters.
 
-#include <stdbool.h>
 #include "intToDec.h"
 #define ARRAYSZ 12
 #define ASCII 0x30
@@ -23,7 +22,7 @@ int intToDec(char *decString, int theInt) {
     }
     ptr = reverseDec;   // point to local char array
     *ptr = NUL;         // start with termination char
-    working = theInt;   // use unsigned arithmetic
+    working = (unsigned int)theInt; // use unsigned arithmetic
     do {
         ptr++;
         digit = (char)(working % RADIX);
