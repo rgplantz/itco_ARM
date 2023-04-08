@@ -13,22 +13,22 @@ int intToDec(char *decString, int theInt) {
     int count;
     char digit;
     char *ptr;
+    unsigned int working;
+    bool negative = false;
     
     if (theInt < 0) {
-        *decString = '-';
-        decString++;
+        negative = true;
+        theInt = -theInt;
     }
+    working = (unsigned)theInt; // use unsigned
     ptr = reverseDec;   // point to local char array
     *ptr = NUL;         // start with termination char
     do {
         ptr++;
-        digit = (theInt % RADIX);
-        if (digit < 0) {
-            digit = -digit;
-        }
+        digit = (char)(working % RADIX);
         *ptr = ASCII | digit;
-        theInt = theInt / RADIX;
-    } while (theInt > 0);
+        working = working / RADIX;
+    } while (working > 0);
 
     count = 0;
     if (negative) {
