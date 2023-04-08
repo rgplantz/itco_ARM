@@ -10,12 +10,13 @@
 
 int intToDec(char *decString, int theInt) {
     char reverseDec[ARRAYSZ];
-    int count;
+    int count = 0;
     char digit;
     char *ptr;
     
     if (theInt < 0) {
         *decString = '-';
+        count++;
         decString++;
     }
     ptr = reverseDec;   // point to local char array
@@ -30,12 +31,6 @@ int intToDec(char *decString, int theInt) {
         theInt = theInt / RADIX;
     } while (theInt > 0);
 
-    count = 0;
-    if (negative) {
-        *decString = '-';
-        count++;
-        decString++;
-    }
     do {                // reverse the string
         *decString = *ptr;
         count++;
