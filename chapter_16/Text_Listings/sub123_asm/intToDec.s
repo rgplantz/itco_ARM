@@ -19,18 +19,18 @@
         .global intToUDec
         .type   intToUDec, %function
 intToUDec:
-        sub     sp, frame             // local string on stack
+        sub     sp, sp, frame         // local string on stack
 
         mov     w2, wzr               // count = 0
         cmp     w1, wzr               // => 0?
         tbz     w1, 31, nonNegative   // yes, go to conversion
         neg     w1, w1                // no, negate int
-        ldrb    w3, MINUS
+        mov     w3, MINUS
         strb    w3, [x0]              // start with minus sign
         add     x0, x0, 1             // increment pointer
         add     w2, w2, 1             // increment counter
 nonNegative:
-        add     x3, [sp, reverseDec]  // pointer to local string storage
+        add     x3, sp, reverseDec    // pointer to local string storage
         strb    wzr, [x3]             // start with NUL
         mov     w4, RADIX             // put in register
 doWhile:
@@ -52,5 +52,5 @@ copyLoop:
         strb    w6, [x0]              // store NUL character
 
         mov     w0, w2                // return count;
-        add     sp, frame             // restore sp
+        add     sp, sp, frame         // restore sp
         ret                           // back to caller
