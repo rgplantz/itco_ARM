@@ -29,12 +29,12 @@ intToDec:
         add     x0, x0, 1             // increment pointer
 nonNegative:
         add     x3, sp, reverseDec    // pointer to local string storage
-        strb    wzr, [x3]             // start with NUL
-        mov     w3, RADIX             // put in register
+        strb    wzr, [x3]             // create end with NUL
+        mov     w2, RADIX             // put in register
 doWhile:
         add     x3, x3, 1             // increment local pointer
-        udiv    w4, w1, w3            // compute quotient
-        msub    w5, w4, w3, w1        // remainder = quotient - RADIX * quotient
+        udiv    w4, w1, w2            // compute quotient
+        msub    w5, w4, w2, w1        // remainder = quotient - RADIX * quotient
         orr     w5, w5, INT2CHAR      // convert to ascii
         strb    w5, [x3]              // store character
         mov     w1, w4                // remove remainder
