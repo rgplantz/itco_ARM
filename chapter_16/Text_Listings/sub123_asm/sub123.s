@@ -4,9 +4,9 @@
         .equ    CONSTANT, 123             // number to subtract
         .equ    MAX, 11                   // maximum digits
 // Stack frame
-        .equ    theInt, 28
-        .equ    theString, 32
-        .equ    frame, 48
+        .equ    theInt, 16
+        .equ    theString, 20
+        .equ    frame, 32
 // Code
         .text
         .section  .rodata
