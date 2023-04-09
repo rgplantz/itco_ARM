@@ -16,9 +16,9 @@
 // Code
         .text
         .align  2
-        .global intToUDec
-        .type   intToUDec, %function
-intToUDec:
+        .global intToDec
+        .type   intToDec, %function
+intToDec:
         sub     sp, sp, frame         // local string on stack
 
         mov     w2, wzr               // count = 0
