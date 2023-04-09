@@ -1,7 +1,7 @@
-// Adds 123 to an unsigned integer
+// Subtracts 123 from an integer
         .arch armv8-a
 // Useful constants
-        .equ    CONSTANT, 123             // number to add
+        .equ    CONSTANT, 123             // number to subtract
         .equ    MAX, 11                   // maximum digits
 // Stack frame
         .equ    theInt, 28
@@ -9,10 +9,10 @@
         .equ    frame, 48
 // Code
         .text
-        .section        .rodata
+        .section  .rodata
         .align  3
 prompt:
-        .string "Enter an unsigned integer: "
+        .string "Enter an integer: "
         .align  3
 message:
         .string "The result is: "
@@ -35,12 +35,12 @@ main:
 
         add     x1, sp, theString     // input
         add     x0, sp, theInt        // place for output
-        bl      decToUInt             // convert as unsigned int
+        bl      decToInt              // convert as int
 
         ldr     w1, [sp, theInt]
-        add     w1, w1, CONSTANT      // add our constant
+        sub     w1, w1, CONSTANT      // subtract our constant
         add     x0, sp, theString     // place for output
-        bl      intToUDec             // convert to text string
+        bl      intToDec              // convert to text string
 
         adr     x0, message           // tell user that
         bl      writeStr
