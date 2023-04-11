@@ -43,7 +43,7 @@ main:
         bl      writeStr
         bl      getInt                // get y
         str     w0, [sp, y]
-
+// Addition
         ldr     w0, [sp, x]           // print x
         bl      putInt
         adr     x0, plus              // +
@@ -58,6 +58,22 @@ main:
         bl      putInt
         adr     x0, newLine
         bl      writeStr
+// Subtraction
+        ldr     w0, [sp, x]           // print x
+        bl      putInt
+        adr     x0, minus             // -
+        bl      writeStr
+        ldr     w0, [sp, y]           // y
+        bl      putInt
+        adr     x0, equals            // =
+        bl      writeStr
+        ldr     w0, [sp, x]
+        ldr     w1, [sp, y]
+        sub     w0, w0, w1            // difference
+        bl      putInt
+        adr     x0, newLine
+        bl      writeStr
+
 
         mov     w0, wzr               // return 0;
         ldp     fp, lr, [sp], frame   // restore fp, lr, sp
