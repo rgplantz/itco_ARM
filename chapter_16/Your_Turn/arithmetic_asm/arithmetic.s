@@ -92,7 +92,7 @@ main:
   // Division
         ldr     w0, [sp, x]           // print x
         bl      putInt
-        adr     x0, times             // /
+        adr     x0, div               // /
         bl      writeStr
         ldr     w0, [sp, y]           // y
         bl      putInt
@@ -107,7 +107,7 @@ main:
 
         ldr     w0, [sp, x]           // print x
         bl      putInt
-        adr     x0, times             // %
+        adr     x0, remainder         // %
         bl      writeStr
         ldr     w0, [sp, y]           // y
         bl      putInt
