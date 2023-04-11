@@ -89,6 +89,38 @@ main:
         adr     x0, newLine
         bl      writeStr
 
+  // Division
+        ldr     w0, [sp, x]           // print x
+        bl      putInt
+        adr     x0, times             // /
+        bl      writeStr
+        ldr     w0, [sp, y]           // y
+        bl      putInt
+        adr     x0, equals            // =
+        bl      writeStr
+        ldr     w0, [sp, x]
+        ldr     w1, [sp, y]
+        sdiv    w0, w0, w1            // quotient
+        bl      putInt
+        adr     x0, newLine
+        bl      writeStr
+
+        ldr     w0, [sp, x]           // print x
+        bl      putInt
+        adr     x0, times             // %
+        bl      writeStr
+        ldr     w0, [sp, y]           // y
+        bl      putInt
+        adr     x0, equals            // =
+        bl      writeStr
+        ldr     w0, [sp, x]
+        ldr     w1, [sp, y]
+        sdiv    w2, w0, w1            // compute quotient
+        msub    w0, w2, w1, w0        //     and remainder
+        bl      putInt
+        adr     x0, newLine
+        bl      writeStr
+
         mov     w0, wzr               // return 0;
         ldp     fp, lr, [sp], frame   // restore fp, lr, sp
         ret                           // back to caller
