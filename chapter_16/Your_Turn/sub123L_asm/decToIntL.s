@@ -34,7 +34,7 @@ convertLoop:
         cbz     w6, checkSign         // NUL char?
         and     w6, w6, INTMASK       // no, mask to integer
         mul     x3, x3, x5            // result times RADIX
-        add     wx, x3, x6            // add new integer
+        add     x3, x3, x6            // add new integer
         add     w2, w2, 1             // count++;
         add     x1, x1, 1             // stringPtr++;
         b       convertLoop           // and continue
