@@ -2,7 +2,7 @@
 // string representation.
 // Calling sequence
 //    x0 <- place to store string
-//    w1 <- the int
+//    x1 <- the int
 //    returns number of characters in string
         .arch armv8-a
 // Useful constants
@@ -21,24 +21,24 @@
 intToDec:
         sub     sp, sp, frame         // local string on stack
 
-        cmp     w1, wzr               // => 0?
-        tbz     w1, 31, nonNegative   // yes, go to conversion
-        neg     w1, w1                // no, negate int
+        cmp     x1, xzr               // => 0?
+        tbz     x1, 31, nonNegative   // yes, go to conversion
+        neg     x1, x1                // no, negate int
         mov     w2, MINUS
         strb    w2, [x0]              // start with minus sign
         add     x0, x0, 1             // increment pointer
 nonNegative:
         add     x3, sp, reverseDec    // pointer to local string storage
         strb    wzr, [x3]             // create end with NUL
-        mov     w2, RADIX             // put in register
+        mov     x2, RADIX             // put in register
 doWhile:
         add     x3, x3, 1             // increment local pointer
-        udiv    w4, w1, w2            // compute quotient
-        msub    w5, w4, w2, w1        // remainder = quotient - RADIX * quotient
-        orr     w5, w5, INT2CHAR      // convert to ascii
+        udiv    x4, x1, x2            // compute quotient
+        msub    x5, x4, x2, x1        // remainder = quotient - RADIX * quotient
+        orr     x5, x5, INT2CHAR      // convert to ascii
         strb    w5, [x3]              // store character
-        mov     w1, w4                // remove remainder
-        cbnz    w1, doWhile           // continue if more left
+        mov     x1, x4                // remove remainder
+        cbnz    x1, doWhile           // continue if more left
 
         mov     w6, wzr               // count = 0
 copyLoop:

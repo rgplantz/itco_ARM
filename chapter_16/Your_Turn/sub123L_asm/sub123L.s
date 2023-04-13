@@ -5,8 +5,8 @@
         .equ    MAX, 21                   // maximum digits
 // Stack frame
         .equ    theInt, 16
-        .equ    theString, 20
-        .equ    frame, 48
+        .equ    theString, 28
+        .equ    frame, 64
 // Code
         .text
         .section  .rodata
@@ -37,8 +37,8 @@ main:
         add     x0, sp, theInt        // place for output
         bl      decToInt              // convert as int
 
-        ldr     w1, [sp, theInt]
-        sub     w1, w1, CONSTANT      // subtract our constant
+        ldr     x1, [sp, theInt]
+        sub     x1, x1, CONSTANT      // subtract our constant
         add     x0, sp, theString     // place for output
         bl      intToDec              // convert to text string
 
