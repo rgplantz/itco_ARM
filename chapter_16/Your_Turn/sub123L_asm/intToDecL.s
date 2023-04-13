@@ -22,7 +22,7 @@ intToDec:
         sub     sp, sp, frame         // local string on stack
 
         cmp     x1, xzr               // => 0?
-        tbz     x1, 31, nonNegative   // yes, go to conversion
+        tbz     x1, 63, nonNegative   // yes, go to conversion
         neg     x1, x1                // no, negate int
         mov     w2, MINUS
         strb    w2, [x0]              // start with minus sign
