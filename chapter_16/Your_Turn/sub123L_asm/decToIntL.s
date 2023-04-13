@@ -14,7 +14,7 @@
         .type   decToInt, %function
 decToInt:
         mov     w2, wzr               // count = 0;
-        mov     x3, wzr               // result = 0;
+        mov     x3, xzr               // result = 0;
         mov     w4, wzr               // negative = false;
         mov     x5, RADIX             // handy to have in reg
 
