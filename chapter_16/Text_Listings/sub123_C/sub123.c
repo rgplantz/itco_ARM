@@ -1,5 +1,5 @@
-// Reads an int from user, subtracts 123,
-// and displays the result.
+// Reads an int from user, subtracts 123, and displays
+// the result.
 
 #include "writeStr.h"
 #include "readStr.h"
