@@ -1,4 +1,4 @@
-// Allocates an int array, stores 2 X element number
+// Allocates an int array, stores 2 x element number
 // in each element and prints array contents.
 
 #include "twiceIndex.h"
