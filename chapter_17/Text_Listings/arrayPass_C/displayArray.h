@@ -4,4 +4,3 @@
 #define DISPLAYARRAY_H
 void displayArray(int theArray[], int nElements);
 #endif
-
