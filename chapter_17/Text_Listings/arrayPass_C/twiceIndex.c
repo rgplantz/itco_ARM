@@ -1,4 +1,4 @@
-// Stores 2 X element number in each array element.
+// Stores 2 x element number in each array element.
 
 #include "twiceIndex.h"
 
