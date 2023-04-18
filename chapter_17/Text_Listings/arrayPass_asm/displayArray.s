@@ -45,7 +45,7 @@ displayLoop:
         b.lt    displayLoop           // no, continue filling
 
         mov     w0, wzr               // return 0;
-        ldr     x19, x20,  [sp, save1920] // restore regs
+        ldp     x19, x20,  [sp, save1920] // restore regs
         ldr     x21, [sp, save21]
         ldp     fp, lr, [sp], frame   // undo stack frame
         ret
