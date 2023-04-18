@@ -46,7 +46,7 @@ endOfInput:
         mov     w0, NUL               // string terminator
         strb    wzr, [x19]            // replace LF
         mov     w0, w20               // return count;
-        ldp     x19, x20, [sp, save1920]  // restore regs
-        ldr     w21, [sp, save21]
+        ldr     w21, [sp, save21]     // restore regs
+        ldp     x19, x20, [sp, save1920]
         ldp     fp, lr, [sp], frame   // undo stack frame
         ret                           // back to caller
