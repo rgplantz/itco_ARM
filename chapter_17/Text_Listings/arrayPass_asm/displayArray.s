@@ -36,7 +36,7 @@ displayLoop:
         bl      putInt
         adr     x0, msg2              // more text on line
         bl      writeStr
-        ldr     x0, [x0, w2, uxtw 2]  // current element
+        ldr     w0, [x19, w21, uxtw 2]  // current element
         bl      putInt
         adr     x0, newline           // finish line
         bl      writeStr
