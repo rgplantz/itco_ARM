@@ -13,7 +13,7 @@ twiceIndex:
         mov     w2, wzr           // i = 0;
 fillLoop:
         add     w3, w2, w2        // 2 times i
-        str     w3, [x0, w2, uxtx 2]   // current element address        
+        str     w3, [x0, w2, uxtw 2]   // current element address        
         add     w2, w2, 1         // i++;
         cmp     w2, w1            // at end?
         b.ge    fillLoop          // no, continue filling
