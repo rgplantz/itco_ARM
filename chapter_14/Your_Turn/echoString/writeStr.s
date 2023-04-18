@@ -9,7 +9,6 @@
         .equ    NUL, 0
 // Stack frame
         .equ    save1920, 16
-        .equ    save20, 28
         .equ    frame, 32 
 // The code
         .text
@@ -19,7 +18,6 @@
 writeStr:
         stp     fp, lr, [sp, -frame]! // our stack frame
         stp     x19, x20, [sp, save1920]  // preserve regs
-        str     x20, [sp, save20]
         mov     x19, x0               // address of string
         mov     w20, wzr              // count = 0
 whileLoop:
@@ -37,7 +35,6 @@ whileLoop:
         b       whileLoop             // back to top
 allDone:
         mov     w0, w20               // return count;
-        ldr     x20, [sp, save20]     // restore regs
-        ldp     x19, x20, [sp, save1920]
+        ldp     x19, x20, [sp, save1920]  // restore regs
         ldp     fp, lr, [sp], frame   // undo stack frame
         ret                           // back to caller
