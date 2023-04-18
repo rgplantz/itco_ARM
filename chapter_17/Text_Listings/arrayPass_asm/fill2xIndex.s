@@ -5,7 +5,7 @@
         .equ    N, 10                   // array length
 // Stack frame
         .equ    intArray, 16
-        .equ    frame, 56
+        .equ    frame, 64
 // Code
         .text
         .align  2
