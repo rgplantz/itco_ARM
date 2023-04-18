@@ -1,4 +1,4 @@
-// Allocate an int array, stores 2 X element number
+// Allocates an int array, stores 2 X element number
 // in each element and prints array contents
         .arch armv8-a
 // Useful constant
