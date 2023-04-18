@@ -16,7 +16,7 @@ fillLoop:
         str     w3, [x0, w2, uxtw 2]   // current element address        
         add     w2, w2, 1         // i++;
         cmp     w2, w1            // at end?
-        b.ge    fillLoop          // no, continue filling
+        b.lt    fillLoop          // no, continue filling
 
         mov     w0, wzr           // yes, return 0
         ret
