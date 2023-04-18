@@ -4,9 +4,9 @@
 //    w1 <- number of array elements
         .arch armv8-a
 // Stack frame
-        .equ    save1920, 0
-        .equ    save21, 16
-        .equ    frame, 32
+        .equ    save1920, 16
+        .equ    save21, 32
+        .equ    frame, 48
 // Code
         .section        .rodata
         .align  3
