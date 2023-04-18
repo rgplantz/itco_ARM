@@ -37,6 +37,7 @@ whileLoop:
         b       whileLoop             // back to top
 allDone:
         mov     w0, w20               // return count;
-        ldp     x19, x20, [sp, save1920]  // restore regs
+        ldr     x20, [sp, save20]     // restore regs
+        ldp     x19, x20, [sp, save1920]
         ldp     fp, lr, [sp], frame   // undo stack frame
         ret                           // back to caller
