@@ -6,14 +6,14 @@ int main(void) {
     struct {
         char aChar;
         int anInt;
-        char anotherChar;
+        char bChar;
     } x;
 
     x.aChar = 'a';
     x.anInt = 123;
-    x.anotherChar = 'b';
+    x.bChar = 'b';
 
     printf("x: %c, %i, %c\n",
-            x.aChar, x.anInt, x.anotherChar);
+            x.aChar, x.anInt, x.bChar);
     return 0;
 }
