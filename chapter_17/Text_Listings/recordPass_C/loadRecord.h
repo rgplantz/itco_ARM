@@ -1,6 +1,4 @@
-/* loadRecord.h
- * Loads record with data.
- */
+// Loads record with data.
 
 #ifndef LOADRECORD_H
 #define LOADRECORD_H

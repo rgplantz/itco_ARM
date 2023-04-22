@@ -1,6 +1,4 @@
-/* displayRecord.h
- * Display contents of a record.
- */
+// Display contents of a record.
 
 #ifndef DISPLAYRECORD_H
 #define DISPLAYRECORD_H
