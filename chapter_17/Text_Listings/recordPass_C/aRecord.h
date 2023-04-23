@@ -2,7 +2,7 @@
 
 #ifndef ARECORD_H
 #define ARECORD_H
-struct aTag {
+struct twoCharsInt {
     char aChar;
     int anInt;
     char anotherChar;
