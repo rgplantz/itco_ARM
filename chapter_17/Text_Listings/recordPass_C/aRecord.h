@@ -8,4 +8,3 @@ struct aTag {
     char anotherChar;
 };
 #endif
-
