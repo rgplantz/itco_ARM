@@ -4,6 +4,6 @@
 #include "displayRecord.h"
 
 void displayRecord(struct aTag aRecord) {
-    printf("%c, %c, %c, %i\n", aRecord.aChar,
+    printf("%c, %i, %c, %i, %c\n", aRecord.aChar,
     aRecord.oneInt, aRecord.bChar, aRecord.twoInt, aRecord.cChar);
 }
