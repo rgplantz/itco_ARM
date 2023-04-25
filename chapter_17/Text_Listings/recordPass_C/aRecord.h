@@ -6,5 +6,7 @@ struct twoCharsInt {
     char aChar;
     int anInt;
     char anotherChar;
+    int one;
+    int two;
 };
 #endif
