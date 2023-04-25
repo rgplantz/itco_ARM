@@ -5,5 +5,5 @@
 
 void displayRecord(struct aTag aRecord) {
     printf("%c, %c, %c, %i\n", aRecord.aChar,
-    aRecord.bChar, aRecord.cChar, aRecord.anInt);
+    aRecord.oneInt, aRecord.bChar, aRecord.twoInt, aRecord.cChar);
 }

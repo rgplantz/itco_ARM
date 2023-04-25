@@ -2,11 +2,12 @@
 
 #include "loadRecord.h"
 
-int loadRecord(struct aTag *aRecord, char w, char x, char y, int z) {
-    (*aRecord).aChar = w;
+int loadRecord(struct aTag *aRecord, char v, int w, char x, int y, char z) {
+    (*aRecord).aChar = v;
     aRecord->bChar = x;     /* equivalent syntax */
-    aRecord->cChar = y;
-    aRecord->anInt = z;
+    aRecord->cChar = z;
+    aRecord->oneInt = w;
+    aRecord->oneInt = y;
 
     return 0;
 }
