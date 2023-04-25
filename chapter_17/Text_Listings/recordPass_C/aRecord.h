@@ -4,9 +4,8 @@
 #define ARECORD_H
 struct aTag {
     char aChar;
+    char bChar;
+    char cChar;
     int anInt;
-    char anotherChar;
-    int one;
-    int two;
 };
 #endif
