@@ -9,8 +9,8 @@ int main(void) {
     struct aTag x;
     struct aTag y;
 
-    loadRecord(&x, 'a', 123, 'b');
-    loadRecord(&y, '1', 456, '2');
+    loadRecord(&x, 'a', 'b', 'c', 123);
+    loadRecord(&y, '1', '2', '3', 456);
     
     displayRecord(x);
     displayRecord(y);
