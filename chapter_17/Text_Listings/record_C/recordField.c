@@ -15,7 +15,7 @@ int main(void) {
     x.oneInt = 12;
     x.bChar = 'b';
     x.twoInt = 34;
-    x.cChar = 'c'
+    x.cChar = 'c';
 
     printf("x: %c, %i, %c, %i, %c\n", x.aChar, x.oneInt,
           x.bChar, x.twoInt, x.cChar);
