@@ -5,15 +5,19 @@
 int main(void) {
     struct {
         char aChar;
-        int anInt;
-        char anotherChar;
+        int oneInt;
+        char bChar;
+        int twoInt;
+        char cChar;
     } x;
 
     x.aChar = 'a';
-    x.anInt = 123;
-    x.anotherChar = 'b';
+    x.oneInt = 12;
+    x.bChar = 'b';
+    x.twoInt = 34;
+    x.cChar = 'c'
 
-    printf("x: %c, %i, %c\n",
-            x.aChar, x.anInt, x.anotherChar);
+    printf("x: %c, %i, %c, %i, %c\n", x.aChar, x.oneInt,
+          x.bChar, x.twoInt, x.cChar);
     return 0;
 }
