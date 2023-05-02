@@ -29,8 +29,10 @@ displayRecord:
         str     w1, [sp, record+8]
         add     x19, sp, record       // point to our copy
 
-        ldrb    w0, [x19, a]          // first char
-        bl      putchar               // display
+        mov     w2, 1                 // one character
+        add     x1, x19, a            // address of first char
+        mov     w0, 1                 // screen
+        bl      write                 // display
         mov     w0, ' '               // space
         bl      putchar
         ldr     w0, [x19, i]          // first int
