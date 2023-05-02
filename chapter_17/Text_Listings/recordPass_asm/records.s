@@ -2,8 +2,8 @@
 // in each record, and displays the contents.
         .arch armv8-a
 // Stack frame
-        .equ    xRecord, 16
-        .equ    yRecord, 36
+        .equ    x, 16
+        .equ    y, 36
         .equ    temp, 56
         .equ    frame, 80
 // Record field definitions
@@ -22,7 +22,7 @@ main:
         mov     w3, 'b'
         mov     w2, 12
         mov     w1, 'a' 
-        add     x0, sp, xRecord         // address of first record
+        add     x0, sp, x               // address of first record
         bl      loadRecord              // load values
 
         mov     w5, 'f'                 // data to load
@@ -30,19 +30,19 @@ main:
         mov     w3, 'e'
         mov     w2, 56
         mov     w1, 'd' 
-        add     x0, sp, yRecord         // address of second record
+        add     x0, sp, y               // address of second record
         bl      loadRecord              // load values
 
-        ldr     x0, [sp, xRecord]       // make copy of x
+        ldr     x0, [sp, x]             // make copy of x
         str     x0, [sp, temp]
-        ldr     w0, [sp, xRecord+4]     // 20 bytes
+        ldr     w0, [sp, x+4]           // 20 bytes
         str     w0, [sp, temp+4]        // 20 bytes
         add     x0, sp, temp            // address of copy
         bl      displayRecord           // display copy
 
-        ldr     x0, [sp, yRecord]       // make copy of y
+        ldr     x0, [sp, y]             // make copy of y
         str     x0, [sp, temp]
-        ldr     w0, [sp, yRecord+4]     // 20 bytes
+        ldr     w0, [sp, y+4]           // 20 bytes
         str     w0, [sp, temp+4]        // 20 bytes
         add     x0, sp, temp            // address of copy
         bl      displayRecord           // display copy

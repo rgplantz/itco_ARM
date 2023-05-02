@@ -1,8 +1,7 @@
 // Assembly language declaration of a record.
 // This record takes 12 bytes.
-        .equ    aChar, 0
-        .equ    bInt, 1
-        .equ    anInt, 2
-        .equ    oneInt, 4
-        .equ    twoInt, 8
-        
+        .equ    a, 0
+        .equ    b, 1
+        .equ    c, 2
+        .equ    i, 4
+        .equ    j, 8
