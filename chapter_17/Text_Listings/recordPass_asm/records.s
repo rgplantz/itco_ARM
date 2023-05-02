@@ -32,10 +32,12 @@ main:
         add     x0, sp, y               // address of second record
         bl      loadRecord              // load values
 
-        add     x0, sp, x               // address of x
+        ldr     x0, [sp, x]             // 1st 8 bytes of x
+        ldr     w1, [sp, x+8]           // last 4 bytes of x
         bl      displayRecord           // display x
 
-        add     x0, sp, y               // address of y
+        ldr     x0, [sp, y]             // 1st 8 bytes of y
+        ldr     w1, [sp, y+8]           // last 4 bytes of y
         bl      displayRecord           // display y
 
         mov     w0, wzr                 // return 0;
