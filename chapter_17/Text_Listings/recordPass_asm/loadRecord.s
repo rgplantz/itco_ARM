@@ -16,9 +16,9 @@
         .type   loadRecord, %function
 loadRecord:
         strb    w1, [x0, a]       // first char
-        str     w2, [x0, x]       // first int
+        str     w2, [x0, i]       // first int
         strb    w3, [x0, b]       // second char
-        str     w0, [x0, y]       // second int
+        str     w0, [x0, j]       // second int
         strb    w0, [x0, c]       // third char
 
         mov     w0, wzr           // return 0

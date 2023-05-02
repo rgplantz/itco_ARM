@@ -31,11 +31,11 @@ displayArray:
 
         ldrb    w0, [x19, a]          // first char
         bl      putchar               // display
-        ldr     w0, [x19, x]          // first int
+        ldr     w0, [x19, i]          // first int
         bl      putInt                // display
         ldrb    w0, [x19, b]          // second char
         bl      putchar               // display
-        ldr     w0, [x19, y]          // second int
+        ldr     w0, [x19, j]          // second int
         bl      putInt                // display
         ldrb    w0, [x19, c]          // third char
 
