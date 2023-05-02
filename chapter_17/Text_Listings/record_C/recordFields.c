@@ -4,20 +4,20 @@
 
 int main(void) {
     struct {
-        char aChar;
-        int oneInt;
-        char bChar;
-        int twoInt;
-        char cChar;
+        char a;
+        int i;
+        char b;
+        int j;
+        char c;
     } x;
 
-    x.aChar = 'a';
-    x.oneInt = 12;
-    x.bChar = 'b';
-    x.twoInt = 34;
-    x.cChar = 'c';
+    x.a = 'a';
+    x.i = 12;
+    x.b = 'b';
+    x.j = 34;
+    x.c = 'c';
 
-    printf("x: %c, %i, %c, %i, %c\n", x.aChar, x.oneInt,
-          x.bChar, x.twoInt, x.cChar);
+    printf("x: %c, %i, %c, %i, %c\n", x.a, x.i,
+          x.b, x.j, x.c);
     return 0;
 }

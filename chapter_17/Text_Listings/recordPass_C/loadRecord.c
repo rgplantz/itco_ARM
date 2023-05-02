@@ -3,11 +3,11 @@
 #include "loadRecord.h"
 
 int loadRecord(struct aTag *aRecord, char v, int w, char x, int y, char z) {
-    (*aRecord).aChar = v;
-    aRecord->bChar = x;     /* equivalent syntax */
-    aRecord->cChar = z;
-    aRecord->oneInt = w;
-    aRecord->twoInt = y;
+    (*aRecord).a = v;
+    aRecord->b = x;     /* equivalent syntax */
+    aRecord->c = z;
+    aRecord->i = w;
+    aRecord->j = y;
 
     return 0;
 }

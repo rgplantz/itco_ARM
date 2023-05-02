@@ -3,10 +3,10 @@
 #ifndef ARECORD_H
 #define ARECORD_H
 struct aTag {
-    char aChar;
-    int oneInt;
-    char bChar;
-    int twoInt;
-    char cChar;
+    char a;
+    int i;
+    char b;
+    int j;
+    char c;
 };
 #endif
