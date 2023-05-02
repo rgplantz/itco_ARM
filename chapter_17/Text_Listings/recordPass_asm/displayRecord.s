@@ -31,6 +31,8 @@ displayRecord:
 
         ldrb    w0, [x19, a]          // first char
         bl      putchar               // display
+        mov     w0, ' '               // space
+        bl      putchar
         ldr     w0, [x19, i]          // first int
         bl      putInt                // display
         ldrb    w0, [x19, b]          // second char
