@@ -1,22 +1,24 @@
-// Stores 2 times element number in each array element.
+// Displays fields of aRecord.s
 // Calling sequence
-//    x0 <- address of array
-//    w1 <- number of array elements
+//    x0 <- address of record
+//    w1 <- char a
+//    w2 <- int x
+//    w3 <- char b
+//    w4 <- int y
+//    w5 <- char c
 //    returns 0
         .arch armv8-a
 // Code
         .text
         .align  2
-        .global twiceIndex
-        .type   twiceIndex, %function
-twiceIndex:
-        mov     w2, wzr           // i = 0;
-fillLoop:
-        add     w3, w2, w2        // 2 times i
-        str     w3, [x0, w2, uxtw 2]   // current element address        
-        add     w2, w2, 1         // i++;
-        cmp     w2, w1            // at end?
-        b.lt    fillLoop          // no, continue filling
+        .global loadRecord
+        .type   loadRecord, %function
+loadRecord:
+        strb    w1, [x0, a]       // first char
+        str     w2, [x0, x]       // first int
+        strb    w3, [x0, b]       // second char
+        str     w0, [x0, y]       // second int
+        strb    w0, [x0, c]       // third char
 
-        mov     w0, wzr           // yes, return 0
+        mov     w0, wzr           // return 0
         ret
