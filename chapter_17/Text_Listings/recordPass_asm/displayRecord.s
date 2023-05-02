@@ -38,6 +38,9 @@ displayRecord:
         ldr     w0, [x19, j]          // second int
         bl      putInt                // display
         ldrb    w0, [x19, c]          // third char
+        bl      putchar               // display
+        mov     w0, '\n'              // newline
+        bl      putchar
 
         mov     w0, wzr               // return 0;
         ldr     x19, [sp, save19]     // restore reg
