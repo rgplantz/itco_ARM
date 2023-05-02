@@ -25,6 +25,10 @@ displayArray:
         mov     fp, sp                // set frame pointer
         stp     x19, x20,  [sp, save1920] // save regs
         str     x21, [sp, save21]
+        ldr     x0, [sp, x]             // make copy of x
+        str     x0, [sp, temp]
+        ldr     w0, [sp, x+4]           // 20 bytes
+        str     w0, [sp, temp+4]        // 20 bytes
 
         mov     x19, x0               // array address
         mov     w20, w1               // array size

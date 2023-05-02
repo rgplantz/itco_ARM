@@ -4,8 +4,7 @@
 // Stack frame
         .equ    x, 16
         .equ    y, 36
-        .equ    temp, 56
-        .equ    frame, 80
+        .equ    frame, 64
 // Record field definitions
         .include "aRecord.s"
 // Code
@@ -33,19 +32,11 @@ main:
         add     x0, sp, y               // address of second record
         bl      loadRecord              // load values
 
-        ldr     x0, [sp, x]             // make copy of x
-        str     x0, [sp, temp]
-        ldr     w0, [sp, x+4]           // 20 bytes
-        str     w0, [sp, temp+4]        // 20 bytes
-        add     x0, sp, temp            // address of copy
-        bl      displayRecord           // display copy
+        add     x0, sp, x               // address of x
+        bl      displayRecord           // display x
 
-        ldr     x0, [sp, y]             // make copy of y
-        str     x0, [sp, temp]
-        ldr     w0, [sp, y+4]           // 20 bytes
-        str     w0, [sp, temp+4]        // 20 bytes
-        add     x0, sp, temp            // address of copy
-        bl      displayRecord           // display copy
+        add     x0, sp, y               // address of y
+        bl      displayRecord           // display y
 
         mov     w0, wzr                 // return 0;
         ldp     fp, lr, [sp], frame     // undo stack frame
