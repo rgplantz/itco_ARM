@@ -18,9 +18,9 @@ newline:
         .string "\n"
         .text
         .align  2
-        .global displayArray
-        .type   displayArray, %function
-displayArray:
+        .global displayRecord
+        .type   displayRecord, %function
+displayRecord:
         stp     fp, lr, [sp, -frame]! // create our stack frame
         mov     fp, sp                // set frame pointer
         str     x19, [sp, save19]     // save reg
