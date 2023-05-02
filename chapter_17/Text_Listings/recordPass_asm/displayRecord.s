@@ -29,22 +29,24 @@ displayRecord:
         str     w1, [sp, record+8]
         add     x19, sp, record       // point to our copy
 
-        mov     w2, 1                 // one character
-        add     x1, x19, a            // address of first char
-        mov     w0, 1                 // screen
-        bl      write                 // display
+        ldrb    w0, [x19, a]          // first char
+        bl      putChar               // display
         mov     w0, ' '               // space
-        bl      putchar
+        bl      putChar
         ldr     w0, [x19, i]          // first int
         bl      putInt                // display
         ldrb    w0, [x19, b]          // second char
-        bl      putchar               // display
+        bl      putChar               // display
+        mov     w0, ' '               // space
+        bl      putChar
         ldr     w0, [x19, j]          // second int
         bl      putInt                // display
         ldrb    w0, [x19, c]          // third char
-        bl      putchar               // display
+        bl      putChar               // display
+        mov     w0, ' '               // space
+        bl      putChar
         mov     w0, '\n'              // newline
-        bl      putchar
+        bl      putChar
 
         mov     w0, wzr               // return 0;
         ldr     x19, [sp, save19]     // restore reg
