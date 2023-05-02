@@ -1,11 +1,11 @@
-// Displays ints in array.
-// Calling sequence
-//    x0 <- address of array
-//    w1 <- number of array elements
+// Displays fields of aRecord.s
+//    x0 <- first 8 bytes of record contents
+//    w1 <- remaining 4 bytes of record contents
         .arch armv8-a
+        .include  "aRecord.s"         // field offsets
 // Stack frame
-        .equ    save1920, 16
-        .equ    save21, 32
+        .equ    save19, 16
+        .equ    record, 24
         .equ    frame, 48
 // Code
         .section        .rodata
@@ -23,33 +23,23 @@ newline:
 displayArray:
         stp     fp, lr, [sp, -frame]! // create our stack frame
         mov     fp, sp                // set frame pointer
-        stp     x19, x20,  [sp, save1920] // save regs
-        str     x21, [sp, save21]
-        ldr     x0, [sp, x]             // make copy of x
-        str     x0, [sp, temp]
-        ldr     w0, [sp, x+4]           // 20 bytes
-        str     w0, [sp, temp+4]        // 20 bytes
+        str     x19, [sp, save19]     // save reg
 
-        mov     x19, x0               // array address
-        mov     w20, w1               // array size
-        mov     w21, wzr              // array index
-displayLoop:
-        adr     x0, msg1              // start line
-        bl      writeStr
-        mov     w0, w21               // index
-        bl      putInt
-        adr     x0, msg2              // more text on line
-        bl      writeStr
-        ldr     w0, [x19, w21, uxtw 2]  // current element
-        bl      putInt
-        adr     x0, newline           // finish line
-        bl      writeStr
-        add     w21, w21, 1           // increment index
-        cmp     w21, w20              // at end?
-        b.lt    displayLoop           // no, continue filling
+        str     x0, [sp, record]      // make copy of record
+        str     w1, [sp, record+8]
+        add     x19, sp, record       // point to our copy
+
+        ldrb    w0, [x19, a]          // first char
+        bl      putchar               // display
+        ldr     w0, [x19, x]          // first int
+        bl      putInt                // display
+        ldrb    w0, [x19, b]          // second char
+        bl      putchar               // display
+        ldr     w0, [x19, y]          // second int
+        bl      putInt                // display
+        ldrb    w0, [x19, c]          // third char
 
         mov     w0, wzr               // return 0;
-        ldp     x19, x20,  [sp, save1920] // restore regs
-        ldr     x21, [sp, save21]
+        ldr     x19, [sp, save19]     // restore reg
         ldp     fp, lr, [sp], frame   // undo stack frame
         ret
