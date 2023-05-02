@@ -8,6 +8,7 @@
 //    w5 <- char c
 //    returns 0
         .arch armv8-a
+        .include  "aRecord.s"         // field offsets
 // Code
         .text
         .align  2
