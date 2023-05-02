@@ -35,12 +35,16 @@ displayRecord:
         bl      putChar
         ldr     w0, [x19, i]          // first int
         bl      putInt                // display
+        mov     w0, ' '               // space
+        bl      putChar
         ldrb    w0, [x19, b]          // second char
         bl      putChar               // display
         mov     w0, ' '               // space
         bl      putChar
         ldr     w0, [x19, j]          // second int
         bl      putInt                // display
+        mov     w0, ' '               // space
+        bl      putChar
         ldrb    w0, [x19, c]          // third char
         bl      putChar               // display
         mov     w0, ' '               // space
