@@ -1,6 +1,6 @@
 // Prompts user to enter text and echos it.
 
-#inclues "writeChar.h"
+#include "writeChar.h"
 #include "writeStr.h"
 #include "readStr.h"
 #define MAX 5
