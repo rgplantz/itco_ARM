@@ -3,8 +3,8 @@
         .arch armv8-a
 // Stack frame
         .equ    x, 16
-        .equ    y, 36
-        .equ    frame, 64
+        .equ    y, 32
+        .equ    frame, 48
 // Code
         .text
         .align  2
