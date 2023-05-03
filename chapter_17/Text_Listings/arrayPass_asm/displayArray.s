@@ -14,8 +14,6 @@ msg1:
         .string "intArray["
 msg2:
         .string "] = "
-newline:
-        .string "\n"
         .text
         .align  2
         .global displayArray
@@ -38,7 +36,7 @@ displayLoop:
         bl      writeStr
         ldr     w0, [x19, w21, uxtw 2]  // current element
         bl      putInt
-        adr     x0, newline           // finish line
+        mov     w0, '\n'              // finish line
         bl      writeStr
         add     w21, w21, 1           // increment index
         cmp     w21, w20              // at end?
