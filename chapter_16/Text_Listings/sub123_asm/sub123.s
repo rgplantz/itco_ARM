@@ -45,7 +45,7 @@ main:
         add     x0, sp, theString     //    this is the result
         bl      writeStr
         mov     w0, '\n'
-        bl      writeStr
+        bl      writeChar
 
         mov     w0, wzr               // return 0;
         ldp     fp, lr, [sp], frame   // restore fp, lr, sp
