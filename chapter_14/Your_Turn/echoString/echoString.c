@@ -1,5 +1,6 @@
 // Prompts user to enter text and echos it.
 
+#inclues "writeChar.h"
 #include "writeStr.h"
 #include "readStr.h"
 #define MAX 5
@@ -12,7 +13,7 @@ int main(void) {
     readStr(text, MAX);
     writeStr("You entered: ");
     writeStr(text);
-    writeStr("\n");
+    writeChar('\n');
   
     return 0;
 }
