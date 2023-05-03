@@ -13,10 +13,8 @@
         .align  3
 prompt:
         .string "Enter an integer: "
-        .align  3
 message:
         .string "The result is: "
-        .align  3
         .text
         .align  2
         .global main
