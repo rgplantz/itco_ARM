@@ -13,8 +13,6 @@ prompt:
         .string "Enter up to 50 alphabetic characters: "
 result:
         .string "All upper: "
-newline:
-        .string "\n"
         .text
         .align  2
         .global main
@@ -37,8 +35,8 @@ main:
         bl      writeStr
         add     x0, sp, theString     // converted string
         bl      writeStr
-        adr     x0, newline           // nice formatting
-        bl      writeStr
+        mov     w0, '\n'              // nice formatting
+        bl      writeChar
 
         mov     w0, 0                 // return 0;
         ldp     x29, x30, [sp], frame // undo stack frame
