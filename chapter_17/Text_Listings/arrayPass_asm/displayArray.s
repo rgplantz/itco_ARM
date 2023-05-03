@@ -37,7 +37,7 @@ displayLoop:
         ldr     w0, [x19, w21, uxtw 2]  // current element
         bl      putInt
         mov     w0, '\n'              // finish line
-        bl      writeStr
+        bl      writeChar
         add     w21, w21, 1           // increment index
         cmp     w21, w20              // at end?
         b.lt    displayLoop           // no, continue filling
