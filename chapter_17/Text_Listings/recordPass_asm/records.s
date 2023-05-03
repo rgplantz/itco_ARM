@@ -5,8 +5,6 @@
         .equ    x, 16
         .equ    y, 36
         .equ    frame, 64
-// Record field definitions
-        .include "aRecord.s"
 // Code
         .text
         .align  2
