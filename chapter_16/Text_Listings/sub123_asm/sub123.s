@@ -17,8 +17,6 @@ prompt:
 message:
         .string "The result is: "
         .align  3
-newLine:
-        .string "\n"
         .text
         .align  2
         .global main
@@ -46,7 +44,7 @@ main:
         bl      writeStr
         add     x0, sp, theString     //    this is the result
         bl      writeStr
-        adr     x0, newLine
+        mov     w0, '\n'
         bl      writeStr
 
         mov     w0, wzr               // return 0;
