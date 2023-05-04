@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include "toUpper.h"
 #include "writeStr.h"
+#include "writeChar.h"
 #include "readStr.h"
 #define MAX 50
 #define ARRAYSZ MAX+1
@@ -16,7 +17,7 @@ int main(void) {
     toUpper(myString, myString);
     writeStr("All upper: ");
     writeStr(myString);
-    writeStr("\n");
+    writeChar('\n');
    
     return 0;
 }
