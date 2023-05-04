@@ -24,7 +24,7 @@ displayRecord:
         str     x19, [sp, save19]     // save reg
 
         add     x19, sp, record       // point to our copy
-        str     x0, [x19]             // make copy of record
+        str     x0, [x19]             // make a copy of record
         str     w1, [x19, 8]
 
         ldrb    w0, [x19, a]          // first char
