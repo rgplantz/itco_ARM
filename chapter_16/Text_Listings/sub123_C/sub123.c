@@ -2,6 +2,7 @@
 // the result.
 
 #include "writeStr.h"
+#include "writeChar.h"
 #include "readStr.h"
 #include "decToInt.h"
 #include "intToDec.h"
@@ -21,7 +22,7 @@ int main(void) {
     
     writeStr("The result is: ");
     writeStr(theString);
-    writeStr("\n");
+    writeChar('\n');
     
     return 0;
 }
