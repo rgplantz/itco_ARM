@@ -2,6 +2,7 @@
 
 #include "displayArray.h"
 #include "writeStr.h"
+#include "writeChar.h"
 #include "putInt.h"
 void displayArray(int theArray[], int nElements) {
     int i;
@@ -11,6 +12,6 @@ void displayArray(int theArray[], int nElements) {
         putInt(i);
         writeStr("] = ");
         putInt(theArray[i]);
-        writeStr("\n");
+        writeChar('\n');
     }
 }
