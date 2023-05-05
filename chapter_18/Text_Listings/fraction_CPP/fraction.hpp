@@ -5,7 +5,8 @@
 #define FRACTION_HPP
 // Uses the following C functions
 extern "C" int writeStr(char *);
-extern "C" int getInt(int *);
+extern "C" int readStr(char *, int);
+extern "C" int getInt(void);
 extern "C" int putInt(int);
 
 class fraction
