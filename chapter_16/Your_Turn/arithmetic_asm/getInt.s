@@ -5,7 +5,6 @@
 // Useful constants
         .equ    MAX, 11                   // maximum digits
 // Stack frame
-// Stack frame
         .equ    theInt, 16
         .equ    theString, 20
         .equ    frame, 32
@@ -18,8 +17,8 @@ getInt:
         stp     fp, lr, [sp, -frame]! // create our stack frame
         mov     fp, sp                // set our frame pointer
 
-        add     x0, sp, theString     // place to store input string
         mov     w1, MAX
+        add     x0, sp, theString     // place to store input string
         bl      readStr
 
         add     x1, sp, theString     // input
