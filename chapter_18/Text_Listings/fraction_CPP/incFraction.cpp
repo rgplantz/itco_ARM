@@ -3,10 +3,8 @@
 
 #include "fraction.hpp"
 
-int main(void)
-{
-  fraction x;
+int main(void) {
+    fraction x;
 
-  x.display();
-  return 0;
+    return 0;
 }

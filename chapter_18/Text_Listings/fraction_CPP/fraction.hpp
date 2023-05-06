@@ -8,18 +8,15 @@ extern "C" int writeStr(char *);
 extern "C" int readStr(char *, int);
 extern "C" int getInt(void);
 extern "C" int putInt(int);
-extern "C" int decToInt(int *, char *);
-extern "C" int intToDect(char *, int);
 
-class fraction
-{
-    int num;
-    int den;
-  public:
-    fraction();                 // default constructor
-    ~fraction();                // destructor
-    void get();                 // gets user's values
-    void display();             // displays fraction
-    void add(int theValue);     // adds theValue
+class fraction {
+        int num;
+        int den;
+    public:
+        fraction();                 // default constructor
+        ~fraction();                // destructor
+        void get();                 // gets user's values
+        void display();             // displays fraction
+        void add(int theValue);     // adds theValue
 };
 #endif
