@@ -1,8 +1,7 @@
 // simple fraction class
 
-#ifndef FRACTION_HPP
-#define FRACTION_HPP
-// Uses the following C functions
+#ifndef FRACTION_H
+#define FRACTION_H
 class fraction {
         int num;
         int den;
