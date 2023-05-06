@@ -3,9 +3,6 @@
 #include "fraction.h"
 #include <iostream>
 using namespace std;
-// Use char arrays because writeStr is C function.
-char numMsg[] = 
-char denMsg[] = "Enter denominator: ";
 
 fraction::fraction() {
     num = 0;
@@ -20,7 +17,7 @@ void fraction::get() {
     cout << "Enter numerator: ";   
     cin >> num;
    
-    cout << "Enter numerator: ";
+    cout << "Enter denominator: ";
     cin >> den;
 }
 
