@@ -1,8 +1,10 @@
 // Simple fraction class
 
-#include "fraction.hpp"
+#include "fraction.h"
+#include <iostream>
+using namespace std;
 // Use char arrays because writeStr is C function.
-char numMsg[] = "Enter numerator: ";
+char numMsg[] = 
 char denMsg[] = "Enter denominator: ";
 
 fraction::fraction() {
@@ -15,18 +17,15 @@ fraction::~fraction() {
 }
 
 void fraction::get() {
-    writeStr(numMsg);   
-    num = getInt();
+    cout << "Enter numerator: ";   
+    cin >> num;
    
-    writeStr(denMsg);
-    den = getInt();
+    cout << "Enter numerator: ";
+    cin >> den;
 }
 
 void fraction::display() {
-    putInt(num);
-    writeChar('/');
-    putInt(den);
-    writeChar('\n');
+    cout << num << '/' << den << endl;
 }
 
 void fraction::add(int theValue) {
