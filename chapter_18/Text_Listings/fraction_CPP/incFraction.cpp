@@ -6,5 +6,6 @@
 int main(void) {
     fraction x;
 
+    x.display();
     return 0;
 }
