@@ -8,6 +8,8 @@ extern "C" int writeStr(char *);
 extern "C" int readStr(char *, int);
 extern "C" int getInt(void);
 extern "C" int putInt(int);
+extern "C" int decToInt(int *, char *);
+extern "C" int intToDect(char *, int);
 
 class fraction
 {
