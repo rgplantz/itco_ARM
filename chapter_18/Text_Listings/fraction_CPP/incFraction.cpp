@@ -1,4 +1,3 @@
-// incFraction.cpp
 // Gets a fraction from user and increments by one
 
 #include "fraction.hpp"

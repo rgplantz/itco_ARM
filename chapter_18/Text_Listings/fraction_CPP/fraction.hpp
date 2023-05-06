@@ -1,4 +1,3 @@
-// fraction.hpp
 // simple fraction class
 
 #ifndef FRACTION_HPP
