@@ -22,10 +22,10 @@ fraction::~fraction()
 void fraction::get()
 {
   writeStr(numMsg);   
-  getInt(&num);
+   num = getInt();
    
   writeStr(denMsg);
-  getInt(&den);
+  den = getInt(den);
 }
 
 void fraction::display()
