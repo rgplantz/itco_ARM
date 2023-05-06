@@ -25,7 +25,7 @@ void fraction::get()
    num = getInt();
    
   writeStr(denMsg);
-  den = getInt(den);
+  den = getInt();
 }
 
 void fraction::display()
