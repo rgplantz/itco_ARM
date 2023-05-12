@@ -21,7 +21,7 @@ void fraction::get() {
 }
 
 void fraction::display() {
-    std::cout << num << '/' << den << endl;
+    std::cout << num << '/' << den << std::endl;
 }
 
 void fraction::add(int theValue) {
