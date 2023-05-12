@@ -2,7 +2,6 @@
 
 #include "fraction.hpp"
 #include <iostream>
-using namespace std;
 
 fraction::fraction() {
     num = 0;
@@ -14,15 +13,15 @@ fraction::~fraction() {
 }
 
 void fraction::get() {
-    cout << "Enter numerator: ";   
-    cin >> num;
+    std::cout << "Enter numerator: ";   
+    std::cin >> num;
    
-    cout << "Enter denominator: ";
-    cin >> den;
+    std::cout << "Enter denominator: ";
+    std::cin >> den;
 }
 
 void fraction::display() {
-    cout << num << '/' << den << endl;
+    std::cout << num << '/' << den << endl;
 }
 
 void fraction::add(int theValue) {
