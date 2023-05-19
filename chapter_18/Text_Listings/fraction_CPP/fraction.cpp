@@ -3,11 +3,10 @@
 #include "fraction.hpp"
 #include <iostream>
 
-fraction::fraction() : num(), den(1) {}
+fraction::fraction() : num{}, den{1}
 
-fraction::~fraction() {
+fraction::~fraction() {}
   // Nothing to do for this object
-}
 
 void fraction::get() {
     std::cout << "Enter numerator: ";   
