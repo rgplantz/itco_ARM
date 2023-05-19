@@ -3,10 +3,7 @@
 #include "fraction.hpp"
 #include <iostream>
 
-fraction::fraction() {
-    num = 0;
-    den = 1;
-}
+fraction::fraction() : num(), den(1) {}
 
 fraction::~fraction() {
   // Nothing to do for this object
