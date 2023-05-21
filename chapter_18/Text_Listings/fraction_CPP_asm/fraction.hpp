@@ -5,6 +5,7 @@
 // Uses the following C functions
 extern "C" {
     int writeStr(char *);
+    int writeChar(char);
     int readStr(char *, int);
     int getInt(void);
     int putInt(int);
