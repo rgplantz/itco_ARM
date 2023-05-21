@@ -5,14 +5,10 @@
 char numMsg[] = "Enter numerator: ";
 char denMsg[] = "Enter denominator: ";
 
-fraction::fraction() {
-    num = 0;
-    den = 1;
-}
+fraction::fraction() : num{}, den{1} {}
 
-fraction::~fraction() {
+fraction::~fraction() {}
   // Nothing to do for this object
-}
 
 void fraction::get() {
     writeStr(numMsg);   
