@@ -3,10 +3,12 @@
 #ifndef FRACTION_HPP
 #define FRACTION_HPP
 // Uses the following C functions
-extern "C" int writeStr(char *);
-extern "C" int readStr(char *, int);
-extern "C" int getInt(void);
-extern "C" int putInt(int);
+extern "C" {
+    int writeStr(char *);
+    int readStr(char *, int);
+    int getInt(void);
+    int putInt(int);
+}
 
 class fraction {
         int num;
