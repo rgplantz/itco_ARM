@@ -1,6 +1,6 @@
 // Gets a fraction from user and increments by one
 
-#include "fraction.hpp"
+#include "fraction_asm.hpp"
 
 int main(void) {
     fraction x;
