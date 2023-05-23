@@ -1,6 +1,6 @@
 // Simple fraction class
 
-#include "fraction_asm.hpp"
+#include "fraction.hpp"
 // Use char arrays because writeStr is C function.
 char numMsg[] = "Enter numerator: ";
 char denMsg[] = "Enter denominator: ";

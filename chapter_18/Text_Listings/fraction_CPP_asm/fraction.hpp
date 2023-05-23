@@ -1,13 +1,13 @@
 // simple fraction class
 
-#ifndef FRACTION_ASM_HPP
-#define FRACTION_ASM_HPP
+#ifndef FRACTION_HPP
+#define FRACTION_HPP
+// Uses the following C functions
 extern "C" {
-    #include "writeStr.h"
-    #include "writeChar.h"
-    #include "readStr.h"
-    #include "getInt.h"
-    #include "putInt.h"
+    int writeStr(char *);
+    int readStr(char *, int);
+    int getInt(void);
+    int putInt(int);
 }
 
 class fraction {

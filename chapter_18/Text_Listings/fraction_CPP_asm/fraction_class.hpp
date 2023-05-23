@@ -1,9 +1,15 @@
+// fraction.hpp
 // simple fraction class
 
 #ifndef FRACTION_HPP
 #define FRACTION_HPP
-struct fraction {
-  private:
+// Uses the following C functions
+extern "C" int writeStr(char *);
+extern "C" int getInt(int *);
+extern "C" int putInt(int);
+
+class fraction
+{
     int num;
     int den;
   public:
