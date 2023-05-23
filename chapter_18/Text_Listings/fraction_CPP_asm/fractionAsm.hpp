@@ -1,7 +1,7 @@
 // simple fraction class
 
-#ifndef FRACTION_HPP
-#define FRACTION_HPP
+#ifndef FRACTIONASM_HPP
+#define FRACTIONASM_HPP
 // Uses the following C functions
 extern "C" {
     #include "writeStr.h"
