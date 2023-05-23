@@ -4,10 +4,10 @@
 #define FRACTION_HPP
 // Uses the following C functions
 extern "C" {
-    int writeStr(char *);
-    int readStr(char *, int);
-    int getInt(void);
-    int putInt(int);
+    #include "writeStr.h"
+    #include "writeChar.h"
+    #include "getInt.h"
+    #include "putInt.h"
 }
 
 class fraction {
