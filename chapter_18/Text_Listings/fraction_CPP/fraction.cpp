@@ -14,6 +14,11 @@ void fraction::get() {
    
     std::cout << "Enter denominator: ";
     std::cin >> den;
+
+    if (den == 0) {
+        std::cout << "WARNING: Setting 0 denominator to 1" << std::endl;
+        den = 1;
+    }
 }
 
 void fraction::display() {
