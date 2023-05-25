@@ -1,10 +1,10 @@
 // simple fraction class
 
-#ifndef FRACTION_H
-#define FRACTION_H
+#ifndef FRACTIONNC_H
+#define FRACTIONNC_H
 class fraction {
-        int num;
-        int den;
+        int num{0};
+        int den{1};
     public:
         void get();                 // gets user's values
         void display();             // displays fraction
