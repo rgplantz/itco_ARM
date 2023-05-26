@@ -2,6 +2,7 @@
 
 #include "fraction.hpp"
 #include <iostream>
+using namespace std;
 
 fraction::fraction() : num{}, den{1} {}
 
@@ -9,20 +10,20 @@ fraction::~fraction() {}
   // Nothing to do for this object
 
 void fraction::get() {
-    std::cout << "Enter numerator: ";   
-    std::cin >> num;
+    cout << "Enter numerator: ";   
+    cin >> num;
    
-    std::cout << "Enter denominator: ";
-    std::cin >> den;
+    cout << "Enter denominator: ";
+    cin >> den;
 
     if (den == 0) {
-        std::cout << "WARNING: Setting 0 denominator to 1" << std::endl;
+        cout << "WARNING: Setting 0 denominator to 1\n";
         den = 1;
     }
 }
 
 void fraction::display() {
-    std::cout << num << '/' << den << std::endl;
+    cout << num << '/' << den << '\n';
 }
 
 void fraction::add(int theValue) {
