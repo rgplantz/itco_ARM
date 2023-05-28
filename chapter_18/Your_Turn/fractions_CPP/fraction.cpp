@@ -2,47 +2,32 @@
 // Simple fraction class
 
 #include "fraction.hpp"
-// Use char arrays because writeStr is C function.
-char numMsg[] = "Enter numerator: ";
-char denMsg[] = "Enter denominator: ";
-char over[] = "/";
-char endl[] = "\n";
+using namespace std;
 
-fraction::fraction()
-{
-  num = 0;
-  den = 1;
-}
+fraction::fraction() {}
 
-fraction::fraction(int top, int bottom)
-{
-  num = top;
-  den = bottom;
-}
+fraction::fraction(int top, int bottom) : num {top}, den {bottom} {}
 
-fraction::~fraction()
-{
+fraction::~fraction() {}
   // Nothing to do for this object
-}
 
-void fraction::get()
-{
-  writeStr(numMsg);   
-  getInt(&num);
+void fraction::get() {
+    cout << "Enter numerator: ";   
+    cin >> num;
    
-  writeStr(denMsg);
-  getInt(&den);
+    cout << "Enter denominator: ";
+    cin >> den;
+
+    if (den == 0) {
+        cout << "WARNING: Setting 0 denominator to 1\n";
+        den = 1;
+    }
 }
 
-void fraction::display()
-{
-  putInt(num);
-  writeStr(over);
-  putInt(den);
-  writeStr(endl);
+void fraction::display() {
+    cout << num << '/' << den << '\n';
 }
 
-void fraction::add(int theValue)
-{
-  num += theValue * den;
+void fraction::add(int theValue) {
+    num += theValue * den;
 }
