@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-fraction::fraction() : num{}, den{1} {}
+fraction::fraction() {}
 
 fraction::~fraction() {}
   // Nothing to do for this object
