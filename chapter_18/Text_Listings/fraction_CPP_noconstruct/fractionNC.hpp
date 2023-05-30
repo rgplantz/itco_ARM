@@ -3,7 +3,7 @@
 #ifndef FRACTIONNC_H
 #define FRACTIONNC_H
 class fraction {
-        int num {0};
+        int num {0};              // specify defaults
         int den {1};
     public:
         fraction() = default;     // use default values
