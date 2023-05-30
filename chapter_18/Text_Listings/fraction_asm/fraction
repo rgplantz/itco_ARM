@@ -1,6 +1,0 @@
-# fraction
-# Declaration of fraction attributes.
-# This object takes 8 bytes.
-        .equ    num,0
-        .equ    den,4
-       
