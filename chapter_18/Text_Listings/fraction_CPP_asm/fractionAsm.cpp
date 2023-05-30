@@ -12,11 +12,6 @@ extern "C" {
 char numMsg[] = "Enter numerator: ";
 char denMsg[] = "Enter denominator: ";
 
-fraction::fraction() : num{}, den{1} {}
-
-fraction::~fraction() {}
-  // Nothing to do for this object
-
 void fraction::get() {
     writeStr(numMsg);   
     num = getInt();
