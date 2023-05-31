@@ -4,7 +4,10 @@
 #include <iostream>
 using namespace std;
 
-fraction::fraction() {}
+fraction::fraction() {
+    num = 0;
+    den = 1;
+}
 
 fraction::~fraction() {}
 

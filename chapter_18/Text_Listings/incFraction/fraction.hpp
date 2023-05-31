@@ -3,8 +3,8 @@
 #ifndef FRACTION_H
 #define FRACTION_H
 class fraction {
-        int num {0};              // specify defaults               
-        int den {1};
+        int num;               
+        int den;
     public:
         fraction();               // default constructor
         ~fraction();              // destructor
