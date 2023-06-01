@@ -1,7 +1,7 @@
 // simple fraction class
 
-#ifndef FRACTIONNC_H
-#define FRACTIONNC_H
+#ifndef FRACTIONDEF_H
+#define FRACTIONDEF_H
 class fraction {
         int num {0};              // specify defaults
         int den {1};

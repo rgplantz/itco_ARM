@@ -10,6 +10,7 @@ fraction::fraction() {
 }
 
 fraction::~fraction() {}
+// Nothing to do for this object
 
 void fraction::get() {
     cout << "Enter numerator: ";   
