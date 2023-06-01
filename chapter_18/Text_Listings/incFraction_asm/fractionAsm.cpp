@@ -1,6 +1,6 @@
 // Simple fraction class
 
-#include "fraction.h"
+#include "fractionDef.h"
 // Uses the following C functions
 extern "C" {
     #include "writeStr.h"
