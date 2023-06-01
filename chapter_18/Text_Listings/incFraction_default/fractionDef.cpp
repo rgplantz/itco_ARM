@@ -1,6 +1,6 @@
 // Simple fraction class
 
-#include "fractionDef.hpp"
+#include "fractionDef.h"
 #include <iostream>
 using namespace std;
 
