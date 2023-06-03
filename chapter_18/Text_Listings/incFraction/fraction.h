@@ -4,8 +4,8 @@
 #define FRACTION_H
 class Fraction {
 public:
-    fraction();             // default constructor
-    ~fraction();            // destructor
+    Fraction();             // default constructor
+    ~Fraction();            // destructor
     void get();             // gets user's values
     void display();         // displays fraction
     void add(int integer);  // adds integer to fraction
