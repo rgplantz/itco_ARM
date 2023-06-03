@@ -1,7 +1,7 @@
 // Simple fraction class
 
-import std;
 #include "fraction.h"
+#include <iostream>
 using namespace std;
 
 Fraction::Fraction() {
