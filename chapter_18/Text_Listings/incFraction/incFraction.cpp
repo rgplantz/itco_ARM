@@ -3,7 +3,7 @@
 #include "fraction.h"
 
 int main(void) {
-    fraction x;
+    Fraction x;
 
     x.display();
     x.get();
