@@ -5,8 +5,8 @@
 using namespace std;
 
 Fraction::Fraction() {
-    numerator = 0;
-    denominator = 1;
+    num = 0;
+    den = 1;
 }
 
 Fraction::~Fraction() {}
