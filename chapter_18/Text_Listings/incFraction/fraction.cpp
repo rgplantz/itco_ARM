@@ -4,15 +4,15 @@
 #include <iostream>
 using namespace std;
 
-fraction::fraction() {
+Fraction::Fraction() {
     numerator = 0;
     denominator = 1;
 }
 
-fraction::~fraction() {}
+Fraction::~Fraction() {}
 // Nothing to do for this object
 
-void fraction::get() {
+void Fraction::get() {
     cout << "Enter numerator: ";   
     cin >> numerator;
    
@@ -25,10 +25,10 @@ void fraction::get() {
     }
 }
 
-void fraction::display() {
+void Fraction::display() {
     cout << numerator << '/' << denominator << '\n';
 }
 
-void fraction::add(int integer) {
+void Fraction::add(int integer) {
     numerator += integer * denominator;
 }
