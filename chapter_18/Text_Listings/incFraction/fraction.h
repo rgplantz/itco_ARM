@@ -10,7 +10,7 @@ public:
     void display();         // displays fraction
     void add(int integer);  // adds integer to fraction
 private:
-    int numerator;               
-    int denominator;
+    int num;                // numerator
+    int den;                // denominator
 };
 #endif

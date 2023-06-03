@@ -14,21 +14,21 @@ Fraction::~Fraction() {}
 
 void Fraction::get() {
     cout << "Enter numerator: ";   
-    cin >> numerator;
+    cin >> num;
    
     cout << "Enter denominator: ";
-    cin >> denominator;
+    cin >> den;
 
-    if (denominator == 0) {
+    if (den == 0) {
         cout << "WARNING: Setting 0 denominator to 1\n";
-        denominator = 1;
+        den = 1;
     }
 }
 
 void Fraction::display() {
-    cout << numerator << '/' << denominator << '\n';
+    cout << num << '/' << den << '\n';
 }
 
 void Fraction::add(int integer) {
-    numerator += integer * denominator;
+    num += integer * den;
 }
