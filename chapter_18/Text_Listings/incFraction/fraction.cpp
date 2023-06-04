@@ -5,8 +5,8 @@
 using namespace std;
 
 Fraction::Fraction() {
-    num = 0;
-    den = 1;
+    numerator = 0;
+    denominator = 1;
 }
 
 Fraction::~Fraction() {}
@@ -14,21 +14,21 @@ Fraction::~Fraction() {}
 
 void Fraction::get() {
     cout << "Enter numerator: ";   
-    cin >> num;
+    cin >> numerator;
    
     cout << "Enter denominator: ";
-    cin >> den;
+    cin >> denominator;
 
-    if (den == 0) {
+    if (denominator == 0) {
         cout << "WARNING: Setting 0 denominator to 1\n";
-        den = 1;
+        denominator = 1;
     }
 }
 
 void Fraction::display() {
-    cout << num << '/' << den << '\n';
+    cout << numerator << '/' << denominator << '\n';
 }
 
-void Fraction::add(int integer) {
-    num += integer * den;
+void Fraction::add_integer(int x) {
+    numerator += x * denominator;
 }
