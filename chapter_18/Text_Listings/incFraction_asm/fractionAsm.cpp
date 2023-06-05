@@ -9,24 +9,24 @@ extern "C" {
     #include "putInt.h"
 }
 // Use char arrays because writeStr is C function.
-char numMsg[] = "Enter numerator: ";
-char denMsg[] = "Enter denominator: ";
+char num_msg[] = "Enter numerator: ";
+char den_msg[] = "Enter denominator: ";
 
 void fraction::get() {
-    writeStr(numMsg);   
-    num = getInt();
+    writeStr(num_msg);   
+    numerator = getInt();
    
-    writeStr(denMsg);
-    den = getInt();
+    writeStr(den_msg);
+    denominator = getInt();
 }
 
 void fraction::display() {
-    putInt(num);
+    putInt(numerator);
     writeChar('/');
-    putInt(den);
+    putInt(denominator);
     writeChar('\n');
 }
 
-void fraction::add(int theValue) {
-    num += theValue * den;
+void fraction::add_integer(int x) {
+    numerator += x * denominator;
 }
