@@ -3,11 +3,11 @@
 #include "fractionDef.h"
 
 int main(void) {
-    fraction x;
+    Fraction my_fraction;
 
-    x.display();
-    x.get();
-    x.add(1);
-    x.display();
+    my_fraction.display();
+    my_fraction.get();
+    my_fraction.add_integer(1);
+    my_fraction.display();
     return 0;
 }

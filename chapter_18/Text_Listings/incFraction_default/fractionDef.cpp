@@ -4,23 +4,23 @@
 #include <iostream>
 using namespace std;
 
-void fraction::get() {
+void Fraction::get() {
     cout << "Enter numerator: ";   
-    cin >> num;
+    cin >> numerator;
    
     cout << "Enter denominator: ";
-    cin >> den;
+    cin >> denominator;
 
-    if (den == 0) {
+    if (denominator == 0) {
         cout << "WARNING: Setting 0 denominator to 1\n";
-        den = 1;
+        denominator = 1;
     }
 }
 
-void fraction::display() {
-    cout << num << '/' << den << '\n';
+void Fraction::display() {
+    cout << numerator << '/' << denominator << '\n';
 }
 
-void fraction::add(int theValue) {
-    num += theValue * den;
+void Fraction::add_integer(int x) {
+    numerator += x * denominator;
 }
