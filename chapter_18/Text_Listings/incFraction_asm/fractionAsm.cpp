@@ -12,7 +12,7 @@ extern "C" {
 char num_msg[] = "Enter numerator: ";
 char den_msg[] = "Enter denominator: ";
 
-void fraction::get() {
+void Fraction::get() {
     writeStr(num_msg);   
     numerator = getInt();
    
@@ -20,13 +20,13 @@ void fraction::get() {
     denominator = getInt();
 }
 
-void fraction::display() {
+void Fraction::display() {
     putInt(numerator);
     writeChar('/');
     putInt(denominator);
     writeChar('\n');
 }
 
-void fraction::add_integer(int x) {
+void Fraction::add_integer(int x) {
     numerator += x * denominator;
 }
