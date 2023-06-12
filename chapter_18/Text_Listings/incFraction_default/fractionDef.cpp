@@ -4,7 +4,8 @@
 #include <iostream>
 using namespace std;
 
-void Fraction::get() {
+void Fraction::get()
+{
     cout << "Enter numerator: ";   
     cin >> numerator;
    
@@ -17,10 +18,12 @@ void Fraction::get() {
     }
 }
 
-void Fraction::display() {
+void Fraction::display()
+{
     cout << numerator << '/' << denominator << '\n';
 }
 
-void Fraction::add_integer(int x) {
+void Fraction::add_integer(int x)
+{
     numerator += x * denominator;
 }
