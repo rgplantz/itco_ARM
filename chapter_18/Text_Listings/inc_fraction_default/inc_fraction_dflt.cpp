@@ -1,6 +1,6 @@
 // Gets a fraction from user and increments by one
 
-#include "fractionDef.h"
+#include "fraction_dflt.h"
 
 int main(void)
 {
