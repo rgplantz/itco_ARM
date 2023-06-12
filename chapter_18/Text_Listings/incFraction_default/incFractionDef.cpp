@@ -2,7 +2,8 @@
 
 #include "fractionDef.h"
 
-int main(void) {
+int main(void)
+{
     Fraction my_fraction;
 
     my_fraction.display();
