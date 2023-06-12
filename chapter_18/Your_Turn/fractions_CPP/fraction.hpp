@@ -8,7 +8,7 @@ class fraction {
         int den {1};
     public:
         fraction();                 // default constructor
-        fraction(int x, int y);     // another constructor
+        fraction(int num, int den); // another constructor
         ~fraction();                // destructor
         void get();                 // gets user's values
         void display();             // displays fraction

@@ -6,7 +6,7 @@ using namespace std;
 
 fraction::fraction() {}
 
-fraction::fraction(int top, int bottom) : num {top}, den {bottom} {}
+fraction::fraction(int num, int den) : num {num}, den {den} {}
 
 fraction::~fraction() {}
   // Nothing to do for this object

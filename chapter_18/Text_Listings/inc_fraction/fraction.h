@@ -2,7 +2,7 @@
 
 #ifndef FRACTION_H
 #define FRACTION_H
-class Fraction {
+struct Fraction {
 public:
     Fraction();               // default constructor
     ~Fraction();              // destructor
