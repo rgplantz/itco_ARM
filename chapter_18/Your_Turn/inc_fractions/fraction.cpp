@@ -1,5 +1,6 @@
 // fraction class with two constructors
 
+#include <iostream>
 #include "fraction.h"
 using namespace std;
 
