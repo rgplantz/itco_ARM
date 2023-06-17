@@ -1,17 +1,15 @@
-// fraction.cpp
-// Simple fraction class
+// fraction class with two constructors
 
-#include "fraction.hpp"
+#include "fraction.h"
 using namespace std;
 
-fraction::fraction() {}
-
-fraction::fraction(int top, int bottom) : num {top}, den {bottom} {}
+fraction::fraction(int top) : numerator {top} {}
 
 fraction::~fraction() {}
   // Nothing to do for this object
 
-void fraction::get() {
+void fraction::get()
+{
     cout << "Enter numerator: ";   
     cin >> num;
    
@@ -24,10 +22,12 @@ void fraction::get() {
     }
 }
 
-void fraction::display() {
+void fraction::display()
+{
     cout << num << '/' << den << '\n';
 }
 
-void fraction::add(int theValue) {
-    num += theValue * den;
+void fraction::add_int(int x)
+{
+    num += x * den;
 }
