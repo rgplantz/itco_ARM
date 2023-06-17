@@ -6,9 +6,6 @@ using namespace std;
 
 Fraction::Fraction(int top) : numerator {top} {}
 
-Fraction::~Fraction() {}
-  // Nothing to do for this object
-
 void Fraction::get()
 {
     cout << "Enter numerator: ";   
