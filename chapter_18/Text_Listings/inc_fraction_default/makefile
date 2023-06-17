@@ -1,30 +1,28 @@
-# Build incFractionNC program
+# Build incFraction_dflt program
 
-objects = incFractionNC.o fractionNC.o
+objects = incFraction_dflt.o fraction_dflt.o
 genasm = -S -Wall -O0 -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-exceptions
 
 CXXFLAGS = -c -g -Wall
 ASFLAGS = --gstabs
 CXX = g++
 
-incFractionNC: $(objects)
-	$(CXX) $(objects) -o incFractionNC
+incFraction_dflt: $(objects)
+	$(CXX) $(objects) -o incFraction_dflt
 
-incFractionNC.o: fractionNC.hpp
-fractionNC.o: fractionNC.hpp
+incFraction_dflt.o: fraction_dflt.hpp
+fraction_dflt.o: fraction_dflt.hpp
 
-incFractionNC.s: incFractionNC.cpp fractionNC.hpp
-	g++ $(genasm) -o temp incFractionNC.cpp
-	expand -t 8 temp > incFractionNC.s
+incFraction_dflt.s: incFraction_dflt.cpp fraction_dflt.hpp
+	g++ $(genasm) -o temp incFraction_dflt.cpp
+	expand -t 8 temp > incFraction_dflt.s
 	rm temp
 
-fractionNC.s: fractionNC.cpp fractionNC.hpp
-	$(CXX) $(genasm) -o temp fractionNC.cpp
-	expand -t 8 temp > fractionNC.s
+fraction_dflt.s: fraction_dflt.cpp fraction_dflt.hpp
+	$(CXX) $(genasm) -o temp fraction_dflt.cpp
+	expand -t 8 temp > fraction_dflt.s
 	rm temp
 
-.PHONY: clean allclean
+.PHONY: clean
 clean:
-	rm *~ *.o
-allclean:
-	rm *~ *.o incFractionNC
+	rm incFraction_dflt *.o *~
