@@ -4,7 +4,7 @@
 
 int main(void)
 {
-    fraction x;
+    Fraction x;
     x.display();
     x.get();
     x.add(1);
