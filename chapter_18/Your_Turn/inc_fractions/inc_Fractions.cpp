@@ -13,7 +13,7 @@ int main(void)
     fraction y(1);
     y.display();
     y.get();
-    y.add(1);
+    y.add_integer(1);
     y.display();
 
     return 0;
