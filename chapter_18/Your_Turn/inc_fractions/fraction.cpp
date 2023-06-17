@@ -3,31 +3,31 @@
 #include "fraction.h"
 using namespace std;
 
-fraction::fraction(int top) : numerator {top} {}
+Fraction::Fraction(int top) : numerator {top} {}
 
-fraction::~fraction() {}
+Fraction::~Fraction() {}
   // Nothing to do for this object
 
-void fraction::get()
+void Fraction::get()
 {
     cout << "Enter numerator: ";   
-    cin >> num;
+    cin >> numerator;
    
     cout << "Enter denominator: ";
-    cin >> den;
+    cin >> denominator;
 
-    if (den == 0) {
+    if (denominator == 0) {
         cout << "WARNING: Setting 0 denominator to 1\n";
-        den = 1;
+        denominator = 1;
     }
 }
 
-void fraction::display()
+void Fraction::display()
 {
-    cout << num << '/' << den << '\n';
+    cout << numerator << '/' << denominator << '\n';
 }
 
-void fraction::add_int(int x)
+void Fraction::add_integer(int x)
 {
-    num += x * den;
+    numerator += x * denominator;
 }
