@@ -2,7 +2,7 @@
 
 #ifndef FRACTION_H
 #define FRACTION_H
-class fraction {
+class Fraction {
 public:
     Fraction() = default;     // tell compiler to generate default
     Fraction(int numerator);  // allow setting numerator
