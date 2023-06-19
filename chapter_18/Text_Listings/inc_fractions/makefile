@@ -8,7 +8,7 @@ ASFLAGS = --gstabs
 CXX = g++
 
 inc_fractions: $(objects)
-	$(CXX) $(objects) -o f
+	$(CXX) $(objects) -o inc_fractions
 
 inc_fractions.o: fraction.h
 fraction.o: fraction.h
