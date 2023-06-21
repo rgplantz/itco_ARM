@@ -1,7 +1,7 @@
 // simple fraction class
 
-#ifndef FRACTIONDEF_H
-#define FRACTIONDEF_H
+#ifndef FRACTION_DFLT_H
+#define FRACTION_DFLT_H
 class Fraction {
 public:
     Fraction() = default;     // tell compiler to generate default
