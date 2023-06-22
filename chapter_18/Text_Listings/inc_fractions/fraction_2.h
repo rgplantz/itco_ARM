@@ -5,7 +5,7 @@
 class Fraction {
 public:
     Fraction() = default;     // tell compiler to generate default
-    Fraction(int n);          // allow setting numerator
+    Fraction(int n) :numerator{n} {}; // allow setting numerator
     ~Fraction() = default;
     void get();               // gets user's values
     void display();           // displays fraction

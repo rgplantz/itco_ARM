@@ -4,8 +4,6 @@
 #include "fraction_2.h"
 using namespace std;
 
-Fraction::Fraction(int n) :numerator{n} {}
-
 void Fraction::get()
 {
     cout << "Enter numerator: ";   
