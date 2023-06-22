@@ -1,6 +1,6 @@
 // Gets twp fractions from user and increments each by one
 
-#include "fraction.h"
+#include "fraction_2.h"
 
 int main(void)
 {

@@ -1,7 +1,7 @@
 // fraction class with two constructors
 
-#ifndef FRACTION_H
-#define FRACTION_H
+#ifndef FRACTION_2_H
+#define FRACTION_2_H
 class Fraction {
 public:
     Fraction() = default;     // tell compiler to generate default
