@@ -1,4 +1,4 @@
-// Gets twp fractions from user and increments each by one
+// Gets two fractions from user and increments each by one
 
 #include "fraction_2.h"
 
