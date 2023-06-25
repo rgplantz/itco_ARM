@@ -1,28 +1,28 @@
-# Build inc_fraction_arg program
+# Build inc_fractions program
 
-objects = inc_fraction_arg.o fraction.o
+objects = inc_fractions.o fraction.o
 genasm = -S -Wall -O0 -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-exceptions
 
 CXXFLAGS = -c -g -Wall
 ASFLAGS = --gstabs
 CXX = g++
 
-inc_fraction_arg: $(objects)
-	$(CXX) $(objects) -o inc_fraction_arg
+inc_fractions: $(objects)
+	$(CXX) $(objects) -o inc_fractions
 
-inc_fraction_arg.o: fraction_arg.h
-fraction.o: fraction_arg.h
+inc_fractions.o: fraction.h
+fraction.o: fraction.h
 
-inc_fraction_arg.s: inc_fraction_arg.cpp fraction_arg.h
-	g++ $(genasm) -o temp inc_fraction_arg.cpp
-	expand -t 8 temp > inc_fraction_arg.s
+inc_fractions.s: inc_fractions.cpp fraction.h
+	g++ $(genasm) -o temp inc_fractions.cpp
+	expand -t 8 temp > inc_fractions.s
 	rm temp
 
-fraction.s: fraction.cpp fraction_arg.h
+fraction.s: fraction.cpp fraction.h
 	$(CXX) $(genasm) -o temp fraction.cpp
 	expand -t 8 temp > fraction.s
 	rm temp
 
 .PHONY: clean
 clean:
-	rm inc_fraction_arg *.o *~
+	rm inc_fractions *.o *~
