@@ -1,7 +1,7 @@
-// Fraction class with two constructors
+// Fraction class with argument constructor
 
 #include <iostream>
-#include "fraction_2.h"
+#include "fraction_arg.h"
 using namespace std;
 
 void Fraction::get()
