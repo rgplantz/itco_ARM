@@ -1,9 +1,10 @@
-// Fraction class with argument constructor
+// Fraction class with two constructors
 
-#ifndef FRACTION_ARG_H
-#define FRACTION_ARG_H
+#ifndef FRACTION_2_H
+#define FRACTION_2_H
 class Fraction {
 public:
+    Fraction() = default;     // tell compiler to generate default
     Fraction(int n) :numerator{n} {}; // allow setting numerator
     ~Fraction() = default;
     void get();               // gets user's values
