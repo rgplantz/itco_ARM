@@ -10,7 +10,7 @@ int main(void)
     x.add_integer(1);
     x.display();
 
-    Fraction y(1);
+    Fraction y(78);
     y.display();
     y.get();
     y.add_integer(1);
