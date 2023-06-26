@@ -11,7 +11,7 @@ public:
     void display();           // displays fraction
     void add_integer(int x);  // adds x to fraction
 private:
-    int numerator {}; 
-    int denominator {1}; 
+    int numerator {123};      // weird values so we can see
+    int denominator {456};    //    what compiler is doing
 };
 #endif
