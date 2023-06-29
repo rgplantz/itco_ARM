@@ -23,6 +23,8 @@ fraction.s: fraction.cpp fraction.h
 	expand -t 8 temp > fraction.s
 	rm temp
 
-.PHONY: clean
+.PHONY: clean allclean
 clean:
-	rm inc_fractions *.o *~
+	rm -f $(objects) *~
+allclean: clean
+	rm inc_fractions
