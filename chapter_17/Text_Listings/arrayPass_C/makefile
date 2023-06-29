@@ -28,6 +28,6 @@ displayArray.s: displayArray.c displayArray.h
 
 .PHONY: clean allclean
 clean:
-	rm -f $(objects)
+	rm -f $(objects) *~
 allclean: clean
 	rm fill2XIndex
