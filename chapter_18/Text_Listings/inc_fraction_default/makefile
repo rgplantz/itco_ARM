@@ -23,6 +23,8 @@ fraction_dflt.s: fraction_dflt.cpp fraction_dflt.h
 	expand -t 8 temp > fraction_dflt.s
 	rm temp
 
-.PHONY: clean
+.PHONY: clean allclean
 clean:
-	rm inc_fraction_dflt *.o *~
+	rm -f $(objects) *~
+allclean: clean
+	rm inc_fraction_dflt
