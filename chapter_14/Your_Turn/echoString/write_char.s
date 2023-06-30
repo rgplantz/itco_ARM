@@ -7,19 +7,19 @@
 // Useful constants
         .equ    STDOUT, 1
 // Stack frame
-        .equ    theChar, 16
+        .equ    a_char, 16
         .equ    frame, 32 
 // The code
         .text
         .align  2
-        .global writeChar
-        .type   writeChar, %function
-writeChar:
+        .global write_char
+        .type   write_char, %function
+write_char:
         stp     fp, lr, [sp, -frame]! // our stack frame
-        strb    w0, [sp, theChar]     // store input char
+        strb    w0, [sp, a_char]      // store input char
 
         mov     w2, 1                 // write 1 byte
-        add     x1, sp, theChar       // address of char
+        add     x1, sp, a_char        // address of char
         mov     w0, STDOUT            // write to screen
         bl      write
 

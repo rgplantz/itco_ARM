@@ -3,7 +3,7 @@
 //       w0 <- char to be written
 // returns 0
 
-#ifndef WRITECHAR_H
-#define WRITECHAR_H
-int writeChar(char);
+#ifndef WRITE_CHAR_H
+#define WRITE_CHAR_H
+int write_char(char);
 #endif
