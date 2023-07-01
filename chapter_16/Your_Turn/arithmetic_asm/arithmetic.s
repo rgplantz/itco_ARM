@@ -3,6 +3,7 @@
 // Useful constants
         .equ    CONSTANT, 123             // number to subtract
         .equ    MAX, 11                   // maximum digits
+        .equ    RETURN, '/n'
 // Stack frame
         .equ    x, 16
         .equ    y, 20
@@ -25,8 +26,6 @@ remainder:
         .string " % "
 equals:
         .string " = "
-newLine:
-        .string "\n"
         .text
         .align  2
         .global main
@@ -36,90 +35,90 @@ main:
         mov     fp, sp                // set our frame pointer
 
         adr     x0, prompt            // ask user for input
-        bl      writeStr
-        bl      getInt                // get x
+        bl      write_str
+        bl      get_int               // get x
         str     w0, [sp, x]
         adr     x0, prompt            // ask user for input
-        bl      writeStr
-        bl      getInt                // get y
+        bl      write_str
+        bl      get_int               // get y
         str     w0, [sp, y]
 // Addition
         ldr     w0, [sp, x]           // print x
-        bl      putInt
+        bl      put_int
         adr     x0, plus              // +
-        bl      writeStr
+        bl      write_str
         ldr     w0, [sp, y]           // y
-        bl      putInt
+        bl      put_int
         adr     x0, equals            // =
-        bl      writeStr
+        bl      write_str
         ldr     w0, [sp, x]
         ldr     w1, [sp, y]
         add     w0, w0, w1            // sum
-        bl      putInt
-        adr     x0, newLine
-        bl      writeStr
+        bl      put_int
+        mov     w0, RETURN
+        bl      write_char
 // Subtraction
         ldr     w0, [sp, x]           // print x
-        bl      putInt
+        bl      put_int
         adr     x0, minus             // -
-        bl      writeStr
+        bl      write_str
         ldr     w0, [sp, y]           // y
-        bl      putInt
+        bl      put_int
         adr     x0, equals            // =
-        bl      writeStr
+        bl      write_str
         ldr     w0, [sp, x]
         ldr     w1, [sp, y]
         sub     w0, w0, w1            // difference
-        bl      putInt
-        adr     x0, newLine
-        bl      writeStr
+        bl      put_int
+        mov     w0, RETURN
+        bl      write_char
 // Multiplication
         ldr     w0, [sp, x]           // print x
-        bl      putInt
+        bl      put_int
         adr     x0, times             // *
-        bl      writeStr
+        bl      write_str
         ldr     w0, [sp, y]           // y
-        bl      putInt
+        bl      put_int
         adr     x0, equals            // =
-        bl      writeStr
+        bl      write_str
         ldr     w0, [sp, x]
         ldr     w1, [sp, y]
         mul     w0, w0, w1            // product
-        bl      putInt
-        adr     x0, newLine
-        bl      writeStr
+        bl      put_int
+        mov     w0, RETURN
+        bl      write_char
 
   // Division
         ldr     w0, [sp, x]           // print x
-        bl      putInt
+        bl      put_int
         adr     x0, div               // /
-        bl      writeStr
+        bl      write_str
         ldr     w0, [sp, y]           // y
-        bl      putInt
+        bl      put_int
         adr     x0, equals            // =
-        bl      writeStr
+        bl      write_str
         ldr     w0, [sp, x]
         ldr     w1, [sp, y]
         sdiv    w0, w0, w1            // quotient
-        bl      putInt
-        adr     x0, newLine
-        bl      writeStr
+        bl      put_int
+        mov     w0, RETURN
+        bl      write_char
 
         ldr     w0, [sp, x]           // print x
-        bl      putInt
+        bl      put_int
         adr     x0, remainder         // %
-        bl      writeStr
+        bl      write_str
         ldr     w0, [sp, y]           // y
-        bl      putInt
+        bl      put_int
         adr     x0, equals            // =
-        bl      writeStr
+        bl      write_str
         ldr     w0, [sp, x]
         ldr     w1, [sp, y]
         sdiv    w2, w0, w1            // compute quotient
         msub    w0, w2, w1, w0        //     and remainder
-        bl      putInt
-        adr     x0, newLine
-        bl      writeStr
+        bl      put_int
+        mov     w0, RETURN
+        bl      write_char
 
         mov     w0, wzr               // return 0;
         ldp     fp, lr, [sp], frame   // restore fp, lr, sp
