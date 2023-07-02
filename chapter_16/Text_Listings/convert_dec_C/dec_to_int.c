@@ -3,33 +3,33 @@
 
 #include <stdio.h>
 #include <stdbool.h>
-#include "decToInt.h"
+#include "dec_to_int.h"
 #define INTMASK 0x0f
 #define RADIX 10
 #define NUL '\0'
 
-int decToInt(int *intPtr, char *stringPtr) {
+int dec_to_int(int *int_ptr, char *string_ptr) {
     bool negative = false;       // assume positive
     int result = 0;
     int count = 0;
 
-    if (*stringPtr == '-') {
+    if (*string_ptr == '-') {
         negative = true;
-        stringPtr++;
-    } else if (*stringPtr == '+') {
+        string_ptr++;
+    } else if (*string_ptr == '+') {
         stringPtr++;
     }
 
-    while (*stringPtr != NUL) {
+    while (*string_ptr != NUL) {
         result = RADIX * result;
-        result += (int)(*stringPtr & INTMASK);
-        stringPtr++;
+        result += (int)(*string_ptr & INTMASK);
+        string_ptr++;
         count++;
     }
 
     if (negative) {
         result = -result;
     }
-    *intPtr = result;
+    *int_ptr = result;
     return count;
 }
