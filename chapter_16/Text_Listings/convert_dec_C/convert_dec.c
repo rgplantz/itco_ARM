@@ -10,7 +10,7 @@
 int main(void) {
 #define ARRAYSZ MAX+1
     char the_string[MAX];
-    int the_tnt;
+    int the_int;
     
     write_str("Enter an integer: ");
     read_str(the_string, MAX);
