@@ -10,7 +10,7 @@ convert_hex: $(objects)
 convert_hex.o: hex_to_int.h write_str.h read_str.h
 hex_to_int.o: hex_to_int.h
 
-convert_hex.s: convert_hex.c hex_to_int.h write_str.h readLn_str.h
+convert_hex.s: convert_hex.c hex_to_int.h write_str.h read_str.h
 	$(CC) $(genasm) -o temp $<
 	expand -t 8 temp > $@
 	rm temp
