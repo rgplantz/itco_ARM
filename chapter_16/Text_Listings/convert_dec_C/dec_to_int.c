@@ -17,7 +17,7 @@ int dec_to_int(int *int_ptr, char *string_ptr) {
         negative = true;
         string_ptr++;
     } else if (*string_ptr == '+') {
-        stringPtr++;
+        string_ptr++;
     }
 
     while (*string_ptr != NUL) {
