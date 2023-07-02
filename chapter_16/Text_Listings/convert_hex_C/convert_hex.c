@@ -15,7 +15,7 @@ int main() {
     write_str("Enter up to 8 hex characters: ");
     read_str(the_string, MAX);
 
-    hexToInt(&the_int, the_string);
+    hex_to_int(&the_int, the_string);
     printf("0x%x = %i\n", the_int, the_int);
     return 0;
 }
