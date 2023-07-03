@@ -13,7 +13,7 @@ int main(void)
     char my_string[ARRAYSZ];
    
     write_str("Enter up to 50 alphabetic characters: ");
-    read_str(myString, MAX);
+    read_str(my_string, MAX);
 
     to_upper(my_string, my_string);
     write_str("All upper: ");
