@@ -21,9 +21,9 @@ void Fraction::get() {
 }
 
 void Fraction::display() {
-    putInt(numerator);
+    put_int(numerator);
     write_char('/');
-    putInt(denominator);
+    put_int(denominator);
     write_char('\n');
 }
 
