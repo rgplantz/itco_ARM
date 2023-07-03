@@ -22,12 +22,12 @@ int_to_dec:
         sub     sp, sp, frame         // local string on stack
 
         cmp     w1, wzr               // => 0?
-        tbz     w1, 31, non-negative   // yes, go to conversion
+        tbz     w1, 31, non_negative  // yes, go to conversion
         neg     w1, w1                // no, negate int
         mov     w2, MINUS
         strb    w2, [x0]              // start with minus sign
         add     x0, x0, 1             // increment pointer
-non-negative:
+non_negative:
         add     x3, sp, reverse       // pointer to local string storage
         strb    wzr, [x3]             // create end with NUL
         mov     w2, RADIX             // put in register
