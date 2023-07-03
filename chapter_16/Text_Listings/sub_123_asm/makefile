@@ -1,8 +1,6 @@
 # Build add123 program
 
 objects = add123.o decToUInt.o intToUDec.o writeStr.o readLn.o
-myio = ../../../common
-VPATH = $(myio)
 ASFLAGS = --gstabs
 AS = as
 CC = gcc
