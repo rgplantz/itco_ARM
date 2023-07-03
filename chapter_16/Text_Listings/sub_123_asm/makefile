@@ -1,14 +1,14 @@
-# Build add123 program
+# Build sub_123 program
 
-objects = add123.o decToUInt.o intToUDec.o writeStr.o readLn.o
+objects = sub_123.o dec_to_int.o int_to_dec.o write_str.o write_char.o read_str.o
 ASFLAGS = --gstabs
 AS = as
 CC = gcc
 
-add123: $(objects)
+sub_123: $(objects)
 
 .PHONY: clean allclean
 clean:
 	rm -f $(objects)
 allclean: clean
-	rm add123
+	rm sub_123
