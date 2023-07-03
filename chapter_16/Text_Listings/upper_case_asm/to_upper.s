@@ -9,21 +9,21 @@
 // Program code
         .text
         .align  2
-        .global toUpper
-        .type   toUpper, %function
-toUpper:
+        .global to_upper
+        .type   to_upper, %function
+to_upper:
         mov     w2, wzr               // counter = 0;
-convertLoop:
+convert:
         ldrb    w3, [x1]              // load character
-        cbz     w3, allDone           // all done if NUL char
+        cbz     w3, done              // all done if NUL char
         movz    w4, UPMASK            // if not, do masking
         and     w3, w3, w4            // mask to upper
         strb    w3, [x0]              // store result
         add     x0, x0, 1             // increment destination pointer
         add     x1, x1, 1             //        source pointer
         add     w2, w2, 1             //        and counter
-        b       convertLoop           // and continue
-allDone:
+        b       convert               // and continue
+done:
         strb    w3, [x0]              // terminating NUL got us here
         mov     w0, w2                // return counter
         ret                           // back to caller
