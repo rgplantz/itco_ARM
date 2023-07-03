@@ -19,11 +19,11 @@ get_int:
 
         mov     w1, MAX
         add     x0, sp, a_string      // place to store input string
-        bl      readStr
+        bl      read_str
 
         add     x1, sp, a_string      // input
         add     x0, sp, an_int        // place for output
-        bl      decToInt              // convert as int
+        bl      dec_to_int            // convert as int
 
         ldr     w0, [sp, an_int]      // return the int
         ldp     fp, lr, [sp], frame   // restore fp, lr, sp

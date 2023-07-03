@@ -20,10 +20,10 @@ put_int:
 
         mov     w1, w0                // input
         add     x0, sp, a_string      // place for output string
-        bl      intToDec              // convert to text string
+        bl      int_to_dec            // convert to text string
 
         add     x0, sp, a_string      // display the int
-        bl      writeStr
+        bl      write_str
 
         mov     w0, wzr               // return 0;
         ldp     fp, lr, [sp], frame   // restore fp, lr, sp
