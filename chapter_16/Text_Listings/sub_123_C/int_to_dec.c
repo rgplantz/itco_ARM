@@ -1,7 +1,7 @@
 // Converts an int to corresponding decimal text
 // string representation. Returns number of characters.
 
-#include "intToDec.h"
+#include "int_to_dec.h"
 #define ARRAYSZ 12
 #define ASCII 0x30
 #define RADIX 10
