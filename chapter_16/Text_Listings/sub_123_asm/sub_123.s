@@ -31,7 +31,7 @@ main:
 
         add     x1, sp, the_string    // input
         add     x0, sp, the_int       // place for output
-        bl      dec_to)int            // convert as int
+        bl      dec_to_int            // convert as int
 
         ldr     w1, [sp, the_int]
         sub     w1, w1, CONSTANT      // subtract our constant
