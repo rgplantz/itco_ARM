@@ -7,7 +7,7 @@ CFLAGS = -g -Wall
 CC = gcc
 
 upper_case: $(objects)
-upper_case.o: to_upper.h write_str.h write_char.h readLn.h
+upper_case.o: to_upper.h write_str.h write_char.h read_str.h
 to_upper.o: to_upper.h
 
 upper_case.s: upper_case.c to_upper.h write_str.h write_char.h read_str.h
