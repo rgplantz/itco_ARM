@@ -7,22 +7,23 @@
 #define RADIX 10
 #define NUL '\0'
 
-int intToDec(char *decString, int theInt) {
-    char reverseDec[ARRAYSZ];
+int int_to_dec(char *dec_string, int the_int)
+{
+    char reverse[ARRAYSZ];
     char digit;
     char *ptr;
     unsigned int working;
     int count = 0;
     
-    if (theInt < 0) {
-        theInt = -theInt;
-        *decString = '-';
+    if (the_int < 0) {
+        the_int = -the_int;
+        *dec_string = '-';
         count++;
-        decString++;
+        dec_string++;
     }
-    ptr = reverseDec;   // point to local char array
+    ptr = reverse;      // point to local char array
     *ptr = NUL;         // start with termination char
-    working = (unsigned int)theInt; // use unsigned arithmetic
+    working = (unsigned int)the_int; // use unsigned arithmetic
     do {
         ptr++;
         digit = (char)(working % RADIX);
@@ -31,12 +32,12 @@ int intToDec(char *decString, int theInt) {
     } while (working > 0);
 
     do {                // reverse the string
-        *decString = *ptr;
+        *dec_string = *ptr;
         count++;
-        decString++;
+        dec_string++;
         ptr--;
     } while (*ptr != NUL);
-    *decString = *ptr;  // copy termination char
+    *dec_string = *ptr;  // copy termination char
 
     return count;
 }
