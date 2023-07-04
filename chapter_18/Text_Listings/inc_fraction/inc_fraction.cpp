@@ -10,5 +10,6 @@ int main(void)
     my_fraction.get();
     my_fraction.add_integer(1);
     my_fraction.display();
+
     return 0;
 }
