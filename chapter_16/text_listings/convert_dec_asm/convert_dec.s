@@ -37,6 +37,6 @@ main:
         add     x1, sp, the_string    // input text string
         adr     x0, format            // format message
         bl      printf                // show results
-        mov     w0, 0                 // return 0;
+        mov     w0, wzr               // return 0;
         ldp     x29, x30, [sp], frame // undo stack frame
         ret
