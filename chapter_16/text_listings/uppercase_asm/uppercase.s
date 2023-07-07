@@ -1,4 +1,4 @@
-// Converts alphabetic characters to uppercase
+// Makes alphabetic text string all uppercase
         .arch armv8-a
 // Useful constant
         .equ    MAX,50                // character limit
