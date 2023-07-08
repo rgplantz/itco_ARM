@@ -8,7 +8,8 @@
 #define RADIX 10
 #define NUL '\0'
 
-int dec_to_int(int *int_ptr, char *string_ptr) {
+int dec_to_int(int *int_ptr, char *string_ptr)
+{
     bool negative = false;       // assume positive
     int result = 0;
     int count = 0;

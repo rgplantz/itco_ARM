@@ -1,4 +1,4 @@
-// Converts alphabetic characters to uppercase
+// Makes alphabetic text string all uppercase
 
 #include <stdio.h>
 #include "to_upper.h"
