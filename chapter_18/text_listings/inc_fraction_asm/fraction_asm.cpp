@@ -8,7 +8,7 @@ extern "C" {
     #include "get_int.h"
     #include "put_int.h"
 }
-// Use char arrays because writeStr is C function.
+// Use char arrays because write_str is C function.
 char num_msg[] = "Enter numerator: ";
 char den_msg[] = "Enter denominator: ";
 
