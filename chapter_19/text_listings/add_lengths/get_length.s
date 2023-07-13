@@ -35,7 +35,7 @@ get_length:
         bl      write_str
         bl      get_int               // fraction part
         and     w0, w0, FOUR_BITS     // make sure 1/16ths
-        or      w0, w0, w19           // add integer part
+        orr     w0, w0, w19           // add integer part
 
         ldp     fp, lr, [sp], frame   // restore fp, lr, sp
         ret                           // back to caller
