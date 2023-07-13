@@ -4,12 +4,12 @@
         .equ    x, 16
         .equ    y, 20
         .equ    frame, 32
-# Constant data
+// Constant data
         .section	.rodata
         .align  3
 sum_msg:
         .string "Sum = "
-/ Code
+// Code
         .text
         .align  2
         .global main
