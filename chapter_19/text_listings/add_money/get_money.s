@@ -17,9 +17,9 @@ cents:
 // Code
         .text
         .align  2
-        .global get_length
-        .type   get_length, %function
-get_length:
+        .global get_money
+        .type   get_money, %function
+get_money:
         stp     fp, lr, [sp, -frame]! // create our stack frame
         mov     fp, sp                // set our frame pointer
         str     x19, [sp, save19]     // for local var
