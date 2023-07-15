@@ -7,7 +7,7 @@
 // Useful constants
         .equ    FOUR_BITS, 0xf        // for fraction
 // Stack frame
-        .equ    number, 16
+        .equ    save19, 16
         .equ    frame, 32
 # Constant data
         .section	.rodata
@@ -22,21 +22,22 @@ sixteenths:
 display_length:
         stp     fp, lr, [sp, -frame]! // create our stack frame
         mov     fp, sp                // set our frame pointer
-        str     w0, [sp, number]      // save input value
+        str     x19, [sp, save19]     // for local var
 
-        lsr     w0, w0, 4             // integer part
+        mov     w19, w0               // save input
+        lsr     w0, w19, 4            // integer part
         bl      put_int
 
         mov     w0, ' '               // some formatting
         bl      write_char
 
-        ldr     w0, [sp, number]      // retrieve input
-        and     w0, w0, FOUR_BITS     // mosk off integer
+        and     w0, w19, FOUR_BITS    // mosk off integer
         bl      put_int               // fractional part
 
         adr     x0, sixteenths        // more formatting
         bl      write_str
 
         mov     w0, wzr               // return 0;
+        ldp     x19, [sp, save19]     // restore for caller
         ldp     fp, lr, [sp], frame   // restore fp, lr, sp
         ret                           // back to caller

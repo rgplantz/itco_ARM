@@ -5,7 +5,8 @@
 // Useful constants
         .equ    FOUR_BITS, 0xf        // for fraction
 // Stack frame
-        .equ    frame, 16
+        .equ    save19, 16
+        .equ    frame, 32
 # Constant data
         .section	.rodata
         .align  3
@@ -23,6 +24,7 @@ fraction:
 get_length:
         stp     fp, lr, [sp, -frame]! // create our stack frame
         mov     fp, sp                // set our frame pointer
+        str     x19, [sp, save19]     // for local var
 
         adr     x0, prompt            // ask for length
         bl      write_str
@@ -37,5 +39,6 @@ get_length:
         and     w0, w0, FOUR_BITS     // make sure 1/16ths
         orr     w0, w0, w19           // add integer part
 
+        ldp     x19, [sp, save19]     // restore for caller
         ldp     fp, lr, [sp], frame   // restore fp, lr, sp
         ret                           // back to caller
