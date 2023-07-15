@@ -21,7 +21,7 @@ display_money:
 
         mov     w1, 100               // 100 cents per dollar
         sdiv    w20, w0, w1           // dollars
-        sub     w19, w19, w20         // leaving cents
+        sub     w19, w0, w20          // leaving cents
 
         mov     w0, '$'               // some formatting
         bl      write_char
