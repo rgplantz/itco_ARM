@@ -30,6 +30,13 @@ display_money:
 
         mov     w0, '.'               // some formatting
         bl      write_char
+        cmp     w19, wzr              // negative?
+        cneg    w19, w19, mi          // make non-negative
+        cmp     w19, 10               // check for single digit
+        b.hs    no_zero               // two digits
+        mov     w0, '0'               // one digit needs leading '0'
+        bl      write_char
+no_zero:
         mov     w0, w19               // cents
         bl      put_int
 
