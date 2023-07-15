@@ -7,7 +7,7 @@ ASFLAGS = --gstabs
 AS = as
 CC = gcc
 
-sub_123: $(objects)
+add_lengths: $(objects)
 
 .PHONY: clean allclean
 clean:
