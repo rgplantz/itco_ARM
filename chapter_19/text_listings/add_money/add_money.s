@@ -1,8 +1,7 @@
 // Adds 2 dollars and cents values
         .arch armv8-a
 // Stack frame
-        .equ    x, 16
-        .equ    y, 20
+        .equ    save1920, 16
         .equ    frame, 32
 // Constant data
         .section	.rodata
