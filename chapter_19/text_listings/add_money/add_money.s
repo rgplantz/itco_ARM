@@ -22,7 +22,7 @@ main:
         bl      get_money
         mov     w19, w0               // first number
         bl      get_money
-        str     w20, w0               // second number
+        mov     w20, w0               // second number
 
         adr     x0, sum_msg           // some formatting
         bl      write_str
