@@ -2,8 +2,6 @@
 // Calling sequence
 //    returns integer amount as cents
         .arch armv8-a
-// Useful constants
-        .equ    TO_CENTS, 10          // dollars to cents
 // Stack frame
         .equ    save19, 16
         .equ    frame, 32
@@ -31,7 +29,8 @@ get_length:
         adr     x0, dollars           // ask for dollars
         bl      write_str
         bl      get_int               // dollars
-        mul     w19, w0, TO_CENTS     // scale
+        mov     w1, 100               // 100 cents per dollar
+        mul     w19, w0, w1           // scale
 
         adr     x0, cents             // ask for cents
         bl      write_str

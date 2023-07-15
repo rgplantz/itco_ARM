@@ -3,8 +3,6 @@
 // Calling sequence
 //    w0 <- value in cents
 //    returns 0
-// Useful constants
-        .equ    TO_DOLLARS, 10        // cents to dollars
 // Stack frame
         .equ    save1920, 16
         .equ    frame, 32
@@ -21,7 +19,8 @@ display_money:
         mov     fp, sp                // set our frame pointer
         stp     x19, x20, [sp, save1920]  // for local vars
 
-        sdiv    w20, w0, TO_DOLLARS   // dollars
+        mov     w1, 100               // 100 cents per dollar
+        sdiv    w20, w0, w1           // dollars
         sub     w19, w19, w20         // leaving cents
 
         mov     w0, '$'               // some formatting
