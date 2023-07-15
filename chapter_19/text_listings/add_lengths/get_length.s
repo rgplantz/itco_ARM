@@ -39,6 +39,6 @@ get_length:
         and     w0, w0, FOUR_BITS     // make sure 1/16ths
         orr     w0, w0, w19           // add integer part
 
-        ldp     x19, [sp, save19]     // restore for caller
+        ldr     x19, [sp, save19]     // restore for caller
         ldp     fp, lr, [sp], frame   // restore fp, lr, sp
         ret                           // back to caller

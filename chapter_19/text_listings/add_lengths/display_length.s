@@ -38,6 +38,6 @@ display_length:
         bl      write_str
 
         mov     w0, wzr               // return 0;
-        ldp     x19, [sp, save19]     // restore for caller
+        ldr     x19, [sp, save19]     // restore for caller
         ldp     fp, lr, [sp], frame   // restore fp, lr, sp
         ret                           // back to caller
