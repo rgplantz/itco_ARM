@@ -8,6 +8,7 @@ AS = as
 CC = gcc
 
 unsigned_int: $(objects)
+unsinged_int.o: -I($myio)
 
 .PHONY: clean allclean
 clean:
