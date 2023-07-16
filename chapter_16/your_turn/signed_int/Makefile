@@ -1,6 +1,6 @@
 # Build unsigned_int program
 
-objects = signed_int.o get_int.o put_int.o dec_touint.o int_to_dec.o write_str.o write_char.o read_str.o
+objects = signed_int.o get_int.o put_int.o dec_to_int.o int_to_dec.o write_str.o write_char.o read_str.o
 myio = ../../../common
 VPATH = $(myio)
 CFLAGS = -O0 -Wall -g -I$(myio)
