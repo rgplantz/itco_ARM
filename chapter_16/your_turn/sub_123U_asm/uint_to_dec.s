@@ -1,4 +1,4 @@
-// Converts an int to corresponding decimal text
+// Converts an unsigned int to corresponding decimal text
 // string representation.
 // Calling sequence
 //    x0 <- place to store string
@@ -8,7 +8,6 @@
 // Useful constants
         .equ    RADIX, 10             // number base
         .equ    INT2CHAR, 0x30        // ascii zero
-        .equ    MINUS, '-             // minus sign
 // Stack frame
 // Stack frame
         .equ    reverse, 0
@@ -16,18 +15,11 @@
 // Code
         .text
         .align  2
-        .global int_to_dec
-        .type   int_to_dec, %function
-int_to_dec:
+        .global uint_to_dec
+        .type   uint_to_dec, %function
+uint_to_dec:
         sub     sp, sp, frame         // local string on stack
 
-        cmp     w1, wzr               // => 0?
-        tbz     w1, 31, non_negative  // yes, go to conversion
-        neg     w1, w1                // no, negate int
-        mov     w2, MINUS
-        strb    w2, [x0]              // start with minus sign
-        add     x0, x0, 1             // increment pointer
-non_negative:
         add     x3, sp, reverse       // pointer to local string storage
         strb    wzr, [x3]             // create end with NUL
         mov     w2, RADIX             // put in register
