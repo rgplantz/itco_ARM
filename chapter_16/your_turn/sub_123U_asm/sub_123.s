@@ -1,8 +1,8 @@
-// Subtracts 123 from an integer
+// Subtracts 123 from an unsigned integer
         .arch armv8-a
 // Useful constants
         .equ    CONSTANT, 123             // number to subtract
-        .equ    MAX, 11                   // maximum digits
+        .equ    MAX, 10                   // maximum digits
 // Stack frame
         .equ    the_int, 16
         .equ    the_string, 20
@@ -31,12 +31,12 @@ main:
 
         add     x1, sp, the_string    // input
         add     x0, sp, the_int       // place for output
-        bl      dec_to_int            // convert as int
+        bl      dec_to_uint           // convert as int
 
         ldr     w1, [sp, the_int]
         sub     w1, w1, CONSTANT      // subtract our constant
         add     x0, sp, the_string    // place for output
-        bl      int_to_dec            // convert to text string
+        bl      uint_to_dec           // convert to text string
 
         adr     x0, message           // tell user that
         bl      write_str
