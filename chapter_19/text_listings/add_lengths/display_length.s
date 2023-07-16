@@ -1,4 +1,4 @@
-// Displays lenght to nearest sixteenth
+// Displays length to nearest sixteenth
         .arch armv8-a
 // Calling sequence
 //    w0[31-4] <- integer part
@@ -31,7 +31,7 @@ display_length:
         mov     w0, ' '               // some formatting
         bl      write_char
 
-        and     w0, w19, FOUR_BITS    // mosk off integer
+        and     w0, w19, FOUR_BITS    // mask off integer
         bl      put_uint              // fractional part
 
         adr     x0, sixteenths        // more formatting
