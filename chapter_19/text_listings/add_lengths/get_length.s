@@ -30,12 +30,12 @@ get_length:
         bl      write_str
         adr     x0, inches            // ask for integer
         bl      write_str
-        bl      get_int               // integer part
+        bl      get_uint              // integer part
         lsl     w19, w0, 4            // 4 bits for fraction
 
         adr     x0, fraction          // ask for fraction
         bl      write_str
-        bl      get_int               // fraction part
+        bl      get_uint              // fraction part
         and     w0, w0, FOUR_BITS     // make sure 1/16ths
         orr     w0, w0, w19           // add integer part
 

@@ -26,13 +26,13 @@ display_length:
 
         mov     w19, w0               // save input
         lsr     w0, w19, 4            // integer part
-        bl      put_int
+        bl      put_uint
 
         mov     w0, ' '               // some formatting
         bl      write_char
 
         and     w0, w19, FOUR_BITS    // mosk off integer
-        bl      put_int               // fractional part
+        bl      put_uint              // fractional part
 
         adr     x0, sixteenths        // more formatting
         bl      write_str
