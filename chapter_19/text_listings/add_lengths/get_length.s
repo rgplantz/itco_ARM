@@ -2,8 +2,6 @@
 // Calling sequence
 //    returns the fixed-point number
         .arch armv8-a
-// Useful constants
-        .equ    FOUR_BITS, 0xf        // for fraction
 // Stack frame
         .equ    save19, 16
         .equ    frame, 32
@@ -36,8 +34,7 @@ get_length:
         adr     x0, fraction          // ask for fraction
         bl      write_str
         bl      get_uint              // fraction part
-        and     w0, w0, FOUR_BITS     // make sure 1/16ths
-        orr     w0, w0, w19           // add integer part
+        add     w0, w0, w19           // add integer part
 
         ldr     x19, [sp, save19]     // restore for caller
         ldp     fp, lr, [sp], frame   // restore fp, lr, sp
