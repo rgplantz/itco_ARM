@@ -34,7 +34,7 @@ get_money:
 
         adr     x0, cents             // ask for cents
         bl      write_str
-        bl      get_uint              // cents
+        bl      get_int               // cents
         add     w0, w0, w19           // add scaled dollars
 
         ldr     x19, [sp, save19]     // restore for caller
