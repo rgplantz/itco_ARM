@@ -9,11 +9,11 @@
         .section	.rodata
         .align  3
 prompt:
-        .string "Enter amount (use same sign)\n"
+        .string "Enter amount\n"
 dollars:
-        .string "       Dollars: "
+        .string "           Dollars: "
 cents:
-        .string "         Cents: "
+        .string "   Cents (no sign): "
 // Code
         .text
         .align  2
@@ -34,7 +34,7 @@ get_money:
 
         adr     x0, cents             // ask for cents
         bl      write_str
-        bl      get_int               // cents
+        bl      get_uint              // cents
         add     w0, w0, w19           // add scaled dollars
 
         ldr     x19, [sp, save19]     // restore for caller

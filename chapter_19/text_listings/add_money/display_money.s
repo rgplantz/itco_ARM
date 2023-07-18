@@ -38,7 +38,7 @@ display_money:
         bl      write_char
 no_zero:
         mov     w0, w19               // cents
-        bl      put_int
+        bl      put_uint
 
         mov     w0, wzr               // return 0;
         ldp     x19, x29, [sp, save1920]  // restore for caller
