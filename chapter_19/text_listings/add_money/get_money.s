@@ -9,11 +9,11 @@
         .section	.rodata
         .align  3
 prompt:
-        .string "Enter amount\n"
+        .string "Enter amount (same sign)\n"
 dollars:
-        .string "           Dollars: "
+        .string "   Dollars: "
 cents:
-        .string "   Cents (no sign): "
+        .string "     Cents: "
 // Code
         .text
         .align  2
