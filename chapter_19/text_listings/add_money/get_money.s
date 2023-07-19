@@ -1,4 +1,4 @@
-// Gets dollars and cents.
+// Gets dollars and cents from keyboard
 // Calling sequence
 //    returns integer amount as cents
         .arch armv8-a
