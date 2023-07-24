@@ -3,6 +3,7 @@
 objects = add_floats.o
 CFLAGS = -g -Wall
 AS = as
+ASFLAGS = --gstabs
 CC = gcc
 
 add_floats: $(objects)
