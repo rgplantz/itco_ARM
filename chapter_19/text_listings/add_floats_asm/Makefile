@@ -1,20 +1,14 @@
-# Build three_floats program
+# Build add_floats program
 
-objects = three_floats.o
-genasm = -S -Wall -O0 -fno-unwind-tables -fno-asynchronous-unwind-tables
+objects = add_floats.o
 CFLAGS = -g -Wall
 AS = as
 CC = gcc
 
-three_floats: $(objects)
-
-three_floats.s: three_floats.c
-	$(CC) $(genasm) -o temp $<
-	expand -t 8 temp > $@
-	rm temp
+add_floats: $(objects)
 
 .PHONY: clean allclean
 clean:
 	rm -f $(objects)
 allclean: clean
-	rm three_floats
+	rm add_floats
