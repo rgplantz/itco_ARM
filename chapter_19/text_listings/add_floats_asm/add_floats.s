@@ -35,10 +35,9 @@ main:
 
         ldr     s0, [sp, x]           // load x
         ldr     s1, [sp, y]           //    and y
-        fadd    s2, s0, s1            // sum
-        fcvt    d0, s0                // doubles for printf
+        fcvt    d0, s0                // doubles needed for printf
         fcvt    d1, s1
-        fcvt    d2, s2
+        fadd    d2, d0, d1            // sum
         adr     x0, sum_format        // formatting for printf
         bl      printf
 
