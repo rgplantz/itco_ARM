@@ -1,6 +1,7 @@
 # Build three_floats program
 
 objects = three_floats.o
+genasm = -S -Wall -O0 -fno-unwind-tables -fno-asynchronous-unwind-tables
 CFLAGS = -g -Wall
 CC = gcc
 
