@@ -12,8 +12,9 @@ int main() {
     printf("Enter a number: ");
     scanf("%f", &z);
     
-    sum1 = (x + y) + z;
-    sum2 = x + (y + z);
+    sum1 = x + y;
+    sum1 += z;      /* sum1 = (x + y) + z */
+    sum2 = y + z;
     sum2 += x;      /* sum2 = x + (y + z) */
 
     if (sum1 == sum2)
