@@ -14,7 +14,7 @@ UART_echo.s: UART_echo.c UART_functions.h
 	expand -t 8 temp > $@
 	rm temp
 
-UART_echo.s: UART_functions.c UART_functions.h
+UART_functions.s: UART_functions.c UART_functions.h
 	$(CC) $(genasm) -o temp $<
 	expand -t 8 temp > $@
 	rm temp
