@@ -9,10 +9,10 @@ UART_echo: $(objects)
 	ld -e myProg -o UART_echo UART_echo.o UART_functions.o
 
 UART_echo.o: UART_echo.c UART_functions.h
-	$(CC) $(CFLAGS) -o &@
+	$(CC) $(CFLAGS) -o $@
 
 UART_functions.o: UART_functions.c UART_functions.h
-	$(CC) $(CFLAGS) -o &@
+	$(CC) $(CFLAGS) -o $@
 
 UART_echo.s: UART_echo.c UART_functions.h
 	$(CC) $(genasm) -o temp $<
