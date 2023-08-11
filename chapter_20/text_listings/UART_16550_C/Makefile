@@ -2,12 +2,17 @@
 
 objects = UART_echo.o UART_functions.o
 genasm = -S -Wall -O0 -fno-unwind-tables -fno-asynchronous-unwind-tables
-CFLAGS = -g -Wall
+CFLAGS = -c -g -Wall
 CC = gcc
 
 UART_echo: $(objects)
-UART_echo.o: UART_functions.h
-UART_functions.o: UART_functions.h
+	ld -e myProg -o UART_echo UART_echo.o UART_functions.o
+
+UART_echo.o: UART_echo.c UART_functions.h
+	$(CC) $(CFLAGS) -o &@
+
+UART_functions.o: UART_functions.c UART_functions.h
+	$(CC) $(CFLAGS) -o &@
 
 UART_echo.s: UART_echo.c UART_functions.h
 	$(CC) $(genasm) -o temp $<
