@@ -4,6 +4,8 @@ objects = UART_echo.o UART_functions.o
 genasm = -S -Wall -O0 -fno-unwind-tables -fno-asynchronous-unwind-tables
 CFLAGS = -c -g -Wall
 CC = gcc
+ASFLAGS = --gstabs
+AS = as
 
 UART_echo: $(objects)
 	ld -e myProg -o UART_echo UART_echo.o UART_functions.o
