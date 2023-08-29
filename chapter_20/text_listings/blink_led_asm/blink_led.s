@@ -3,7 +3,7 @@
 
 // Useful constants
         .equ    N_BLINKS, 5           // number of times to blink
-        .equ    DELTA_TIME, 1         // seconds between blinks
+        .equ    DELTA_TIME, 3         // seconds between blinks
         .equ    INPUT, 0              // use pin for input
         .equ    OUTPUT, 1             // use pin for ouput
         .equ    GPIO_PIN, 17          // bit field in GPFLSEL regs.
