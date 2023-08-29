@@ -1,29 +1,15 @@
-# Makefile for blinkLED program
-# 2017-09-30: Bob Plantz
-# VPATH is set for my directory structure. Changing the directory
-# structure or file locations may affect this variable.
-VPATH = ../../common/asm
+# Makefile for blink_led program
 
-ASMFLAGS = --gstabs
+OBJECTS = blink_led.o gpio_map_memory.o gpio_pin_function.o gpio_clr_pin.o gpio_set_pin.o gpio_unmap_memory.o write_str.o
+CFLAGS = -g -Wall
+AS = as
+ASFLAGS = --gstabs
+CC = gcc
 
-# The object files are specific to this program.
-OBJECTS = blinkLED.o gpioPinClr.o gpioPinFSelect.o gpioPinSet.o
+blink_led: $(OBJECTS)
 
-blinkLED: $(OBJECTS)
-	gcc -o blinkLED $(OBJECTS)
-
-blinkLED.o: blinkLED.s
-	as $(ASMFLAGS) -o blinkLED.o blinkLED.s
-
-gpioPinClr.o: gpioPinClr.s
-	as $(ASMFLAGS) -o gpioPinClr.o gpioPinClr.s
-
-gpioPinFSelect.o: gpioPinFSelect.s
-	as $(ASMFLAGS) -o gpioPinFSelect.o gpioPinFSelect.s
-
-gpioPinSet.o: gpioPinSet.s
-	as $(ASMFLAGS) -o gpioPinSet.o gpioPinSet.s
-
+.PHONY: clean allclean
 clean:
-	rm blinkLED $(OBJECTS) *~
-
+	rm -f $(objects)
+allclean: clean
+	rm blink_led
