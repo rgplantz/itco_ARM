@@ -6,7 +6,7 @@
 #define LED_PIN 17                  // gpio pin connected to led
 #define LOW 0                       // pin at 0v
 #define HIGH 1                      // pin at 3.5v
-#define N_SECONDS 1
+#define N_SECONDS 3
 
 int main(void) {
     int version;
