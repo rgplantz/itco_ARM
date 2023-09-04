@@ -1,11 +1,10 @@
 // Blinks an LED
 #include <stdio.h>
-#include <unistd.h>
 #include <pigpio.h>
 
 #define LED_PIN 17                  // gpio pin connected to led
-#define LOW 0                       // pin at 0v
-#define HIGH 1                      // pin at 3.5v
+#define LOW 0                       // pin at 0.0v
+#define HIGH 1                      // pin at 3.3v
 #define N_SECONDS 3
 
 int main(void) {
