@@ -13,7 +13,7 @@ int main(void) {
 
     version = gpioInitialise();
     if (version == PI_INIT_FAILED) {
-        printf("Cannot initialise gpio\n");
+        printf("Cannot initialize gpio\n");
         return -1;
     }
     else {
