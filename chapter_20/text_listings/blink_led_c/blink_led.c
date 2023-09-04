@@ -2,10 +2,11 @@
 #include <stdio.h>
 #include <pigpio.h>
 
-#define LED_PIN 17                  // gpio pin connected to led
-#define LOW 0                       // pin at 0.0v
-#define HIGH 1                      // pin at 3.3v
-#define N_SECONDS 3
+#define LED_PIN 17                    // gpio pin connected to led
+#define LOW 0                         // pin at 0.0v
+#define HIGH 1                        // pin at 3.3v
+#define N_BLINKS 5                    // number of blinks
+#define N_SECONDS 3                   // time between blinks
 
 int main(void) {
     int version;
@@ -21,7 +22,7 @@ int main(void) {
     }
     gpioSetMode(LED_PIN, PI_OUTPUT);  // use pin for output
 
-    for (i = 0; i < 5; i++) {
+    for (i = 0; i < N_BLINKS; i++) {
         gpioWrite(LED_PIN, HIGH);     //led on
         printf("led on...\n");
         sleep(N_SECONDS);
