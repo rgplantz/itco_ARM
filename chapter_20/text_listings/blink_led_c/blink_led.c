@@ -2,11 +2,11 @@
 #include <stdio.h>
 #include <pigpio.h>
 
-#define LED_PIN 17                        // gpio pin connected to led
-#define LOW 0                             // pin at 0.0v
-#define HIGH 1                            // pin at 3.3v
-#define N_BLINKS 5                        // number of blinks
-#define N_SECONDS 3                       // time between blinks
+#define LED_PIN 17                            // gpio pin connected to led
+#define LOW 0                                 // pin at 0.0v
+#define HIGH 1                                // pin at 3.3v
+#define N_BLINKS 5                            // number of blinks
+#define N_SECONDS 3                           // time between blinks
 
 int main(void) {
     int version;
@@ -21,17 +21,21 @@ int main(void) {
     else {
         printf("Using version %d of pigpio\n", version);
     }
-    gpioSetMode(LED_PIN, PI_OUTPUT);      // use pin for output
+    error = gpioSetMode(LED_PIN, PI_OUTPUT);  // use pin for output
+    if (error) {
+        printf("Can't set GPIO mode\n");
+        return -1;
+    }
 
     for (i = 0; i < N_BLINKS; i++) {
-        error = gpioWrite(LED_PIN, HIGH); //led on
+        error = gpioWrite(LED_PIN, HIGH);     //led on
         if (error) {
             printf("Can't turn LED on\n");
             return -1;
         }
         printf("led on...\n");
         sleep(N_SECONDS);
-        error = gpioWrite(LED_PIN, LOW);  // led off
+        error = gpioWrite(LED_PIN, LOW);      // led off
         if (error) {
             printf("Can't turn LED off\n");
             return -1;
