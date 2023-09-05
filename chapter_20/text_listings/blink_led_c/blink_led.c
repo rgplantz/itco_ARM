@@ -18,9 +18,8 @@ int main(void) {
         printf("Can't initialize gpio\n");
         return -1;
     }
-    else {
-        printf("Using version %d of pigpio\n", version);
-    }
+    printf("Using version %d of pigpio\n", version);
+
     error = gpioSetMode(LED_PIN, PI_OUTPUT);  // use pin for output
     if (error) {
         printf("Can't set GPIO mode\n");
