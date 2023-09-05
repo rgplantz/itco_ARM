@@ -71,6 +71,8 @@ loop:
         cbnz    x20, loop               // loop if not done
        
 done:
+        mov     x0, x19                 // our gpio memory
+        bl      gpio_unmap_memory
         mov     w0, wzr                 // return 0;
         ldp     fp, lr, [sp], frame     // undo stack frame
         ret
