@@ -10,6 +10,6 @@ blink_led: $(OBJECTS)
 
 .PHONY: clean allclean
 clean:
-	rm -f $(objects)
+	rm -f $(OBJECTS)
 allclean: clean
 	rm blink_led
