@@ -1,5 +1,6 @@
 // Blinks an LED
 #include <stdio.h>
+#include <unistd.h>
 #include <pigpio.h>
 
 #define LED_PIN 17                            // gpio pin connected to led
