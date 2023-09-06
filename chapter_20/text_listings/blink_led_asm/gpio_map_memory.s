@@ -14,9 +14,6 @@
         .equ    PROT_WRITE, 0x2           // page can be written
         .equ    MAP_SHARED, 0x01          // share changes
 // The following are defined by me:
-        .equ    PERIPH,0x3f000000         // RPi 2, 3, & g peripherals
-//       .equ    PERIPH,0x20000000        // RPi zero & 1 peripherals
-        .equ    GPIO_OFFSET,0x200000      // start of GPIO device
         .equ    O_FLAGS, O_RDWR|__O_SYNC|O_CLOEXEC  // open file flags
         .equ    O_FLAGS_HI, O_FLAGS/0xffff  // needed for mov
         .equ    O_FLAGS_LO, O_FLAGS&0xffff  //     instructions

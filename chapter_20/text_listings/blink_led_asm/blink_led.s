@@ -1,5 +1,5 @@
-// Blinks LED connected between pins 1 and 11 on Raspberry Pi
-// GPIO connector once a second for five seconds.
+// Blinks LED connected between GPIO pin 17 and ground on
+// Raspberry Pi once a second for five seconds.
 
 // Useful constants
         .equ    N_BLINKS, 5           // number of times to blink
