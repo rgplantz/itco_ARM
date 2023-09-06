@@ -5,9 +5,10 @@
 // The following are defined in /usr/include/asm-generic/fcntl.h:
 // Note that the values are specified in octal.
         .equ    O_RDWR, 00000002          // open for read/write
-        .equ    O_DSYNC, 00010000
-        .equ    __O_SYNC, 04000000
-        .equ    O_SYNC, __O_SYNC|O_DSYNC
+        .equ    O_DSYNC, 00010000         // these flags ensure that
+        .equ    __O_SYNC, 04000000        //    reads from and writes to
+        .equ    O_SYNC, __O_SYNC|O_DSYNC  //    the gpio are properly
+        .equ    O_CLOEXEC, 0x2000000      //    synchronized by the OS
 // The following are defined in /usr/include/asm-generic/mman-common.h:
         .equ    PROT_READ, 0x1            // page can be read
         .equ    PROT_WRITE, 0x2           // page can be written
@@ -16,11 +17,11 @@
         .equ    PERIPH,0x3f000000         // RPi 2, 3, & g peripherals
 //       .equ    PERIPH,0x20000000        // RPi zero & 1 peripherals
         .equ    GPIO_OFFSET,0x200000      // start of GPIO device
-        .equ    O_FLAGS, O_RDWR|__O_SYNC  // open file flags
-        .equ    O_FLAGS_HI, O_FLAGS/0xffff
-        .equ    O_FLAGS_LO, O_FLAGS&0xffff
-        .equ    PROT_RDWR, PROT_READ|PROT_WRITE
-        .equ    NO_PREF, 0
+        .equ    O_FLAGS, O_RDWR|__O_SYNC|O_CLOEXEC  // open file flags
+        .equ    O_FLAGS_HI, O_FLAGS/0xffff  // needed for mov
+        .equ    O_FLAGS_LO, O_FLAGS&0xffff  //     instructions
+        .equ    PROT_RDWR, PROT_READ|PROT_WRITE // allow read and write
+        .equ    NO_PREF, 0                // let OS choose address of mapping
         .equ    PAGE_SIZE, 4096           // Raspbian memory page
 
 // Stack frame
