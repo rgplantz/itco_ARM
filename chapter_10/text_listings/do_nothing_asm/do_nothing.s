@@ -1,4 +1,3 @@
-// doNothingProg.s
 // Minimum components of a C program, in assembly language
 
         .arch   armv8-a
