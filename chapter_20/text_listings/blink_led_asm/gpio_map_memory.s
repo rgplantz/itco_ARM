@@ -2,6 +2,8 @@
 // into program virtual address space.
 // returns pointer to user memory for gpio registers
 
+        .include  fcntl.h
+        .include  mman-common.h
 // The following are defined in /usr/include/asm-generic/fcntl.h:
 // Note that the values are specified in octal.
 //        .equ    O_RDWR, 00000002          // open for read/write
