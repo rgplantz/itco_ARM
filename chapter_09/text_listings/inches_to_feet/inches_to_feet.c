@@ -17,7 +17,7 @@ int main(void)
     
     feet = total_inches / INCHES_PER_FOOT;
     inches = total_inches % INCHES_PER_FOOT;
-    printf("%i\" = %i' %i\"\n", inches, feet, total_inches);
+    printf("%i\" = %i' %i\"\n", total_inches, feet, inches);
 
     return 0;
 }
