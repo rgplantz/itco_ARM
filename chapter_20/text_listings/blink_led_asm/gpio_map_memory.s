@@ -4,15 +4,15 @@
 
 // The following are defined in /usr/include/asm-generic/fcntl.h:
 // Note that the values are specified in octal.
-//        .equ    O_RDWR, 00000002          // open for read/write
-//        .equ    O_DSYNC, 00010000         // these flags ensure that
-//        .equ    __O_SYNC, 04000000        //    reads from and writes to
-//        .equ    O_SYNC, __O_SYNC|O_DSYNC  //    the gpio are properly
-//        .equ    O_CLOEXEC, 0x2000000      //    synchronized by the OS
+        .equ    O_RDWR, 00000002          // open for read/write
+        .equ    O_DSYNC, 00010000         // these flags ensure that
+        .equ    __O_SYNC, 04000000        //    reads from and writes to
+        .equ    O_SYNC, __O_SYNC|O_DSYNC  //    the gpio are properly
+        .equ    O_CLOEXEC, 0x2000000      //    synchronized by the OS
 // The following are defined in /usr/include/asm-generic/mman-common.h:
-//        .equ    PROT_READ, 0x1            // page can be read
-//        .equ    PROT_WRITE, 0x2           // page can be written
-//        .equ    MAP_SHARED, 0x01          // share changes
+        .equ    PROT_READ, 0x1            // page can be read
+        .equ    PROT_WRITE, 0x2           // page can be written
+        .equ    MAP_SHARED, 0x01          // share changes
 // The following are defined by me:
         .equ    O_FLAGS, O_RDWR|__O_SYNC|O_CLOEXEC  // open file flags
         .equ    O_FLAGS_HI, O_FLAGS/0xffff  // needed for mov
