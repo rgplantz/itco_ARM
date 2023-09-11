@@ -2,9 +2,9 @@
         .arch armv8-a
 // Stack frame
         .equ    z, 28
-        .equ    frame, 32
+        .equ    FRAME, 32
 // Constants 
-        .section        .rodata
+        .section  .rodata
 format:
         .string "%i + %i + 456 = %i\n"
 // Code
@@ -13,7 +13,7 @@ format:
         .global	main
         .type	main, %function
 main:
-        stp     fp, lr, [sp, frame]!  // our stack frame
+        stp     fp, lr, [sp, FRAME]!  // our stack frame
         mov     fp, sp
 
         mov     w19, 123              // first constant
@@ -30,5 +30,5 @@ main:
         bl      printf
 
         mov     w0, wzr               // return 0;
-        ldp     fp, lr, [sp], frame   // undo stack frame
+        ldp     fp, lr, [sp], FRAME   // undo stack FRAME
         ret
