@@ -1,4 +1,3 @@
-// helloWorld-for.c
 // Hello World program using the write system call
 // one character at a time.
 
@@ -6,10 +5,10 @@
 #define NUL '\x00'
 
 int main(void) {
-    char *stringPtr;
+    char *message_ptr;
 
-    for (stringPtr = "Hello, World!\n"; *stringPtr != NUL; stringPtr++) {
-        write(STDOUT_FILENO, stringPtr, 1);
+    for (message_ptr = "Hello, World!\n"; *message_ptr != NUL; message_ptr++) {
+        write(STDOUT_FILENO, message_ptr, 1);
     }
 
     return 0;

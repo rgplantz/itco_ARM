@@ -1,4 +1,3 @@
-// helloWorld-do.c
 // Hello World program using the write system call
 // one character at a time.
 
@@ -6,12 +5,12 @@
 #define NUL '\x00'
 
 int main(void) {
-    char *stringPtr = "Hello, World!\n";
+    char *message_ptr = "Hello, World!\n";
 
     do {
-        write(STDOUT_FILENO, stringPtr, 1);
-        stringPtr++;
-    } while (*stringPtr != NUL);
+        write(STDOUT_FILENO, message_ptr, 1);
+        message_ptr++;
+    } while (*message_ptr != NUL);
 
     return 0;
 }
