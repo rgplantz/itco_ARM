@@ -5,7 +5,7 @@
         .equ    NUL, 0
         .equ    STDOUT, 1
 // Stack frame
-        .equ    frame,16
+        .equ    FRAME,16
 // Constant data
         .section        .rodata
 message:
@@ -16,7 +16,7 @@ message:
         .global main
         .type   main, %function
 main:
-        stp     fp, lr, [sp, -frame]! // create our stack frame
+        stp     fp, lr, [sp, -FRAME]! // create our stack frame
         mov     fp, sp                // set our frame pointer
         adr     x19, message          // address of message
 whileLoop:
@@ -31,5 +31,5 @@ whileLoop:
         b       whileLoop             // and continue
 allDone:
         mov     w0, wzr               // return value
-        ldp     fp, lr, [sp], frame   // undo our stack frame
+        ldp     fp, lr, [sp], FRAME   // undo our stack frame
         ret
