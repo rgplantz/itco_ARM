@@ -1,11 +1,10 @@
-// printInt.s
 // Prints an integer.
         .arch armv8-a
 // Stack frame
         .equ    x, 28
-        .equ    frame, 32
+        .equ    FRAME, 32
 // Constants 
-        .section        .rodata
+        .section  .rodata
 result:
         .string "x = 0x%x\n"
 // Code
@@ -14,7 +13,7 @@ result:
         .global main
         .type   main, %function
 main:
-        stp     fp, lr, [sp, frame]!  // our stack frame
+        stp     fp, lr, [sp, FRAME]!  // our stack frame
         mov     fp, sp
 
         mov     w0, 0x1234            // a constant
@@ -29,5 +28,5 @@ main:
         bl      printf
 
         mov     w0, wzr
-        ldp     fp, lr, [sp], frame   // undo stack frame
+        ldp     fp, lr, [sp], FRAME   // undo stack frame
         ret
