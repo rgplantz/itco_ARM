@@ -1,12 +1,13 @@
-// switch.c
 // Three-way selection.
 
 #include <stdio.h>
+#define N_TIMES 10
 
-int main(void) {
+int main(void)
+{
     int i;
 
-    for (i = 1; i <= 10; i++) {
+    for (i = 1; i <= N_TIMES; i++) {
         switch (i) {
         case 1:
             puts("i = 1");
