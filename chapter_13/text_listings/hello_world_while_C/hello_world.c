@@ -4,7 +4,8 @@
 #include <unistd.h>
 #define NUL '\x00'
 
-int main(void) {
+int main(void)
+{
     char *message_ptr = "Hello, World!\n";
 
     while (*message_ptr != NUL)  {
