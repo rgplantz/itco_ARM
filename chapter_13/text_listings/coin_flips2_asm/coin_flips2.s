@@ -7,7 +7,7 @@
         .equ    save19, 24
         .equ    FRAME,32
 // Constant data
-        .section        .rodata
+        .section  .rodata
 heads_msg:
         .string "heads"
 tails_msg:

@@ -8,7 +8,7 @@
         .equ    save1920, 16
         .equ    frame, 32
 // Constant data
-        .section        .rodata
+        .section  .rodata
 oneMsg:
         .string "i = 1"
 twoMsg:
