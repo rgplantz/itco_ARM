@@ -1,25 +1,24 @@
-// switch.s
 // Three-way selection
         .arch armv8-a
 // Useful names
-        .equ    NTIMES, 10            // number of loops
+        .equ    N_TIMES, 10           // number of loops
         .equ    DEFAULT, 4            // default case
 // Stack frame
         .equ    save1920, 16
-        .equ    frame, 32
+        .equ    FRAME, 32
 // Constant data
         .section  .rodata
-oneMsg:
+one_msg:
         .string "i = 1"
-twoMsg:
+two_msg:
         .string "i = 2"
-threeMsg:
+three_msg:
         .string "i = 3"
-overMsg:
+over_msg:
         .string "i > 3"
 // Branch table
         .align  3
-brTable:
+br_table:
         .quad   one                   // addresses where messages
         .quad   two                   // are printed
         .quad   three
@@ -30,14 +29,14 @@ brTable:
         .global main
         .type   main, %function
 main:
-        stp     fp, lr, [sp, -frame]! // create our stack frame
+        stp     fp, lr, [sp, -FRAME]! // create our stack frame
         mov     fp, sp                // set our frame pointer
         stp     x19, x20, [sp, save1920]  // save for caller
         mov     x19, 1                // i = 1
         mov     x20, DEFAULT          // default case
-forLoop:
-        cmp     x19, NTIMES           // is i at end?
-        b.hi    allDone               // yes, leave loop
+loop:
+        cmp     x19, N_TIMES          // is i at end?
+        b.hi    done                  // yes, leave loop
         adr     x0, brTable           // address of branch table
         cmp     x19, x20              // default case?
         csel    x1, x19, x20, lo      // low, use i
@@ -46,25 +45,25 @@ forLoop:
         ldr     x0, [x0]              // load address from table
         br      x0                    //     and branch there
 one:
-        adr     x0, oneMsg            // = 1
+        adr     x0, one_msg           // = 1
         bl      puts                  // write on screen
         b       continue
 two:
-        adr     x0, twoMsg            // = 2
+        adr     x0, two_msg           // = 2
         bl      puts                  // write on screen
         b       continue
 three:
-        adr     x0, threeMsg          // = 3
+        adr     x0, three_msg         // = 3
         bl      puts                  // write on screen
         b       continue
 default:
-        adr     x0, overMsg           // > 3
+        adr     x0, over_msg// > 3
         bl      puts                  // write on screen
 continue:
         add     x19, x19, 1           // i++;
-        b       forLoop               // and continue loop
-allDone:
+        b       loop                  // and continue loop
+done:
         mov     w0, wzr               // return 0
         ldp     x19, x20, [sp, save1920]  // restore reg.
-        ldp     fp, lr, [sp], frame   // restore fp, lr, sp
+        ldp     fp, lr, [sp], FRAME   // restore fp, lr, sp
         ret                           // back to caller
