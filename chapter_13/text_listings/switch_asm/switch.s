@@ -5,7 +5,7 @@
         .equ    NTIMES, 10            // number of loops
         .equ    DEFAULT, 4            // default case
 // Stack frame
-        .equ    saveReg, 16
+        .equ    save1920, 16
         .equ    frame, 32
 // Constant data
         .section        .rodata
@@ -32,7 +32,7 @@ brTable:
 main:
         stp     fp, lr, [sp, -frame]! // create our stack frame
         mov     fp, sp                // set our frame pointer
-        stp     x19, x20, [sp, saveReg] // save for caller
+        stp     x19, x20, [sp, save1920]  // save for caller
         mov     x19, 1                // i = 1
         mov     x20, DEFAULT          // default case
 forLoop:
@@ -65,6 +65,6 @@ continue:
         b       forLoop               // and continue loop
 allDone:
         mov     w0, wzr               // return 0
-        ldp     x19, x20, [sp, saveReg] // restore reg.
+        ldp     x19, x20, [sp, save1920]  // restore reg.
         ldp     fp, lr, [sp], frame   // restore fp, lr, sp
         ret                           // back to caller
