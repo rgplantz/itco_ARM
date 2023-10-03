@@ -1,6 +1,6 @@
 # Build hello_world program
 
-objects = hello_world.o
+objects = hello_world_do.o
 genasm = -S -Wall -O0 -fno-unwind-tables -fno-asynchronous-unwind-tables
 
 CFLAGS = -g -Wall
@@ -8,7 +8,7 @@ CC = gcc
 
 hello_world: $(objects)
 
-hello_world.s: hello_world.c
+hello_world_do.s: hello_world_do.c
 	$(CC) $(genasm) -o temp $<
 	expand -t 8 temp > $@
 	rm temp
