@@ -1,7 +1,7 @@
 // Flips a coin, heads or tails.
         .arch armv8-a
 // Useful names
-        .equ    N_TIMES,              // number of flips
+        .equ    N_TIMES, 10           // number of flips
         .equ    RAND_MID,1073741823   // RAND_MAX/2
 // Stack frame
         .equ    save19, 24
