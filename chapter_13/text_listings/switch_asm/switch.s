@@ -37,7 +37,7 @@ main:
 loop:
         cmp     x19, N_TIMES          // is i at end?
         b.hi    done                  // yes, leave loop
-        adr     x0, brTable           // address of branch table
+        adr     x0, br_table          // address of branch table
         cmp     x19, x20              // default case?
         csel    x1, x19, x20, lo      // low, use i
         sub     x1, x1, 1             // relative to first table entry
