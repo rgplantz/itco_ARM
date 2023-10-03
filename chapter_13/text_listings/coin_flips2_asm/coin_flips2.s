@@ -22,7 +22,7 @@ main:
         mov     fp, sp                // set our frame pointer
         str     x19, [sp, save19]     // save for i local var.
         mov     w19, wzr              // i = 0;
-for_loop:
+loop:
         mov     w0, N_TIMES           // total number of times
         cmp     w19, w0               // is i at end?
         b.hs    done                  // yes
@@ -38,7 +38,7 @@ tails:
         bl      puts                  // print message
 continue:
         add     w19, w19, 1           // i++;
-        b       for_foop              // and continue loop
+        b       loop                  // and continue loop
 done:
         mov     w0, wzr               // return 0
         ldr     x19, [sp, save19]     // restore reg.
