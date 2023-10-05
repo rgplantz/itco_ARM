@@ -1,10 +1,10 @@
-// sum11ints.c
 // Sums the integers 1 - 11.
 
 #include <stdio.h>
-#include "addEleven.h"
+#include "add_eleven.h"
 
-int main(void) {
+int main(void)
+{
     int total;
     int a = 1;
     int b = 2;
@@ -18,7 +18,7 @@ int main(void) {
     int j = 10;
     int k = 11;
   
-    total = addEleven(a, b, c, d, e, f, g, h, i, j, k);
+    total = add_eleven(a, b, c, d, e, f, g, h, i, j, k);
     printf("The sum is %i\n", total);
 
     return 0;

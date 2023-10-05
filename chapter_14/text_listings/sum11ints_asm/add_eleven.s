@@ -1,4 +1,3 @@
-// addEleven.s
 // Adds eleven integers and returns sum.
 // Calling sequence:
 //    w0 through w7 <- 8 integers
@@ -17,7 +16,7 @@
         .equ    two, 40
         .equ    one, 44
         .equ    sum, 60
-        .equ    frame, 64             // end of our frame
+        .equ    FRAME, 64             // end of our frame
         .equ    nine, 64              // stack args.
         .equ    ten, 72
         .equ    eleven, 80
@@ -31,7 +30,7 @@ msg:
         .global addEleven
         .type   addEleven, %function
 addEleven:
-        stp     fp, lr, [sp, -frame]! // create our stack frame
+        stp     fp, lr, [sp, -FRAME]! // create our stack frame
         mov     fp, sp                // set our frame pointer
 
         str     w0, [sp, one]         // save register args.
@@ -69,5 +68,5 @@ addEleven:
         bl      puts
 
         ldr     w0, [sp, sum]         // return the sum
-        ldp     fp, lr, [sp], frame   // restore fp, lr, sp
+        ldp     fp, lr, [sp], FRAME   // restore fp, lr, sp
         ret                           // back to caller

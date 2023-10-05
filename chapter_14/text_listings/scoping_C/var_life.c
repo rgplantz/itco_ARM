@@ -9,7 +9,8 @@
 
 int z = INIT_z;
 
-int main(void) {
+int main(void)
+{
     int x = INIT_x;
     int y = INIT_y;
 

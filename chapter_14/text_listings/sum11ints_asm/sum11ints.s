@@ -1,11 +1,10 @@
-// .sum11ints.s
 // Sums the integers 1 - 11.
         .arch armv8-a
 // Stack frame
         .equ    arg9, 0
         .equ    arg10, 8
         .equ    arg11, 16
-        .equ    frameRec, 32
+        .equ    frame_record, 32
         .equ    total, 48
         .equ    k, 52
         .equ    j, 56
@@ -18,7 +17,7 @@
         .equ    c, 84
         .equ    b, 88
         .equ    a, 92
-        .equ    frame, 96
+        .equ    FRAME, 96
 // Constant data
         .section        .rodata
         .align  3
@@ -29,9 +28,9 @@ format:
         .global main
         .type   main, %function
 main:
-        sub     sp, sp, frame         // allocate our stack frame
-        stp     fp, lr, [sp, frameRec]  // create frame record
-        add     fp, sp, frameRec      // set our frame pointer
+        sub     sp, sp, FRAME         // allocate our stack frame
+        stp     fp, lr, [sp, frame_record]  // create frame record
+        add     fp, sp, frame_record  // set our frame pointer
         mov     w0, 1                 // store values in local vars.
         str     w0, [sp, a]
         mov     w0, 2
@@ -76,6 +75,6 @@ main:
         mov     w0, wzr               // return 0;
 
         mov     w0, wzr               // return 0;
-        ldp     fp, lr, [sp, frameRec]  // restore fp, lr, sp
-        add     sp, sp, frame         // deallocate our stack frame
+        ldp     fp, lr, [sp, frame_record]  // restore fp, lr, sp
+        add     sp, sp, FRAME         // deallocate our stack frame
         ret                           // back to caller

@@ -1,9 +1,9 @@
-// addTwo.c
 // Adds two integers and outputs sum.
 
-#include "addTwo.h"
+#include "add_two.h"
 
-void addTwo(int a, int b, int *c) {
+void add_two(int a, int b, int *c)
+{
   int sum;
   
   sum = a + b;
