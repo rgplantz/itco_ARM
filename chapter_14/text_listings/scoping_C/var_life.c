@@ -1,24 +1,23 @@
-// varLife.c
 // Compares scope and lifetime of automatic, static,
 // and global variables.
 
 #include <stdio.h>
-#include "addConst.h"
-#define INITx 12
-#define INITy 34
-#define INITz 56
+#include "add_const.h"
+#define INIT_x 12
+#define INIT_y 34
+#define INIT_z 56
 
-int z = INITz;
+int z = INIT_z;
 
 int main(void) {
-    int x = INITx;
-    int y = INITy;
+    int x = INIT_x;
+    int y = INIT_y;
 
     printf("           automatic   static   global\n");
     printf("                   x        y        z\n");
     printf("In main:%12i %8i %8i\n", x, y, z);
-    addConst();
-    addConst();
+    add_const();
+    add_const();
     printf("In main:%12i %8i %8i\n", x, y, z);
     return 0;
 }

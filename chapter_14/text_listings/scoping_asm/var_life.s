@@ -8,7 +8,7 @@
 // Stack frame
         .equ    x, 24
         .equ    y, 28
-        .equ    frame, 32
+        .equ    FRAME, 32
 // Code
         .global z
         .data
@@ -29,7 +29,7 @@ msg:
         .global main
         .type   main, %function
 main:
-        stp     fp, lr, [sp, -frame]!   // create our stack frame
+        stp     fp, lr, [sp, -FRAME]!   // create our stack frame
         mov     fp, sp                  // set our frame pointer
 
         mov     w0, INITX
@@ -48,8 +48,8 @@ main:
         adr     x0, msg                 // show values
         bl      printf
 
-        bl      addConst                // add constants
-        bl      addConst                //     twice
+        bl      add_const               // add constants
+        bl      add_const               //     twice
 
         adr     x0, z                   // repeat display
         ldr     w3, [x0]
@@ -59,5 +59,5 @@ main:
         bl      printf
 
         mov     w0, wzr                 // return 0
-        ldp     fp, lr, [sp], frame     // restore fp, lr, sp
+        ldp     fp, lr, [sp], FRAME     // restore fp, lr, sp
         ret                             // back to caller

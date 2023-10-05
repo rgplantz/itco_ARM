@@ -6,7 +6,7 @@
         .equ    ADDITION, 1000
 // Stack frame
         .equ    x, 28
-        .equ    frame,32
+        .equ    FRAME,32
 // Code
         .data
         .align  2
@@ -16,13 +16,13 @@ y:
         .word   INITY
         .section  .rodata
 msg:
-        .string "In addConst:%8i %8i %8i\n"
+        .string "In add_const:%8i %8i %8i\n"
         .text
         .align  2
-        .global addConst
-        .type   addConst, %function
-addConst:
-        stp     fp, lr, [sp, -frame]!   // create our stack frame
+        .global add_const
+        .type   add_const, %function
+add_const:
+        stp     fp, lr, [sp, -FRAME]!   // create our stack frame
         mov     fp, sp                  // set our frame pointer
 
         mov     w0, INITX
@@ -48,5 +48,5 @@ addConst:
         bl      printf
 
         mov     w0, wzr                 // return 0
-        ldp     fp, lr, [sp], frame     // restore fp, lr, sp
+        ldp     fp, lr, [sp], FRAME     // restore fp, lr, sp
         ret                             // back to caller
