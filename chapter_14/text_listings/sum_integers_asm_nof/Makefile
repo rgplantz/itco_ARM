@@ -9,14 +9,8 @@ CFLAGS = -g -Wall
 
 sum_ints: $(objects)
 sum_ints.o: add_two.h
-add_two.o: add_two.h
 
 sum_ints.s: sum_ints.c add_two.h
-	$(CC) $(genasm) -o temp $<
-	expand -t 8 temp > $@
-	rm temp
-
-add_two.s: add_two.c add_two.h
 	$(CC) $(genasm) -o temp $<
 	expand -t 8 temp > $@
 	rm temp
