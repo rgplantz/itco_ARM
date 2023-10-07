@@ -11,7 +11,7 @@ int main(void)
     scanf("%i", &x);
     printf("Enter an integer: ");
     scanf("%i", &y);
-    add_two(x, y, &z);
+    add_two(&z, x, y);
     printf("%i + %i = %i\n", x, y, z);
 
     return 0;

@@ -1,8 +1,8 @@
 // Adds two integers and outputs sum.
 // Calling sequence:
-//    w0 <- integer
+//    x0 <- address of output
 //    w1 <- integer
-//    x2 <- address of output
+//    w2 <- integer
 //    returns 0
         .arch armv8-a
 // Stack frame
@@ -18,8 +18,8 @@ add_two:
         mov     fp, sp                // set our frame pointer
         stp     x19, x20, [sp, save1920]  // save for local vars
 
-        mov     x20, x2               // for output
-        add     w19, w0, w1           // compute sum
+        mov     x20, x0               // for output
+        add     w19, w2, w1           // compute sum
         str     w19, [x20]            // output sum
 
         mov     w0, wzr               // return 0
