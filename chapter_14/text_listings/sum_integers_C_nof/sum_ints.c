@@ -7,7 +7,7 @@ int main(void)
 {
     int x = 123, y = 456, z;
   
-    add_two(x, y, &z);
+    add_two(&z, x, y);
     printf("%i + %i = %i\n", x, y, z);
 
     return 0;
