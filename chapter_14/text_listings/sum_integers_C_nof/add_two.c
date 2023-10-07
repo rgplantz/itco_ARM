@@ -2,7 +2,7 @@
 
 #include "add_two.h"
 
-void add_two(int a, int b, int *c)
+void add_two(int *c, int a, int b)
 {
   int sum;
   

@@ -2,5 +2,5 @@
 
 #ifndef ADD_TWO_H
 #define ADD_TWO_H
-void add_two(int a, int b, int *c);
+void add_two(int *c, int a, int b);
 #endif
