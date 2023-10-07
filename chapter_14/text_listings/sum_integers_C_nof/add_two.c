@@ -2,10 +2,10 @@
 
 #include "add_two.h"
 
-void add_two(int *c, int a, int b)
+void add_two(int *a, int b, int c)
 {
   int sum;
   
   sum = a + b;
-  *c = sum;
+  *a = sum;
 }
