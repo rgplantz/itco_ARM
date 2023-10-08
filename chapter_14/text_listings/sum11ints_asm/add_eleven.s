@@ -21,7 +21,7 @@
         .equ    ten, 72
         .equ    eleven, 80
 // Constant data
-        .section        .rodata
+        .section  .rodata
         .align  3
 msg:
         .string "Added them"
