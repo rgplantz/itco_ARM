@@ -16,5 +16,5 @@ void add_const(void)
     y += ADDITION;
     z += ADDITION;
 
-    printf("In add_const:%8i %8i %8i\n", x, y, z);
+    printf("In add_const:%7i %8i %8i\n", x, y, z);
 }
