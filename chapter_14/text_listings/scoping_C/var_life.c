@@ -3,16 +3,16 @@
 
 #include <stdio.h>
 #include "add_const.h"
-#define INIT_x 12
-#define INIT_y 34
-#define INIT_z 56
+#define INIT_X 12
+#define INIT_Y 34
+#define INIT_Z 56
 
-int z = INIT_z;
+int z = INIT_Z;
 
 int main(void)
 {
-    int x = INIT_x;
-    int y = INIT_y;
+    int x = INIT_X;
+    int y = INIT_Y;
 
     printf("           automatic   static   global\n");
     printf("                   x        y        z\n");
