@@ -1,22 +1,22 @@
 // Adds constant to automatic, static, global variables.
         .arch armv8-a
 // Useful names
-        .equ    INITX, 78
-        .equ    INITY, 90
+        .equ    INIT_X, 78
+        .equ    INIT_Y, 90
         .equ    ADDITION, 1000
 // Stack frame
         .equ    x, 28
-        .equ    FRAME,32
+        .equ    FRAME, 32
 // Code
         .data
         .align  2
         .type   y, %object
         .size   y, 4
 y:
-        .word   INITY
+        .word   INIT_Y
         .section  .rodata
 msg:
-        .string "In add_const:%8i %8i %8i\n"
+        .string "In add_const:%7i %8i %8i\n"
         .text
         .align  2
         .global add_const
@@ -25,7 +25,7 @@ add_const:
         stp     fp, lr, [sp, -FRAME]!   // create our stack frame
         mov     fp, sp                  // set our frame pointer
 
-        mov     w0, INITX
+        mov     w0, INIT_X
         add     w0, w0, ADDITION        // add constant
         str     w0, [sp, x]             // x += ADDITION;
         adr     x0, y

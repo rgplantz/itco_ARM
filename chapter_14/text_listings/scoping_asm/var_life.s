@@ -17,7 +17,7 @@
         .size   z, 4
 z:
         .word   INIT_Z
-        .section        .rodata
+        .section  .rodata
 heading0:
         .string "           automatic   static   global"
 heading1:
