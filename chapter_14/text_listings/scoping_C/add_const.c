@@ -2,14 +2,14 @@
 
 #include <stdio.h>
 #include "add_const.h"
-#define INIT_x 78
-#define INIT_y 90
+#define INIT_X 78
+#define INIT_Y 90
 #define ADDITION 1000
 
 void add_const(void)
 {
-    int x = INIT_x;         // every call
-    static int y = INIT_y;  // first call only
+    int x = INIT_X;         // every call
+    static int y = INIT_Y;  // first call only
     extern int z;           // global
    
     x += ADDITION;          // add to each

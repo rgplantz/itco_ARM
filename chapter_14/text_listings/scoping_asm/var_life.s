@@ -2,9 +2,9 @@
 // and global variables.
         .arch armv8-a
 // Useful names
-        .equ    INITX, 12
-        .equ    INITY, 34
-        .equ    INITZ, 56
+        .equ    INIT_X, 12
+        .equ    INIT_Y, 34
+        .equ    INIT_Z, 56
 // Stack frame
         .equ    x, 24
         .equ    y, 28
@@ -16,7 +16,7 @@
         .type   z, %object
         .size   z, 4
 z:
-        .word   INITZ
+        .word   INIT_Z
         .section        .rodata
 heading0:
         .string "           automatic   static   global"
@@ -32,10 +32,10 @@ main:
         stp     fp, lr, [sp, -FRAME]!   // create our stack frame
         mov     fp, sp                  // set our frame pointer
 
-        mov     w0, INITX
-        str     w0, [sp, x]             // x = INITX;
-        mov     w0, INITY
-        str     w0, [sp, y]             // y = INITY;
+        mov     w0, INIT_X
+        str     w0, [sp, x]             // x = INIT_X;
+        mov     w0, INIT_Y
+        str     w0, [sp, y]             // y = INIT_Y;
         adr     x0, heading0            // print 2-line header
         bl      puts
         adr     x0, heading1
