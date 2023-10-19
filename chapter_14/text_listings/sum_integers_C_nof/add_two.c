@@ -6,6 +6,6 @@ void add_two(int *a, int b, int c)
 {
   int sum;
   
-  sum = a + b;
+  sum = b + c;
   *a = sum;
 }
