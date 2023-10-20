@@ -1,6 +1,6 @@
 # Build three_factorial program
 
-objects = three_factorial.o factorial.othree_factorial
+objects = three_factorial.o factorial.o
 genasm = -S -Wall -O0 -fno-unwind-tables -fno-asynchronous-unwind-tables
 
 CFLAGS = -g -Wall
