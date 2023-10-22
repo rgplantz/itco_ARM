@@ -2,7 +2,8 @@
 
 #include <stdio.h>
 
-int main(void) {
+int main(void)
+{
     int x, y, z, overflow;
   
     printf("Enter an integer: ");
