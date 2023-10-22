@@ -15,4 +15,3 @@ clean:
 	rm -f $(objects)
 allclean: clean
 	rm three_factorial
-
