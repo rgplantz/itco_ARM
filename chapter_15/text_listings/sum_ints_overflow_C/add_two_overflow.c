@@ -2,7 +2,7 @@
 
 #include "add_two_overflow.h"
 
-int add_two(int a, int b, int *c)
+int add_two_overflow(int a, int b, int *c)
 {
     int sum;
     int V_flag = 0;   // assume no overflow

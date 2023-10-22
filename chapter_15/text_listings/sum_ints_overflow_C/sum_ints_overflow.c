@@ -10,7 +10,7 @@ int main(void)
     scanf("%i", &x);
     printf("Enter an integer: ");
     scanf("%i", &y);
-    overflow = add_two(x, y, &z);
+    overflow = add_two_overflow(x, y, &z);
     printf("%i + %i = %i\n", x, y, z);
     if (overflow)
         printf("** Overflow occurred **\n");
