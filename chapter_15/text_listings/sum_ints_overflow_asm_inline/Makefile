@@ -18,4 +18,3 @@ clean:
 	rm -f $(objects)
 allclean: clean
 	rm sum_ints_inline
-
