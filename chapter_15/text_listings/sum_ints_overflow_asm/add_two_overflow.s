@@ -8,9 +8,9 @@
 // Code
         .text
         .align  2
-        .global add_two
-        .type   add_two, %function
-add_two:
+        .global add_two_overflow
+        .type   add_two_overflow, %function
+add_two_overflow:
         adds    w1, w0, w1    // add, set condition flags
         cinc    w0, wzr, vs   // check overflow flag
         str     w1, [x2]      // store output
