@@ -1,21 +1,21 @@
-# Build sum_ints_overflow program
+# Build sum_ints program
 
-objects = sum_ints_overflow.o add_two_overflow.o
+objects = sum_ints.o add_two.o
 genasm = -S -Wall -O0 -fno-unwind-tables -fno-asynchronous-unwind-tables
 
 CFLAGS = -g -Wall
 CC = gcc
 
-sum_ints_overflow: $(objects)
-sum_ints_overflow.o: add_two_overflow.h
-add_two_overflow.o: add_two_overflow.h
+sum_ints: $(objects)
+sum_ints.o: add_two.h
+add_two.o: add_two.h
 
-sum_ints_overflow.s: sum_ints_overflow.c add_two_overflow.h
+sum_ints.s: sum_ints.c add_two.h
 	$(CC) $(genasm) -o temp $<
 	expand -t 8 temp > $@
 	rm temp
 
-add_two_overflow.s: add_two_overflow.c add_two_overflow.h
+add_two.s: add_two.c add_two.h
 	$(CC) $(genasm) -o temp $<
 	expand -t 8 temp > $@
 	rm temp
@@ -24,5 +24,5 @@ add_two_overflow.s: add_two_overflow.c add_two_overflow.h
 clean:
 	rm -f $(objects)
 allclean: clean
-	rm sum_ints_overflow
+	rm sum_ints
 

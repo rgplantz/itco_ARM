@@ -1,17 +1,17 @@
-# Build sum_ints_overflow program
+# Build sum_ints program
 
-objects = sum_ints_overflow.o add_two_overflow.o
+objects = sum_ints.o add_two.o
 
 ASFLAGS = --gstabs
 AS = as
 CFLAGS = -g -Wall -O0
 CC = gcc
 
-sum_ints_overflow: $(objects)
-sum_ints_overflow.o: add_two_overflow.h
+sum_ints: $(objects)
+sum_ints.o: add_two.h
 
 .PHONY: clean allclean
 clean:
 	rm -f $(objects)
 allclean: clean
-	rm sum_ints_overflow
+	rm sum_ints

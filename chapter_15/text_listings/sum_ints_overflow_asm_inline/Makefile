@@ -1,14 +1,14 @@
-# Build sum_ints_inline program
+# Build sum_ints program
 
-objects = sum_ints_inline.o
+objects = sum_ints.o
 genasm = -S -Wall -O0 -fno-unwind-tables -fno-asynchronous-unwind-tables
 
 CFLAGS = -g -Wall
 CC = gcc
 
-sum_ints_inline: $(objects)
+sum_ints: $(objects)
 
-sum_ints_inline.s: sum_ints_inline.c
+sum_ints.s: sum_ints.c
 	$(CC) $(genasm) -o temp $<
 	expand -t 8 temp > $@
 	rm temp
@@ -17,4 +17,4 @@ sum_ints_inline.s: sum_ints_inline.c
 clean:
 	rm -f $(objects)
 allclean: clean
-	rm sum_ints_inline
+	rm sum_ints
