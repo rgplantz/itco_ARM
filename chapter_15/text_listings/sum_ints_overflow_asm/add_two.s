@@ -1,8 +1,8 @@
 // Adds two integers outputs  sum; returns overflow T or F
 // Calling sequence:
-//    x0 <- address for ouput
-//    w0 <- integer a
-//    x2 <- integer b
+//    x0 <- address a, for output
+//    w1 <- integer b
+//    w2 <- integer c
 //    returns 1 for overflow, 0 for no overflow
         .arch armv8-a
 // Code
