@@ -7,7 +7,7 @@
         .equ    frame, 80             // allows >51 bytes
 // Code
         .text
-        .section        .rodata
+        .section  .rodata
         .align  3
 prompt:
         .string "Enter up to 50 alphabetic characters: "
