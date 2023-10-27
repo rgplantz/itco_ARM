@@ -8,7 +8,7 @@
         .equ    frame, 32
 // Code
         .text
-        .section        .rodata
+        .section  .rodata
         .align  3
 prompt:
         .string "Enter an integer: "
