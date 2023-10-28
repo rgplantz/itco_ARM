@@ -2,7 +2,8 @@
 
 #include <stdio.h>
 
-int main(void) {
+int main(void)
+{
     struct {
         char a;
         int i;

@@ -6,20 +6,20 @@
 // Stack frame
         .equ    save1920, 16
         .equ    save21, 32
-        .equ    frame, 48
+        .equ    FRAME, 48
 // Code
-        .section        .rodata
+        .section  .rodata
         .align  3
 msg1:
-        .string "intArray["
+        .string "array["
 msg2:
         .string "] = "
         .text
         .align  2
-        .global displayArray
-        .type   displayArray, %function
-displayArray:
-        stp     fp, lr, [sp, -frame]! // create our stack frame
+        .global display_array
+        .type   display_array, %function
+display_array:
+        stp     fp, lr, [sp, -FRAME]! // create our stack frame
         mov     fp, sp                // set frame pointer
         stp     x19, x20,  [sp, save1920] // save regs
         str     x21, [sp, save21]
@@ -27,23 +27,23 @@ displayArray:
         mov     x19, x0               // array address
         mov     w20, w1               // array size
         mov     w21, wzr              // array index
-displayLoop:
+loop:
         adr     x0, msg1              // start line
-        bl      writeStr
+        bl      write_str
         mov     w0, w21               // index
-        bl      putInt
+        bl      put_int
         adr     x0, msg2              // more text on line
-        bl      writeStr
+        bl      write_str
         ldr     w0, [x19, w21, uxtw 2]  // current element
-        bl      putInt
+        bl      put_int
         mov     w0, '\n'              // finish line
-        bl      writeChar
+        bl      write_char
         add     w21, w21, 1           // increment index
         cmp     w21, w20              // at end?
-        b.lt    displayLoop           // no, continue filling
+        b.lt    loop                  // no, continue filling
 
         mov     w0, wzr               // return 0;
         ldp     x19, x20,  [sp, save1920] // restore regs
         ldr     x21, [sp, save21]
-        ldp     fp, lr, [sp], frame   // undo stack frame
+        ldp     fp, lr, [sp], FRAME   // undo stack frame
         ret

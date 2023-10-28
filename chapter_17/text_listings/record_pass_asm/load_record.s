@@ -8,13 +8,13 @@
 //    w5 <- char c
 //    returns 0
         .arch armv8-a
-        .include  "aRecord.s"         // field offsets
+        .include  "a_record.s"    // field offsets
 // Code
         .text
         .align  2
-        .global loadRecord
-        .type   loadRecord, %function
-loadRecord:
+        .global load_record
+        .type   load_record, %function
+load_record:
         strb    w1, [x0, a]       // first char
         str     w2, [x0, i]       // first int
         strb    w3, [x0, b]       // second char
