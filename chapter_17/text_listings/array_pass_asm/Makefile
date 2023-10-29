@@ -1,6 +1,6 @@
 # Build fill_2x_index program
 
-objects = fill_2x_index.o display_array.o twice_index.o put_int.o int_to_dec.o write_str.o write_chr.o
+objects = fill_2x_index.o display_array.o twice_index.o put_int.o int_to_dec.o write_str.o write_char.o
 ASFLAGS = --gstabs
 AS = as
 CC = gcc
