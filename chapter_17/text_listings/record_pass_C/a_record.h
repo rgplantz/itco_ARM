@@ -1,7 +1,7 @@
 // Declaration of a record.
 
-#ifndef ARECORD_H
-#define ARECORD_H
+#ifndef A_RECORD_H
+#define A_RECORD_H
 struct aTag {
     char a;
     int i;
