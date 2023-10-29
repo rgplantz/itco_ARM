@@ -1,21 +1,27 @@
-# Build convert_dec program
+# Build fill_2x_index program
 
-objects = convert_dec.o dec_to_int.o write_str.o read_str.o
+objects = fill_2x_index.o twice_index.o display_array.o put_int.o int_to_dec.o write_str.o write_char.o
 genasm = -S -Wall -O0 -fno-unwind-tables -fno-asynchronous-unwind-tables
 
 CFLAGS = -g -Wall
 CC = gcc
 
-convert_dec: $(objects)
-convert_dec.o: dec_to_int.h write_str.h read_str.h
-dec_to_int.o: dec_to_int.h
+fill_2x_index: $(objects)
+fill_2x_index.o: twice_index.h display_array.h
+twice_index.o: twice_index.h
+display_array.o: display_array.h put_int.h write_str.h write_char.h
 
-convert_dec.s: convert_dec.c dec_to_int.h write_str.h read_str.h
+fill_2x_index.s: fill_2x_index.c display_array.h
 	$(CC) $(genasm) -o temp $<
 	expand -t 8 temp > $@
 	rm temp
 
-dec_to_int.s: dec_to_int.c dec_to_int.h
+twice_index.s: twice_index.c twice_index.h
+	$(CC) $(genasm) -o temp $<
+	expand -t 8 temp > $@
+	rm temp
+
+display_array.s: display_array.c display_array.h put_int.h write_str.h write_char.h
 	$(CC) $(genasm) -o temp $<
 	expand -t 8 temp > $@
 	rm temp
@@ -24,5 +30,4 @@ dec_to_int.s: dec_to_int.c dec_to_int.h
 clean:
 	rm -f $(objects)
 allclean: clean
-	rm convert_dec
-
+	rm fill_2x_index
