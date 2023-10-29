@@ -17,7 +17,7 @@ main:
 
         mov     w1, N                   // length of array
         add     x0, sp, an_array        // address of array
-        bl      twiceIndex              // fill the array
+        bl      twice_index             // fill the array
 
         mov     w1, N                   // number of elements
         add     x0, sp, an_array        // address of array
