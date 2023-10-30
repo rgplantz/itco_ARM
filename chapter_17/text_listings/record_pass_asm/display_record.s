@@ -43,8 +43,6 @@ display_record:
         bl      write_str
         ldrb    w0, [x19, c]          // third char
         bl      write_char            // display
-        adr     x0, separator         // field separation
-        bl      write_str
         mov     w0, '\n'              // newline
         bl      write_char
 
