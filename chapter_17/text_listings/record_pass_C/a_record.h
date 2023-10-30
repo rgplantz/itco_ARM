@@ -2,7 +2,7 @@
 
 #ifndef A_RECORD_H
 #define A_RECORD_H
-struct aTag {
+struct a_tag {
     char a;
     int i;
     char b;
