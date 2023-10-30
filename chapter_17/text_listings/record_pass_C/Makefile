@@ -1,22 +1,22 @@
 # Build fill_records program
 
-objects = fill_records.o fill_record.o display_record.o put_int.o int_to_dec.o write_str.o write_char.o
+objects = fill_records.o load_record.o display_record.o put_int.o int_to_dec.o write_str.o write_char.o
 genasm = -S -Wall -O0 -fno-unwind-tables -fno-asynchronous-unwind-tables
 
 CFLAGS = -g -Wall
 CC = gcc
 
 fill_records: $(objects)
-fill_records.o: fill_record.h display_record.h
-fill_record.o: fill_record.h
+fill_records.o: load_record.h display_record.h
+load_record.o: load_record.h
 display_record.o: display_record.h put_int.h write_str.h write_char.h
 
-fill_records.s: fill_records.c display_record.h
+fill_records.s: fill_records.c load_record.h display_record.h
 	$(CC) $(genasm) -o temp $<
 	expand -t 8 temp > $@
 	rm temp
 
-fill_record.s: fill_record.c fill_record.h
+load_record.s: load_record.c load_record.h
 	$(CC) $(genasm) -o temp $<
 	expand -t 8 temp > $@
 	rm temp
