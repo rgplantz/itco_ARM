@@ -5,7 +5,7 @@
 
 void load_record(struct a_tag *a_record, char v, int w, char x, int y, char z) {
     (*a_record).a = v;
-    a_record->b = x;     /* equivalent syntax */
+    a_record->b = x;    // equivalent syntax
     a_record->c = z;
     a_record->i = w;
     a_record->j = y;
