@@ -1,4 +1,4 @@
-// Loads fields of aRecord.s
+// Loads fields of our_record.s
 // Calling sequence
 //    x0 <- address of record
 //    w1 <- char a

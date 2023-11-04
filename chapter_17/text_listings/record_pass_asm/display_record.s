@@ -1,4 +1,4 @@
-// Displays fields of aRecord.s
+// Displays fields of our_record.s
 //    x0 <- first 8 bytes of record contents
 //    w1 <- remaining 4 bytes of record contents
         .arch armv8-a
