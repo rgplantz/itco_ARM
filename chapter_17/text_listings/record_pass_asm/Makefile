@@ -6,6 +6,8 @@ AS = as
 CC = gcc
 
 fill_records: $(objects)
+load_record: our_record.s
+display_record: our_record.s
 
 .PHONY: clean allclean
 clean:
