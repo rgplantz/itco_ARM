@@ -1,9 +1,9 @@
 // Loads record with data.
 
-#include "a_record.h"
+#include "our_record.h"
 #include "load_record.h"
 
-void load_record(struct a_tag *a_record, char v, int w, char x, int y, char z) {
+void load_record(struct chars_and_ints *a_record, char v, int w, char x, int y, char z) {
     (*a_record).a = v;
     a_record->b = x;    // equivalent syntax
     a_record->c = z;

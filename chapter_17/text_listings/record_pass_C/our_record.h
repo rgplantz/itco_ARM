@@ -1,8 +1,8 @@
 // Declaration of a record.
 
-#ifndef A_RECORD_H
-#define A_RECORD_H
-struct a_tag {
+#ifndef OUR_RECORD_H
+#define OUR_RECORD_H
+struct chars_and_ints {
     char a;
     int i;
     char b;
