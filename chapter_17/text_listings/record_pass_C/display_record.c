@@ -1,7 +1,7 @@
 // Display contents of a record.
 
 #include <stdio.h>
-#include "our_record.h"
+#include "my_record.h"
 #include "display_record.h"
 
 void display_record(struct chars_and_ints a_record) {

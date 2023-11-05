@@ -1,7 +1,7 @@
 // Allocates two records, assigns a value to each field
 // in each record, and displays the contents.
 
-#include "our_record.h"
+#include "my_record.h"
 #include "load_record.h"
 #include "display_record.h"
 

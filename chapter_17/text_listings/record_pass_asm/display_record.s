@@ -1,8 +1,8 @@
-// Displays fields of our_record.s
+// Displays fields of my_record.s
 //    x0 <- first 8 bytes of record contents
 //    w1 <- remaining 4 bytes of record contents
         .arch armv8-a
-        .include  "our_record.s"      // field offsets
+        .include  "my_record.s"      // field offsets
 // Stack frame
         .equ    save19, 16
         .equ    record, 24

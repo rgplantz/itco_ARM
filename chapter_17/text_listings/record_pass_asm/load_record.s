@@ -1,4 +1,4 @@
-// Loads fields of our_record.s
+// Loads fields of my_record.s
 // Calling sequence
 //    x0 <- address of record
 //    w1 <- char a
@@ -8,7 +8,7 @@
 //    w5 <- char c
 //    returns 0
         .arch armv8-a
-        .include  "our_record.s"  // field offsets
+        .include  "my_record.s"   // field offsets
 // Code
         .text
         .align  2
