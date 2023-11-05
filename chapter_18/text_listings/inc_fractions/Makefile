@@ -20,7 +20,7 @@ inc_fractions.s: inc_fractions.cpp fraction_2.h
 
 fraction_2.s: fraction_2.cpp fraction_2.h
 	$(CXX) $(genasm) -o temp fraction_2.cpp
-	expand -t 8 temp > fraction.s
+	expand -t 8 temp > fraction_2.s
 	rm temp
 
 .PHONY: clean allclean
