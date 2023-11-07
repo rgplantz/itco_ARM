@@ -2,7 +2,8 @@
 
 #include <stdio.h>
 
-int main() {
+int main()
+{
     float x, y, z, sum1, sum2;
 
     printf("Enter a number: ");

@@ -4,7 +4,7 @@
         .arch armv8-a
 // Stack frame
         .equ    save19, 16
-        .equ    frame, 32
+        .equ    FRAME, 32
 # Constant data
         .section	.rodata
         .align  3
@@ -20,7 +20,7 @@ cents:
         .global get_money
         .type   get_money, %function
 get_money:
-        stp     fp, lr, [sp, -frame]! // create our stack frame
+        stp     fp, lr, [sp, -FRAME]! // create our stack frame
         mov     fp, sp                // set our frame pointer
         str     x19, [sp, save19]     // for local var
 
@@ -38,5 +38,5 @@ get_money:
         add     w0, w0, w19           // add scaled dollars
 
         ldr     x19, [sp, save19]     // restore for caller
-        ldp     fp, lr, [sp], frame   // restore fp, lr, sp
+        ldp     fp, lr, [sp], FRAME   // restore fp, lr, sp
         ret                           // back to caller

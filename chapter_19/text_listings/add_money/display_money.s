@@ -5,7 +5,7 @@
 //    returns 0
 // Stack frame
         .equ    save1920, 16
-        .equ    frame, 32
+        .equ    FRAME, 32
 # Constant data
         .section	.rodata
         .align  3
@@ -15,7 +15,7 @@
         .global display_money
         .type   display_money, %function
 display_money:
-        stp     fp, lr, [sp, -frame]! // create our stack frame
+        stp     fp, lr, [sp, -FRAME]! // create our stack frame
         mov     fp, sp                // set our frame pointer
         stp     x19, x20, [sp, save1920]  // for local vars
 
@@ -42,5 +42,5 @@ no_zero:
 
         mov     w0, wzr               // return 0;
         ldp     x19, x29, [sp, save1920]  // restore for caller
-        ldp     fp, lr, [sp], frame   // restore fp, lr, sp
+        ldp     fp, lr, [sp], FRAME   // restore fp, lr, sp
         ret                           // back to caller

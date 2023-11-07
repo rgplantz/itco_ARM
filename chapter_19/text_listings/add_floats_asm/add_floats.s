@@ -3,7 +3,7 @@
 // Stack frame
         .equ    x, 16
         .equ    y, 20
-        .equ    frame, 32
+        .equ    FRAME, 32
 // Constant data
         .section  .rodata
         .align  3
@@ -19,7 +19,7 @@ sum_format:
         .global	main
         .type	main, %function
 main:
-        stp     fp, lr, [sp, frame]!  // our stack frame
+        stp     fp, lr, [sp, FRAME]!  // our stack frame
         mov     fp, sp
 
         adr     x0, prompt_format     // ask for number
@@ -43,5 +43,5 @@ main:
         bl      printf
 
         mov     w0, wzr               // return 0;
-        ldp     fp, lr, [sp], frame   // undo stack frame
+        ldp     fp, lr, [sp], FRAME   // undo stack frame
         ret
