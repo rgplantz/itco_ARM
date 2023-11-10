@@ -10,7 +10,7 @@
 
 // Stack frame
         .equ    save1920, 16          // save regs
-        .equ    frame, 32
+        .equ    FRAME, 32
 // Constant data
         .section .rodata
         .align  2
@@ -31,7 +31,7 @@ off_msg:
         .global main
         .type   main, %function
 main:
-        stp     fp, lr, [sp, -frame]!   // create our stack frame
+        stp     fp, lr, [sp, -FRAME]!   // create our stack frame
         mov     fp, sp                  // set frame pointer
         stp     x19, x20, [sp, save1920]  // save regs.
 
@@ -74,5 +74,5 @@ done:
         mov     x0, x19                 // our gpio memory
         bl      gpio_unmap_memory
         mov     w0, wzr                 // return 0;
-        ldp     fp, lr, [sp], frame     // undo stack frame
+        ldp     fp, lr, [sp], FRAME     // undo stack frame
         ret

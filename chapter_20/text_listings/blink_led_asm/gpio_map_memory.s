@@ -23,7 +23,7 @@
 
 // Stack frame
         .equ    save1920, 16
-        .equ    frame, 32
+        .equ    FRAME, 32
 // Constant data
         .section .rodata
         .align  2
@@ -40,7 +40,7 @@ mmem_err:
         .global gpio_map_memory
         .type   gpio_map_memory, %function
 gpio_map_memory:
-        stp     fp, lr, [sp, -frame]!     // create our stack frame
+        stp     fp, lr, [sp, -FRAME]!     // create our stack frame
         mov     fp, sp                    // set frame pointer
         stp     x19, x20, [sp, save1920]  // save regs.
 // Open /dev/gpiomem for read/write and syncing        
@@ -76,5 +76,5 @@ mmap_ok:
 done:        
         mov     x0, x20                   // return address of gpio registers
         ldp     x19, x20, [sp, save1920]  // restore regs.
-        ldp     fp, lr, [sp], frame       // undo stack frame
+        ldp     fp, lr, [sp], FRAME       // undo stack frame
         ret

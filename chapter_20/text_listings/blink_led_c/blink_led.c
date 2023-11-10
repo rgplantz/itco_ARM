@@ -9,7 +9,8 @@
 #define N_BLINKS 5                            // number of blinks
 #define N_SECONDS 3                           // time between blinks
 
-int main(void) {
+int main(void)
+{
     int version;
     int error;
     int i;
