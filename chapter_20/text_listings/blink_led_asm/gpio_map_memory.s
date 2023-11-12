@@ -31,8 +31,6 @@ gpio_dev:
         .asciz  "/dev/gpiomem"
 dev_err:
         .asciz  "Cannot open /dev/gpiomem\n"
-mmem_err:
-        .asciz  "Cannot map /dev/gpiomem\n"
 
 // The program
         .text
@@ -66,9 +64,7 @@ gpiomem_ok:
         bl      mmap
         cmp     x0, -1                    // check for error
         bne     mmap_ok                   // no error, continue
-        adr     x0, mmem_err              // error, tell user
-        bl      write_str
-        mov     x0, xzr                   // NUL for memory address
+        mov     x0, xzr                   // error, NUL for memory address
 mmap_ok:
         mov     x20, x0                   // save mapped address
         mov     w0, w19                   // /dev/gpiomem file descriptor

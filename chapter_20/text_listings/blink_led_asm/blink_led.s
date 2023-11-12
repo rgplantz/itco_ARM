@@ -14,10 +14,6 @@
 // Constant data
         .section .rodata
         .align  2
-gpio_dev:
-        .asciz  "/dev/gpiomem"
-dev_err:
-        .asciz  "Cannot open /dev/gpiomem\n"
 err_msg:
         .asciz  "Cannot map /dev/gpiomem\n"
 on_msg:
