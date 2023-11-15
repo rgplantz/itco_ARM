@@ -2,8 +2,8 @@
 // into program virtual address space.
 // returns pointer to user memory for gpio registers
 
-        .include  "fcntl.h"   //usr/include/asm-generic/fcntl.h:
-        .include  "mman-common.h" //usr/include/asm-generic/mman-common.h:
+        .include  "/usr/include/asm-generic/fcntl.h"
+        .include  "/usr/include/asm-generic/mman-common.h"
 // The following are defined by me:
         .equ    O_FLAGS, O_RDWR|__O_SYNC|O_CLOEXEC  // open for read/write and synchronize
         .equ    O_FLAGS_HI, O_FLAGS/0xffff  // needed for mov
