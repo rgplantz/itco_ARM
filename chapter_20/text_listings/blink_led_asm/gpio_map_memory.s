@@ -14,11 +14,11 @@
         .equ    PROT_WRITE, 0x2           // page can be written
         .equ    MAP_SHARED, 0x01          // share changes
 // The following are defined by me:
-        .equ    O_FLAGS, O_RDWR|__O_SYNC|O_CLOEXEC  // open file flags
-        .equ    O_FLAGS_HI, O_FLAGS/0xffff  // needed for mov
-        .equ    O_FLAGS_LO, O_FLAGS&0xffff  //     instructions
-        .equ    PROT_RDWR, PROT_READ|PROT_WRITE // allow read and write
-        .equ    NO_PREF, 0                // let OS choose address of mapping
+        .equ    OPEN_FLAGS, O_RDWR|__O_SYNC|O_CLOEXEC // open file flags
+        .equ    OPEN_FLAGS_HI, OPEN_FLAGS/0xffff      //    needed to mov
+        .equ    OPEN_FLAGS_LO, OPEN_FLAGS&0xffff      //       32-bit word
+        .equ    PROT_RDWR, PROT_READ|PROT_WRITE       // allow read and write
+        .equ    NO_ADDR_PREF, 0           // let OS choose address of mapping
         .equ    PAGE_SIZE, 4096           // Raspbian memory page
 
 // Stack frame
@@ -32,7 +32,7 @@ gpio_dev:
 dev_err:
         .asciz  "Cannot open /dev/gpiomem\n"
 
-// The program
+// Code
         .text
         .align  2
         .global gpio_map_memory
@@ -42,8 +42,8 @@ gpio_map_memory:
         mov     fp, sp                    // set frame pointer
         stp     x19, x20, [sp, save1920]  // save regs.
 // Open /dev/gpiomem for read/write and syncing        
-        mov     w1, O_FLAGS_LO            // read/write /dev/gpiomem
-        movk    w1, O_FLAGS_HI, lsl 16
+        mov     w1, OPEN_FLAGS_LO         // read/write /dev/gpiomem
+        movk    w1, OPEN_FLAGS_HI, lsl 16
         adr     x0, gpio_dev              // specify /dev/gpiomem
         bl      open
         cmp     w0, -1                    // check for error
@@ -56,11 +56,11 @@ gpiomem_ok:
         mov     w19, w0                   // /dev/gpiomem file descriptor
 // Map the GPIO registers to a main memory location so we can access them
         mov     w5, wzr                   // we're at gpio, 0 offset
-        mov     w4, w0
+        mov     w4, w19                   // file descriptor
         mov     w3, MAP_SHARED            // share with other processes
         mov     w2, PROT_RDWR             // read/write this memory
         mov     w1, PAGE_SIZE             // get 1 page of memory
-        mov     w0, NO_PREF               // let kernel pick memory
+        mov     w0, NO_ADDR_PREF          // let kernel pick memory
         bl      mmap
         cmp     x0, -1                    // check for error
         bne     mmap_ok                   // no error, continue
