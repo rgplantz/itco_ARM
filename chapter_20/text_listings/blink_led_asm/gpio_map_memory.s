@@ -5,19 +5,17 @@
 // The following are defined in /usr/include/asm-generic/fcntl.h:
 // Note that the values are specified in octal.
         .equ    O_RDWR, 00000002            // open for read/write
-        .equ    O_DSYNC, 00010000           // these flags ensure that
-        .equ    __O_SYNC, 04000000          //    reads from and writes to
-        .equ    O_SYNC, __O_SYNC | O_DSYNC  //    the gpio are properly
+        .equ    O_SYNC, 04010000            // ensure reads and writes are
         .equ    O_CLOEXEC, 02000000         //    synchronized by the OS
 // The following are defined in /usr/include/asm-generic/mman-common.h:
         .equ    PROT_READ, 0x1              // page can be read
         .equ    PROT_WRITE, 0x2             // page can be written
         .equ    MAP_SHARED, 0x01            // share changes
 // The following are defined by me:
-        .equ    OPEN_FLAGS, O_RDWR | __O_SYNC | O_CLOEXEC // open file flags
-        .equ    OPEN_FLAGS_HI, OPEN_FLAGS / 0xffff        //    needed to mov
-        .equ    OPEN_FLAGS_LO, OPEN_FLAGS & 0xffff        //       32-bit word
-        .equ    PROT_RDWR, PROT_READ | PROT_WRITE         // allow read and write
+        .equ    OPEN_FLAGS, O_RDWR | O_SYNC | O_CLOEXEC // open file flags
+        .equ    OPEN_FLAGS_HI, OPEN_FLAGS / 0xffff      //    needed to mov
+        .equ    OPEN_FLAGS_LO, OPEN_FLAGS & 0xffff      //       32-bit word
+        .equ    PROT_RDWR, PROT_READ | PROT_WRITE       // allow read and write
         .equ    NO_ADDR_PREF, 0             // let OS choose address of mapping
         .equ    PAGE_SIZE, 4096             // Raspbian memory page
 
