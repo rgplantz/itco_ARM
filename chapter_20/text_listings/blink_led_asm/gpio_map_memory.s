@@ -13,8 +13,6 @@
         .equ    MAP_SHARED, 0x01            // share changes
 // The following are defined by me:
         .equ    OPEN_FLAGS, O_RDWR | O_SYNC | O_CLOEXEC // open file flags
-        .equ    OPEN_FLAGS_HI, OPEN_FLAGS / 0xffff      //    needed to mov
-        .equ    OPEN_FLAGS_LO, OPEN_FLAGS & 0xffff      //       32-bit word
         .equ    PROT_RDWR, PROT_READ | PROT_WRITE       // allow read and write
         .equ    NO_ADDR_PREF, 0             // let OS choose address of mapping
         .equ    PAGE_SIZE, 4096             // Raspbian memory page
@@ -40,7 +38,7 @@ gpio_map_memory:
         mov     fp, sp                      // set frame pointer
         stp     x19, x20, [sp, save1920]    // save regs.
 // Open /dev/gpiomem for read/write and syncing        
-        mov     w1, OPEN_FLAGS & 0xffff     // read/write /dev/gpiomem
+        mov     w1, OPEN_FLAGS & 0xffff     // move 32-bit flags
         movk    w1, OPEN_FLAGS / 0xffff, lsl 16
         adr     x0, gpio_dev                // specify /dev/gpiomem
         bl      open
