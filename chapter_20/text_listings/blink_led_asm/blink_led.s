@@ -31,7 +31,7 @@ main:
         mov     fp, sp                  // set frame pointer
         stp     x19, x20, [sp, save1920]  // save regs.
 
-// Map /dev/gpiomem to user memory
+// Map /dev/gpiomem to application memory
         bl      gpio_map_memory
         cbnz    x0, mem_map_ok          // check for address
         adr     x0, err_msg             // NUL, give error message

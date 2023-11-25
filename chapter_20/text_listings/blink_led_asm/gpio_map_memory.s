@@ -1,6 +1,6 @@
 // Opens the /dev/gpiomem device and maps GPIO memory
 // into program virtual address space.
-// returns pointer to user memory for gpio registers
+// returns pointer to application memory for gpio registers
 
 // The following are defined in /usr/include/asm-generic/fcntl.h:
 // Note that the values are specified in octal.

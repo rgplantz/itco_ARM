@@ -1,5 +1,5 @@
 // Selects a function for a GPIO pin. Assumes that GPIO registers
-// have been mapped to user memory.
+// have been mapped to application memory.
 // Calling sequence:
 //      x0 <- address of GPIO in mapped memory
 //      w1 <- GPIO pin number
