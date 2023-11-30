@@ -5,7 +5,6 @@
 //       w1 <- pin number
 
 // Constants
-        .equ    SET_PIN, 1         // 1 bit for pin
         .equ    PINS_IN_REG, 32
         .equ    GPSET0, 0x1c      // GPSET registers offset
 
@@ -22,7 +21,7 @@ gpio_set_pin:
         add     x0, x0, GPSET0  // address of GPSET regs.
         lsl     w3, w3, 2       // 4 bytes in a register
         add     x0, x0, x3      // address of GPSETn
-        mov     w5, SET_PIN     // need a 1
+        mov     w5, 1           // need a 1
         lsl     w5, w5, w4      // move to proper bit position
         ldr     w6, [x0]        // load entire register
         orr     w6, w6, w5      // set the bit
