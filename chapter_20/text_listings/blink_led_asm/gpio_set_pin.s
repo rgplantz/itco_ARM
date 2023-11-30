@@ -25,7 +25,7 @@ gpio_set_pin:
         mov     w5, SET_PIN     // need a 1
         lsl     w5, w5, w4      // move to proper bit position
         ldr     w6, [x0]        // load entire register
-        orr     w6, w6, w5      // set the clear bit
+        orr     w6, w6, w5      // set the bit
         str     w6, [X0]        // update register
         
         ret
