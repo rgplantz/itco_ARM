@@ -4,9 +4,10 @@
 // Useful constants
         .equ    N_BLINKS, 5           // number of times to blink
         .equ    DELTA_TIME, 3         // seconds between blinks
-        .equ    INPUT, 0              // use pin for input
         .equ    OUTPUT, 1             // use pin for ouput
         .equ    GPIO_PIN, 17          // bit field in GPFLSEL regs.
+        .equ    PIN_HIGH, 1           // pin to 3.5 volts
+        .equ    PIN_LOW, 0            // pin to 0.0 volts
 
 // Stack frame
         .equ    save1920, 16          // save regs
@@ -46,20 +47,22 @@ mem_map_ok:
 
 // Turn the pin on and off
         mov     x20, N_BLINKS           // number of times to do it
-loop:
+loop: 
         adr     x0, on_msg              // tell user it's on
         bl      write_str
-        mov     x0, x19                 // pointer to mapped memory
+        mov     w2, PIN_HIGH            // turn LED on
         mov     w1, GPIO_PIN            // GPIO pin number
-        bl      gpio_set_pin            // turn LED on
+        mov     x0, x19                 // pointer to mapped memory
+        bl      gpio_pin_output         // turn LED on
         mov     w0, DELTA_TIME          // wait
         bl      sleep
        
         adr     x0, off_msg             // tell user it's off
         bl      write_str
-        mov     x0, x19                 // pointer to mapped memory
+        mov     w2, PIN_LOW             // turn LED off
         mov     w1, GPIO_PIN            // GPIO pin number
-        bl      gpio_clear_pin          // turn LED off
+        mov     x0, x19                 // pointer to mapped memory
+        bl      gpio_pin_output         // turn LED on
         mov     w0, DELTA_TIME          // wait
         bl      sleep
 

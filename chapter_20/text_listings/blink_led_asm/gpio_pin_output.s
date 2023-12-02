@@ -20,7 +20,7 @@ gpio_pin_output:
         add     x0, x0, GPSET0  // if w2 != 0, set pin
 clear_pin:
         cmp     w1, 32          // 32 bits in GP***n register
-        b.le    zero_reg        // GP***0 register
+        b.lo    zero_reg        // GP***0 register
         sub     w1, 32          // pin number in GP***1 register
         add     x0, x0, 4       // bump address to GP***1 register
 zero_reg:
