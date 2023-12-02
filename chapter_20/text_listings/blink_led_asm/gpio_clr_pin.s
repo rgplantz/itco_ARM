@@ -7,6 +7,7 @@
 // Constants
         .equ    PINS_IN_REG, 32
         .equ    GPCLR0, 0x28      // GPCLR registers offset
+        .equ    GPCLR0, 0x28      // GPCLR registers offset
 
 // Code
         .text
