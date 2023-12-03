@@ -50,19 +50,17 @@ mem_map_ok:
 loop: 
         adr     x0, on_msg              // tell user it's on
         bl      write_str
-        mov     w2, PIN_HIGH            // turn LED on
         mov     w1, GPIO_PIN            // GPIO pin number
         mov     x0, x19                 // pointer to mapped memory
-        bl      gpio_pin_output         // turn LED on
+        bl      gpio_pin_high           // turn LED on
         mov     w0, DELTA_TIME          // wait
         bl      sleep
        
         adr     x0, off_msg             // tell user it's off
         bl      write_str
-        mov     w2, PIN_LOW             // turn LED off
         mov     w1, GPIO_PIN            // GPIO pin number
         mov     x0, x19                 // pointer to mapped memory
-        bl      gpio_pin_output         // turn LED on
+        bl      gpio_pin_low            // turn LED on
         mov     w0, DELTA_TIME          // wait
         bl      sleep
 
