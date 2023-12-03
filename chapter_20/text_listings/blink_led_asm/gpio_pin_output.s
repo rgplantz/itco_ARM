@@ -20,9 +20,8 @@ gpio_pin_output:
         add     x0, x0, GPSET0  // if w2 != 0, set pin
 clear_pin:
         cmp     w1, 32          // 32 bits in GP***n register
-        b.lo    zero_reg        // GP***0 register
+        b.lo    zero_reg        // pin number in GP***0 register
         sub     w1, w1, 32      // pin number in GP***1 register
-        add     x0, x0, 4       // bump address to GP***1 register
 zero_reg:
         mov     w3, 1           // need a 1
         lsl     w3, w3, w1      // move to specified bit position
