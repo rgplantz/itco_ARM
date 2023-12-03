@@ -1,4 +1,4 @@
-// Outputs 3.5 volts to GPIO pin. Assumes that GPIO registers
+// Sets GPIO pin. Assumes that GPIO registers
 // have been mapped to programming memory.
 // Calling sequence:
 //       x0 <- address of GPIO in mapped memory
@@ -10,13 +10,14 @@
 // Code
         .text
         .align  2
-        .global gpio_pin_high
-        .type   gpio_pin_high, %function
-gpio_pin_high:
+        .global gpio_pin_set
+        .type   gpio_pin_set, %function
+gpio_pin_set:
         add     x0, x0, GPSET0  // if w2 != 0, set pin
         cmp     w1, 32          // 32 bits in GPSETn register
         b.lo    zero_reg        // pin number in GPSET0 register
-        sub     w1, w1, 32      // pin number in GPSET1 register
+        add     x0, x0, 4       // pin number in GPSET1 register
+        sub     w1, w1, 32
 zero_reg:
         mov     w3, 1           // need a 1
         lsl     w3, w3, w1      // move to specified bit position
