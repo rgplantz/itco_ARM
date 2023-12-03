@@ -13,7 +13,7 @@
         .global gpio_pin_clr
         .type   gpio_pin_clr, %function
 gpio_pin_clr:
-        add     x0, x0, GPCLR0  // address of GPSET0 register
+        add     x0, x0, GPCLR0  // address of GPCLR0 register
         mov     w3, 1           // need a 1
         lsl     w3, w3, w1      // move to specified bit position
         ldr     w4, [x0]        // load entire register
