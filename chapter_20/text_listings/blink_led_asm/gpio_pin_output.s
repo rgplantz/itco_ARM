@@ -15,10 +15,12 @@
         .global gpio_pin_output
         .type   gpio_pin_output, %function
 gpio_pin_output:
-        add     x0, x0, GPCLR0  // assume clear pin
-        cbz     w2, clear_pin   // yes if w2 = 0
+        cbz     w2, clear_pin   // if w2 = 0, clear pin
         add     x0, x0, GPSET0  // if w2 != 0, set pin
+        b       zero_one        // determine if 0 or 1 register
 clear_pin:
+        add     x0, x0, GPCLR0  // assume clear pin
+zero_one:
         cmp     w1, 32          // 32 bits in GP***n register
         b.lo    zero_reg        // pin number in GP***0 register
         sub     w1, w1, 32      // pin number in GP***1 register
