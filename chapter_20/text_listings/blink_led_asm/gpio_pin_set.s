@@ -5,7 +5,7 @@
 //       w1 <- pin number
 
 // Constants
-        .equ    GPSET0, 0x1c      // GPSET registers offset
+        .equ    GPSET0, 0x1c      // register offset
 
 // Code
         .text
@@ -13,12 +13,7 @@
         .global gpio_pin_set
         .type   gpio_pin_set, %function
 gpio_pin_set:
-        add     x0, x0, GPSET0  // if w2 != 0, set pin
-        cmp     w1, 32          // 32 bits in GPSETn register
-        b.lo    zero_reg        // pin number in GPSET0 register
-        add     x0, x0, 4       // pin number in GPSET1 register
-        sub     w1, w1, 32
-zero_reg:
+        add     x0, x0, GPSET0  // address of GPSET0 register
         mov     w3, 1           // need a 1
         lsl     w3, w3, w1      // move to specified bit position
         ldr     w4, [x0]        // load entire register
