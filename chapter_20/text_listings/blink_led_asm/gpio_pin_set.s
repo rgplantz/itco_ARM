@@ -16,6 +16,8 @@ gpio_pin_set:
         add     x0, x0, GPSET0  // address of GPSET0 register
         mov     w3, 1           // need a 1
         lsl     w3, w3, w1      // move to specified bit position
-        str     w3, [x0]        // set pin
+        ldr     w4, [x0]        // load entire register
+        orr     w4, w4, w3      // set the bit
+        str     w4, [x0]        // update register
         
         ret
