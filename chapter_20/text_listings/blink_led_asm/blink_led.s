@@ -4,10 +4,7 @@
 // Useful constants
         .equ    N_BLINKS, 5           // number of times to blink
         .equ    DELTA_TIME, 3         // seconds between blinks
-        .equ    OUTPUT, 1             // use pin for ouput
         .equ    GPIO_PIN, 17          // bit field in GPFLSEL regs.
-        .equ    PIN_HIGH, 1           // pin to 3.5 volts
-        .equ    PIN_LOW, 0            // pin to 0.0 volts
 
 // Stack frame
         .equ    save1920, 16          // save regs
@@ -60,7 +57,7 @@ loop:
         bl      write_str
         mov     w1, GPIO_PIN            // GPIO pin number
         mov     x0, x19                 // pointer to mapped memory
-        bl      gpio_pin_clr            // turn LED on
+        bl      gpio_pin_clr            // turn LED off
         mov     w0, DELTA_TIME          // wait
         bl      sleep
 
