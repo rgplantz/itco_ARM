@@ -1,25 +1,26 @@
 // Initialize, read, and write functions for an a 16550 UART.
-// WARNING: This code does not run on any known
-//          device. It is meant to sketch some
-//          general I/O concepts only.
+// WARNING: This code does not run on any known device. It is
+//      meant to sketch some general I/O concepts only.
 
 #include "UART_defs.h"
 #include "UART_functions.h"
 
 // UART_init intializes the UART and enables it.
-void UART_init(unsigned char* UART) {
+void UART_init(unsigned char* UART)
+{
     unsigned char* port = UART;
 
-    *(port+IER) = NOINTERRUPT;  // no interrupts
-    *(port+FCR) = NOFIFO;       // no fifo
-    *(port+LCR) = SETBAUD;      // set frequency mode
-    *(port+DLM) = MSB38400;     // set to 38400 baud
-    *(port+DLL) = LSB38400;     // 2 regs to set
-    *(port+LCR) = SETCOM;       // communications mode
+    *(port+IER) = NO_INTERRUPT;   // no interrupts
+    *(port+FCR) = NO_FIFO;        // no fifo
+    *(port+LCR) = SET_BAUD;       // set frequency mode
+    *(port+DLM) = MSB_38400;      // set to 38400 baud
+    *(port+DLL) = LSB_38400;      // 2 regs to set
+    *(port+LCR) = SET_COM;        // communications mode
 }
 
 // UART_in waits until UART has a character then reads it
-unsigned char UART_in(unsigned char* UART) {
+unsigned char UART_in(unsigned char* UART)
+{
     unsigned char* port = UART;
     unsigned char character;
 
@@ -30,7 +31,8 @@ unsigned char UART_in(unsigned char* UART) {
 }
 
 // UART_out waits until UART is ready then writes a character
-void UART_out(unsigned char* UART, unsigned char character ) {
+void UART_out(unsigned char* UART, unsigned char character )
+{
     unsigned char* port = UART;
     
     while ((*(port+LSR) & TxRDY) != 0) {

@@ -21,14 +21,13 @@
 #define TxRDY 0x20  // transmitter ready
 
 // commands
-#define NOFIFO        0x00    // don't use FIFO
-#define NOINTERRUPT   0x00    // polling mode
-#define MSB38400      0x00    // 2 bytes used to
-#define LSB38400      0x03    // set baud 38400
-#define NBITS         0x03    // 8 bits
-#define STOPBIT       0x00    // 1 stop bit
-#define NOPARITY      0x00
-#define SETCOM        NBITS | STOPBIT | NOPARITY
-#define SETBAUD       0x80 | SETCOM
+#define NO_FIFO        0x00   // don't use FIFO
+#define NO_INTERRUPT   0x00   // polling mode
+#define MSB_38400      0x00   // 2 bytes used to
+#define LSB_38400      0x03   // set baud 38400
+#define N_BITS         0x03   // 8 bits
+#define STOP_BIT       0x00   // 1 stop bit
+#define NO_PARITY      0x00
+#define SET_COM        N_BITS | STOP_BIT | NO_PARITY
+#define SET_BAUD       0x80 | SET_COM
 #endif
-
