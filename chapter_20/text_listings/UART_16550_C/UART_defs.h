@@ -1,7 +1,6 @@
 // Definitions for a 16550 UART.
-// WARNING: This is a very limited set of definitions
-//          for the device. It is meant to sketch some
-//          general I/O concepts only.
+// WARNING: This code does not run on any known device. It is
+//      meant to sketch some general I/O concepts only.
 
 #ifndef UART_DEFS_H
 #define UART_DEFS_H

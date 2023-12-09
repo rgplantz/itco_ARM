@@ -1,7 +1,6 @@
 // Initialize, read, and write functions for an abstract UART.
-// WARNING: This code does not run on any known
-//          device. It is meant to sketch some
-//         general I/O concepts only.
+// WARNING: This code does not run on any known device. It is
+//      meant to sketch some general I/O concepts only.
 
 #ifndef UART_FUNCTIONS_H
 #define UART_FUNCTIONS_H

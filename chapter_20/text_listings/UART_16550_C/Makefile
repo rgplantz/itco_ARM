@@ -8,7 +8,7 @@ ASFLAGS = --gstabs
 AS = as
 
 UART_echo: $(objects)
-	ld -e myProg -o UART_echo UART_echo.o UART_functions.o
+	ld -e UART_echo -o UART_echo UART_echo.o UART_functions.o
 
 UART_echo.o: UART_echo.c UART_functions.h
 	$(CC) $(CFLAGS) -o $@ $<
