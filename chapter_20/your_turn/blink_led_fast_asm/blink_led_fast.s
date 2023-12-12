@@ -46,8 +46,8 @@ mem_map_ok:
         bl      gpio_pin_function
 
 // Turn the pin on and off
-        movz    w18, DELTA_TIME % 0xffff  // low-order 16 bits
-        movk    write_str18, DELTA_TIME / 0xffff  // high-order 16 bits
+        movz    w18, DELTA_TIME % 0xffff                  // low-order 16 bits
+        movk    write_str18, DELTA_TIME, lsl 16 / 0xffff  // high-order 16 bits
         mov     x20, N_BLINKS           // number of times to do it
 loop: 
         adr     x0, on_msg              // tell user it's on
