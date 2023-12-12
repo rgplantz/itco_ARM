@@ -69,5 +69,6 @@ done:
         mov     x0, x19                 // our gpio memory
         bl      gpio_unmap_memory
         mov     w0, wzr                 // return 0;
+        ldp     x19, x20, [sp, save1920]  // restore regs.
         ldp     fp, lr, [sp], FRAME     // undo stack frame
         ret
