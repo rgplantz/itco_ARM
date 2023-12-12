@@ -47,7 +47,7 @@ mem_map_ok:
 
 // Turn the pin on and off
         movz    w18, DELTA_TIME % 0xffff                  // low-order 16 bits
-        movk    write_str18, DELTA_TIME / 0xffff, lsl 16  // high-order 16 bits
+        movk    w18, DELTA_TIME / 0xffff, lsl 16  // high-order 16 bits
         mov     x20, N_BLINKS           // number of times to do it
 loop: 
         adr     x0, on_msg              // tell user it's on
