@@ -39,8 +39,8 @@ main:
 mem_map_ok:
         mov     x19, x0                 // pointer to mapped memory
 // Select pin to be an output
-        mov     w1, GPIO_PIN            // GPIO pin number
         mov     w2, OUTPUT              // make it an output
+        mov     w1, GPIO_PIN            // GPIO pin number
         bl      gpio_pin_function
 
 // Turn the pin on and off
