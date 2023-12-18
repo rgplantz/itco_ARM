@@ -32,11 +32,12 @@ main:
         stp     x19, x20, [sp, save1920]  // save regs.
 
 // Map /dev/gpiomem to application memory
-        bl      gpio_map_memory
-        cbnz    x0, mem_map_ok          // check for address
-        adr     x0, err_msg             // NUL, give error message
+        bl      gpio_initialize         // so we can program it
+        cmp     w0, -1                  // error?
+        b.ne    mem_map_ok              // no, mapped ok
+        adr     x0, err_msg             // yes, tell user
         bl      write_str
-        b       done
+        b       error_return            // and end program
 mem_map_ok:
         mov     x19, x0                 // pointer to mapped memory
 // Select pins to be an outputs
@@ -81,8 +82,9 @@ loop:
         bl      gpio_pin_clr            // turn LED 2 off
 done:
         mov     x0, x19                 // our gpio memory
-        bl      gpio_unmap_memory
+        bl      gpio_end                // end our use of gpio
         mov     w0, wzr                 // return 0;
+error_return:
         ldp     x19, x20, [sp, save1920]  // restore regs.
         ldp     fp, lr, [sp], FRAME     // undo stack frame
         ret
