@@ -74,7 +74,7 @@ loop:
         bl      sleep
 
         subs    x20, x20, 1             // decrement loop counter
-        b.ne    loop                    // loop if not done
+        b.ne    loop                    // loop if not zero
 
         mov     w1, GPIO_PIN_2          // LED 2 pin number
         mov     x0, x19                 // pointer to mapped memory
