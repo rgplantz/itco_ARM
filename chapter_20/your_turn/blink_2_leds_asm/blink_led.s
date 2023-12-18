@@ -73,8 +73,8 @@ loop:
         mov     w0, DELTA_TIME          // wait
         bl      sleep
 
-        sub     x20, x20, 1             // decrement loop counter
-        cbnz    x20, loop               // loop if not done
+        subs    x20, x20, 1             // decrement loop counter
+        b.ne    loop                    // loop if not done
 
         mov     w1, GPIO_PIN_2          // LED 2 pin number
         mov     x0, x19                 // pointer to mapped memory
