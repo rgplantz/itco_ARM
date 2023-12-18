@@ -63,7 +63,7 @@ loop:
         bl      sleep
 
         subs    x20, x20, 1             // decrement loop counter
-        b.gt    loop                    // loop if not zero
+        b.gt    loop                    // loop if > 0
        
 done:
         mov     x0, x19                 // our gpio memory
