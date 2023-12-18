@@ -53,7 +53,7 @@ gpio_initialize:
         mov     w0, NO_ADDR_PREF            // let kernel pick memory
         bl      mmap
         cmp     x0, -1                      // check for error
-        b.eq    error_return                // end function
+        b.eq    error_return                // w0 also = -1, end function
 
         mov     x20, x0                     // save mapped address
         mov     w0, w19                     // /dev/gpiomem file descriptor
