@@ -48,14 +48,14 @@ mem_map_ok:
         bl      gpio_pin_function
 
 // Turn the pin on and off
+
+        mov     x20, N_BLINKS           // number of times to do it
+loop: 
         adr     x0, on_1_msg            // tell user LED 1 is on
         bl      write_str
         mov     w1, GPIO_PIN_1          // LED 1 pin number
         mov     x0, x19                 // pointer to mapped memory
         bl      gpio_pin_set            // turn LED 1 on
-
-        mov     x20, N_BLINKS           // number of times to do it
-loop: 
         mov     w1, GPIO_PIN_2          // LED 2 pin number
         mov     x0, x19                 // pointer to mapped memory
         bl      gpio_pin_clr            // turn LED 2 off
@@ -72,11 +72,6 @@ loop:
         bl      gpio_pin_clr            // turn LED 1 off
         mov     w0, DELTA_TIME          // wait
         bl      sleep
-        adr     x0, on_1_msg            // tell user LED 1 is on
-        bl      write_str
-        mov     w1, GPIO_PIN_1          // LED 1 pin number
-        mov     x0, x19                 // pointer to mapped memory
-        bl      gpio_pin_set            // turn LED 1 on
 
         sub     x20, x20, 1             // decrement loop counter
         cbnz    x20, loop               // loop if not done
