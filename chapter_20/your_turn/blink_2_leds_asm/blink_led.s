@@ -76,9 +76,6 @@ loop:
         sub     x20, x20, 1             // decrement loop counter
         cbnz    x20, loop               // loop if not done
 
-        mov     w1, GPIO_PIN_1          // LED 2 pin number
-        mov     x0, x19                 // pointer to mapped memory
-        bl      gpio_pin_clr            // turn LED 2 off
         mov     w1, GPIO_PIN_2          // LED 2 pin number
         mov     x0, x19                 // pointer to mapped memory
         bl      gpio_pin_clr            // turn LED 2 off
