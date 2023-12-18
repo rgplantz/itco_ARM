@@ -62,8 +62,8 @@ loop:
         mov     w0, DELTA_TIME          // wait
         bl      sleep
 
-        sub     x20, x20, 1             // decrement loop counter
-        cbnz    x20, loop               // loop if not done
+        subs    x20, x20, 1             // decrement loop counter
+        b.ne    x20, loop               // loop if not zero
        
 done:
         mov     x0, x19                 // our gpio memory
