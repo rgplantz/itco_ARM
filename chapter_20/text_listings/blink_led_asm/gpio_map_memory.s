@@ -1,6 +1,6 @@
-// Opens the /dev/gpiomem device and maps GPIO memory into application
-// address space.
-//      returns pointer to application memory for gpio registers
+// Opens the /dev/gpiomem device and maps GPIO memory
+// into application address space.
+// Returns pointer to application memory if successful, -1 if error
 
 // The following are defined in /usr/include/asm-generic/fcntl.h:
 // Note that the values are specified in octal.
@@ -25,8 +25,6 @@
         .align  2
 gpio_dev:
         .asciz  "/dev/gpiomem"
-dev_err:
-        .asciz  "Cannot open /dev/gpiomem\n"
 
 // Code
         .text
@@ -43,12 +41,8 @@ gpio_map_memory:
         adr     x0, gpio_dev                // specify /dev/gpiomem
         bl      open
         cmp     w0, -1                      // check for error
-        bne     gpiomem_ok                  // no error, continue
-        adr     x0, dev_err                 // error, tell user
-        bl      write_str
-        mov     x20, xzr                    // NUL for memory address
-        b       done                        // and end program
-gpiomem_ok:      
+        b.eq    error_return                // end function
+
         mov     w19, w0                     // /dev/gpiomem file descriptor
 // Map the GPIO registers to a main memory location so we can access them
         mov     w5, wzr                     // we're at gpio, 0 offset
@@ -59,14 +53,14 @@ gpiomem_ok:
         mov     w0, NO_ADDR_PREF            // let kernel pick memory
         bl      mmap
         cmp     x0, -1                      // check for error
-        bne     mmap_ok                     // no error, continue
-        mov     x0, xzr                     // error, NUL for memory address
-mmap_ok:
+        b.eq    error_return                // end function
+
         mov     x20, x0                     // save mapped address
         mov     w0, w19                     // /dev/gpiomem file descriptor
         bl      close                       // close /dev/gpiomem file
 done:        
         mov     x0, x20                     // return address of gpio registers
+error_return:
         ldp     x19, x20, [sp, save1920]    // restore regs.
         ldp     fp, lr, [sp], FRAME         // undo stack frame
         ret

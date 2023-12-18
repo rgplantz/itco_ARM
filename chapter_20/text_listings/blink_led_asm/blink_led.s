@@ -1,5 +1,4 @@
-// Blinks LED connected between GPIO pin 17 and ground on
-// once once every three seconds.
+// Blinks LED connected to GPIO pin 17 every three seconds.
 
 // Useful constants
         .equ    N_BLINKS, 5           // number of times to blink
