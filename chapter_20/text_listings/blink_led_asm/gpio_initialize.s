@@ -29,9 +29,9 @@ gpio_dev:
 // Code
         .text
         .align  2
-        .global gpio_map_memory
-        .type   gpio_map_memory, %function
-gpio_map_memory:
+        .global gpio_initialize
+        .type   gpio_initialize, %function
+gpio_initialize:
         stp     fp, lr, [sp, -FRAME]!       // create our stack frame
         mov     fp, sp                      // set frame pointer
         stp     x19, x20, [sp, save1920]    // save regs.

@@ -1,5 +1,4 @@
-// Unmaps one page of I/O memory
-// into program virtual address space.
+// Unmaps one page of I/O  from application space
 // Calling sequence
 //    x0 <- address of memory to unmap
 
@@ -11,9 +10,9 @@
 // Code
         .text
         .align  2
-        .global gpio_unmap_memory
-        .type   gpio_unmap_memory, %function
-gpio_unmap_memory:
+        .global gpio_end
+        .type   gpio_end, %function
+gpio_end:
         stp     fp, lr, [sp, -FRAME]!   // create our stack frame
         mov     fp, sp                  // set frame pointer
 
