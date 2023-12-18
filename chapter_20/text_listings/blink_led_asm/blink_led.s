@@ -31,7 +31,7 @@ main:
 
 // Map /dev/gpiomem to application memory
         bl      gpio_initialize         // so we can program it
-        cmp     x0, -1                  // error?
+        cmp     w0, -1                  // error?
         b.ne    mem_map_ok              // no, mapped ok
         adr     x0, err_msg             // yes, tell user
         bl      write_str
