@@ -41,7 +41,7 @@ gpio_initialize:
         adr     x0, gpio_dev                // specify /dev/gpiomem
         bl      open
         cmp     w0, -1                      // check for error
-        b.eq    error_return                // end function
+        b.eq    error_return                // end function if error
 
         mov     w19, w0                     // /dev/gpiomem file descriptor
 // Map the GPIO registers to a main memory location so we can access them
