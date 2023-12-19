@@ -1,5 +1,5 @@
 // Clears GPIO pin. Assumes that GPIO registers
-// have been mapped to programming memory.
+// have been mapped to application memory.
 // Calling sequence:
 //       x0 <- address of GPIO in mapped memory
 //       w1 <- pin number
