@@ -5,7 +5,7 @@
 #include "UART_defs.h"
 #include "UART_functions.h"
 
-// UART_init intializes the UART and enables it.
+// UART_init initializes the UART and enables it.
 void UART_init(unsigned char* UART)
 {
     unsigned char* port = UART;
