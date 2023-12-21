@@ -3,11 +3,11 @@
 #include <unistd.h>
 #include <pigpio.h>
 
-#define LED_PIN 17                            // gpio pin connected to led
-#define LOW 0                                 // pin at 0.0v
-#define HIGH 1                                // pin at 3.3v
-#define N_BLINKS 5                            // number of blinks
-#define N_SECONDS 3                           // time between blinks
+#define LED_PIN 17      // gpio pin connected to led
+#define LOW 0           // pin at 0.0v
+#define HIGH 1          // pin at 3.3v
+#define N_BLINKS 5      // number of blinks
+#define N_SECONDS 3     // time between blinks
 
 int main(void)
 {
