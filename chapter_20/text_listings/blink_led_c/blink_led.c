@@ -29,14 +29,14 @@ int main(void)
     }
 
     for (i = 0; i < BLINKS; i++) {
-        error = gpioWrite(PIN, ON);n
+        error = gpioWrite(PIN, ON);
         if (error) {
             printf("Can't turn LED on\n");
             return -1;
         }
         printf("led on...\n");
         sleep(SECONDS);
-        error = gpioWrite(LED_PIN, OFF);f
+        error = gpioWrite(LED_PIN, OFF);
         if (error) {
             printf("Can't turn LED off\n");
             return -1;
