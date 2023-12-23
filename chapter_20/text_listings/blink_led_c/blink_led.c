@@ -36,7 +36,7 @@ int main(void)
         }
         printf("led on...\n");
         sleep(SECONDS);
-        error = gpioWrite(LED_PIN, OFF);
+        error = gpioWrite(PIN, OFF);
         if (error) {
             printf("Can't turn LED off\n");
             return -1;
