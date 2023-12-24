@@ -2,8 +2,6 @@
 import pigpio
 from time import sleep
 PIN = 17
-ON = 1
-OFF = 0
 BLINKS = 5
 SECONDS = 3
 
@@ -12,8 +10,8 @@ led.set_mode(PIN, pigpio.OUTPUT)
 
 for _ in range(BLINKS):
     print("led on...")
-    led.write(PIN, ON)
+    led.write(PIN, TRUE)
     sleep(SECONDS)
     print("...led off")
-    led.write(PIN, OFF)
+    led.write(PIN, FALSE)
     sleep(SECONDS)
