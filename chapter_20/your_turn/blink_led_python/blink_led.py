@@ -1,14 +1,13 @@
 # Blinks LED connected to GPIO pin 17
-import pigpio
+from gpiozero import LED
 from time import sleep
 
-led = pigpio.pi()
-led.set_mode(17, pigpio.OUTPUT)
+led = LED(17)
 
 for _ in range(5):
     print("led on...")
-    led.write(17, 1)
+    led.on()
     sleep(3)
     print("...led off")
-    led.write(17, 0)
+    led.off()
     sleep(3)
