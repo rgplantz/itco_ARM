@@ -4,7 +4,7 @@
 
 #ifndef UART_FUNCTIONS_H
 #define UART_FUNCTIONS_H
-void UART_init(unsigned char* UART);       // initialize UART
-unsigned char UART_in(unsigned char* UART);          // input
-void UART_out(unsigned char* UART, unsigned char c); // output
+void UART_init(unsigned char* UART);                  // initialize UART
+unsigned char UART_in(unsigned char* UART);           // input
+void UART_out(unsigned char* UART, unsigned char c);  // output
 #endif
