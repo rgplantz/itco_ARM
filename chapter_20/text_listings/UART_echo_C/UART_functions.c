@@ -26,7 +26,7 @@ unsigned char UART_in(unsigned char* UART)
 
     while ((*(port+LSR) & RxRDY) != 0) { 
     }
-    character = *(port+RBR);
+    character = *(port+RHR);
     return character;
 }
 

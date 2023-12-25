@@ -6,7 +6,7 @@
 #define UART_DEFS_H
 
 // register offsets
-#define RBR 0x00    // receive buffer register
+#define RHR 0x00    // receive holding register
 #define THR 0x00    // transmit holding register
 #define IER 0x01    // interrupt enable register
 #define FCR 0x02    // FIFO control register
