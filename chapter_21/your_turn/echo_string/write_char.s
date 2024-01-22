@@ -6,6 +6,7 @@
         .arch   armv8-a
 // Useful constants
         .equ    STDOUT, 1
+        .equ    WRITE, 0x40
 // Stack frame
         .equ    a_char, 16
         .equ    frame, 32 
@@ -21,7 +22,8 @@ write_char:
         mov     w2, 1                 // write 1 byte
         add     x1, sp, a_char        // address of char
         mov     w0, STDOUT            // write to screen
-        bl      write
+        mov     x8, WRITE
+        svc     0                     // tell OS to do it
 
         mov     w0, wzr               // return 0
         ldp     fp, lr, [sp], frame   // undo stack frame

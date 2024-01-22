@@ -30,7 +30,7 @@ while:
         mov     x1, x19               // address of current char
         mov     w0, STDOUT            // write to screen
         mov     x8, WRITE
-        svc     0
+        svc     0                     // tell OS to do it
 
         add     x19, x19, 1           // increment pointer var
         add     w20, w20, 1           // count++

@@ -34,16 +34,16 @@ read_loop:
         mov     x1, x19               // place to store current char
         mov     w0, STDIN             // read from keyboard
         mov     x8, READ
-        svc     0
+        svc     0                     // tell OS to do it
 
         ldrb    w0, [x19]             // get just read char
         cmp     w0, LF                // return key?
-        b.eq    end_input            // yes, end of input
+        b.eq    end_input             // yes, end of input
         cmp     w20, w21              // no, is caller's array full?
-        b.ge    read_loop              // yes, read but don't keep
+        b.ge    read_loop             // yes, read but don't keep
         add     x19, x19, 1           // no, next byte
         add     w20, w20, 1           // count++
-        b       read_loop              // back to reading
+        b       read_loop             // back to reading
 end_input:
         mov     w0, NUL               // string terminator
         strb    wzr, [x19]            // replace LF
