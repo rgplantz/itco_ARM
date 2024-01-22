@@ -27,8 +27,9 @@ loop:
         b.eq    done                  // yes
         mov     w2, 1                 // no, one char
         mov     x1, x19               // address of char
-        mov     x0, STDOUT            // write on screen
-        svc     WRITE
+        mov     w0, STDOUT            // write on screen
+        mov     w7, WRITE
+        svc     0
         add     x19, x19, 1           // increment pointer
         b       loop                  // and continue
 done:
