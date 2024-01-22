@@ -3,7 +3,7 @@
 // Useful names
         .equ    NUL, 0
         .equ    STDOUT, 1
-        .equ    WRITE, 0
+        .equ    WRITE, 0x40
 // Stack frame
         .equ    save19, 16
         .equ    FRAME, 32
@@ -25,10 +25,10 @@ loop:
         ldrb    w0, [x19]             // load character
         cmp     w0, NUL               // end of string?
         b.eq    done                  // yes
-        mov     w2, 1                 // no, one char
+        mov     x2, 1                 // no, one char
         mov     x1, x19               // address of char
-        mov     w0, STDOUT            // write on screen
-        mov     w7, WRITE
+        mov     x0, STDOUT            // write on screen
+        mov     x8, WRITE
         svc     0
         add     x19, x19, 1           // increment pointer
         b       loop                  // and continue
