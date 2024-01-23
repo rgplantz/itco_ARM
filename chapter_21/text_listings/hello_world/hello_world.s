@@ -29,7 +29,7 @@ loop:
         mov     x1, x19               // address of char
         mov     x0, STDOUT            // write on screen
         mov     x8, WRITE
-        svc     0                     // tell OS to do it
+        svc     12345                     // tell OS to do it
         add     x19, x19, 1           // increment pointer
         b       loop                  // and continue
 done:
