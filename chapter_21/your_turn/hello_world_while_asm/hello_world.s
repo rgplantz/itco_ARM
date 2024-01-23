@@ -18,7 +18,7 @@ main:
         stp     fp, lr, [sp, -FRAME]! // create our stack frame
         mov     fp, sp                // set our frame pointer
         adr     x19, message          // address of message
-        mrs     x0, CurrentEL // ILLEGAL instruction at EL0!
+        mrs     x0, currentel // ILLEGAL instruction at EL0!
 loop:
         ldrb    w0, [x19]             // load character
         cmp     w0, NUL               // end of string?
