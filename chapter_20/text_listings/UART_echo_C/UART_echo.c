@@ -5,7 +5,7 @@
 #include "UART_functions.h"
 #define UART0 (unsigned char *)0xfe200040   // address of UART
 
-int UART_echo(void)
+int main(void)
 {
     unsigned char character;
 
