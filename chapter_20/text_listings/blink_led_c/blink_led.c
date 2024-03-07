@@ -1,7 +1,8 @@
 // Blinks an LED
 #include <stdio.h>
+#include <error.h>
 #include <unistd.h>
-#include <pigpio.h>
+#include <gpio.h>
 
 #define PIN 17          // gpio pin connected to led
 #define OFF 0           // pin at 0.0v
@@ -11,40 +12,30 @@
 
 int main(void)
 {
-    int version;
-    int error;
+    struct gpiod_chip *chip;
+    struct gpiod_line *line;
     int i;
 
-    version = gpioInitialise();
-    if (version == PI_INIT_FAILED) {
-        printf("Can't initialize gpio\n");
-        return -1;
+    chip = gpiod_chip_open("/dev/gpiochip4");
+    if(!chip) {
+      perror("gpiod_chip_open");
+      goto cleanup;
     }
-    printf("Using version %d of pigpio\n", version);
 
-    error = gpioSetMode(PIN, PI_OUTPUT);  // use pin for output
-    if (error) {
-        printf("Can't set GPIO mode\n");
-        return -1;
-    }
+    line = gpiod_chip_get_line(chip, PIN);
+    gpiod_line_request_output(line, "example", 0);
 
     for (i = 0; i < BLINKS; i++) {
-        error = gpioWrite(PIN, ON);
-        if (error) {
-            printf("Can't turn LED on\n");
-            return -1;
-        }
+        gpiod_line_set_value(line, ON);
         printf("led on...\n");
         sleep(SECONDS);
-        error = gpioWrite(PIN, OFF);
-        if (error) {
-            printf("Can't turn LED off\n");
-            return -1;
-        }
+        gpiod_line_set_value(line, OFF);
         printf("...led off\n");
         sleep(SECONDS);
     }
-    gpioTerminate();
+    cleanup:
+        gpiod_line_release(line);
+        gpiod_chip_close(chip);
 
     return 0;
 }
