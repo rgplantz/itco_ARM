@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <error.h>
 #include <unistd.h>
-#include <gpio.h>
+#include <gpiod.h>
 
 #define PIN 17          // gpio pin connected to led
 #define OFF 0           // pin at 0.0v
