@@ -16,7 +16,7 @@ int main(void)
     struct gpiod_line *line;
     int i;
 
-    chip = gpiod_chip_open("/dev/gpiochip4");
+    chip = gpiod_chip_open("/dev/gpiochip0");
     if(!chip) {
       perror("gpiod_chip_open");
       goto cleanup;
