@@ -19,16 +19,24 @@ int main(void)
 
     chip = gpiod_chip_open("/dev/gpiochip0");
     if(!chip) {
-        perror("gpiod_chip_open");
-        goto cleanup;
+        perror("Cannot open chip");
+        return EXIT_FAILURE;
     }
 
     line = gpiod_chip_get_line(chip, PIN);
+    if(line == NULL) {
+        gpiod_chip_close(chip);
+        perror("Cannot get GPIO line");
+        return EXIT_FAILURE;
+    }
     error = gpiod_line_request_output(line, "example", 0);
     if(error == -1) {
-        perror("gpiod_line_request_output");
-        goto cleanup;
+        gpiod_line_release(line);
+        gpiod_chip_close(chip);
+        perror("Cannot set GPIO output");
+        return EXIT_FAILURE;
     }
+    
 
     for (i = 0; i < BLINKS; i++) {
         gpiod_line_set_value(line, ON);
@@ -38,9 +46,8 @@ int main(void)
         printf("...led off\n");
         sleep(SECONDS);
     }
-    cleanup:
         gpiod_line_release(line);
         gpiod_chip_close(chip);
 
-    return 0;
+    return EXIT_SUCCESS;
 }
