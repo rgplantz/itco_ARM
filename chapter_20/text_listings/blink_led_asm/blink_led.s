@@ -1,4 +1,5 @@
 // Blinks LED connected to GPIO pin 17 every three seconds.
+// Tested on RPi 3, should work on RPi4.
 
 // Useful constants
         .equ    N_BLINKS, 5           // number of times to blink
