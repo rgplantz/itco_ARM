@@ -37,7 +37,6 @@ int main(void)
         return EXIT_FAILURE;
     }
     
-
     for (i = 0; i < BLINKS; i++) {
         gpiod_line_set_value(line, ON);
         printf("led on...\n");
