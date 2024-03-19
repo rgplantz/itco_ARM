@@ -15,7 +15,7 @@ int main(void)
     struct gpiod_line *line;
     int i;
     int error;
-// On RPi 5, change to /dev/gpiochip4
+// On RPi 5, change to /dev/gpiochip
     chip = gpiod_chip_open("/dev/gpiochip0");
     if(!chip) {
         puts("Cannot open chip");
