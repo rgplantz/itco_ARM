@@ -16,7 +16,7 @@
 //        .equ    GPIO, 0x20200000 >> 16      // RPi zero & 1
         .equ    GPIO, 0x3f200000 >> 16      // RPi 2 & 3
 //        .equ    GPIO, 0x7e200000 >> 16      // RPi 4
-//        .equ    GPIO, 0x1f00000000 >> 16      // RPi 5
+//        .equ    GPIO, 0x1f00000000 >> 16    // RPi 5
         .equ    OPEN_FLAGS, O_RDWR | O_SYNC | O_CLOEXEC // open file flags
         .equ    PROT_RDWR, PROT_READ | PROT_WRITE       // allow read and write
         .equ    NO_ADDR_PREF, 0             // let OS choose address of mapping
@@ -61,8 +61,8 @@ gpio_map:
         b.eq    error_return                // w0 also = -1, end function
 
         mov     x20, x0                     // save mapped address
-        mov     w0, w19                     // /dev/gpiomem4 file descriptor
-        bl      close                       // close /dev/gpiomem4 file
+        mov     w0, w19                     // /dev/mem file descriptor
+        bl      close                       // close /dev/mem file
 done:        
         mov     x0, x20                     // return address of gpio registers
 error_return:
