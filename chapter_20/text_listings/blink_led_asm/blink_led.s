@@ -14,7 +14,7 @@
         .section .rodata
         .align  2
 err_msg:
-        .asciz  "Cannot map /dev/gpiomem\n"
+        .asciz  "Cannot map GPIO registers\n"
 on_msg:
         .asciz  "led on...\n"
 off_msg:
@@ -30,8 +30,8 @@ main:
         mov     fp, sp                  // set frame pointer
         stp     x19, x20, [sp, save1920]  // save regs.
 
-// Map /dev/gpiomem to application memory
-        bl      gpio_initialize         // so we can program it
+// Map GPIO registers to application memory
+        bl      gpio_map                // so we can program it
         cmp     w0, -1                  // error?
         b.ne    mem_map_ok              // no, mapped ok
         adr     x0, err_msg             // yes, tell user
