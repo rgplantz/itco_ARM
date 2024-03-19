@@ -1,10 +1,9 @@
 // Blinks an LED
 #include <stdio.h>
-#include <error.h>
 #include <unistd.h>
 #include <gpiod.h>
 
-#define PIN 17          // gpio pin connected to led
+#define PIN 17          // GPIO line connected to led
 #define OFF 0           // pin at 0.0v
 #define ON 1            // pin at 3.3v
 #define BLINKS 5        // number of blinks
@@ -19,22 +18,22 @@ int main(void)
 
     chip = gpiod_chip_open("/dev/gpiochip0");
     if(!chip) {
-        perror("Cannot open chip");
-        return EXIT_FAILURE;
+        puts("Cannot open chip");
+        return -1;
     }
 
     line = gpiod_chip_get_line(chip, PIN);
     if(line == NULL) {
         gpiod_chip_close(chip);
-        perror("Cannot get GPIO line");
-        return EXIT_FAILURE;
+        puts("Cannot get GPIO line");
+        return -1;
     }
     error = gpiod_line_request_output(line, "example", 0);
     if(error == -1) {
         gpiod_line_release(line);
         gpiod_chip_close(chip);
-        perror("Cannot set GPIO output");
-        return EXIT_FAILURE;
+        puts("Cannot set GPIO output");
+        return -1;
     }
     
     for (i = 0; i < BLINKS; i++) {
@@ -48,5 +47,5 @@ int main(void)
         gpiod_line_release(line);
         gpiod_chip_close(chip);
 
-    return EXIT_SUCCESS;
+    return 0;
 }
