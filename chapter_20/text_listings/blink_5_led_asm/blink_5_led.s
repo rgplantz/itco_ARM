@@ -1,7 +1,7 @@
 // Blinks LED connected to GPIO pin 17 every three seconds.
 
 // Useful constants
-        .equ    N_BLINKS, 2           // number of times to blink
+        .equ    N_BLINKS, 5           // number of times to blink
         .equ    DELTA_TIME, 3         // seconds between blinks
         .equ    GPIO_PIN, 17          // pin number
 
