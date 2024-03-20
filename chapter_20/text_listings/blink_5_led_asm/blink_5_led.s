@@ -7,7 +7,8 @@
 
 // Stack frame
         .equ    save1920, 16          // save regs
-        .equ    FRAME, 32
+        .equ    save21, 24
+        .equ    FRAME, 48
 // Constant data
         .section .rodata
         .align  2
@@ -27,15 +28,17 @@ main:
         stp     fp, lr, [sp, -FRAME]!   // create our stack frame
         mov     fp, sp                  // set frame pointer
         stp     x19, x20, [sp, save1920]  // save regs.
+        str     x21, [sp, save21]
 
 // Map GPIO registers to application memory
         bl      gpio_map                // so we can program it
-        cmp     w0, -1                  // error?
+        cmp     x0, -1                  // error?
         b.ne    mem_map_ok              // no, mapped ok
         adr     x0, err_msg             // yes, tell user
         bl      write_str
         b       error_return            // and end program
 mem_map_ok:
+        mov     x21, x0                 // save address of mapped mem.
 // Make pin an output
 	      add	    x0, x0, 0xd0000         // x0 = GPIOBase
         mov     w1, GPIO_PIN
@@ -65,8 +68,8 @@ loop:
         b.gt    loop                    // loop if > 0
        
 done:
-//        mov     x0, x19                 // our gpio memory
-//        bl      gpio_end                // end our use of gpio
+        mov     x0, x21                 // our mapped memory
+        bl      gpio_end                // end our use of gpio
         mov     w0, wzr                 // return 0;
 error_return:
         ldp     x19, x20, [sp, save1920]  // restore regs.
