@@ -12,8 +12,12 @@
         .equ    PROT_WRITE, 0x2             // page can be written
         .equ    MAP_SHARED, 0x01            // share changes
 // The following are defined by me:
-        .equ    GPIO, 0x1f00000000          // start of GPIO on RPi 5
-        .equ    OPEN_FLAGS, O_RDWR | O_SYNC | O_CLOEXEC // open file flags
+//      Uncomment the GPIO for your RPi model.
+//        .equ    GPIO, 0x20200000 >> 16      // RPi zero & 1
+//        .equ    GPIO, 0x3f200000 >> 16      // RPi 2 & 3
+//        .equ    GPIO, 0x7e200000 >> 16      // RPi 4
+        .equ    GPIO, 0x1f00000000 >> 16    // start of GPIO on RPi 5
+        .equ    OPEN_FLAGS, O_RDWR | O_SYNC // open file flags
         .equ    PROT_RDWR, PROT_READ | PROT_WRITE       // allow read and write
         .equ    NO_ADDR_PREF, 0             // let OS choose address of mapping
         .equ    PAGE_SIZE, 4096             // Raspbian memory page
@@ -47,8 +51,8 @@ gpio_map:
 
         mov     w19, w0                     // /dev/mem file descriptor
 // Map the GPIO registers to a main memory location so we can access them
-        mov     w5, GPIO & 0xffff           // address of GPIO
-        movk    w5, GPIO / 0xffff, lsl 16
+        mov     w5, GPIO & 0xffff, lsl 16   // address of GPIO
+        movk    w5, GPIO / 0xffff, lsl 32
         mov     x5, xzr                     // move 32-bit flags
         movk    x5, GPIO, lsl 32
         mov     w4, w19                     // file descriptor

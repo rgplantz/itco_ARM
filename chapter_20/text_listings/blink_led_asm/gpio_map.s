@@ -17,7 +17,7 @@
         .equ    GPIO, 0x3f200000 >> 16      // RPi 2 & 3
 //        .equ    GPIO, 0x7e200000 >> 16      // RPi 4
 //        .equ    GPIO, 0x1f00000000 >> 16    // RPi 5
-        .equ    OPEN_FLAGS, O_RDWR | O_SYNC | O_CLOEXEC // open file flags
+        .equ    OPEN_FLAGS, O_RDWR | O_SYNC   // open file flags
         .equ    PROT_RDWR, PROT_READ | PROT_WRITE       // allow read and write
         .equ    NO_ADDR_PREF, 0             // let OS choose address of mapping
 
@@ -39,7 +39,7 @@ gpio_map:
         stp     fp, lr, [sp, -FRAME]!       // create our stack frame
         mov     fp, sp                      // set frame pointer
         stp     x19, x20, [sp, save1920]    // save regs.
-// Open /dev/gpiomem4 for read/write and syncing        
+// Open /dev/mem for read/write and syncing        
         mov     w1, OPEN_FLAGS & 0xffff     // move 32-bit flags
         movk    w1, OPEN_FLAGS / 0xffff, lsl 16
         adr     x0, dev_mem                 // i/o device memory
