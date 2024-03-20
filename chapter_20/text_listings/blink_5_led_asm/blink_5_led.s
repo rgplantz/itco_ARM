@@ -3,7 +3,6 @@
 // Useful constants
         .equ    N_BLINKS, 2           // number of times to blink
         .equ    DELTA_TIME, 3         // seconds between blinks
-        .equ    OUTPUT, 1             // use pin for output
         .equ    GPIO_PIN, 17          // pin number
 
 // Stack frame
@@ -29,7 +28,7 @@ main:
         mov     fp, sp                  // set frame pointer
         stp     x19, x20, [sp, save1920]  // save regs.
 
-// Map /dev/gpiomem to application memory
+// Map GPIO registers to application memory
         bl      gpio_map                // so we can program it
         cmp     w0, -1                  // error?
         b.ne    mem_map_ok              // no, mapped ok
@@ -37,9 +36,10 @@ main:
         bl      write_str
         b       error_return            // and end program
 mem_map_ok:
-	      add	    x0, x0, 0xd0000   /// x0 = GPIOBase
+// Make pin an output
+	      add	    x0, x0, 0xd0000         // x0 = GPIOBase
         mov     w1, GPIO_PIN
-        bl      gpio_pin_function
+        bl      gpio_pin_to_output
         mov     x19, x0                 // pointer to RIOBase
 
 // Turn the pin on and off
