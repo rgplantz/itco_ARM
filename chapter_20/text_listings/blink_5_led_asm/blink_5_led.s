@@ -7,7 +7,7 @@
 
 // Stack frame
         .equ    save1920, 16          // save regs
-        .equ    save21, 24
+        .equ    save21, 32
         .equ    FRAME, 48
 // Constant data
         .section .rodata
