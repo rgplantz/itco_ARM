@@ -16,7 +16,7 @@ int main(void)
     int i;
     int error;
 // On RPi 5, change to /dev/gpiochip4
-    chip = gpiod_chip_open("/dev/gpiochip0");
+    chip = gpiod_chip_open("/dev/gpiochip4");
     if(!chip) {
         puts("Cannot open chip");
         return -1;
