@@ -1,8 +1,9 @@
-// Selects a function for a GPIO pin. Assumes that GPIO registers
+// Makes a GPIO pin an output. Assumes that GPIO registers
 // have been mapped to application memory.
 // Calling sequence:
 //      x0 <- address of GPIO in mapped memory
 //      w1 <- GPIO pin number
+//      Returns address of RIOBase
 
 // Constants
         .equ    PIN_FUNCTION, 5   // 
@@ -11,9 +12,9 @@
 // Code
         .text
         .align  2
-        .global gpio_pin_function
-        .type   gpio_pin_function, %function
-gpio_pin_function:
+        .global gpio_pin_to_output
+        .type   gpio_pin_to_output, %function
+gpio_pin_to_output:
         mov     w3, w1            // pin number
         add	    x1, x0, 0x10000   // x1 = RIOBase
         add	    x2, x0, 0x20000   // x2 = PADBase

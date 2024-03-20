@@ -1,12 +1,13 @@
 // Selects a function for a GPIO pin. Assumes that GPIO registers
 // have been mapped to application memory.
 // Calling sequence:
-//      x0 <- address of GPIO in mapped memory
+//      x0 <- address of GPIO
 //      w1 <- GPIO pin number
-//      w2 <- pin function
+//      Returns address of GPIO
 
 // Constants for assembler
         .equ    FIELD_MASK, 0b111  // 3 bits
+        .equ    OUTPUT, 1             // use pin for output
 
 // Code
         .text
@@ -28,6 +29,7 @@ gpio_pin_function:
         lsl     w6, w6, w5      // shift to field bit position
         bic     w4, w4, w6      // clear current pin field
 
+        mov     w2, OUTPUT      // function = output
         lsl     w2, w2, w5      // shift function code to pin position
         orr     w4, w4, w2      // insert function code
         str     w4, [x0]        // update register
