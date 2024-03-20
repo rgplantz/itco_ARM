@@ -16,7 +16,6 @@
         .equ    OPEN_FLAGS, O_RDWR | O_SYNC | O_CLOEXEC // open file flags
         .equ    PROT_RDWR, PROT_READ | PROT_WRITE       // allow read and write
         .equ    NO_ADDR_PREF, 0             // let OS choose address of mapping
-        .equ    PAGE_SIZE, 4096             // Raspbian memory page
 
 // Stack frame
         .equ    save1920, 16
