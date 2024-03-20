@@ -1,4 +1,4 @@
-// Selects a function for a GPIO pin. Assumes that GPIO registers
+// Makes a GPIO pin an output. Assumes that GPIO registers
 // have been mapped to application memory.
 // Calling sequence:
 //      x0 <- address of GPIO
@@ -12,9 +12,9 @@
 // Code
         .text
         .align  2
-        .global gpio_pin_function
-        .type   gpio_pin_function, %function
-gpio_pin_function:
+        .global gpio_pin_to_output
+        .type   gpio_pin_to_output, %function
+gpio_pin_to_output:
 // Determine register and location of pin function field
         mov     w3, 10          // ten fields per GPFSEL register
         udiv    w4, w1, w3      // w4 = GPFSEL register number
