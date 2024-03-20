@@ -8,6 +8,8 @@
 // Constants
         .equ    PIN_FUNCTION, 5   // SYS_RIO
         .equ    PAD_AMPS, 0x10    // 4 ma
+        .equ    RIO_SET, 0x2000   // set reg. offset
+        .equ    RIO_OE, 0x04      // output enable
 
 // Code
         .text
@@ -30,8 +32,8 @@ gpio_pin_to_output:
         str	    w6, [x5]          // set pad amps
         mov	    w6, 1             // a bit
         lsl	    w6, w6, w3        // shift to pin location
-        add	    x5, x1, 0x2000    // 0x2000
-        str	    w6, [x5, 4]       // 
+        add	    x5, x1, RIO_SET   // use RIO set register
+        str	    w6, [x5, RIO_OE]  // make pin an output
 
         mov     x0, x1            // return RIOBase
         ret

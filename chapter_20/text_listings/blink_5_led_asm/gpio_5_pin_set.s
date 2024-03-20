@@ -5,7 +5,7 @@
 //       w1 <- pin number
 
 // Constants
-        .equ    RIO_SET, 0x2000     // 0th CRTL reg
+        .equ    RIO_SET, 0x2000     // set register
 
 // Code
         .text
@@ -16,5 +16,5 @@ gpio_pin_set:
         mov     w2, 1               // a bit
         lsl     w2, w2, w1          // shift to pin location
         add     x0, x0, RIO_SET     // address RIO set reg
-        str     w2, [x0]            // output
+        str     w2, [x0]            // pin high
         ret
