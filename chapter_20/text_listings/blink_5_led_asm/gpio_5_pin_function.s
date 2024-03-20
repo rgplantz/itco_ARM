@@ -6,8 +6,8 @@
 //      Returns address of RIOBase
 
 // Constants
-        .equ    PIN_FUNCTION, 5   // 
-        .equ    PAD_AMPS, 0x10    // 2 ma
+        .equ    PIN_FUNCTION, 5   // SYS_RIO
+        .equ    PAD_AMPS, 0x10    // 4 ma
 
 // Code
         .text
@@ -20,15 +20,15 @@ gpio_pin_to_output:
         add	    x2, x0, 0x20000   // x2 = PADBase
         add	    x2, x2, 4         // x2 = pad
         lsl	    x4, x3, 3         // 8 x pin number
-        add	    x5, x0, x4        // GPIOBase + 8 x pin number
-        mov	    w6, PIN_FUNCTION  // fn
-        str	    w6, [x5, 4]       // GPIO[pin].ctrl = fn;
+        add	    x5, x0, x4        // GPIO_pin_number_CTRL
+        mov	    w6, PIN_FUNCTION  // system registered i/o
+        str	    w6, [x5, 4]       // GPIO_pin_number_STATUS = fn;
 
         lsl	    x4, x3, 2         // 4 x pin number
-        add	    x5, x2, x4        // pad address + 4 x pin number
-        mov	    w6, PAD_AMPS      // 0x10
+        add	    x5, x2, x4        // pin_number pad reg. address 
+        mov	    w6, PAD_AMPS      // 4 ma
         str	    w6, [x5]          // set pad amps
-        mov	    w6, 1             // 1
+        mov	    w6, 1             // a bit
         lsl	    w6, w6, w3        // shift to pin location
         add	    x5, x1, 0x2000    // 0x2000
         str	    w6, [x5, 4]       // 
