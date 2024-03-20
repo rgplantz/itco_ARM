@@ -2,7 +2,7 @@
 # -lpigpio needs to be at end of command line
 
 blink_led: blink_led.c
-	gcc -Wall -o blink_led blink_led.c -lgpiod
+	gcc -g -Wall -o blink_led blink_led.c -lgpiod
 
 .PHONY: allclean
 allclean:
