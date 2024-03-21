@@ -20,7 +20,8 @@
         .equ    OPEN_FLAGS, O_RDWR | O_SYNC | O_CLOEXEC // open file flags
         .equ    PROT_RDWR, PROT_READ | PROT_WRITE       // allow read and write
         .equ    NO_ADDR_PREF, 0             // let OS choose address of mapping
-        .equ    PAGE_SIZE, 4096             // Raspbian memory page
+//        .equ    MEM_SIZE, 0x1000            // memory for RPi zero, 1, 2, 3, & 4
+        .equ    MEM_SIZE, 0x4000000         // memory for RPi 5
 
 // Stack frame
         .equ    save1920, 16
@@ -40,7 +41,7 @@ gpio_map:
         stp     fp, lr, [sp, -FRAME]!       // create our stack frame
         mov     fp, sp                      // set frame pointer
         stp     x19, x20, [sp, save1920]    // save regs.
-// Open /dev/gpiomem4 for read/write and syncing        
+// Open /dev/mem for read/write and syncing        
         mov     w1, OPEN_FLAGS & 0xffff     // move 32-bit flags
         movk    w1, OPEN_FLAGS / 0xffff, lsl 16
         adr     x0, dev_mem                 // i/o device memory
@@ -62,8 +63,8 @@ gpio_map:
         b.eq    error_return                // w0 also = -1, end function
 
         mov     x20, x0                     // save mapped address
-        mov     w0, w19                     // /dev/gpiomem4 file descriptor
-        bl      close                       // close /dev/gpiomem4 file
+        mov     w0, w19                     // /dev/mem file descriptor
+        bl      close                       // close /dev/mem file
 done:        
         mov     x0, x20                     // return address of gpio registers
 error_return:
