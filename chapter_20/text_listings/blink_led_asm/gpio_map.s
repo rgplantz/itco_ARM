@@ -19,7 +19,8 @@
         .equ    OPEN_FLAGS, O_RDWR | O_SYNC | O_CLOEXEC // open file flags
         .equ    PROT_RDWR, PROT_READ | PROT_WRITE       // allow read and write
         .equ    NO_ADDR_PREF, 0             // let OS choose address of mapping
-        .equ    PAGE_SIZE, 4096             // Raspbian memory page
+        .equ    MEM_SIZE, 0x1000            // memory for RPi zero, 1, 2, 3, & 4
+//        .equ    MEM_SIZE, 0x4000000         // memory for RPi 5
 
 // Stack frame
         .equ    save1920, 16
@@ -54,7 +55,7 @@ gpio_map:
         mov     w4, w19                     // file descriptor
         mov     w3, MAP_SHARED              // share with other processes
         mov     w2, PROT_RDWR               // read/write this memory
-        mov     w1, PAGE_SIZE               // get 1 page of memory
+        mov     w1, MEM_SIZE                // amount of memory needed
         mov     w0, NO_ADDR_PREF            // let kernel pick memory
         bl      mmap
         cmp     x0, -1                      // check for error

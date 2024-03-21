@@ -56,7 +56,7 @@ gpio_map:
         mov     w4, w19                     // file descriptor
         mov     w3, MAP_SHARED              // share with other processes
         mov     w2, PROT_RDWR               // read/write this memory
-        mov     w1, 0x4000000               // get 4 MB of memory
+        mov     w1, MEM_SIZE                // amount of memory needed
         mov     w0, NO_ADDR_PREF            // let kernel pick memory
         bl      mmap
         cmp     x0, -1                      // check for error
