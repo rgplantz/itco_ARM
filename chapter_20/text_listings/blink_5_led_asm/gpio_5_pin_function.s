@@ -20,14 +20,14 @@
         .type   gpio_pin_to_output, %function
 gpio_pin_to_output:
         mov     w3, w1            // pin number
-        add	    x2, x0, PADBase   // x2 = PADBase
-        add	    x2, x2, 4         // x2 = pad
 
         lsl	    x4, x3, 3         // 8 x pin number
         add	    x5, x0, x4        // GPIO_pin_number_CTRL
         mov	    w6, PIN_FUNCTION  // system registered i/o
         str	    w6, [x5, 4]       // GPIO_pin_number_STATUS = fn;
 
+        add	    x2, x0, PADBase   // x2 = PADBase
+        add	    x2, x2, 4         // x2 = pad
         lsl	    x4, x3, 2         // 4 x pin number
         add	    x5, x2, x4        // pin_number pad reg. address 
         mov	    w6, PAD_AMPS      // 4 ma
