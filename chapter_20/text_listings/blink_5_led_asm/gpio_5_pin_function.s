@@ -24,14 +24,14 @@ gpio_pin_to_output:
         mov	    w2, PIN_FUNCTION  // system registered i/o
         str	    w2, [x3, 4]       // GPIO_pin_number_STATUS = fn;
 
-        add	    x2, x0, PADBase   // x2 = PADBase
-        add	    x2, x2, 4         // x2 = pad
+        add	    x2, x0, PADBase
+        add	    x2, x2, 4         // skip over VOLTAGE_SELECT reg.
         lsl	    x3, x1, 2         // 4 x pin number
-        add	    x3, x3, x2        // pin_number pad reg. address 
+        add	    x3, x3, x2        // pad reg. address of pin number
         mov	    w4, PAD_AMPS      // 4 ma
         str	    w4, [x3]          // set pad amps
 
-        add	    x0, x0, RIOBase   // x1 = RIOBase
+        add	    x0, x0, RIOBase
         mov	    w2, 1             // a bit
         lsl	    w2, w2, w1        // shift to pin location
         add	    x3, x0, RIO_SET   // use RIO set register
