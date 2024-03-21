@@ -19,12 +19,10 @@
         .global gpio_pin_to_output
         .type   gpio_pin_to_output, %function
 gpio_pin_to_output:
-        mov     w3, w1            // pin number
-
-        lsl	    x4, x3, 3         // 8 x pin number
-        add	    x5, x0, x4        // GPIO_pin_number_CTRL
-        mov	    w6, PIN_FUNCTION  // system registered i/o
-        str	    w6, [x5, 4]       // GPIO_pin_number_STATUS = fn;
+        lsl	    x2, x1, 3         // 8 x pin number
+        add	    x3, x0, x2        // GPIO_pin_number_CTRL
+        mov	    w2, PIN_FUNCTION  // system registered i/o
+        str	    w2, [x3, 4]       // GPIO_pin_number_STATUS = fn;
 
         add	    x2, x0, PADBase   // x2 = PADBase
         add	    x2, x2, 4         // x2 = pad
