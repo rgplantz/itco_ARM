@@ -28,10 +28,10 @@ gpio_pin_to_output:
 
         add	    x2, x0, PADBase   // x2 = PADBase
         add	    x2, x2, 4         // x2 = pad
-        lsl	    x4, x3, 2         // 4 x pin number
-        add	    x5, x2, x4        // pin_number pad reg. address 
-        mov	    w6, PAD_AMPS      // 4 ma
-        str	    w6, [x5]          // set pad amps
+        lsl	    x3, x1, 2         // 4 x pin number
+        add	    x3, x3, x2        // pin_number pad reg. address 
+        mov	    w4, PAD_AMPS      // 4 ma
+        str	    w4, [x3]          // set pad amps
 
         add	    x0, x0, RIOBase   // x1 = RIOBase
         mov	    w2, 1             // a bit
