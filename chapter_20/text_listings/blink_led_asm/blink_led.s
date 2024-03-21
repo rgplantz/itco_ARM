@@ -56,7 +56,7 @@ loop:
         adr     x0, off_msg             // tell user it's off
         bl      write_str
         mov     w1, GPIO_PIN            // GPIO pin number
-        mov     x0, x19                 // pointer to mapped memory
+        mov     x0, x19                 // pointer to GPIO reg.
         bl      gpio_pin_clr            // turn LED off
         mov     w0, DELTA_TIME          // wait
         bl      sleep
