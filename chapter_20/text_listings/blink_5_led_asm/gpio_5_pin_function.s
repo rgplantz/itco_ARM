@@ -8,7 +8,7 @@
 // Constants
         .equ    RIOBase, 0x10000  // offset to RIO
         .equ    PADBase, 0x20000  // offset to
-        .equ    PIN_FUNCTION, 5   // SYS_RIO
+        .equ    SYS_RIO, 5        // use RIO to control GPIO
         .equ    PAD_AMPS, 0x10    // 4 ma
         .equ    RIO_SET, 0x2000   // set reg. offset
         .equ    RIO_OE, 0x04      // output enable
@@ -21,7 +21,7 @@
 gpio_pin_to_output:
         lsl	    x2, x1, 3         // 8 x pin number
         add	    x3, x0, x2        // GPIO_pin_number_CTRL
-        mov	    w2, PIN_FUNCTION  // system registered i/o
+        mov	    w2, SYS_RIO       // system registered i/o
         str	    w2, [x3, 4]       // GPIO_pin_number_STATUS = fn;
 
         add	    x2, x0, PADBase
