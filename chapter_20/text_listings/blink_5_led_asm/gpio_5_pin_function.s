@@ -20,7 +20,7 @@
         .type   gpio_pin_to_output, %function
 gpio_pin_to_output:
         mov     w3, w1            // pin number
-        add	    x2, x0, 0x20000   // x2 = PADBase
+        add	    x2, x0, PADBase   // x2 = PADBase
         add	    x2, x2, 4         // x2 = pad
 
         lsl	    x4, x3, 3         // 8 x pin number
@@ -33,11 +33,10 @@ gpio_pin_to_output:
         mov	    w6, PAD_AMPS      // 4 ma
         str	    w6, [x5]          // set pad amps
 
-        add	    x1, x0, 0x10000   // x1 = RIOBase
-        mov	    w6, 1             // a bit
-        lsl	    w6, w6, w3        // shift to pin location
-        add	    x5, x1, RIO_SET   // use RIO set register
-        str	    w6, [x5, RIO_OE]  // make pin an output
+        add	    x0, x0, RIOBase   // x1 = RIOBase
+        mov	    w2, 1             // a bit
+        lsl	    w2, w2, w1        // shift to pin location
+        add	    x3, x0, RIO_SET   // use RIO set register
+        str	    w2, [x3, RIO_OE]  // make pin an output
 
-        mov     x0, x1            // return RIOBase
         ret
