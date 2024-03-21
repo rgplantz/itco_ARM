@@ -33,11 +33,10 @@ gpio_pin_to_output:
         mov	    w4, PAD_AMPS      // 4 ma
         str	    w4, [x2]          // set pad amps
 
-        add	    x1, x0, RIOBase   // x1 = RIOBase
+        add	    x0, x0, RIOBase   // x1 = RIOBase
+        add	    x2, x0, RIO_SET   // use RIO set register
         mov	    w3, 1             // a bit
         lsl	    w3, w3, w1        // shift to pin location
-        add	    x2, x1, RIO_SET   // use RIO set register
         str	    w3, [x2, RIO_OE]  // make pin an output
 
-        mov     x0, x1            // return RIOBase
         ret
