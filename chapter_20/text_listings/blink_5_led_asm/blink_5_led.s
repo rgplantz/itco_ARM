@@ -72,6 +72,7 @@ done:
         bl      gpio_end                // end our use of gpio
         mov     w0, wzr                 // return 0;
 error_return:
+        ldr     x21, [sp, save21]       // restore regs.
         ldp     x19, x20, [sp, save1920]  // restore regs.
         ldp     fp, lr, [sp], FRAME     // undo stack frame
         ret
