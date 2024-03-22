@@ -1,4 +1,4 @@
-// Unmaps one page of I/O  from application memory space
+// Unmaps GPIO from application memory space
 // Calling sequence
 //    x0 <- address of memory to unmap
 
