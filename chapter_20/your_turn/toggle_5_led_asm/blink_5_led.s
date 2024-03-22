@@ -52,7 +52,7 @@ loop:
         bl      write_str
         mov     w1, GPIO_PIN            // GPIO pin number
         mov     x0, x21                 // pointer to RIOBase
-        bl      gpio_pin_set            // turn LED on
+        bl      gpio_pin_toggle         // turn LED on
         mov     w0, DELTA_TIME          // wait
         bl      sleep
        
@@ -60,7 +60,7 @@ loop:
         bl      write_str
         mov     w1, GPIO_PIN            // GPIO pin number
         mov     x0, x21                 // pointer to RIOBase
-        bl      gpio_pin_clr            // turn LED off
+        bl      gpio_pin_toggle         // turn LED off
         mov     w0, DELTA_TIME          // wait
         bl      sleep
 
