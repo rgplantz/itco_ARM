@@ -1,9 +1,9 @@
-// Blinks LED connected to GPIO pin 17 every three seconds.
+// Blinks LED connected to GPIO line 17 every three seconds.
 
 // Useful constants
         .equ    N_BLINKS, 5           // number of times to blink
         .equ    DELTA_TIME, 3         // seconds between blinks
-        .equ    GPIO_PIN, 17          // pin number
+        .equ    GPIO_LINE, 17         // line number
 
 // Stack frame
         .equ    save1920, 16          // save regs
@@ -39,28 +39,28 @@ main:
         b       error_return            // and end program
 mem_map_ok:
         mov     x19, x0                 // save address of mapped mem.
-// Make pin an output
+// Make line an output
 	      add	    x0, x0, 0xd0000         // x0 = GPIOBase
-        mov     w1, GPIO_PIN
-        bl      gpio_pin_to_output
+        mov     w1, GPIO_LINE
+        bl      gpio_line_to_output
         mov     x21, x0                 // pointer to RIOBase
 
-// Turn the pin on and off
+// Turn the LED on and off
         mov     x20, N_BLINKS           // number of times to do it
 loop: 
         adr     x0, on_msg              // tell user it's on
         bl      write_str
-        mov     w1, GPIO_PIN            // GPIO pin number
+        mov     w1, GPIO_LINE           // GPIO line number
         mov     x0, x21                 // pointer to RIOBase
-        bl      gpio_pin_set            // turn LED on
+        bl      gpio_line_set           // turn LED on
         mov     w0, DELTA_TIME          // wait
         bl      sleep
        
         adr     x0, off_msg             // tell user it's off
         bl      write_str
-        mov     w1, GPIO_PIN            // GPIO pin number
+        mov     w1, GPIO_LINE           // GPIO line number
         mov     x0, x21                 // pointer to RIOBase
-        bl      gpio_pin_clr            // turn LED off
+        bl      gpio_line_clr           // turn LED off
         mov     w0, DELTA_TIME          // wait
         bl      sleep
 
