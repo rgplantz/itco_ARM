@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <gpiod.h>
 
-#define PIN 17          // GPIO line connected to led
+#define LINE 17         // GPIO line connected to led
 #define OFF 0           // pin at 0.0v
 #define ON 1            // pin at 3.3v
 #define BLINKS 5        // number of blinks
@@ -22,7 +22,7 @@ int main(void)
         return -1;
     }
 
-    line = gpiod_chip_get_line(chip, PIN);
+    line = gpiod_chip_get_line(chip, LINE);
     if(line == NULL) {
         gpiod_chip_close(chip);
         puts("Cannot get GPIO line");
