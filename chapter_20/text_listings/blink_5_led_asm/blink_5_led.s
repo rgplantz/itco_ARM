@@ -69,7 +69,7 @@ loop:
        
 done:
         mov     x0, x19                 // our mapped memory
-        bl      gpio_end                // end our use of gpio
+        bl      gpio_unmap              // end our use of gpio
         mov     w0, wzr                 // return 0;
 error_return:
         ldr     x21, [sp, save21]       // restore regs.
