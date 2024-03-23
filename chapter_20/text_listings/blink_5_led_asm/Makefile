@@ -1,6 +1,6 @@
 # Makefile for blink_led program on Raspberry Pi 5
 
-OBJECTS = blink_5_led.o gpio_5_line_function.o gpio_5_line_set.o gpio_5_line_clr.o write_str.o
+OBJECTS = blink_5_led.o gpio_5_line_to_output.o gpio_5_line_set.o gpio_5_line_clr.o write_str.o
 CFLAGS = -g -Wall
 AS = as
 ASFLAGS = --gstabs
