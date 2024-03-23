@@ -6,8 +6,8 @@
 //      Returns address of RIOBase
 
 // Constants
-        .equ    RIOBase, 0x10000  // offset to RIO
-        .equ    PADBase, 0x20000  // offset to
+        .equ    RIOBase, 0x10000  // offset to RIO registers
+        .equ    PADBase, 0x20000  // offset to PAD registers
         .equ    SYS_RIO, 5        // use RIO to control GPIO
         .equ    PAD_AMPS, 0x10    // 4 ma
         .equ    RIO_SET, 0x2000   // set reg. offset
