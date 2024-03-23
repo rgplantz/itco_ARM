@@ -21,8 +21,8 @@ gpio_line_to_output:
         msub    w5, w4, w3, w1  // line field number in register
 // Compute address of GPFSEL register and line field in register     
         lsl     w4, w4, 2       // w4 = offset to GPSEL register
-        add     x0, x0, x4      // GPFSELn memory address
-        ldr     w4, [x0]        // w4 = GPFSELn register contents
+        add     x7, x0, x4      // GPFSELn memory address
+        ldr     w4, [x7]        // w4 = GPFSELn register contents
 
         add     w5, w5, w5, lsl 1   // 3 X line field number
         mov     w6, FIELD_MASK  // gpio line field
@@ -32,6 +32,6 @@ gpio_line_to_output:
         mov     w2, OUTPUT      // function = output
         lsl     w2, w2, w5      // shift function code to line position
         orr     w4, w4, w2      // insert function code
-        str     w4, [x0]        // update register
+        str     w4, [x7]        // update register
 
         ret
