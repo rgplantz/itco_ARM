@@ -1,9 +1,9 @@
-// Blinks LED connected to GPIO pin 17 every three seconds.
+// Blinks LED connected to GPIO line 17 every three seconds.
 
 // Useful constants
         .equ    N_BLINKS, 5               // number of times to blink
         .equ    DELTA_TIME, 3             // seconds between blinks
-        .equ    GPIO_PIN, 17              // pin number
+        .equ    GPIO_LINE, 17             // line number
 // The following are defined in /usr/include/asm-generic/fcntl.h:
 // Note that the values are specified in octal.
         .equ    O_RDWR, 00000002          // open for read/write
@@ -77,29 +77,29 @@ main:
         mov     w0, w19                   // /dev/mem file descriptor
         bl      close                     // close /dev/mem file
 
-// Make pin an output
+// Make line an output
         mov     x0, x20                   // get mapped memory address
 	      add	    x0, x0, GPIO_OFFSET       // start of GPIO registers
-        mov     w1, GPIO_PIN
-        bl      gpio_pin_to_output
+        mov     w1, GPIO_LINE
+        bl      gpio_line_to_output
         mov     x21, x0                   // pointer to register base
 
-// Turn the pin on and off
+// Turn the line on and off
         mov     x19, N_BLINKS             // number of times to do it
 loop: 
         adr     x0, on_msg                // tell user it's on
         bl      write_str
-        mov     w1, GPIO_PIN              // GPIO pin number
+        mov     w1, GPIO_LINE             // GPIO line number
         mov     x0, x21                   // pointer to register base
-        bl      gpio_pin_set              // turn LED on
+        bl      gpio_line_set             // turn LED on
         mov     w0, DELTA_TIME            // wait
         bl      sleep
        
         adr     x0, off_msg               // tell user it's off
         bl      write_str
-        mov     w1, GPIO_PIN              // GPIO pin number
+        mov     w1, GPIO_LINE             // GPIO line number
         mov     x0, x21                   // pointer to register base
-        bl      gpio_pin_clr              // turn LED off
+        bl      gpio_line_clr             // turn LED off
         mov     w0, DELTA_TIME            // wait
         bl      sleep
 
