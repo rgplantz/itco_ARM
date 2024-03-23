@@ -38,9 +38,9 @@ main:
         b       error_return            // and end program
 mem_map_ok:
 // Make line an output
+        mov     x19, x0                 // pointer to GPIO reg.
         mov     w1, GPIO_LINE           // GPIO line number
         bl      gpio_line_to_output
-        mov     x19, x0                 // pointer to GPIO reg.
 
 // Turn the LED on and off
         mov     x20, N_BLINKS           // number of times to do it
