@@ -1,6 +1,6 @@
 # Makefile for blink_led program
 
-OBJECTS = blink_led.o gpio_map.o gpio_line_function.o gpio_line_set.o gpio_line_clr.o gpio_unmap.o write_str.o
+OBJECTS = blink_led.o gpio_line_to_output.o gpio_line_set.o gpio_line_clr.o write_str.o
 CFLAGS = -g -Wall
 AS = as
 ASFLAGS = --gstabs
