@@ -105,7 +105,7 @@ loop:
 
         subs    x19, x19, 1               // decrement loop counter
         b.gt    loop                      // loop if > 0
-done:
+
         mov     x0, x20                   // our mapped memory
         mov     w1, MEM_SIZE              // amount we mapped for GPIO
         bl      munmap                    // unmap it
