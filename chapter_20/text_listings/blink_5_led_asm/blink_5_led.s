@@ -22,7 +22,7 @@
         .equ    GPIO_OFFSET, 0xd0000      // RPi 5
 //        .equ    GPIO_OFFSET, 0x00000     // other RPi models
 //        .equ    MEM_SIZE, 0x1000          // memory for RPi zero, 1, 2, 3, & 4
-        .equ    MEM_SIZE, 0x200000       // memory for RPi 5
+        .equ    MEM_SIZE, 0x80000       // memory for RPi 5
         .equ    OPEN_FLAGS, O_RDWR | O_SYNC | O_CLOEXEC // open file flags
         .equ    PROT_RDWR, PROT_READ | PROT_WRITE       // allow read and write
         .equ    NO_ADDR_PREF, 0           // let OS choose address of mapping
