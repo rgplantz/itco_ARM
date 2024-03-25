@@ -13,12 +13,12 @@
         .equ    PROT_READ, 0x1            // page can be read
         .equ    PROT_WRITE, 0x2           // page can be written
         .equ    MAP_SHARED, 0x01          // share changes
-// The following are defined by me:
-//    Uncomment the GPIO and memory sizes for your RPi model.
-        .equ    GPIO, 0x1f00000000 >> 16  // RPi 5
-//        .equ    GPIO, 0x7e200000 >> 16    // RPi 4
-//        .equ    GPIO, 0x3f200000 >> 16    // RPi 2 & 3
-//        .equ    GPIO, 0x20200000 >> 16    // RPi zero & 1
+// The following are defined by me.
+//    Uncomment PERIPHS, GPIO_OFFSET, and MEM_SIZE for your RPi model.
+        .equ    PERIPHS, 0x1f00000000 >> 16 // RPi 5
+//        .equ    PERIPHS, 0x7e200000 >> 16 // RPi 4
+//        .equ    PERIPHS, 0x3f200000 >> 16 // RPi 2 & 3
+//        .equ    PERIPHS, 0x20200000 >> 16 // RPi zero & 1
         .equ    GPIO_OFFSET, 0xd0000      // RPi 5
 //        .equ    GPIO_OFFSET, 0x00000     // other RPi models
 //        .equ    MEM_SIZE, 0x1000          // memory for RPi zero, 1, 2, 3, & 4
@@ -63,8 +63,8 @@ main:
         b.eq    error_return              // end if error
         mov     w19, w0                   // /dev/mem file descriptor
 // Map the GPIO registers to a main memory location so we can access them
-        movz    x5, GPIO & 0xffff, lsl 16
-        movk    x5, GPIO / 0xffff, lsl 32
+        movz    x5, PERIPHS & 0xffff, lsl 16
+        movk    x5, PERIPHS / 0xffff, lsl 32
         mov     w4, w19                   // file descriptor
         mov     w3, MAP_SHARED            // share with other processes
         mov     w2, PROT_RDWR             // read/write this memory
