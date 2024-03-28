@@ -16,11 +16,11 @@
 // The following are defined by me.
 //    Uncomment PERIPHS, GPIO_OFFSET, and MEM_SIZE for your RPi model.
 //        .equ    PERIPHS, 0x1f00000000 >> 16 // RPi 5
-//        .equ    PERIPHS, 0x7e200000 >> 16 // RPi 4
-        .equ    PERIPHS, 0x3f200000 >> 16 // RPi 2 & 3
-//        .equ    PERIPHS, 0x20200000 >> 16 // RPi zero & 1
+//        .equ    PERIPHS, 0x7e000000 >> 16 // RPi 4
+        .equ    PERIPHS, 0x3f000000 >> 16 // RPi 2 & 3
+//        .equ    PERIPHS, 0x20000000 >> 16 // RPi zero & 1
 //        .equ    GPIO_OFFSET, 0xd0000      // RPi 5
-        .equ    GPIO_OFFSET, 0x00000      // other RPi models
+        .equ    GPIO_OFFSET, 0x200000     // other RPi models
         .equ    MEM_SIZE, 0x1000          // memory for RPi zero, 1, 2, 3, & 4
 //        .equ    MEM_SIZE, 0x100000        // memory for RPi 5
         .equ    OPEN_FLAGS, O_RDWR | O_SYNC | O_CLOEXEC // open file flags
