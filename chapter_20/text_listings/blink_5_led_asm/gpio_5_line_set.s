@@ -10,9 +10,9 @@
 // Code
         .text
         .align  2
-        .global gpio_line_set
-        .type   gpio_line_set, %function
-gpio_line_set:
+        .global gpio_5_line_set
+        .type   gpio_5_line_set, %function
+gpio_5_line_set:
         mov     w2, 1               // a bit
         lsl     w2, w2, w1          // shift to line location
         add     x0, x0, RIO_SET     // address RIO set reg
