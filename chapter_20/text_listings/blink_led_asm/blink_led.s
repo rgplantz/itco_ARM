@@ -1,7 +1,7 @@
 // Blinks LED connected to GPIO line 17 every three seconds.
 
 //    Define your RPi model: 0, 1, 2, 3, 4, 5
-        .equ    RPI_MODEL, 4
+        .equ    RPI_MODEL, 3
 // Useful constants
         .equ    N_BLINKS, 5               // number of times to blink
         .equ    DELTA_TIME, 3             // seconds between blinks
