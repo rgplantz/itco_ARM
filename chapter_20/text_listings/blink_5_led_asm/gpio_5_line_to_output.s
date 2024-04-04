@@ -16,9 +16,9 @@
 // Code
         .text
         .align  2
-        .global gpio_line_to_output
-        .type   gpio_line_to_output, %function
-gpio_line_to_output:
+        .global gpio_5_line_to_output
+        .type   gpio_5_line_to_output, %function
+gpio_5_line_to_output:
         lsl	    x2, x1, 3         // 8 x line number
         add	    x3, x0, x2        // GPIO_line_number_CTRL
         mov	    w2, SYS_RIO       // system registered i/o
