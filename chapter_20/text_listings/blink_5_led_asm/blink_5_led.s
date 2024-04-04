@@ -90,7 +90,11 @@ main:
         mov     x0, x20                   // get mapped memory address
 	      add	    x0, x0, GPIO_OFFSET       // start of GPIO registers
         mov     w1, GPIO_LINE
+    .if     RPI_MODEL != 5
         bl      gpio_line_to_output
+    .else
+        bl      gpio_5_line_to_output
+    .endif
         mov     x21, x0                   // pointer to register base
 
 // Turn the line on and off
@@ -100,7 +104,11 @@ loop:
         bl      write_str
         mov     w1, GPIO_LINE             // GPIO line number
         mov     x0, x21                   // pointer to register base
+    .if     RPI_MODEL != 5
         bl      gpio_line_set             // turn LED on
+    .else
+        bl      gpio_5_line_set           // turn LED on
+    .endif
         mov     w0, DELTA_TIME            // wait
         bl      sleep
        
@@ -108,7 +116,11 @@ loop:
         bl      write_str
         mov     w1, GPIO_LINE             // GPIO line number
         mov     x0, x21                   // pointer to register base
+    .if     RPI_MODEL != 5
         bl      gpio_line_clr             // turn LED off
+    .else
+        bl      gpio_5_line_clr           // turn LED off
+    .endif
         mov     w0, DELTA_TIME            // wait
         bl      sleep
 
