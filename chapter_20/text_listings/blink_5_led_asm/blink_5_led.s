@@ -25,10 +25,10 @@
         .equ    PERIPHS, 0x1f00000000 >> 16 // RPi 5
     .endif
 // Offset to GPIO registers.
-    .if     RPI_MODEL == 5
-        .equ    GPIO_OFFSET, 0xd0000      // RPi 5
-    .else
+    .if     RPI_MODEL != 5
         .equ    GPIO_OFFSET, 0x200000     // other RPi models
+    .else
+        .equ    GPIO_OFFSET, 0xd0000      // RPi 5
     .endif
 // Amount of memory to map and flags
         .equ    MEM_SIZE, 0x400000        // enough to include all GPIO regs.
