@@ -1,5 +1,7 @@
 // Blinks LED connected to GPIO line 17 every three seconds.
 
+//    Define your RPi model: 0, 1, 2, 3, 4, 5
+        .equ    RPI_MODEL, 4
 // Useful constants
         .equ    N_BLINKS, 5               // number of times to blink
         .equ    DELTA_TIME, 3             // seconds between blinks
@@ -13,18 +15,26 @@
         .equ    PROT_READ, 0x1            // page can be read
         .equ    PROT_WRITE, 0x2           // page can be written
         .equ    MAP_SHARED, 0x01          // share changes
-// The following are defined by me.
-//    Uncomment PERIPHS, GPIO_OFFSET, and MEM_SIZE for your RPi model.
-//        .equ    PERIPHS, 0x1f00000000 >> 16 // RPi 5
-//        .equ    PERIPHS, 0x7e000000 >> 16 // RPi 4
-        .equ    PERIPHS, 0x3f000000 >> 16 // RPi 2 & 3
-//        .equ    PERIPHS, 0x20000000 >> 16 // RPi zero & 1
-//        .equ    GPIO_OFFSET, 0xd0000      // RPi 5
+// Beginning address of peripherals.
+    .if     (RPI_MODEL == 0) || (RPI_MODEL == 1)
+        .equ    PERIPHS, 0x20000000 >> 16 // RPi zero or 1
+    .elseif (RPI_MODEL == 2) || (RPI_MODEL == 3)
+        .equ    PERIPHS, 0x3f000000 >> 16 // RPi 2 or 3
+    .elseif RPI_MODEL == 4
+        .equ    PERIPHS, 0x7e000000 >> 16 // RPi 4
+    .else
+        .equ    PERIPHS, 0x1f00000000 >> 16 // RPi 5
+    .endif
+// Offset to GPIO registers.
+    .if     RPI_MODEL == 5
+        .equ    GPIO_OFFSET, 0xd0000      // RPi 5
+    .else
         .equ    GPIO_OFFSET, 0x200000     // other RPi models
-        .equ    MEM_SIZE, 0x1000          // memory for RPi zero, 1, 2, 3, & 4
-//        .equ    MEM_SIZE, 0x100000        // memory for RPi 5
-        .equ    OPEN_FLAGS, O_RDWR | O_SYNC | O_CLOEXEC // open file flags
-        .equ    PROT_RDWR, PROT_READ | PROT_WRITE       // allow read and write
+    .endif
+// Amount of memory to map and flags
+        .equ    MEM_SIZE, 0x400000        // enough to include all GPIO regs.
+        .equ    OPEN_FLAGS, O_RDWR | O_SYNC   // open file flags
+        .equ    PROT_RDWR, PROT_READ | PROT_WRITE   // allow read and write
         .equ    NO_ADDR_PREF, 0           // let OS choose address of mapping
 
 // Stack frame
