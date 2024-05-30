@@ -1,4 +1,4 @@
-// Converts inches to feet and inches.
+// Convert inches to feet and inches.
 
 #include <stdio.h>
 #define INCHES_PER_FOOT 12

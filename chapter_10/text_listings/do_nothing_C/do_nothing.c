@@ -1,4 +1,4 @@
-// Minimum components of a C program.
+// Minimum components of a C program
 
 
 int main(void)

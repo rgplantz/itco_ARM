@@ -1,4 +1,4 @@
-// Increments an integer.
+// Increment an integer.
         .arch armv8-a
 // Stack frame
         .equ    x, 28

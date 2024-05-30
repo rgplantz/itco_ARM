@@ -1,4 +1,4 @@
-// Increments an integer.
+// Increment an integer.
 
 #include <stdio.h>
 
