@@ -1,4 +1,4 @@
-// Adds constant to automatic, static, global variables.
+// Add constant to automatic, static, global variables.
         .arch armv8-a
 // Useful names
         .equ    INIT_X, 78

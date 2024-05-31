@@ -1,4 +1,4 @@
-// Sums the integers 1 - 11.
+// Sum the integers 1 - 11.
         .arch armv8-a
 // Stack frame
         .equ    arg9, 0

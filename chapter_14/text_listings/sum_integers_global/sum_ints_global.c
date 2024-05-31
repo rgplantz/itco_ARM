@@ -1,4 +1,4 @@
-// Adds two integers using global variables
+// Add two integers using global variables
 
 #include <stdio.h>
 #include "add_two_global.h"
@@ -8,8 +8,8 @@ int x = 123, y = 456, z;
 
 int main(void)
 {
-  add_two();
-  printf("%i + %i = %i\n", x, y, z);
+    add_two();
+    printf("%i + %i = %i\n", x, y, z);
 
-  return 0;
+    return 0;
 }

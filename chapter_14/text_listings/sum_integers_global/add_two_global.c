@@ -1,4 +1,4 @@
-// Adds two global integers.
+// Add two global integers.
 
 #include "add_two_global.h"
 

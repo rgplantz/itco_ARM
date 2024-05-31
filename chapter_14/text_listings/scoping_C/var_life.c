@@ -1,4 +1,4 @@
-// Compares scope and lifetime of automatic, static,
+// Compare scope and lifetime of automatic, static,
 // and global variables.
 
 #include <stdio.h>

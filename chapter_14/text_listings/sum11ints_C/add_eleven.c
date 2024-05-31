@@ -1,4 +1,4 @@
-// Adds eleven integers and returns the sum.
+// Add eleven integers and return the sum.
 
 #include <stdio.h>
 #include "add_eleven.h"

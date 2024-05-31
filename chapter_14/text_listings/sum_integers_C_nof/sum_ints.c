@@ -1,4 +1,4 @@
-// Adds two integers using local variables
+// Add two integers using local variables.
 
 #include <stdio.h>
 #include "add_two.h"

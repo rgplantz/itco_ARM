@@ -1,4 +1,4 @@
-// Adds two global integers.
+// Add two global integers.
 
 #ifndef ADD_TWO_GLOBAL_H
 #define ADD_TWO_GLOBAL_H

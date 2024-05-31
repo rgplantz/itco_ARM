@@ -1,4 +1,4 @@
-// Prompts user to enter text and echoes it.
+// Prompt user to enter text and echo it.
 
 #include "write_char.h"
 #include "write_str.h"

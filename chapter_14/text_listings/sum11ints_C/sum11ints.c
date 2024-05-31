@@ -1,4 +1,4 @@
-// Sums the integers 1 - 11.
+// Sum the integers 1 - 11.
 
 #include <stdio.h>
 #include "add_eleven.h"

@@ -1,11 +1,11 @@
-// Adds two integers and outputs sum.
+// Add two integers and output sum.
 
 #include "add_two.h"
 
 void add_two(int *a, int b, int c)
 {
-  int sum;
+    int sum;
   
-  sum = b + c;
-  *a = sum;
+    sum = b + c;
+    *a = sum;
 }

@@ -1,4 +1,4 @@
-// Adds eleven integers and returns sum.
+// Add eleven integers and return sum.
 // Calling sequence:
 //    w0 through w7 <- 8 integers
 //    [sp] <- integer

@@ -1,4 +1,4 @@
-// Adds constant to automatic, static, global variables.
+// Add constant to automatic, static, global variables.
 
 #include <stdio.h>
 #include "add_const.h"

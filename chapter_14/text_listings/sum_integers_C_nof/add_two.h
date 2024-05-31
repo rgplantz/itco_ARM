@@ -1,4 +1,4 @@
-// Adds two integers and outputs sum.
+// Add two integers and output sum.
 
 #ifndef ADD_TWO_H
 #define ADD_TWO_H
