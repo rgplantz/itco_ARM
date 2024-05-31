@@ -1,4 +1,4 @@
-// Writes Hello, World! one character at a time
+// Write Hello, World! one character at a time.
         .arch armv8-a
 // Useful names
         .equ    NUL, 0

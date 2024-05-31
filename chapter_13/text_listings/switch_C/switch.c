@@ -1,4 +1,4 @@
-// Three-way selection.
+// Select one of three or default.
 
 #include <stdio.h>
 #define N_TIMES 10

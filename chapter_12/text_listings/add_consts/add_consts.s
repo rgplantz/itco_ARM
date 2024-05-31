@@ -1,4 +1,4 @@
-// Adds three constants to show some machine code.
+// Add three constants to show some machine code.
         .arch armv8-a
 // Stack frame
         .equ    z, 28

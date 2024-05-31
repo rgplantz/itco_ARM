@@ -1,5 +1,4 @@
-// Hello World program using the write system call
-// one character at a time.
+// Write Hello, World! one character at a time.
 
 #include <unistd.h>
 #define NUL '\x00'

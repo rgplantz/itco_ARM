@@ -1,4 +1,4 @@
-// Flips a coin, shows heads.
+// Flip a coin, shows heads.
 
 #include <stdio.h>
 #include <stdlib.h>
