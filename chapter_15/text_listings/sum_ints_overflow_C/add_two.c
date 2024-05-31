@@ -1,4 +1,4 @@
-// Adds  a and b, outputs sum to c; returns overflow T or F
+// Add two integers and return 1 for overflow, 0 if no overflow.
 
 #include "add_two.h"
 

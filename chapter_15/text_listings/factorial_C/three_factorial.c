@@ -1,4 +1,4 @@
-// Computes 3!
+// Compute 3 factorial.
 
 #include <stdio.h>
 #include "factorial.h"

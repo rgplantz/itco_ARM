@@ -1,4 +1,4 @@
-// returns n!
+// Return n factorial.
 
 #include "factorial.h"
 

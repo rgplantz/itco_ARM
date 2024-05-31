@@ -1,4 +1,4 @@
-// returns n!
+// Return n factorial.
  
 #ifndef FACTORIAL_H
 #define FACTORIAL_H
