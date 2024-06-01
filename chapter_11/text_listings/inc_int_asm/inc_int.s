@@ -2,7 +2,7 @@
         .arch armv8-a
 // Stack frame
         .equ    x, 28
-        (@\codewingding{1}@).equ    FRAME, 32
+        .equ    FRAME, 32
 // Constants 
         .section .rodata
 prompt:
