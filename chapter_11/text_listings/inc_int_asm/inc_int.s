@@ -30,9 +30,9 @@ main:
         add     w1, w0, 1             // Add 1.
         str     w1, [sp, x]           // x++;
 
-        adr     x0, result            // Address of format string
+        adr     x0, result            // printf format string
         bl      printf                // Result is in w1
 
         mov     w0, wzr
-        ldp     fp, lr, [sp], FRAME   // Undo stack frame
+        ldp     fp, lr, [sp], FRAME   // Undo stack frame.
         ret
