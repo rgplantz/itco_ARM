@@ -2,9 +2,9 @@
         .arch armv8-a
 // Stack frame
         .equ    x, 28
-        .equ    FRAME, 32
+        (@\codewingding{1}@).equ    FRAME, 32
 // Constants 
-        .section  .rodata
+        .section .rodata
 prompt:
         .string "Enter an integer: "
 input_format:
@@ -17,22 +17,22 @@ result:
         .global main
         .type   main, %function
 main:
-        stp     fp, lr, [sp, FRAME]!  // our stack frame
+        stp     fp, lr, [sp, FRAME]!  // Our stack frame
         mov     fp, sp
 
-        adr     x0, prompt            // prompt user
+        adr     x0, prompt            // Prompt user.
         bl      printf
-        add     x1, sp, x             // address for input
+        add     x1, sp, x             // Address for input
         adr     x0, input_format      // scanf format string
         bl      scanf
 
-        ldr     w0, [sp, x]           // get x
-        add     w1, w0, 1             // add one
+        ldr     w0, [sp, x]           // Get x.
+        add     w1, w0, 1             // Add 1.
         str     w1, [sp, x]           // x++;
 
-        adr     x0, result            // address of format string
-        bl      printf
+        adr     x0, result            // Address of format string
+        bl      printf                // Result is in w1
 
         mov     w0, wzr
-        ldp     fp, lr, [sp], FRAME   // undo stack frame
+        ldp     fp, lr, [sp], FRAME   // Undo stack frame
         ret
