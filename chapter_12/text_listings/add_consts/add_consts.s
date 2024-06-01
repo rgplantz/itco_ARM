@@ -13,22 +13,22 @@ format:
         .global	main
         .type	main, %function
 main:
-        stp     fp, lr, [sp, FRAME]!  // our stack frame
+        stp     fp, lr, [sp, FRAME]!  // Our stack frame
         mov     fp, sp
 
-        mov     w19, 123              // first constant
-        mov     w20, -123             // second constant
-        add     w21, w19, w20         // add them
-        add     w22, w21, 456         // another constant
-        str     w22, [sp, z]          // store sum
+        mov     w19, 123              // First constant
+        mov     w20, -123             // Second constant
+        add     w21, w19, w20         // Add them.
+        add     w22, w21, 456         // Another constant
+        str     w22, [sp, z]          // Store sum.
 
-        ldr     w3, [sp, z]           // get sum
-        mov     w2, w20               // get 2nd constant
-        orr     w2, wzr, w20          // alias
-        mov     w1, w19               // get 1st constant
-        adr     x0, format            // assume on same page
+        ldr     w3, [sp, z]           // Get sum.
+        mov     w2, w20               // Get 2nd constant.
+        orr     w2, wzr, w20          // Alias
+        mov     w1, w19               // Get 1st constant.
+        adr     x0, format            // Assume on same page.
         bl      printf
 
-        mov     w0, wzr               // return 0;
-        ldp     fp, lr, [sp], FRAME   // undo stack FRAME
+        mov     w0, wzr               // Return 0.
+        ldp     fp, lr, [sp], FRAME   // Undo stack FRAME.
         ret
