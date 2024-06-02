@@ -17,7 +17,7 @@ result:
         .global main
         .type   main, %function
 main:
-        stp     fp, lr, [sp, FRAME]!  // Our stack frame
+        stp     fp, lr, [sp, FRAME]!  // Create frame.
         mov     fp, sp
 
         adr     x0, prompt            // Prompt user.
@@ -28,11 +28,11 @@ main:
 
         ldr     w0, [sp, x]           // Get x.
         add     w1, w0, 1             // Add 1.
-        str     w1, [sp, x]           // x++;
+        str     w1, [sp, x]           // x++
 
         adr     x0, result            // printf format string
-        bl      printf                // Result is in w1
+        bl      printf                // Result is in w1.
 
         mov     w0, wzr
-        ldp     fp, lr, [sp], FRAME   // Undo stack frame.
+        ldp     fp, lr, [sp], FRAME   // Delete stack frame.
         ret
