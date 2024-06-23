@@ -3,7 +3,7 @@
 // Stack frame
         .equ    z, 28
         .equ    FRAME, 32
-// Constants 
+// Constant data 
         .section  .rodata
 format:
         .string "%i + %i + 456 = %i\n"

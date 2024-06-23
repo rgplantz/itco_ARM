@@ -3,7 +3,7 @@
 // Stack frame
         .equ    x, 28
         .equ    FRAME, 32
-// Constants 
+// Constant data
         .section .rodata
 prompt:
         .string "Enter an integer: "
