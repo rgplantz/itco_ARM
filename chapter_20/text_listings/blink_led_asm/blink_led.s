@@ -9,7 +9,7 @@
 // The following are defined in /usr/include/asm-generic/fcntl.h.
 // Note that the values are specified in octal.
         .equ    O_RDWR, 00000002          // open for read/write
-        .equ    O_SYNC, 04010000          // ensure reads and writes are
+        .equ    O_SYNC, 04010000          // Complete writes in hardware.
 // The following are defined in /usr/include/asm-generic/mman-common.h.
         .equ    PROT_READ, 0x1            // page can be read
         .equ    PROT_WRITE, 0x2           // page can be written
