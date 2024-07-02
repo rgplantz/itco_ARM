@@ -3,7 +3,7 @@
 // Stack frame
         .equ    arg9, 0
         .equ    arg10, 8
-        .equ    arg11, 12
+        .equ    arg11, 16
         .equ    frame_record, 32
         .equ    total, 48
         .equ    k, 52
