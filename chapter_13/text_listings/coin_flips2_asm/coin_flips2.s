@@ -28,7 +28,7 @@ loop:
         b.hs    done                  // Yes
         bl      random                // No, get random number
         mov     w1, RAND_MID          // Halfway
-        // cmp     w1, w0                // Above or below middle?
+        cmp     w1, w0                // Above or below middle?
         b.hi    tails                 // Above -> tails
         adr     x0, heads_msg         // Below -> heads message
         bl      puts                  // Print message
