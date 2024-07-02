@@ -1,10 +1,10 @@
-// Add eleven integers and return sum.
+// Add 11 integers and return the sum.
 // Calling sequence:
 //    w0 through w7 <- 8 integers
 //    [sp] <- integer
 //    [sp+8] <- integer
 //    [sp+16] <- integer
-//    returns sum
+//    Returns sum
         .arch armv8-a
 // Stack frame
         .equ    eight, 16
@@ -16,8 +16,8 @@
         .equ    two, 40
         .equ    one, 44
         .equ    sum, 60
-        .equ    FRAME, 64             // end of our frame
-        .equ    nine, 64              // stack args.
+        .equ    FRAME, 64             // End of our frame
+        .equ    nine, 64              // Stack args
         .equ    ten, 72
         .equ    eleven, 80
 // Constant data
@@ -27,13 +27,13 @@ msg:
         .string "Added them"
         .text
         .align  2
-        .global addEleven
-        .type   addEleven, %function
-addEleven:
-        stp     fp, lr, [sp, -FRAME]! // create our stack frame
-        mov     fp, sp                // set our frame pointer
+        .global add_eleven
+        .type   add_eleven, %function
+add_eleven:
+        stp     fp, lr, [sp, -FRAME]! // Create stack frame
+        mov     fp, sp                // Set our frame pointer
 
-        str     w0, [sp, one]         // save register args.
+        str     w0, [sp, one]         // Save register args
         str     w1, [sp, two]
         str     w2, [sp, three]
         str     w3, [sp, four]
@@ -42,9 +42,9 @@ addEleven:
         str     w6, [sp, seven]
         str     w7, [sp, eight]
 
-        ldr     w1, [sp, one]         // load args.             
+        ldr     w1, [sp, one]         // Load args             
         ldr     w0, [sp, two]
-        add     w1, w1, w0            //      and sum them
+        add     w1, w1, w0            //   and sum them
         ldr     w0, [sp, three]
         add     w1, w1, w0
         ldr     w0, [sp, four]
@@ -63,10 +63,10 @@ addEleven:
         add     w1, w1, w0
         ldr     w0, [sp, eleven]
         add     w1, w1, w0
-        str     w1, [sp, sum]         // store sum
-        adr     x0, msg               // tell user we're done
+        str     w1, [sp, sum]         // Store sum
+        adr     x0, msg               // Tell user we're done
         bl      puts
 
-        ldr     w0, [sp, sum]         // return the sum
-        ldp     fp, lr, [sp], FRAME   // restore fp, lr, sp
-        ret                           // back to caller
+        ldr     w0, [sp, sum]         // Return the sum
+        ldp     fp, lr, [sp], FRAME   // Delete stack frame
+        ret                           // Back to caller
