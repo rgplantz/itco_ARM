@@ -1,4 +1,4 @@
-// Add eleven integers and return the sum.
+// Add 11 integers and return the sum.
 
 #ifndef ADD_ELEVEN_H
 #define ADD_ELEVEN_H
