@@ -6,5 +6,5 @@
         .global main
         .type   main, %function
 main:
-        mov     w0, wzr         // Return 0.
+        mov     w0, wzr         // return 0;
         ret
