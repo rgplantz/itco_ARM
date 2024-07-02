@@ -1,11 +1,11 @@
-// Flips a coin, heads or tails.
+// Flip a coin, showing heads or tails.
         .arch armv8-a
 // Useful names
-        .equ    N_TIMES, 10           // number of flips
-        .equ    RAND_MID,1073741823   // RAND_MAX/2
+        .equ    N_TIMES, 10           // Number of flips
+        .equ    RAND_MID, 1073741823  // RAND_MAX/2
 // Stack frame
-        .equ    save19, 24
-        .equ    FRAME,32
+        .equ    save19, 28
+        .equ    FRAME, 32
 // Constant data
         .section  .rodata
 heads_msg:
@@ -18,29 +18,29 @@ tails_msg:
         .global main
         .type   main, %function
 main:
-        stp     fp, lr, [sp, -FRAME]! // create our stack frame
-        mov     fp, sp                // set our frame pointer
-        str     x19, [sp, save19]     // save for i local var.
-        mov     w19, wzr              // i = 0;
+        stp     fp, lr, [sp, -FRAME]! // Create stack frame
+        mov     fp, sp                // Set our frame pointer
+        str     w19, [sp, save19]     // Save for i local var
+        mov     w19, wzr              // i = 0
 loop:
-        mov     w0, N_TIMES           // total number of times
-        cmp     w19, w0               // is i at end?
-        b.hs    done                  // yes
-        bl      random                // no, get random number
-        mov     w1, RAND_MID          // half way
-        cmp     w1, w0                // above or below middle?
-        b.hi    tails                 // above -> tails
-        adr     x0, heads_msg         // below -> heads message
-        bl      puts                  // print message
-        b       continue              // skip else part
+        mov     w0, NTIMES            // Total number of times
+        cmp     w19, w0               // Is i at end?
+        b.hs    done                  // Yes
+        bl      random                // No, get random number
+        mov     w1, RAND_MID          // Halfway
+        // cmp     w1, w0                // Above or below middle?
+        b.hi    tails                 // Above -> tails
+        adr     x0, heads_msg         // Below -> heads message
+        bl      puts                  // Print message
+        b       continue              // Skip else part
 tails:
-        adr     x0, tails_msg         // tails message page address
-        bl      puts                  // print message
+        adr     x0, tails_msg         // Tails message page address
+        bl      puts                  // Print message
 continue:
-        add     w19, w19, 1           // i++;
-        b       loop                  // and continue loop
+        add     w19, w19, 1           // increment i
+        b       loop                  //   and continue loop
 done:
-        mov     w0, wzr               // return 0
-        ldr     x19, [sp, save19]     // restore reg.
-        ldp     fp, lr, [sp], FRAME   // restore fp, lr, sp
-        ret                           // back to caller
+        mov     w0, wzr               // Return 0
+        ldr     w19, [sp, save19]     // Restore reg
+        ldp     fp, lr, [sp], FRAME   // Delete stack frame
+        ret                           // Back to caller
