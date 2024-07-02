@@ -1,4 +1,4 @@
-// Add two integers and shows if overflow.
+// Add two integers and show if there is overflow.
 #include <stdio.h>
 #include "add_two.h"
 
