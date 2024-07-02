@@ -17,22 +17,22 @@ result:
         .global main
         .type   main, %function
 main:
-        stp     fp, lr, [sp, FRAME]!  // Create frame.
-        mov     fp, sp
+        stp     fp, lr, [sp, FRAME]!  // Create stack frame
+        mov     fp, sp                // Set our frame pointer
 
-        adr     x0, prompt            // Prompt user.
+        adr     x0, prompt            // Prompt user
         bl      printf
         add     x1, sp, x             // Address for input
         adr     x0, input_format      // scanf format string
         bl      scanf
 
-        ldr     w0, [sp, x]           // Get x.
-        add     w1, w0, 1             // Add 1.
+        ldr     w0, [sp, x]           // Get x
+        add     w1, w0, 1             // Add 1
         str     w1, [sp, x]           // x++
 
         adr     x0, result            // printf format string
-        bl      printf                // Result is in w1.
+        bl      printf                // Result is in w1
 
         mov     w0, wzr
-        ldp     fp, lr, [sp], FRAME   // Delete stack frame.
+        ldp     fp, lr, [sp], FRAME   // Delete stack frame
         ret
