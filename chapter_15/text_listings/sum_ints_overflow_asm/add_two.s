@@ -1,4 +1,4 @@
-// Adds two integers outputs  sum; returns overflow T or F
+// Adds two integers outputs  sum; return overflow T or F.
 // Calling sequence:
 //    x0 <- address a, for output
 //    w1 <- integer b
@@ -11,7 +11,7 @@
         .global add_two
         .type   add_two, %function
 add_two:
-        adds    w1, w1, w2    // add, set condition flags
-        str     w1, [x0]      // store output
-        cinc    w0, wzr, vs   // return overflow flag
-        ret                   // back to caller
+        adds    w1, w1, w2    // Add and set condition flags
+        str     w1, [x0]      // Store output
+        cinc    w0, wzr, vs   // Overflow flag
+        ret                   // Back to caller
