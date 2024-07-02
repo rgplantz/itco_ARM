@@ -1,16 +1,12 @@
-// Add two integers using local variables
+// Add two integers using local variables.
 
 #include <stdio.h>
 #include "add_two.h"
 
 int main(void)
 {
-    int x = 0, y = 0, z;
-    
-    printf("Enter an integer: ");
-    scanf("%i", &x);
-    printf("Enter an integer: ");
-    scanf("%i", &y);
+    int x = 123, y = 456, z;
+  
     add_two(&z, x, y);
     printf("%i + %i = %i\n", x, y, z);
 
