@@ -23,7 +23,7 @@ main:
         str     w19, [sp, save19]     // Save for i local var
         mov     w19, wzr              // i = 0
 loop:
-        mov     w0, NTIMES            // Total number of times
+        mov     w0, N_TIMES           // Total number of times
         cmp     w19, w0               // Is i at end?
         b.hs    done                  // Yes
         bl      random                // No, get random number
