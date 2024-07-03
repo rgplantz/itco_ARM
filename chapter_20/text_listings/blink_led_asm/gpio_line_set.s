@@ -15,7 +15,7 @@
 gpio_line_set:
         add     x0, x0, GPSET0  // Address of GPSET0 register
         mov     w2, 1           // Need a 1
-        lsl     2, w2, w1       // Move to specified bit position
+        lsl     w2, w2, w1      // Move to specified bit position
         str     w2, [x0]        // Output
         
         ret
