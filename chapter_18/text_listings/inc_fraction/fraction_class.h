@@ -1,14 +1,14 @@
-// simple fraction class
+// A simple Fraction class
 
 #ifndef FRACTION_H
 #define FRACTION_H
 class Fraction {
 public:
-    Fraction();               // default constructor
-    ~Fraction();              // destructor
-    void get();               // gets user's values
-    void display();           // displays fraction
-    void add_integer(int x);  // adds x to fraction
+    Fraction();               // Default constructor
+    ~Fraction();              // Destructor
+    void get();               // Get user's values
+    void display();           // Display fraction
+    void add_integer(int x);  // Add x to fraction
 private:
     int numerator; 
     int denominator; 
