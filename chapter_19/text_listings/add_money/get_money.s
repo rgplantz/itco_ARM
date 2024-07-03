@@ -1,12 +1,12 @@
-// Gets dollars and cents from keyboard
+// Get dollars and cents from the keyboard.
 // Calling sequence
-//    returns integer amount as cents
+//     Return integer amount as cents.
         .arch armv8-a
 // Stack frame
         .equ    save19, 16
         .equ    FRAME, 32
 # Constant data
-        .section	.rodata
+        .section  .rodata
         .align  3
 prompt:
         .string "Enter amount (use same sign for dollars and cents)\n"
@@ -20,23 +20,23 @@ cents:
         .global get_money
         .type   get_money, %function
 get_money:
-        stp     fp, lr, [sp, -FRAME]! // create our stack frame
-        mov     fp, sp                // set our frame pointer
-        str     x19, [sp, save19]     // for local var
+        stp     fp, lr, [sp, -FRAME]! // Create stack frame
+        mov     fp, sp                // Set our frame pointer
+        str     x19, [sp, save19]     // For local var
 
-        adr     x0, prompt            // ask for amount
+        adr     x0, prompt            // Ask for amount
         bl      write_str
-        adr     x0, dollars           // ask for dollars
+        adr     x0, dollars           // Ask for dollars
         bl      write_str
-        bl      get_int               // dollars
+        bl      get_int               // Dollars
         mov     w1, 100               // 100 cents per dollar
-        mul     w19, w0, w1           // scale
+        mul     w19, w0, w1           // Scale
 
-        adr     x0, cents             // ask for cents
+        adr     x0, cents             // Ask for cents
         bl      write_str
-        bl      get_int               // cents
-        add     w0, w0, w19           // add scaled dollars
+        bl      get_int               // Cents
+        add     w0, w0, w19           // Add scaled dollars
 
-        ldr     x19, [sp, save19]     // restore for caller
-        ldp     fp, lr, [sp], FRAME   // restore fp, lr, sp
-        ret                           // back to caller
+        ldr     x19, [sp, save19]     // Restore for caller
+        ldp     fp, lr, [sp], FRAME   // Delete stack frame
+        ret                           // Back to caller
