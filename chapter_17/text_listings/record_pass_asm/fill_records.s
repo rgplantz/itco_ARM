@@ -1,5 +1,5 @@
-// Allocates two records, assigns a value to each field
-// in each record, and displays the contents.
+// Allocate two records, assign a value to each field
+// in each record, and display the contents.
         .arch armv8-a
 // Stack frame
         .equ    x, 16
@@ -11,33 +11,33 @@
         .global main
         .type   main, %function
 main:
-        stp     fp, lr, [sp, -FRAME]!   // create our stack frame
-        mov     fp, sp                  // Set frame pointer
+        stp     fp, lr, [sp, -FRAME]!   // Create stack frame
+        mov     fp, sp                  // Set our frame pointer
 
-        mov     w5, 'c'                 // data to load
+        mov     w5, 'c'                 // Data to load
         mov     w4, 34
         mov     w3, 'b'
         mov     w2, 12
         mov     w1, 'a' 
-        add     x0, sp, x               // address of first record
-        bl      load_record             // load values
+        add     x0, sp, x               // Address of first record
+        bl      load_record             // Load values
 
-        mov     w5, 'f'                 // data to load
+        mov     w5, 'f'                 // Data to load
         mov     w4, 78
         mov     w3, 'e'
         mov     w2, 56
         mov     w1, 'd' 
-        add     x0, sp, y               // address of second record
-        bl      load_record             // load values
+        add     x0, sp, y               // Address of second record
+        bl      load_record             // Load values
 
-        ldr     x0, [sp, x]             // 1st 8 bytes of x
-        ldr     w1, [sp, x+8]           // last 4 bytes of x
-        bl      display_record          // display x
+        ldr     x0, [sp, x]             // First 8 bytes of x
+        ldr     w1, [sp, x+8]           // Last 4 bytes of x
+        bl      display_record          // Display x
 
-        ldr     x0, [sp, y]             // 1st 8 bytes of y
-        ldr     w1, [sp, y+8]           // last 4 bytes of y
-        bl      display_record          // display y
+        ldr     x0, [sp, y]             // First 8 bytes of y
+        ldr     w1, [sp, y+8]           // Last 4 bytes of y
+        bl      display_record          // Display y
 
-        mov     w0, wzr                 // return 0;
-        ldp     fp, lr, [sp], FRAME     // undo stack frame
+        mov     w0, wzr                 // Return 0
+        ldp     fp, lr, [sp], FRAME     // Delete stack frame
         ret
