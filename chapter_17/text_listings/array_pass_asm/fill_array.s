@@ -1,10 +1,10 @@
-// Allocates an int array, stores 2 X element number
-// in each element and prints array contents
+// Allocate an int array, store (2 * element number)
+// in each element, and print array contents.
         .arch armv8-a
 // Useful constant
-        .equ    N, 10                   // array length
+        .equ    N, 10                   // Array length
 // Stack frame
-        .equ    an_array, 16
+        .equ    my_array, 16
         .equ    FRAME, 64
 // Code
         .text
@@ -12,17 +12,17 @@
         .global main
         .type   main, %function
 main:
-        stp     fp, lr, [sp, -FRAME]!   // create our stack frame
-        mov     fp, sp                  // Set frame pointer
+        stp     fp, lr, [sp, -FRAME]!   // Create stack frame
+        mov     fp, sp                  // Set our frame pointer
 
-        mov     w1, N                   // length of array
-        add     x0, sp, an_array        // address of array
-        bl      twice_index             // fill the array
+        mov     w1, N                   // Length of array
+        add     x0, sp, my_array        // Address of array
+        bl      twice_index             // Fill the array
 
-        mov     w1, N                   // number of elements
-        add     x0, sp, an_array        // address of array
-        bl      display_array           // print array contents
+        mov     w1, N                   // Number of elements
+        add     x0, sp, my_array        // Address of array
+        bl      display_array           // Print array contents
 
-        mov     w0, wzr                 // return 0;
-        ldp     fp, lr, [sp], FRAME     // undo stack frame
+        mov     w0, wzr                 // Return 0
+        ldp     fp, lr, [sp], FRAME     // Delete stack frame
         ret
