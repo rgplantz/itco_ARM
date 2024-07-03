@@ -10,12 +10,12 @@ void UART_init(unsigned char* UART)
 {
     unsigned char* port = UART;
 
-    *(port+IER) = NO_INTERRUPT;   // no interrupts
-    *(port+FCR) = NO_FIFO;        // no fifo
-    *(port+LCR) = SET_BAUD;       // set frequency mode
-    *(port+DLM) = MSB_38400;      // set to 38400 baud
+    *(port+IER) = NO_INTERRUPT;   // No interrupts
+    *(port+FCR) = NO_FIFO;        // No fifo
+    *(port+LCR) = SET_BAUD;       // Set frequency mode
+    *(port+DLM) = MSB_38400;      // Set to 38400 baud
     *(port+DLL) = LSB_38400;      // 2 regs to set
-    *(port+LCR) = SET_COM;        // communications mode
+    *(port+LCR) = SET_COM;        // Communications mode
 }
 
 // UART_in waits until UART has a character then reads it

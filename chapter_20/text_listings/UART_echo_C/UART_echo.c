@@ -3,7 +3,7 @@
 //      meant to sketch some general I/O concepts only.
 
 #include "UART_functions.h"
-#define UART0 (unsigned char *)0xfe200040   // address of UART
+#define UART0 (unsigned char *)0xfe200040   // Address of UART
 
 int main(void)
 {
