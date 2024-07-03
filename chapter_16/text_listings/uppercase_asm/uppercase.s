@@ -1,10 +1,10 @@
-// Makes alphabetic text string all uppercase
+// Make an alphabetic text string uppercase.
         .arch armv8-a
 // Useful constant
-        .equ    MAX,50                // character limit
+        .equ    MAX,50                    // Character limit
 // Stack frame
-        .equ    my_string, 16
-        .equ    frame, 80             // allows >51 bytes
+        .equ    the_string, 16
+        .equ    FRAME, 80                 // Allows >51 bytes
 // Code
         .text
         .section  .rodata
@@ -18,26 +18,26 @@ result:
         .global main
         .type   main, %function
 main:
-        stp     fp, lr, [sp, -frame]! // create stack frame
-        mov     fp, sp                // our frame pointer
-        adr     x0, prompt            // prompt message
-        bl      write_str             // ask for input
+        stp     fp, lr, [sp, -FRAME]! // Create stack frame
+        mov     fp, sp                // Set our frame pointer
+        adr     x0, prompt            // Prompt message
+        bl      write_str             // Ask for input
 
-        add     x0, sp, my_string     // place to store string
-        mov     w1, MAX               // limit number of input chars
-        bl      read_str              // get from keyboard
+        add     x0, sp, the_string    // Place to store string
+        mov     w1, MAX               // Limit number of input chars
+        bl      read_str              // Get from keyboard
 
-        add     x1, sp, my_string     // address of string
-        mov     x0, x1                // replace it
-        bl      to_upper              // do conversion
+        add     x1, sp, the_string    // Address of string
+        mov     x0, x1                // Replace the string.
+        bl      to_upper              // Do conversion
 
-        adr     x0, result            // message
+        adr     x0, result            // Show result
         bl      write_str
-        add     x0, sp, my_string     // converted string
+        add     x0, sp, the_string    // Converted string
         bl      write_str
-        mov     w0, '\n'              // nice formatting
+        mov     w0, '\n'              // Nice formatting
         bl      write_char
 
-        mov     w0, 0                 // return 0;
-        ldp     x29, x30, [sp], frame // undo stack frame
+        mov     w0, 0                 // Return 0
+        ldp     x29, x30, [sp], FRAME // Delete stack frame
         ret
