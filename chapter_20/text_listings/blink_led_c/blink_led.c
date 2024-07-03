@@ -1,13 +1,13 @@
-// Blinks an LED
+// Blink an LED.
 #include <stdio.h>
 #include <unistd.h>
 #include <gpiod.h>
 
 #define LINE 17         // GPIO line connected to led
-#define OFF 0           // pin at 0.0v
-#define ON 1            // pin at 3.3v
-#define BLINKS 5        // number of blinks
-#define SECONDS 3       // time between blinks
+#define OFF 0           // Pin at 0.0v
+#define ON 1            // Pin at 3.3v
+#define BLINKS 5        // Number of blinks
+#define SECONDS 3       // Time between blinks
 
 int main(void)
 {
