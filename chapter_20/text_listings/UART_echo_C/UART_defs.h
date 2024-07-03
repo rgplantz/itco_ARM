@@ -27,6 +27,6 @@
 #define N_BITS        0x03  // 8 bits
 #define STOP_BIT      0x00  // 1 stop bit
 #define NO_PARITY     0x00
-#define SET_COM       NBITS | STOPBIT | NOPARITY
-#define SET_BAUD      0x80 | SETCOM
+#define SET_COM       N_BITS | STOP_BIT | NO_PARITY
+#define SET_BAUD      0x80 | SET_COM
 #endif
