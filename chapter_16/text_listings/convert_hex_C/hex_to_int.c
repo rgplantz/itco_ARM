@@ -1,5 +1,5 @@
-// Converts hex character string to int
-// Returns number of characters
+// Convert a hex character string to an int.
+// Return number of characters.
  
 #include "hex_to_int.h"
 #define GAP 0x07
