@@ -1,4 +1,4 @@
-// Associativity of floats.
+// Test the associativity of floats.
 
 #include <stdio.h>
 
