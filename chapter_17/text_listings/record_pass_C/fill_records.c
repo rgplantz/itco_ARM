@@ -1,5 +1,5 @@
-// Allocates two records, assigns a value to each field
-// in each record, and displays the contents.
+// Allocate two records, assign a value to each field
+// in each record, and display the contents.
 
 #include "my_record.h"
 #include "load_record.h"

@@ -1,4 +1,4 @@
-// Display contents of a record.
+// Display the contents of a record.
 
 #ifndef DISPLAY_RECORD_H
 #define DISPLAY_RECORD_H

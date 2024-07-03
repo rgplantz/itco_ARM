@@ -1,4 +1,4 @@
-// Declaration of a record.
+// Declare a record.
 
 #ifndef MY_RECORD_H
 #define MY_RECORD_H

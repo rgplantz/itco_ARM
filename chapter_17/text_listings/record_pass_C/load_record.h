@@ -1,4 +1,4 @@
-// Loads record with data.
+// Load a record with data.
 
 #ifndef LOAD_RECORD_H
 #define LOAD_RECORD_H
