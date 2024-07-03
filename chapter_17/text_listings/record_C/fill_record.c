@@ -1,4 +1,4 @@
-// Allocates a record and assigns a value to each field.
+// Allocate a record and assign a value to each field.
 
 #include <stdio.h>
 
