@@ -1,6 +1,6 @@
-// Gets a fraction from user and increments by one
+// Get a fraction from user and add 1.
 
-#include "fraction_dflt.h"
+#include "fraction.h"
 
 int main(void)
 {
@@ -10,5 +10,6 @@ int main(void)
     my_fraction.get();
     my_fraction.add_integer(1);
     my_fraction.display();
+
     return 0;
 }
