@@ -1,11 +1,11 @@
-// Gets decimal number from user and stores it as an int
+// Get a decimal number from the user and store it as an int.
         .arch armv8-a
 // Useful constant
-        .equ    MAX, 11               // character storage limit
+        .equ    MAX, 12               // Character storage limit
 // Stack frame
         .equ    the_int, 16
         .equ    the_string, 20
-        .equ    frame, 32
+        .equ    FRAME, 32
 // Code
         .text
         .section  .rodata
@@ -20,23 +20,23 @@ format:
         .global main
         .type   main, %function
 main:
-        stp     fp, lr, [sp, -frame]! // create stack frame
-        mov     fp, sp                // our frame pointer
-        adr     x0, prompt            // prompt message
-        bl      write_str             // ask for input
+        stp     fp, lr, [sp, -FRAME]! // Create stack frame
+        mov     fp, sp                // Our frame pointer
+        adr     x0, prompt            // Prompt message
+        bl      write_str             // Ask for input
 
-        mov     w1, MAX               // limit number of input chars
-        add     x0, sp, the_string    // place to store string
-        bl      read_str              // get from keyboard
+        mov     w1, MAX               // Limit number of input chars
+        add     x0, sp, the_string    // Place to store string
+        bl      read_str              // Get from keyboard
 
-        add     x1, sp, the_string    // address of string
-        add     x0, sp, the_int       // place to store the int
-        bl      dec_to_int            // do conversion
+        add     x1, sp, the_string    // Address of string
+        add     x0, sp, the_int       // Place to store the int
+        bl      dec_to_int            // Do conversion
 
-        ldr     w2, [sp, the_int]     // load the int
-        add     x1, sp, the_string    // input text string
-        adr     x0, format            // format message
-        bl      printf                // show results
-        mov     w0, wzr               // return 0;
-        ldp     x29, x30, [sp], frame // undo stack frame
+        ldr     w2, [sp, the_int]     // Load the int
+        add     x1, sp, the_string    // Input text string
+        adr     x0, format            // Format message
+        bl      printf                // Show results
+        mov     w0, wzr               // Return 0
+        ldp     x29, x30, [sp], FRAME // Delete stack frame
         ret
