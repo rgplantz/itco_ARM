@@ -1,4 +1,4 @@
-// Simple fraction class
+// A simple Fraction class
 
 #include "fraction_dflt.h"
 // Uses the following C functions
@@ -8,7 +8,7 @@ extern "C" {
     #include "get_int.h"
     #include "put_int.h"
 }
-// Use char arrays because write_str is C function.
+// Use char arrays because write_str is a C function.
 char num_msg[] = "Enter numerator: ";
 char den_msg[] = "Enter denominator: ";
 
