@@ -1,4 +1,4 @@
-// Converts alphabetic letters in a C string to upper case
+// Convert alphabetic letters in a C string to uppercase.
  
 #include "to_upper.h"
 #define UPMASK 0xdf
@@ -14,7 +14,7 @@ int to_upper(char *dest_ptr, char *src_ptr)
         dest_ptr++;
         count++;
     }
-    *dest_ptr = *src_ptr;   // include NUL
+    *dest_ptr = *src_ptr;   // Include NUL
   
     return count;
 }

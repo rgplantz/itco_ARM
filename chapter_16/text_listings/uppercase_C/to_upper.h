@@ -1,4 +1,4 @@
-// Converts alphabetic letters in a C string to upper case
+// Convert alphabetic letters in a C string to uppercase.
  
 #ifndef TO_UPPER_H
 #define TO_UPPER_H

@@ -6,11 +6,11 @@
 #include "write_char.h"
 #include "read_str.h"
 #define MAX 50
-#define ARRAYSZ MAX+1
+#define ARRA_SZ MAX+1
 
 int main(void)
 {
-    char my_string[ARRAYSZ];
+    char my_string[ARRAY_SZ];
    
     write_str("Enter up to 50 alphabetic characters: ");
     read_str(my_string, MAX);
