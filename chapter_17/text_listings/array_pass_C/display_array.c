@@ -1,4 +1,4 @@
-// Prints int array contents.
+// Print the int array contents.
 
 #include "display_array.h"
 #include "write_str.h"

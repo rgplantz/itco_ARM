@@ -1,5 +1,5 @@
-// Allocates an int array, stores 2 x element number
-// in each element and prints array contents.
+// Allocate an int array, store (2 * element number)
+// in each element and print array contents.
 
 #include "twice_index.h"
 #include "display_array.h"

@@ -1,4 +1,4 @@
-// Prints int array contents.
+// Print the int array contents.
 
 #ifndef DISPLAY_ARRAY_H
 #define DISPLAY_ARRAY_H
