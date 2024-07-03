@@ -13,12 +13,12 @@ inc_fraction_dflt: $(objects)
 inc_fraction_dflt.o: fraction_dflt.h
 fraction_asm.o: fraction_dflt.h
 
-inc_fraction_dflt.s: inc_fraction_dflt.cpp fraction.h
+inc_fraction_dflt.s: inc_fraction_dflt.cpp fraction_dflt.h
 	g++ $(genasm) -o temp inc_fraction_dflt.cpp
 	expand -t 8 temp > inc_fraction_dflt.s
 	rm temp
 
-fraction_asm.s: fraction_asm.cpp fraction.h
+fraction_asm.s: fraction_asm.cpp fraction_dflt.h
 	$(CXX) $(genasm) -o temp fraction_asm.cpp
 	expand -t 8 temp > fraction_asm.s
 	rm temp
