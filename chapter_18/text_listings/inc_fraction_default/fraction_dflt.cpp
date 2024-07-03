@@ -1,4 +1,4 @@
-// A simple fraction class
+// A simple Fraction class
 
 #include "fraction_dflt.h"
 #include <iostream>
