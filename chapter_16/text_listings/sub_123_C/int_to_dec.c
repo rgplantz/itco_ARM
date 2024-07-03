@@ -1,5 +1,5 @@
-// Converts an int to corresponding decimal text
-// string representation. Returns number of characters.
+// Convert an int to its corresponding decimal text string representation.
+// Returns number of characters.
 
 #include "int_to_dec.h"
 #define ARRAYSZ 12
@@ -21,9 +21,9 @@ int int_to_dec(char *dec_string, int the_int)
         count++;
         dec_string++;
     }
-    ptr = reverse;      // point to local char array
-    *ptr = NUL;         // start with termination char
-    working = (unsigned int)the_int; // use unsigned arithmetic
+    ptr = reverse;      // Point to local char array
+    *ptr = NUL;         // Start with termination char
+    working = (unsigned int)the_int; // Use unsigned arithmetic
     do {
         ptr++;
         digit = (char)(working % RADIX);
@@ -31,13 +31,13 @@ int int_to_dec(char *dec_string, int the_int)
         working = working / RADIX;
     } while (working > 0);
 
-    do {                // reverse the string
+    do {                // Reverse the string
         *dec_string = *ptr;
         count++;
         dec_string++;
         ptr--;
     } while (*ptr != NUL);
-    *dec_string = *ptr;  // copy termination char
+    *dec_string = *ptr;  // Copy termination char
 
     return count;
 }

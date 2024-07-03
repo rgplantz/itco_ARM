@@ -1,5 +1,5 @@
-// Converts an int to corresponding decimal text
-// string representation. Returns number of characters.
+// Convert an int to its corresponding decimal text string representation.
+// Returns number of characters.
 
 #ifndef INT_TO_DEC_H
 #define INT_TO_DEC_H
