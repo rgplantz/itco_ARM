@@ -10,8 +10,8 @@ CXX = g++
 inc_fraction: $(objects)
 	$(CXX) $(objects) -o inc_fraction
 
-inc_fraction.o: fraction.h
-fraction_asm.o: fraction.h
+inc_fraction.o: fraction_dflt.h
+fraction_asm.o: fraction_dflt.h
 
 inc_fraction.s: inc_fraction.cpp fraction.h
 	g++ $(genasm) -o temp inc_fraction.cpp

@@ -1,7 +1,7 @@
 // A simple Fraction class
 
 #include "fraction_dflt.h"
-// Uses the following C functions
+// Use the following C functions.
 extern "C" {
     #include "write_str.h"
     #include "write_char.h"
