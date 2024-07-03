@@ -1,41 +1,43 @@
-// Gets a length in inches and 1/16s.
-// Calling sequence
-//    returns the fixed-point number
+// Display a length to the nearest sixteenth.
         .arch armv8-a
+// Calling sequence
+//    w0[31-4] <- integer part
+//    w0[3-0]  <- fractional part
+//    Return 0.
+// Useful constants
+        .equ    FOUR_BITS, 0xf        // For fraction
 // Stack frame
         .equ    save19, 16
         .equ    FRAME, 32
 # Constant data
-        .section	.rodata
+        .section  .rodata
         .align  3
-prompt:
-        .string "Enter length (inches and 1/16s)\n"
-inches:
-        .string "        Inches: "
-fraction:
-        .string "    Sixteenths: "
+sixteenths:
+        .string "/16"
 // Code
         .text
         .align  2
-        .global get_length
-        .type   get_length, %function
-get_length:
-        stp     fp, lr, [sp, -FRAME]! // create our stack frame
-        mov     fp, sp                // set our frame pointer
-        str     x19, [sp, save19]     // for local var
+        .global display_length
+        .type   display_length, %function
+display_length:
+        stp     fp, lr, [sp, -FRAME]! // Create stack frame
+        mov     fp, sp                // Set our frame pointer
+        str     x19, [sp, save19]     // For local var
 
-        adr     x0, prompt            // ask for length
-        bl      write_str
-        adr     x0, inches            // ask for integer
-        bl      write_str
-        bl      get_uint              // integer part
-        lsl     w19, w0, 4            // 4 bits for fraction
+        mov     w19, w0               // Save input.
+        lsr     w0, w19, 4            // Integer part
+        bl      put_uint
 
-        adr     x0, fraction          // ask for fraction
-        bl      write_str
-        bl      get_uint              // fraction part
-        add     w0, w0, w19           // add integer part
+        mov     w0, ' '               // Some formatting
+        bl      write_char
 
-        ldr     x19, [sp, save19]     // restore for caller
-        ldp     fp, lr, [sp], FRAME   // restore fp, lr, sp
-        ret                           // back to caller
+        and     w0, w19, FOUR_BITS    // Mask off integer
+        bl      put_uint              // Fractional part
+
+        adr     x0, sixteenths        // More formatting
+        bl      write_str
+
+        mov     w0, wzr               // Return 0
+        ldr     x19, [sp, save19]     // Restore for caller
+        ldp     fp, lr, [sp], FRAME   // Delete stack frame
+        ret                           // Back to caller
