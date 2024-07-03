@@ -1,4 +1,4 @@
-// Writes Hello, World! using system call.
+// Write Hello, World! using a system call.
         .arch armv8-a
 // Useful names
         .equ    NUL, 0
@@ -18,18 +18,18 @@ message:
         .global my_hello
         .type   my_hello, %function
 my_hello:
-        adr     x1, message       // address of message
+        adr     x1, message       // Address of message
 loop:
-        ldrb    w3, [x1]          // load character
-        cmp     w3, NUL           // end of string?
-        b.eq    done              // yes
-        mov     x2, 1             // no, one char
-        mov     x0, STDOUT        // write on screen
+        ldrb    w3, [x1]          // Load character
+        cmp     w3, NUL           // End of string?
+        b.eq    done              // Yes
+        mov     x2, 1             // No, one char
+        mov     x0, STDOUT        // Write on screen
         mov     x8, WRITE
-        svc     0                 // tell OS to do it
-        add     x1, x1, 1         // increment pointer
-        b       loop              // and continue
+        svc     0                 // Tell OS to do it
+        add     x1, x1, 1         // Increment pointer
+        b       loop              //   and continue
 done:
-        mov     w0, wzr           // return value
-        mov     x8, EXIT          // terminate this process
+        mov     w0, wzr           // Return value
+        mov     x8, EXIT          // Terminate this process
         svc     0
