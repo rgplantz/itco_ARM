@@ -20,25 +20,25 @@ dec_to_int:
 
         ldrb    w6, [x1]              // Load first character
         cmp     w6, '-                // Minus sign?
-        b.ne    checkPos              // No, check for plus sign
+        b.ne    check_pos             // No, check for plus sign
         mov     x4, 1                 // Yes, negative = true;
         add     x1, x1, 1             // Increment string pointer
-        b       convertLoop           //   and convert numerals
-checkPos:
+        b       convert               //   and convert numerals
+check_pos:
         cmp     w6, '+                // Plus sign?
-        b.ne    convertLoop           // No, convert numerals
+        b.ne    convert               // No, convert numerals
         add     x1, x1, 1             // Yes, skip over it
 
-convertLoop:
+convert:
         ldrb    w6, [x1]              // Load character
-        cbz     w6, checkSign         // NUL char?
+        cbz     w6, check_sign        // NUL char?
         and     w6, w6, INTMASK       // No, mask to integer
         mul     w3, w3, w5            // result * RADIX
         add     w3, w3, w6            // Add new integer
         add     w2, w2, 1             // count++;
         add     x1, x1, 1             // string_ptr++;
-        b       convertLoop           //   and continue
-checkSign:
+        b       convert               //   and continue
+check:
         cbz     w4, positive          // Check negative flag
         neg     w3, w3                // Negate if flag is true
 positive:
