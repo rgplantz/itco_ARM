@@ -38,7 +38,7 @@ convert:
         add     w2, w2, 1             // count++;
         add     x1, x1, 1             // string_ptr++;
         b       convert               //   and continue
-check:
+check_sign:
         cbz     w4, positive          // Check negative flag
         neg     w3, w3                // Negate if flag is true
 positive:
