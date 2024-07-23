@@ -1,14 +1,14 @@
-# Build Hello, World program
+# Build hex2dec program
 
-objects = hello_world.o
+objects = hex2dec.o
 genasm = -S -Wall -O0 -fno-unwind-tables -fno-asynchronous-unwind-tables
 
 CFLAGS = -g -Wall
 CC = gcc
 
-hello_world: $(objects)
+hex2dec: $(objects)
 
-hello_world.s: hello_world.c
+hex2dec.s: hex2dec.c
 	$(CC) $(genasm) -o temp $<
 	expand -t 8 temp > $@
 	rm temp
@@ -17,5 +17,5 @@ hello_world.s: hello_world.c
 clean:
 	rm -f $(objects)
 allclean: clean
-	rm hello_world 
+	rm hex2dec 
 
