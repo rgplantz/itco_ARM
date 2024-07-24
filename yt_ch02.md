@@ -6,28 +6,28 @@ title: Chapter 2
 ## Chapter 2
 
 ### Page 12
-1. Binary to hexadecimal
+2.1 Binary to hexadecimal
 
     - `0100 0101 0110 0111` = `4567`
     - `1000 1001 1010 1011` = `89ab`
     - `1111 1110 1101 1100` = `fedc`
     - `0000 0010 0101 0010` = `0252`
 
-2. Hexadecimal to binary
+2.2 Hexadecimal to binary
 
     - `83af` = `1000 0011 1010 1111`
     - `9001` = `1001 0000 0000 0001`
     - `aaaa` = `1010 1010 1010 1010`
     - `5555` = `0101 0101 0101 0101`
 
-3. Number of bits
+2.3 Number of bits
     - `ffffffff`, 32 bits
     - `7fff58b7def0`, 48 bit
     - `1111` in binary is 4 bits
     - `1111` in hexadecimal is 16 bits
 
 
-4. Number of hexadecimal digits
+2.4 Number of hexadecimal digits
     - 8 bits, 2 hex digits
     - 32 bits, 8 hex digits
     - 64 bits, 16 hex digits
@@ -36,9 +36,9 @@ title: Chapter 2
     - 7 bits, 2 hex digits
 
 ### Page 15
-1. r = 10, n = 8, d<sub>7</sub> = 2, d<sub>6</sub> = 9, d<sub>5</sub> = 4, d<sub>4</sub> = 5, d<sub>3</sub> = 8, d<sub>2</sub> = 2, d<sub>1</sub> = 5, d<sub>0</sub> = 4 and r = 16, n = 8, d<sub>7</sub> = 2, d<sub>6</sub> = 9, d<sub>5</sub> = 4, d<sub>4</sub> = 5, d<sub>3</sub> = 8, d<sub>2</sub> = 2, d<sub>1</sub> = 5, d<sub>0</sub> = 4
+2.5 r = 10, n = 8, d<sub>7</sub> = 2, d<sub>6</sub> = 9, d<sub>5</sub> = 4, d<sub>4</sub> = 5, d<sub>3</sub> = 8, d<sub>2</sub> = 2, d<sub>1</sub> = 5, d<sub>0</sub> = 4 and r = 16, n = 8, d<sub>7</sub> = 2, d<sub>6</sub> = 9, d<sub>5</sub> = 4, d<sub>4</sub> = 5, d<sub>3</sub> = 8, d<sub>2</sub> = 2, d<sub>1</sub> = 5, d<sub>0</sub> = 4
 
-2. Binary to decimal
+2.6 Binary to decimal
     - `1010 1010` = 170
     - `0101 0101` = 85
     - `1111 0000` = 240
@@ -48,7 +48,7 @@ title: Chapter 2
     - `0111 1011` = 123
     - `1111 1111` = 255
 
-3. Binary to decimal
+2.7 Binary to decimal
     - `1010 1011 1100 1101` = 43981
     - `0001 0011 0011 0100` = 4916
     - `1111 1110 1101 1100` = 65244
@@ -58,7 +58,7 @@ title: Chapter 2
     - `0111 1011 1010 1010` = 31658
     - `0011 0000 0011 1001` = 12345
 
-4. Hexadecimal to decimal
+2.8 Hexadecimal to decimal
     - `a000` = 40960
     - `ffff` = 65535
     - `0400` = 1024
@@ -69,7 +69,7 @@ title: Chapter 2
     - `5555` = 21845
 
 ### Page 18
-1. Unsigned decimal to hexadecimal
+2.9 Unsigned decimal to hexadecimal
     - 100 = `64`
     - 123 = `7b`
     - 10 = `0a`
@@ -79,7 +79,7 @@ title: Chapter 2
     - 32 = `20`
     - 128 = `80`
 
-2. Unsignged decimal to hexadecimal
+2.10 Unsignged decimal to hexadecimal
     - 1024 = `0400`
     - 1000 = `03e8`
     - 32768 = `8000`
@@ -90,7 +90,7 @@ title: Chapter 2
     - 43981 = `abcd`
 
 ### Page 22
-1. Uppercase A - F
+2.11 Uppercase A - F
    - A: `0x41`
    - B: `0x42`
    - C: `0x43`
@@ -98,7 +98,7 @@ title: Chapter 2
    - E: `0x45`
    - F: `0x46`
 
-2. Lowercase
+2.12 Lowercase
 
     |char| code |char| code |char| code |char| code |char| code |
     |----|------|----|------|----|------|----|------|----|------|
@@ -109,7 +109,7 @@ title: Chapter 2
     | e  |`0x65`| k  |`0x6b`| q  |`0x71`| w  |`0x77`|
     | f  |`0x66`| l  |`0x6c`| r  |`0x72`| x  |`0x78`|
 
-3. Uppercase
+2.13 Uppercase
 
     |char| code |char| code |char| code |char| code |char| code |
     |----|------|----|------|----|------|----|------|----|------|
@@ -120,7 +120,7 @@ title: Chapter 2
     | E  |`0x45`| K  |`0x4b`| Q  |`0x51`| W  |`0x57`|
     | F  |`0x46`| L  |`0x4c`| R  |`0x52`| X  |`0x58`|
 
-4. Punctuation
+2.14 Punctuation
 
     |char| code |char| code |char| code |char| code |char| code |
     |----|------|----|------|----|------|----|------|----|------|
@@ -133,7 +133,7 @@ title: Chapter 2
     | &  |`0x26`| -  |`0x2d`| >  |`0x3e`| _  |`0x5f`|
 
 ### Page 30
-1. 
+2.15 
 
     ```c
     /* dec2Hex.c
@@ -154,7 +154,7 @@ title: Chapter 2
     }
     ```
 
-2. 
+2.16 
 
     ```c
     /* hex2Dec.c
@@ -176,4 +176,4 @@ title: Chapter 2
 
     ```
 
-3. The integer is -1, and the string is `0xffffffff`.
+2.17 The integer is -1, and the string is `0xffffffff`.
