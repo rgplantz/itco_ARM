@@ -6,7 +6,7 @@ title: Chapter 1
 ## Chapter 1
 
 ### Page 7
-1.1 There are several Linux commands that show you the details of the components in your computer. For example, `lscpu` will show you the details of your CPU:
+1. There are several <i>Linux commands</i> that show you the details of the components in your computer. For example, `lscpu` will show you the details of your CPU:
 ```
     $ lscpu
     Architecture:             aarch64
