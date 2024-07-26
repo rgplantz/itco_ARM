@@ -1,23 +1,12 @@
-<style>
- ol {
-  counter-reset: chap exer;
-  list-style-type: outside;
-}
+---
+layout: default
+title: Chapter 2
+---
 
-li::before {
-  content: counters(exer, ".") " ";
-}
+## Chapter 1
 
-li li::before {
-  counter-increment: exer;
-  content: counters(chap, exer, ".") " ";
-}
-</style>
-<ol>
-  <li>
-    There are several Linux commands that show you the details of the components in your computer. For example, `lscpu` will show you the details of your CPU:
-<pre>
-    $ lscpu
+### Page 7
+1.1 ```$ lscpu
     Architecture:             aarch64
       CPU op-mode(s):         32-bit, 64-bit
       Byte Order:             Little Endian
@@ -57,7 +46,7 @@ li li::before {
       Srbds:                  Not affected
       Tsx async abort:        Not affected
       $
-</pre>
+```
 Other useful commands are `free` to see memory usage and `lsusb` to see your USB devices.
 Chapter 3 in Brian Ward's *How Linux Works. 2nd edition*, No Starch Press, 2015, is devoted to getting information about the devices installed in your computer.
 </li>
