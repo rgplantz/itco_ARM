@@ -6,7 +6,9 @@ title: Chapter 2
 ## Chapter 1
 
 ### Page 7
-1.1 ```$ lscpu
+1.1
+```
+    $ lscpu
     Architecture:             aarch64
       CPU op-mode(s):         32-bit, 64-bit
       Byte Order:             Little Endian
