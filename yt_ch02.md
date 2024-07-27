@@ -35,7 +35,6 @@ title: Chapter 2
     6.  7 bits, 2 hex digits
 
 5.  r = 10, n = 8, d<sub>7</sub> = 2, d<sub>6</sub> = 9, d<sub>5</sub> = 4, d<sub>4</sub> = 5, d<sub>3</sub> = 8, d<sub>2</sub> = 2, d<sub>1</sub> = 5, d<sub>0</sub> = 4 and r = 16, n = 8, d<sub>7</sub> = 2, d<sub>6</sub> = 9, d<sub>5</sub> = 4, d<sub>4</sub> = 5, d<sub>3</sub> = 8, d<sub>2</sub> = 2, d<sub>1</sub> = 5, d<sub>0</sub> = 4
-
 6.  Binary to decimal
     1.  `1010 1010` = 170
     2.  `0101 0101` = 85
