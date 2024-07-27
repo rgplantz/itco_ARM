@@ -3,7 +3,7 @@ layout: default
 title: Chapter 2
 ---
 <style type="text/css">
-    ol ol { list-style-type: lower-alpha; }
+    ol { list-style-type: lower-alpha; }
     ol {
       counter-reset: item;
     }
