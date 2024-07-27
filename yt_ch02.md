@@ -77,6 +77,7 @@ title: Chapter 2
     8.  128 = `80`
 
 10.  Unsigned decimal to hexadecimal
+
     1.  1024 = `0400`
     2.  1000 = `03e8`
     3.  32768 = `8000`
@@ -86,7 +87,8 @@ title: Chapter 2
     7.  4660 = `1234`
     8.  43981 = `abcd`
 
-11.  Uppercase A - F
+11. Uppercase A - F
+
     1.  A: `0x41`
     2.  B: `0x42`
     3.  C: `0x43`
@@ -94,7 +96,8 @@ title: Chapter 2
     5.  E: `0x45`
     6.  F: `0x46`
 
-12.  Lowercase
+12. Lowercase
+
     |char| code |char| code |char| code |char| code |char| code |
     |----|------|----|------|----|------|----|------|----|------|
     | a  |`0x61`| g  |`0x67`| m  |`0x6d`| s  |`0x73`| y  |`0x79`| 
@@ -104,7 +107,8 @@ title: Chapter 2
     | e  |`0x65`| k  |`0x6b`| q  |`0x71`| w  |`0x77`|
     | f  |`0x66`| l  |`0x6c`| r  |`0x72`| x  |`0x78`|
 
-13.  Uppercase
+13. Uppercase
+
     |char| code |char| code |char| code |char| code |char| code |
     |----|------|----|------|----|------|----|------|----|------|
     | A  |`0x41`| G  |`0x47`| M  |`0x4d`| S  |`0x53`| Y  |`0x59`| 
@@ -114,7 +118,8 @@ title: Chapter 2
     | E  |`0x45`| K  |`0x4b`| Q  |`0x51`| W  |`0x57`|
     | F  |`0x46`| L  |`0x4c`| R  |`0x52`| X  |`0x58`|
 
-14.  Punctuation
+14. Punctuation
+
     |char| code |char| code |char| code |char| code |char| code |
     |----|------|----|------|----|------|----|------|----|------|
     |spc |`0x20`| '  |`0x27`| .  |`0x2e`| ?  |`0x3f`| ` |`0x60`|
@@ -125,7 +130,7 @@ title: Chapter 2
     | %  |`0x25`| ,  |`0x2c`| =  |`0x3d`| ^  |`0x5e`|
     | &  |`0x26`| -  |`0x2d`| >  |`0x3e`| _  |`0x5f`|
 
-15.  dec2Hex.c
+15. dec2Hex.c
 
 ```
 // Convert from decimal to hexadecimal
