@@ -149,7 +149,7 @@ int main(void)
 }
 ```
 
-16.  hex2Dec.c
+16. hex2Dec.c
 
 ```
 // Convert from hexadecimal to decimal
