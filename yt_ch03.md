@@ -96,6 +96,7 @@ title: Chapter 3
    2. `0xffff` = -1
    3. `0x8000` = -32768
    4. `0x7fff` = +32767
+
 9.  Signed decimal to 2s complement binary
    1. +1024 = `0x0400`
    2. -1024 = `0xfc00`
