@@ -20,15 +20,15 @@ title: Chapter 3
     |  4  |`0100`|  9  |`1001`|
 
 2. Binary addition
-    Let carry = 0
-    Repeat for each i = 0,...,(n - 1)  // starting in ones place
-        sum<sub>i</sub> = (x<sub>i</sub> + y<sub>i</sub>) % 2           // remainder
-        carry = (x<sub>i</sub> + y<sub>i</sub>) / 2         // integer division
+        Let carry = 0
+        Repeat for each i = 0,...,(n - 1)  // starting in ones place
+            sum<sub>i</sub> = (x<sub>i</sub> + y<sub>i</sub>) % 2           // remainder
+            carry = (x<sub>i</sub> + y<sub>i</sub>) / 2         // integer division
 3. Hexadecimal addition
-    Let carry = 0
-    Repeat for each i = 0,...,(n - 1)  // starting in ones place
-        sum<sub>i</sub> = (x<sub>i</sub>) + y<sub>i</sub>) % 16           // remainder
-        carry = (x<sub>i</sub> + y<sub>i</sub>) / 16         // integer division
+      Let carry = 0
+      Repeat for each i = 0,...,(n - 1)  // starting in ones place
+          sum<sub>i</sub> = (x<sub>i</sub>) + y<sub>i</sub>) % 16           // remainder
+          carry = (x<sub>i</sub> + y<sub>i</sub>) / 16         // integer division
 4. Binary subtraction
     Let borrow = 0
     Repeat for i = 0,··· ,(N − 1)
