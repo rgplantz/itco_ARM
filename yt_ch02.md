@@ -8,8 +8,6 @@ title: Chapter 2
 
 ## Chapter 2
 
-### Page 12
-
 1.  Binary to hexadecimal
     1.  `0100 0101 0110 0111` = `4567`
     1.  `1000 1001 1010 1011` = `89ab`
@@ -35,8 +33,6 @@ title: Chapter 2
     4.  10 bits, 3 hex digits
     5.  20 bits, 5 hex digits
     6.  7 bits, 2 hex digits
-
-### Page 15
 
 5.  r = 10, n = 8, d<sub>7</sub> = 2, d<sub>6</sub> = 9, d<sub>5</sub> = 4, d<sub>4</sub> = 5, d<sub>3</sub> = 8, d<sub>2</sub> = 2, d<sub>1</sub> = 5, d<sub>0</sub> = 4 and r = 16, n = 8, d<sub>7</sub> = 2, d<sub>6</sub> = 9, d<sub>5</sub> = 4, d<sub>4</sub> = 5, d<sub>3</sub> = 8, d<sub>2</sub> = 2, d<sub>1</sub> = 5, d<sub>0</sub> = 4
 
@@ -70,8 +66,6 @@ title: Chapter 2
     7.  `abcd` = 43981
     8.  `5555` = 21845
 
-### Page 18
-
 9.  Unsigned decimal to hexadecimal
     1.  100 = `64`
     2.  123 = `7b`
@@ -91,8 +85,6 @@ title: Chapter 2
     6.  65535 = `ffff`
     7.  4660 = `1234`
     8.  43981 = `abcd`
-
-### Page 22
 
 11.  Uppercase A - F
     1.  A: `0x41`
@@ -135,8 +127,6 @@ title: Chapter 2
     | $  |`0x24`| +  |`0x2b`| <  |`0x3c`| ]  |`0x5d`| ~  |`0x7e`|
     | %  |`0x25`| ,  |`0x2c`| =  |`0x3d`| ^  |`0x5e`|
     | &  |`0x26`| -  |`0x2d`| >  |`0x3e`| _  |`0x5f`|
-
-### Page 30
 
 15.  dec2Hex.c
 
