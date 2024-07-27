@@ -131,6 +131,7 @@ title: Chapter 2
     | &  |`0x26`| -  |`0x2d`| >  |`0x3e`| _  |`0x5f`|
 
 15. dec2Hex.c
+
         // Convert from decimal to hexadecimal
 
         #include <stdio.h>
@@ -147,6 +148,7 @@ title: Chapter 2
         }
 
 16. hex2Dec.c
+
         // Convert from hexadecimal to decimal
 
         #include <stdio.h>
