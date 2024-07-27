@@ -104,25 +104,25 @@ title: Chapter 3
     4. -32767 `0x8001`
 
 10. Three-bit arithmetic using Decoder Ring
-    1. Start at the tic mark for 1, move 3 tic marks CW, giving `100` = 4. We did not pass the tic mark at the top, so `CF` = `0`, and the result is right.
-    2. Start at the tic mark for 3, move 4 tic marks CW, giving `111` = 7. We did not pass the tic mark at the top, so `CF` = `0`, and the result is right.
-    3. Start at the tic mark for 5, move 6 tic marks CW, giving `011` = 3. We did pass the tic mark at the top, so `CF` = `1`, and the result is wrong.
-    4. Start at the tic mark for +1, move 3 tic marks CW, giving `101` = -3. We did pass the tic mark at the bottom, so `OF` = `1`, and the result is wrong.
-    5. Start at the tic mark for -3, move 3 tic marks CCW, giving `010` = +2. We did pass the tic mark at the bottom, so `OF` = `1`, and the result is wrong.
-    6. Start at the tic mark for +3, move 4 tic marks CCW, giving `111` = -1. We did not pass the tic mark at the bottom, so `OF` = `0`, and the result is right.
+    1. Start at the tic mark for 1, move 3 tic marks CW, giving `100` = 4. We did not pass the tic mark at the top, so `C` = `0`, and the result is right.
+    2. Start at the tic mark for 3, move 4 tic marks CW, giving `111` = 7. We did not pass the tic mark at the top, so `C` = `0`, and the result is right.
+    3. Start at the tic mark for 5, move 6 tic marks CW, giving `011` = 3. We did pass the tic mark at the top, so `C` = `1`, and the result is wrong.
+    4. Start at the tic mark for +1, move 3 tic marks CW, giving `101` = -3. We did pass the tic mark at the bottom, so `V` = `1`, and the result is wrong.
+    5. Start at the tic mark for -3, move 3 tic marks CCW, giving `010` = +2. We did pass the tic mark at the bottom, so `V` = `1`, and the result is wrong.
+    6. Start at the tic mark for +3, move 4 tic marks CCW, giving `111` = -1. We did not pass the tic mark at the bottom, so `V` = `0`, and the result is right.
 
 11. Eight-bit addition, unsigned and signed
     1. `0x55` + `0xaa` = `0xff`, unsigned right, signed right
-    2. `0x55` + `0xf0` = `0x45`, unsigned wrong (`CF`), signed right
+    2. `0x55` + `0xf0` = `0x45`, unsigned wrong (`C`), signed right
     3. `0x80` + `0x7b` = `0xfb`, unsigned right, signed right
-    4. `0x63` + `0x7b` = `0xde`, unsigned right, signed wrong (`OF`)
-    5. `0x0f` + `0xff` = `0x0e`, unsigned wrong (`CF`), signed right
-    6. `0x80` + `0x80` = `0x00`, unsigned wrong (`CF`), signed wrong (`OF`)
+    4. `0x63` + `0x7b` = `0xde`, unsigned right, signed wrong (`V`)
+    5. `0x0f` + `0xff` = `0x0e`, unsigned wrong (`C`), signed right
+    6. `0x80` + `0x80` = `0x00`, unsigned wrong (`C`), signed wrong (`V`)
 
 12. Sixteen-bit addition, unsigned and signed
-    1. `0x1234` + `0xedcc` = `0x0000`, unsigned wrong (`CF`), signed right
-    2. `0x1234` + `0xfedc` = `0x1110`, unsigned wrong (`CF`), signed right
-    3. `0x8000` + `0x8000` = `0x0000`, unsigned wrong (`CF`), signed wrong (`OF`)
-    4. `0x0400` + `0xffff` = `0x03ff`, unsigned wrong (`CF`), signed right
+    1. `0x1234` + `0xedcc` = `0x0000`, unsigned wrong (`C`), signed right
+    2. `0x1234` + `0xfedc` = `0x1110`, unsigned wrong (`C`), signed right
+    3. `0x8000` + `0x8000` = `0x0000`, unsigned wrong (`C`), signed wrong (`V`)
+    4. `0x0400` + `0xffff` = `0x03ff`, unsigned wrong (`C`), signed right
     5. `0x07d0` + `0x782f` = `0x7fff`, unsigned right, signed right
-    6. `0x8000` + `0xffff` = `0x7fff`, unsigned wrong (`CF`), signed wrong (`OF`)
+    6. `0x8000` + `0xffff` = `0x7fff`, unsigned wrong (`C`), signed wrong (`V`)
