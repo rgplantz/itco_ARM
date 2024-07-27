@@ -4,6 +4,9 @@ title: Chapter 2
 ---
 <style type="text/css">
     ol ol { list-style-type: lower-alpha; }
+    li {
+      display: block;
+    }
     li:before {
       content: counters(item, ".") " ";
       counter-increment: item;
