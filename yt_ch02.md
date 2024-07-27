@@ -3,17 +3,7 @@ layout: default
 title: Chapter 2
 ---
 <style type="text/css">
-    ol>li { list-style-type: lower-alpha; }
-    ol {
-      counter-reset: item;
-    }
-    ol>li {
-      display: block;
-    }
-    ol>li:before {
-      content: counters(item, ".") " ";
-      counter-increment: item;
-    }
+    ol ol { list-style-type: lower-alpha; }
 </style>
 
 ## Chapter 2
