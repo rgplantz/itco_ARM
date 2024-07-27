@@ -28,63 +28,69 @@ title: Chapter 3
 
 3. Hexadecimal addition
 
-      Let carry = 0
-      Repeat for each i = 0,...,(n - 1)  // starting in ones place
-          sum<sub>i</sub> = (x<sub>i</sub>) + y<sub>i</sub>) % 16           // remainder
-          carry = (x<sub>i</sub> + y<sub>i</sub>) / 16         // integer division
+        Let carry = 0
+        Repeat for each i = 0,...,(n - 1)  // starting in ones place
+            sum<sub>i</sub> = (x<sub>i</sub>) + y<sub>i</sub>) % 16           // remainder
+            carry = (x<sub>i</sub> + y<sub>i</sub>) / 16         // integer division
 
 4. Binary subtraction
 
-    Let borrow = 0
-    Repeat for i = 0,··· ,(N − 1)
-    If y<sub>i</sub> ≤ x<sub>i</sub> 
-        Let difference<sub>i</sub> = x<sub>i</sub> − y<sub>i</sub>
-    Else
-        Let j = i + 1
-        While (x<sub>i</sub> = 0) and (j < N)
-            Add 1 to j
-        If j = N
-            Let borrow = 1
-            Subtract 1 from j
-            Add 2 to x<sub>i</sub>
-        While j > i
-            Subtract 1 from x<sub>i</sub>
-            Subtract 1 from j
-            Add 2 to x<sub>i</sub>
-        Let difference<sub>i</sub> = x<sub>i</sub> − y<sub>i</sub>
+        Let borrow = 0
+        Repeat for i = 0,··· ,(N − 1)
+        If y<sub>i</sub> ≤ x<sub>i</sub> 
+            Let difference<sub>i</sub> = x<sub>i</sub> − y<sub>i</sub>
+        Else
+            Let j = i + 1
+            While (x<sub>i</sub> = 0) and (j < N)
+                Add 1 to j
+            If j = N
+                Let borrow = 1
+                Subtract 1 from j
+                Add 2 to x<sub>i</sub>
+            While j > i
+                Subtract 1 from x<sub>i</sub>
+                Subtract 1 from j
+                Add 2 to x<sub>i</sub>
+            Let difference<sub>i</sub> = x<sub>i</sub> − y<sub>i</sub>
 
-5. Hexadecimal subtracton
-    Let borrow = 0
-    Repeat for i = 0,··· ,(N − 1)
-    If y<sub>i</sub> ≤ x<sub>i</sub> 
-        Let difference<sub>i</sub> = x<sub>i</sub> − y<sub>i</sub>
-    Else
-        Let j = i + 1
-        While (x<sub>i</sub> = 0) and (j < N)
-            Add 1 to j
-        If j = N
-            Let borrow = 1
-            Subtract 1 from j
-            Add 16 to x<sub>i</sub>
-        While j > i
-            Subtract 1 from x<sub>i</sub>
-            Subtract 1 from j
-            Add 16 to x<sub>i</sub>
-        Let difference<sub>i</sub> = x<sub>i</sub> − y<sub>i</sub>
-6. Signed decimal to two's complement binary.
-    If x >= 0
-        Convert x to binary
-    Else
-        Negate x
-        Convert the result to binary
-        Compute the 2s complement of the result in the binary domain
-7. Two's complement in binary to signed decimal.
-    If high-order bit of x is 0
-        Convert x to decimal
-    Else
-        Compute the 2s complement of x
-        Compute the decimal equivalent of the result
-        Place a minus sign in front of the decimal equivalent
+5. Hexadecimal subtraction
+
+        Let borrow = 0
+        Repeat for i = 0,··· ,(N − 1)
+        If y<sub>i</sub> ≤ x<sub>i</sub> 
+            Let difference<sub>i</sub> = x<sub>i</sub> − y<sub>i</sub>
+        Else
+            Let j = i + 1
+            While (x<sub>i</sub> = 0) and (j < N)
+                Add 1 to j
+            If j = N
+                Let borrow = 1
+                Subtract 1 from j
+                Add 16 to x<sub>i</sub>
+            While j > i
+                Subtract 1 from x<sub>i</sub>
+                Subtract 1 from j
+                Add 16 to x<sub>i</sub>
+            Let difference<sub>i</sub> = x<sub>i</sub> − y<sub>i</sub>
+
+6. Signed decimal to two's complement binary
+
+        If x >= 0
+            Convert x to binary
+        Else
+            Negate x
+            Convert the result to binary
+            Compute the 2s complement of the result in the binary domain
+
+7. Two's complement in binary to signed decimal
+
+        If high-order bit of x is 0
+            Convert x to decimal
+        Else
+            Compute the 2s complement of x
+            Compute the decimal equivalent of the result
+            Place a minus sign in front of the decimal equivalent
+
 8. Two's complement binary to signed decimal
    1. `0x1234` = +4660
    2. `0xffff` = -1
