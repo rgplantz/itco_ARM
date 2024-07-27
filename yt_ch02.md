@@ -134,6 +134,7 @@ title: Chapter 2
     | &  |`0x26`| -  |`0x2d`| >  |`0x3e`| _  |`0x5f`|
 
 ### Page 30
+
 15. dec2Hex.c
 
 ```
