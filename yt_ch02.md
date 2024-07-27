@@ -15,20 +15,20 @@ title: Chapter 2
     1. `1111 1110 1101 1100` = `fedc`
     1. `0000 0010 0101 0010` = `0252`
 
-1. Hexadecimal to binary
+2. Hexadecimal to binary
     1. `83af` = `1000 0011 1010 1111`
     2. `9001` = `1001 0000 0000 0001`
     3. `aaaa` = `1010 1010 1010 1010`
     4. `5555` = `0101 0101 0101 0101`
 
-1. Number of bits
+3. Number of bits
     1. `ffffffff`, 32 bits
     2. `7fff58b7def0`, 48 bit
     3. `1111` in binary is 4 bits
     4. `1111` in hexadecimal is 16 bits
 
 
-1. Number of hexadecimal digits
+4. Number of hexadecimal digits
     1. 8 bits, 2 hex digits
     2. 32 bits, 8 hex digits
     3. 64 bits, 16 hex digits
@@ -135,6 +135,7 @@ title: Chapter 2
 
 ### Page 30
 15. dec2Hex.c
+
 ```
 // Convert from decimal to hexadecimal
 
@@ -151,7 +152,9 @@ int main(void)
     return 0;
 }
 ```
+
 16. hex2Dec.c
+
 ```
 // Convert from hexadecimal to decimal
 
@@ -168,4 +171,5 @@ int main(void)
     return 0;
 }
 ```
+
 17. The integer is -1, and the string is `0xffffffff`.
