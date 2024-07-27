@@ -76,7 +76,7 @@ title: Chapter 2
     7.  32 = `20`
     8.  128 = `80`
 
-10.  Unsigned decimal to hexadecimal
+10. Unsigned decimal to hexadecimal
 
     1.  1024 = `0400`
     2.  1000 = `03e8`
