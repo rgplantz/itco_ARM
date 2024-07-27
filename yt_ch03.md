@@ -20,16 +20,21 @@ title: Chapter 3
     |  4  |`0100`|  9  |`1001`|
 
 2. Binary addition
+
         Let carry = 0
         Repeat for each i = 0,...,(n - 1)  // starting in ones place
             sum<sub>i</sub> = (x<sub>i</sub> + y<sub>i</sub>) % 2           // remainder
             carry = (x<sub>i</sub> + y<sub>i</sub>) / 2         // integer division
+
 3. Hexadecimal addition
+
       Let carry = 0
       Repeat for each i = 0,...,(n - 1)  // starting in ones place
           sum<sub>i</sub> = (x<sub>i</sub>) + y<sub>i</sub>) % 16           // remainder
           carry = (x<sub>i</sub> + y<sub>i</sub>) / 16         // integer division
+
 4. Binary subtraction
+
     Let borrow = 0
     Repeat for i = 0,··· ,(N − 1)
     If y<sub>i</sub> ≤ x<sub>i</sub> 
@@ -47,6 +52,7 @@ title: Chapter 3
             Subtract 1 from j
             Add 2 to x<sub>i</sub>
         Let difference<sub>i</sub> = x<sub>i</sub> − y<sub>i</sub>
+
 5. Hexadecimal subtracton
     Let borrow = 0
     Repeat for i = 0,··· ,(N − 1)
@@ -84,7 +90,7 @@ title: Chapter 3
    2. `0xffff` = -1
    3. `0x8000` = -32768
    4. `0x7fff` = +32767
-9. Signed decimal to 2s complement binary
+9.  Signed decimal to 2s complement binary
    1. +1024 = `0x0400`
    2. -1024 = `0xfc00`
    3. -256 = `0xff00`
