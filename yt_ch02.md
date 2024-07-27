@@ -4,7 +4,10 @@ title: Chapter 2
 ---
 <style type="text/css">
     ol ol { list-style-type: lower-alpha; }
-    li {
+    ol {
+      counter-reset: item;
+    }
+    ol>li {
       display: block;
     }
     ol>li:before {
