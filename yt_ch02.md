@@ -7,7 +7,7 @@ title: Chapter 2
     li {
       display: block;
     }
-    ol li:before {
+    ol>li:before {
       content: counters(item, ".") " ";
       counter-increment: item;
     }
