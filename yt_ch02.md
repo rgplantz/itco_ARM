@@ -76,7 +76,6 @@ title: Chapter 2
     8.  128 = `80`
 
 10. Unsigned decimal to hexadecimal
-
     1.  1024 = `0400`
     2.  1000 = `03e8`
     3.  32768 = `8000`
@@ -87,7 +86,6 @@ title: Chapter 2
     8.  43981 = `abcd`
 
 11. Uppercase A - F
-
     1.  A: `0x41`
     2.  B: `0x42`
     3.  C: `0x43`
@@ -96,7 +94,6 @@ title: Chapter 2
     6.  F: `0x46`
 
 12. Lowercase
-
     |char| code |char| code |char| code |char| code |char| code |
     |----|------|----|------|----|------|----|------|----|------|
     | a  |`0x61`| g  |`0x67`| m  |`0x6d`| s  |`0x73`| y  |`0x79`| 
@@ -107,7 +104,6 @@ title: Chapter 2
     | f  |`0x66`| l  |`0x6c`| r  |`0x72`| x  |`0x78`|
 
 13. Uppercase
-
     |char| code |char| code |char| code |char| code |char| code |
     |----|------|----|------|----|------|----|------|----|------|
     | A  |`0x41`| G  |`0x47`| M  |`0x4d`| S  |`0x53`| Y  |`0x59`| 
