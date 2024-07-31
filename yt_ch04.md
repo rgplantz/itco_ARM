@@ -5,9 +5,9 @@ title: Chapter 4
 
 ## Chapter 4
 
-### Page 66
 1.  Associativity of AND and OR is shown in Tables 4-3 and 4-4 in the book.
-2.  AND and OR identity values
+
+AND and OR identity values
 
     |  x  | x &and; 1 |
     |-----|-----------|
@@ -19,7 +19,7 @@ title: Chapter 4
     | `0` |    `0`    |
     | `1` |    `1`    |
 
-3. AND and OR commutativity
+AND and OR commutativity
 
     |  x  |  y  | x&and;y | y&and;x |
     |-----|-----|---------|---------|
@@ -35,7 +35,7 @@ title: Chapter 4
     } `1` | `0` |   `1`   |   `1`   |
     | `1` | `1` |   `1`   |   `1`   |
 
-4. AND distributive over OR
+AND distributive over OR
 
     |  x  |  y  |  z  | (y&or;z) | (x&and;y) | (x&and;z) | (x&and;(y&or;z) | (x&and;y)&or;(x&and;z) |
     |-----|-----|-----|----------|-----------|-----------|-----------------|------------------------|
@@ -48,31 +48,30 @@ title: Chapter 4
     | `1` | `1` | `0` |   `1`    |    `1`    |    `0`    |     `1`         |           `1`          |
     | `1` | `1` | `1` |   `1`    |    `1`    |    `1`    |     `1`         |           `1`          |
 
-
-5. AND annulment
+AND annulment
 
     |  x  | x &and; 0 |
     |-----|-----------|
     | `0` |    `0`    |
     | `1` |    `0`    |
   
-6. Involution of NOT
+Involution of NOT
    
     |  x  | (&not;x) | &not;(&not;x) |
     |-----|----------|---------------|
     | `0` |    `1`   |      `0`      |
     | `1` |    `0`   |      `1`      |
 
-7. OR distributive over AND is shown in Table 4-5 in book.
+OR distributive over AND is shown in Table 4-5 in book.
 
-8. OR annulment value
+OR annulment value
 
     |  x  | x &or; 1  |
     |-----|-----------|
     | `0` |    `1`    |
     | `1` |    `1`    |
 
-9.  AND and OR complements
+AND and OR complements
 
     |  x  | &not;x | x &and; &not;x |
     |-----|--------|----------------|
@@ -84,7 +83,7 @@ title: Chapter 4
     | `0` |  `1`   |      `1`       |
     | `1` |  `0`   |      `1`       |
 
-10. AND and OR idempotency
+AND and OR idempotency
 
     |  x  | x&and;x |
     |-----|---------|
@@ -96,7 +95,7 @@ title: Chapter 4
     | `0` |   `0`   |
     | `1` |   `1`   |
 
-11. De Morgan's law
+1.  De Morgan's law
 
     |  x  |  y  |  (x&and;y)  | &not;(x&and;y) | &not;x | &not;y | &not;x &or; &not;y |
     |-----|-----|-------------|----------------|--------|--------|--------------------|
@@ -112,7 +111,6 @@ title: Chapter 4
     | `1` | `0` |     `1`    |      `0`      |   `0`  |   `1`  |        `0`          |
     | `1` | `1` |     `1`    |      `0`      |   `0`  |   `0`  |        `0`          |
 
-### Page 87
 1. a
 2. b
 3. c
