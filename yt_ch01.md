@@ -6,7 +6,7 @@ title: Chapter 2
 ## Chapter 1
 
 1. There are several Linux commands that show you the details of the components in your computer. For example, `lscpu` will show you the details of your CPU:
-```Terminal display
+   ```Terminal display
    $ lscpu
    Architecture:             aarch64
      CPU op-mode(s):         32-bit, 64-bit
@@ -47,6 +47,6 @@ title: Chapter 2
      Srbds:                  Not affected
      Tsx async abort:        Not affected
      $
-```
+   ```
    Other useful commands are `free` to see memory usage and `lsusb` to see your USB devices.
    Chapter 3 in Brian Ward's *How Linux Works. 2nd edition*, No Starch Press, 2015, is devoted to getting information about the devices installed in your computer.
