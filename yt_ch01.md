@@ -6,8 +6,8 @@ title: Chapter 1
 ## Chapter 1
 
 1.  There are several Linux commands that show you the details of the components in your computer. For example, `lscpu` will show you the details of your CPU:
-   
-    ```Terminal dialog
+
+    ``` Terminal dialog
     $ lscpu
     Architecture:             aarch64
       CPU op-mode(s):         32-bit, 64-bit
