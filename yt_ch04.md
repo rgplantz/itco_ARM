@@ -133,11 +133,11 @@ title: Chapter 4
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= &not;z &and; (&not;w &and; (&not;x &and; &not;y &or; &not;x &and; y &or; x &and; &not; y &or; x &and; y)
      &or; (&not;w &and; (&not;x &and; &not;y &or; &not;x &and; y &or; x &and; &not; y &or; x &and; y)
 
-    <space><space><space><space><space><space><space><space><space><space><space><space>= &not;z &and; (&not;w &or; w) &and; (&not;x &and; &not;y &or; &not;x &and; y &or; x &and; &not; y &or; x &and; y)
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= &not;z &and; (&not;w &or; w) &and; (&not;x &and; &not;y &or; &not;x &and; y &or; x &and; &not; y &or; x &and; y)
     
-    = &not;z &and; (&not;w &or; w) &and; (&not;x &and; (&not;y &or; y) &or; x &and; (&not; y &or; y)
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= &not;z &and; (&not;w &or; w) &and; (&not;x &and; (&not;y &or; y) &or; x &and; (&not; y &or; y)
     
-    = &not;z &and; (&not;w &or; w) &and; (&not;x &or; x) &and; (&not; y &or; y)
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= &not;z &and; (&not;w &or; w) &and; (&not;x &or; x) &and; (&not; y &or; y)
 
    And from the complement property we arrive at a minimal sum of products:
 
