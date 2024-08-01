@@ -111,7 +111,40 @@ title: Chapter 4
     | `1` | `0` |     `1`    |      `0`      |   `0`  |   `1`  |        `0`          |
     | `1` | `1` |     `1`    |      `0`      |   `0`  |   `0`  |        `0`          |
 
-3. a
+3. Let a 4-bit integer be *wxyz* where each literal represents one bit. The even 4-bit integers are given by the function:
+
+   F(w,x,y,z) = &not;w &and; &not;x &and; &not;y &and; &not;z
+      &or; &not;w &and; &not;x &and; y &and; &not;z
+      &or; &not;w &and; x &and; &not; y &and; &not;z
+      &or; &not;w &and; x &and; y &and; &not;z
+      &or; w &and; &not;x &and; &not;y &and; &not;z
+      &or; w &and; &not;x &and; y &and; &not;z
+      &or; w &and; x &and; &not;y &and; &not;z
+      &or; w &and; x &and; y &and; &not;z
+      
+   Using the distributive property repeatedly we get:
+
+   F(w,x,y,z) = &not;z &and; (&not;w &and; &not;x &and; &not;y
+      &or; &not;w &and; &not;x &and; y &or; &not;w &and; x &and; &not; y
+      &or; &not;w &and; x &and; y &or; w &and; &not;x &and; &not;y
+      &or; w &and; &not;x &and; y &or; w &and; x &and; &not;y
+      &or; w &and; x &and; y)
+
+    = &not;z &and; (&not;w &and; (&not;x &and; &not;y &or; &not;x &and; y &or; x &and; &not; y &or; x &and; y)
+     &or; (&not;w &and; (&not;x &and; &not;y &or; &not;x &and; y &or; x &and; &not; y &or; x &and; y)
+
+    = &not;z &and; (&not;w &or; w) &and; (&not;x &and; &not;y &or; &not;x &and; y &or; x &and; &not; y &or; x &and; y)
+    
+    = &not;z &and; (&not;w &or; w) &and; (&not;x &and; (&not;y &or; y) &or; x &and; (&not; y &or; y)
+    
+    = &not;z &and; (&not;w &or; w) &and; (&not;x &or; x) &and; (&not; y &or; y)
+
+   And from the complement property we arrive at a minimal sum of products:
+
+   F(w,x,y,z) = &not;z
+
+   a simple NOT gate with the least significant bit as input.
+
 4. b
 5. c
 6. d
