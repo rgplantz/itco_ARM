@@ -145,8 +145,6 @@ title: Chapter 4
 
    a simple NOT gate with the least significant bit as input.
 
-4. b
-5. c
-6. d
-7. e
-8. f
+4. ![](./assets/images/ch_04/4.svg)
+5. ![](./assets/images/ch_04/5.svg)
+6. ![](./assets/images/ch_04/6.svg)
