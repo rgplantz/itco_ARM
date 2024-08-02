@@ -145,6 +145,20 @@ title: Chapter 4
 
    a simple NOT gate with the least significant bit as input.
 
-4. ![](./assets/images/ch_04/4.svg)
-5. ![](./assets/images/ch_04/5.svg)
-6. ![](./assets/images/ch_04/6.svg)
+4. F(x,y,z) = (&not;x &and; &not;y &and; &not;z)
+      &or; (&not;x &and; &not;y &and; z)
+      &or; (&not;x &and; y &and; &not;z)
+      &or; (x &and; &not;y &and; &not;z)
+      &or; (x &and; y &and; &not;)
+      &or; (x &and; y &and; z)
+
+5. F(x,y,z) = (x &or; y &or; z)
+      &and; (x &or; y &or; &not;z)
+      &and; (x &or; &not;y &or; &not;z)
+      &and; (&not;x &or; y &or; z)
+      &and; (&not;x &or; y &or; z)
+      &and; (&not;x &or; &not;y &or; &not;z)
+
+6. ![](./assets/images/ch_04/4.svg)
+7. ![](./assets/images/ch_04/5.svg)
+8. ![](./assets/images/ch_04/6.svg)
