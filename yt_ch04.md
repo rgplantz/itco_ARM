@@ -159,6 +159,6 @@ title: Chapter 4
       &and; (&not;x &or; y &or; z)
       &and; (&not;x &or; &not;y &or; &not;z)
 
-6. ![](./assets/images/ch_04/4.svg)
-7. ![](./assets/images/ch_04/5.svg)
-8. ![](./assets/images/ch_04/6.svg)
+6. ![xy horizontal](./assets/images/ch_04/4.svg)
+7. ![xz horizontal](./assets/images/ch_04/5.svg)
+8. ![Five variables](./assets/images/ch_04/6.svg)
