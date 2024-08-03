@@ -8,32 +8,32 @@ title: Chapter 4
 1.  Associativity of AND and OR is shown in Tables 4-3 and 4-4 in the book.
 
     - AND and OR identity values
+  
+      |  x  | x &and; 1 |
+      |-----|-----------|
+      | `0` |    `0`    |
+      | `1` |    `1`    |
 
-          |  x  | x &and; 1 |
-          |-----|-----------|
-          | `0` |    `0`    |
-          | `1` |    `1`    |
-
-          |  x  | x &or; 0  |
-          |-----|-----------|
-          | `0` |    `0`    |
-          | `1` |    `1`    |
+      |  x  | x &or; 0  |
+      |-----|-----------|
+      | `0` |    `0`    |
+      | `1` |    `1`    |
 
     - AND and OR commutativity
 
-          |  x  |  y  | x&and;y | y&and;x |
-          |-----|-----|---------|---------|
-          | `0` | `0` |   `0`   |   `0`   |
-          | `0` | `1` |   `0`   |   `0`   |
-          } `1` | `0` |   `0`   |   `0`   |
-          | `1` | `1` |   `1`   |   `1`   |
+        |  x  |  y  | x&and;y | y&and;x |
+        |-----|-----|---------|---------|
+        | `0` | `0` |   `0`   |   `0`   |
+        | `0` | `1` |   `0`   |   `0`   |
+        } `1` | `0` |   `0`   |   `0`   |
+        | `1` | `1` |   `1`   |   `1`   |
 
-          |  x  |  y  | x&or;y  | y&or;x  |
-          |-----|-----|---------|---------|
-          | `0` | `0` |   `0`   |   `0`   |
-          | `0` | `1` |   `1`   |   `1`   |
-          } `1` | `0` |   `1`   |   `1`   |
-          | `1` | `1` |   `1`   |   `1`   |
+        |  x  |  y  | x&or;y  | y&or;x  |
+        |-----|-----|---------|---------|
+        | `0` | `0` |   `0`   |   `0`   |
+        | `0` | `1` |   `1`   |   `1`   |
+        } `1` | `0` |   `1`   |   `1`   |
+        | `1` | `1` |   `1`   |   `1`   |
 
     -  AND distributive over OR
 
@@ -50,50 +50,50 @@ title: Chapter 4
 
     - AND annulment
 
-          |  x  | x &and; 0 |
-          |-----|-----------|
-          | `0` |    `0`    |
-          | `1` |    `0`    |
+        |  x  | x &and; 0 |
+        |-----|-----------|
+        | `0` |    `0`    |
+        | `1` |    `0`    |
         
     - Involution of NOT
         
-          |  x  | (&not;x) | &not;(&not;x) |
-          |-----|----------|---------------|
-          | `0` |    `1`   |      `0`      |
-          | `1` |    `0`   |      `1`      |
+        |  x  | (&not;x) | &not;(&not;x) |
+        |-----|----------|---------------|
+        | `0` |    `1`   |      `0`      |
+        | `1` |    `0`   |      `1`      |
 
     - OR distributive over AND is shown in Table 4-5 in book.
 
     - OR annulment value
 
-          |  x  | x &or; 1  |
-          |-----|-----------|
-          | `0` |    `1`    |
-          | `1` |    `1`    |
+        |  x  | x &or; 1  |
+        |-----|-----------|
+        | `0` |    `1`    |
+        | `1` |    `1`    |
 
     - AND and OR complements
 
-          |  x  | &not;x | x &and; &not;x |
-          |-----|--------|----------------|
-          | `0` |  `1`   |      `0`       |
-          | `1` |  `0`   |      `0`       |
+        |  x  | &not;x | x &and; &not;x |
+        |-----|--------|----------------|
+        | `0` |  `1`   |      `0`       |
+        | `1` |  `0`   |      `0`       |
 
-          |  x  | &not;x | x &or; &not;x |
-          |-----|--------|----------------|
-          | `0` |  `1`   |      `1`       |
-          | `1` |  `0`   |      `1`       |
+        |  x  | &not;x | x &or; &not;x |
+        |-----|--------|----------------|
+        | `0` |  `1`   |      `1`       |
+        | `1` |  `0`   |      `1`       |
 
     - AND and OR idempotency
 
-          |  x  | x&and;x |
-          |-----|---------|
-          | `0` |   `0`   |
-          | `1` |   `1`   |
+        |  x  | x&and;x |
+        |-----|---------|
+        | `0` |   `0`   |
+        | `1` |   `1`   |
 
-          |  x  | x&or;x  |
-          |-----|---------|
-          | `0` |   `0`   |
-          | `1` |   `1`   |
+        |  x  | x&or;x  |
+        |-----|---------|
+        | `0` |   `0`   |
+        | `1` |   `1`   |
 
 2.  De Morgan's law
 
@@ -154,7 +154,7 @@ title: Chapter 4
       &or; (x &and; y &and; &not;)
       &or; (x &and; y &and; z)
 
-6. ![](./assets/images/ch_04/Kmap_4_5.svg)
+5. ![](./assets/images/ch_04/Kmap_4_5.svg)
 
     &not;F(x,y,z) = (x &or; y &or; z)
       &and; (x &or; y &or; &not;z)
@@ -163,6 +163,6 @@ title: Chapter 4
       &and; (&not;x &or; y &or; z)
       &and; (&not;x &or; &not;y &or; &not;z)
 
-7. xy horizontal ![](./assets/images/ch_04/4.svg)
-8. xz horizontal ![](./assets/images/ch_04/5.svg)
-9.  Five variables ![](./assets/images/ch_04/6.svg)
+6. xy horizontal ![](./assets/images/ch_04/4.svg)
+7. xz horizontal ![](./assets/images/ch_04/5.svg)
+8.  Five variables ![](./assets/images/ch_04/6.svg)
