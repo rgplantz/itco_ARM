@@ -176,9 +176,9 @@ title: Chapter 4
 9. The single-digit prime numbers are 2, 3, 5, and 7. Using four bits to represent them:
     
        F(w,x,y,z) = (&not;w &and; &not;x &and; y &and; &not;z) 
-      &or; (&not;w &and; &not;x &and; y &and; z)
-      &or; (&not;w &and; x &and; &not; y &and; z)
-      &or; (&not;w &and; x &and; y &and; z)
+        &or; (&not;w &and; &not;x &and; y &and; z)
+        &or; (&not;w &and; x &and; &not; y &and; z)
+        &or; (&not;w &and; x &and; y &and; z)
 
     Assuming that the numbers 10, 11, 12, 13, 14, and 15 will never occur, we can use a Karnaugh map to simplfy the equation:
 
