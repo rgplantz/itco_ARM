@@ -175,7 +175,7 @@ title: Chapter 4
    ![](./assets/images/ch_04/6.svg)
 9. The single-digit prime numbers are 2, 3, 5, and 7. Using four bits to represent them:
     
-       F(w,x,y,z) = (&not;w &and; &not;x &and; y &and; &not;z) 
+    F(w,x,y,z) = (&not;w &and; &not;x &and; y &and; &not;z) 
         &or; (&not;w &and; &not;x &and; y &and; z)
         &or; (&not;w &and; x &and; &not; y &and; z)
         &or; (&not;w &and; x &and; y &and; z)
