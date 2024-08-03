@@ -145,20 +145,24 @@ title: Chapter 4
 
    a simple NOT gate with the least significant bit as input.
 
-4. F(x,y,z) = (&not;x &and; &not;y &and; &not;z)
+4. ![](./assets/images/ch_04/Kmap_4_4.svg)
+   
+   F(x,y,z) = (&not;x &and; &not;y &and; &not;z)
       &or; (&not;x &and; &not;y &and; z)
       &or; (&not;x &and; y &and; &not;z)
       &or; (x &and; &not;y &and; &not;z)
       &or; (x &and; y &and; &not;)
       &or; (x &and; y &and; z)
 
-5. F(x,y,z) = (x &or; y &or; z)
+6. ![](./assets/images/ch_04/Kmap_4_5.svg)
+
+    &not;F(x,y,z) = (x &or; y &or; z)
       &and; (x &or; y &or; &not;z)
       &and; (x &or; &not;y &or; &not;z)
       &and; (&not;x &or; y &or; z)
       &and; (&not;x &or; y &or; z)
       &and; (&not;x &or; &not;y &or; &not;z)
 
-6. xy horizontal ![](./assets/images/ch_04/4.svg)
-7. xz horizontal ![](./assets/images/ch_04/5.svg)
-8. Five variables ![](./assets/images/ch_04/6.svg)
+7. xy horizontal ![](./assets/images/ch_04/4.svg)
+8. xz horizontal ![](./assets/images/ch_04/5.svg)
+9.  Five variables ![](./assets/images/ch_04/6.svg)
