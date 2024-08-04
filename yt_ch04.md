@@ -113,29 +113,42 @@ title: Chapter 4
 
 3. Let a 4-bit integer be *wxyz* where each literal represents one bit. The even 4-bit integers are given by the function:
 
-   F(w,x,y,z) = &not;w &and; &not;x &and; &not;y &and; &not;z
-      &or; &not;w &and; &not;x &and; y &and; &not;z
-      &or; &not;w &and; x &and; &not; y &and; &not;z
-      &or; &not;w &and; x &and; y &and; &not;z
-      &or; w &and; &not;x &and; &not;y &and; &not;z
-      &or; w &and; &not;x &and; y &and; &not;z
-      &or; w &and; x &and; &not;y &and; &not;z
-      &or; w &and; x &and; y &and; &not;z
+   F(w,x,y,z) = (&not;w &and; &not;x &and; &not;y &and; &not;z)
+    &or; (&not;w &and; &not;x &and; y &and; &not;z)
+    &or; (&not;w &and; x &and; &not; y &and; &not;z)
+    &or; (&not;w &and; x &and; y &and; &not;z)
+    &or; (w &and; &not;x &and; &not;y &and; &not;z)
+    &or; (w &and; &not;x &and; y &and; &not;z)
+    &or; (w &and; x &and; &not;y &and; &not;z)
+    &or; (w &and; x &and; y &and; &not;z)
       
    Using the distributive property repeatedly we get:
 
-   F(w,x,y,z) = &not;z &and; (&not;w &and; &not;x &and; &not;y
-      &or; &not;w &and; &not;x &and; y &or; &not;w &and; x &and; &not; y
-      &or; &not;w &and; x &and; y &or; w &and; &not;x &and; &not;y
-      &or; w &and; &not;x &and; y &or; w &and; x &and; &not;y
-      &or; w &and; x &and; y)
+   F(w,x,y,z) = &not;z &and; 
+    ((&not;w &and; &not;x &and; &not;y)
+    &or; (&not;w &and; &not;x &and; y)
+    &or; (&not;w &and; x &and; &not; y)
+    &or; (&not;w &and; x &and; y)
+    &or; (w &and; &not;x &and; &not;y)
+    &or; (w &and; &not;x &and; y)
+    &or; (w &and; x &and; &not;y)
+    &or; (w &and; x &and; y))
 
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= &not;z &and; (&not;w &and; (&not;x &and; &not;y &or; &not;x &and; y &or; x &and; &not; y &or; x &and; y)
-     &or; (&not;w &and; (&not;x &and; &not;y &or; &not;x &and; y &or; x &and; &not; y &or; x &and; y)
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= &not;z &and;
+    (&not;w &and;
+    ((&not;x &and; &not;y)
+    &or; (&not;x &and; y)
+    &or; (x &and; &not; y)
+    &or; (x &and; y))
+    &or; w &and;
+    ((&not;x &and; &not;y)
+    &or; (&not;x &and; y)
+    &or; (x &and; &not; y)
+    &or; (x &and; y)))
 
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= &not;z &and; (&not;w &or; w) &and; (&not;x &and; &not;y &or; &not;x &and; y &or; x &and; &not; y &or; x &and; y)
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= &not;z &and; (&not;w &or; w) &and; ((&not;x &and; &not;y) &or; (&not;x &and; y) &or; (x &and; &not; y) &or; (x &and; y))
     
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= &not;z &and; (&not;w &or; w) &and; (&not;x &and; (&not;y &or; y) &or; x &and; (&not; y &or; y)
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= &not;z &and; (&not;w &or; w) &and; (&not;x &and; (&not;y &or; y) &or; x &and; (&not; y &or; y))
     
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= &not;z &and; (&not;w &or; w) &and; (&not;x &or; x) &and; (&not; y &or; y)
 
@@ -180,7 +193,10 @@ title: Chapter 4
         &or; (&not;w &and; x &and; &not; y &and; z)
         &or; (&not;w &and; x &and; y &and; z)
 
-    Assuming that the numbers 10, 11, 12, 13, 14, and 15 will never occur, we can use a Karnaugh map to simplfy the equation:
+    Assuming that the numbers 0, 1, 10, 11, 12, 13, 14, and 15 will never occur, we can use a Karnaugh map to simplfy the equation:
 
    ![](./assets/images/ch_04/Kmap_4_9.svg)
 
+   This gives us the minimization:
+
+    F(w,x,y,z) = (&not;w &and; &not;x) &or; (x &and; z)
