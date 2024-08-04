@@ -166,13 +166,13 @@ title: Chapter 4
 
 6. xy horizontal
 
-   ![](./assets/images/ch_04/4.svg)
+   ![](./assets/images/ch_04/Kmap_4_6.svg)
 7. xz horizontal
 
-   ![](./assets/images/ch_04/5.svg)
+   ![](./assets/images/ch_04/Kmap_4_7.svg)
 8. Five variables
 
-   ![](./assets/images/ch_04/6.svg)
+   ![](./assets/images/ch_04/Kmap_4_8.svg)
 9. The single-digit prime numbers are 2, 3, 5, and 7. Using four bits to represent them:
     
     F(w,x,y,z) = (&not;w &and; &not;x &and; y &and; &not;z) 
@@ -182,5 +182,5 @@ title: Chapter 4
 
     Assuming that the numbers 10, 11, 12, 13, 14, and 15 will never occur, we can use a Karnaugh map to simplfy the equation:
 
-   ![](./assets/images/ch_04/6.svg)
+   ![](./assets/images/ch_04/Kmap_4_9.svg)
 
