@@ -6,7 +6,7 @@
    version="1.1"
    id="svg149"
    sodipodi:docname="status_flags.svg"
-   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -39,14 +39,16 @@
      id="namedview151"
      showgrid="false"
      inkscape:zoom="2.2299488"
-     inkscape:cx="61.660607"
-     inkscape:cy="-27.579108"
-     inkscape:window-x="244"
-     inkscape:window-y="213"
+     inkscape:cx="61.436388"
+     inkscape:cy="-27.579109"
+     inkscape:window-x="311"
+     inkscape:window-y="235"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg149"
      inkscape:pagecheckerboard="0"
-     inkscape:document-units="pt" />
+     inkscape:document-units="pt"
+     inkscape:showpageshadow="2"
+     inkscape:deskcolor="#d1d1d1" />
   <defs
      id="defs52">
     <g
@@ -467,7 +469,7 @@
        id="tspan35048"
        style="stroke-width:0.75px"
        x="74.406113"
-       y="21.127701">ZF</tspan></text>
+       y="21.127701">Z</tspan></text>
   <text
      xml:space="preserve"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9px;line-height:125%;font-family:'Futura Md BT';-inkscape-font-specification:'Futura Md BT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.75px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -478,7 +480,7 @@
        id="tspan37538"
        style="stroke-width:0.75px"
        x="74.768661"
-       y="37.11689">NF</tspan></text>
+       y="37.11689">N</tspan></text>
   <text
      xml:space="preserve"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9px;line-height:125%;font-family:'Futura Md BT';-inkscape-font-specification:'Futura Md BT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.75px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -489,7 +491,7 @@
        id="tspan39742"
        style="stroke-width:0.75px"
        x="75.333359"
-       y="51.552132">OF</tspan></text>
+       y="51.552132">V</tspan></text>
   <text
      xml:space="preserve"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9px;line-height:125%;font-family:'Futura Md BT';-inkscape-font-specification:'Futura Md BT, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.75px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -500,5 +502,5 @@
        id="tspan40384"
        style="stroke-width:0.75px"
        x="74.66539"
-       y="68.696404">CF</tspan></text>
+       y="68.696404">C</tspan></text>
 </svg>
