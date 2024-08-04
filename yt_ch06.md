@@ -6,7 +6,8 @@ title: Chapter 6
 ## Chapter 6
 
 1.  The circuit for the four status flags is
-![](./assets/images/ch_06/status_flags.svg)
+
+    ![](./assets/images/ch_06/status_flags.svg)
 
 2.  Instead of selecting one output line like the decoder in Figure 6-8, a BCD to seven-segment decoder selects several of the seven output lines for each 4-bit BCD input.
 
@@ -61,7 +62,15 @@ title: Chapter 6
 
     ![](./assets/images/ch_06/7segment_decoder.svg)
 
-3.  We start with a truth table that shows the relationship of x compared to y. (Remember that GT and LT refer to signed values.)
+3.  abcd
+
+    ![](./assets/images/ch_06/lower_ROM.svg)
+
+4.  ABCD
+
+    ![](./assets/images/ch_06/upper_ROM.svg)
+
+5.  We start with a truth table that shows the relationship of x compared to y. (Remember that GT and LT refer to signed values.)
         
     |x<sub>1</sub>|x<sub>0</sub>|y<sub>1</sub>|y<sub>0</sub>| EQ | GT | LT |
     |-------------|-------------|-------------|-------------|----|----|----|
@@ -85,3 +94,4 @@ title: Chapter 6
     We can specify the connections in the PLD for our comparator directly from the truth table.
       
     ![](./assets/images/ch_06/comparator.svg)
+
