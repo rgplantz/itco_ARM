@@ -25,10 +25,10 @@ title: Chapter 9
     register int *ptr;
     ```
 
-2. Endianess.
+2. Endianness.
 
     ```c
-    // Determines endianess. If endianess cannot be determined
+    // Determines endianness. If endianness cannot be determined
     // from input value, defaults to "big endian"
 
     #include <stdio.h>
