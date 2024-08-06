@@ -7,8 +7,8 @@ int main(void)
 {
     register int feet;
     register int inches;
-    int total_inches;
-    int *ptr;
+    register int total_inches;
+    register int *ptr;
 
     ptr = &total_inches;
 
