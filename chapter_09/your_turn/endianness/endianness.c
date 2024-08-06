@@ -1,4 +1,4 @@
-// Determines endianess. If endianess cannot be determined
+// Determines endianness. If endianness cannot be determined
 // from input value, defaults to "big endian"
 
 #include <stdio.h>
@@ -6,7 +6,7 @@
 int main(void)
 {
     unsigned char *ptr;
-    int x, i, bigEndian;
+    int x, i, big_endian;
    
     ptr = (unsigned char *)&x;
    
@@ -17,11 +17,11 @@ int main(void)
     for (i = 0; i < 4; i++)
         printf("   %p: %02x\n", ptr + i, *(ptr + i));
 
-    bigEndian = (*ptr == (unsigned char)(0xff & (x >> 24))) &&
+    big_endian = (*ptr == (unsigned char)(0xff & (x >> 24))) &&
             (*(ptr + 1) == (unsigned char)(0xff & (x >> 16))) &&
             (*(ptr + 2) == (unsigned char)(0xff & (x >> 8))) &&
             (*(ptr + 3) == (unsigned char)(0xff & x));
-    if (bigEndian)
+    if (big_endian)
         printf("which is big endian.\n");
     else
         printf("which is little endian.\n");
