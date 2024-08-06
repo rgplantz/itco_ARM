@@ -1,7 +1,5 @@
-/* endian.c
- * Determines endianess. If endianess cannot be determined
- * from input value, defaults to "big endian"
- */
+// Determines endianess. If endianess cannot be determined
+// from input value, defaults to "big endian"
 
 #include <stdio.h>
 
