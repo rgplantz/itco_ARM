@@ -1,5 +1,5 @@
 // Store user int in memory then copies to register var.
-// Use gdb to observe endianess.
+// Use gdb to observe endianness.
 
 
 #include <stdio.h>
