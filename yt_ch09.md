@@ -60,13 +60,11 @@ title: Chapter 9
     }
     ```
 
-3. Endianess is property of CPU.
+3. Endianness is property of CPU.
 
     ```c
-    /* endianReg.c
-    * Stores user int in memory then copies to register var.
-    * Use gdb to observe endianess.
-    */
+    // Store user int in memory then copies to register var.
+    // Use gdb to observe endianness.
 
     #include <stdio.h>
 
@@ -88,23 +86,25 @@ title: Chapter 9
     Running this under `gdb` I got:
 
     ```
-    (gdb) b 17
-    Breakpoint 1 at 0x11d1: file endianReg.c, line 17.
+    (gdb) b 16
+    Breakpoint 1 at 0x804: file endian_reg.c, line 16.
     (gdb) r
-    Starting program: /home/bob/GitHub/itco_x86-64/build/chapter_09/Your_Turn/endianess_CPU/endianReg 
+    Starting program: /home/bob/chapter_09/your_turn/endianess_CPU/endian_reg 
+    [Thread debugging using libthread_db enabled]
+    Using host libthread_db library "/lib/aarch64-linux-gnu/libthread_db.so.1".
     Enter an integer: 12345
 
-    Breakpoint 1, main () at endianReg.c:17
-    17          printf("You entered %i\n", y);
+    Breakpoint 1, main () at endian_reg.c:16
+    16          printf("You entered %i\n", y);
     (gdb) print &x
-    $1 = (int *) 0x7fffffffdb04
+    $1 = (int *) 0x7fffffffed7c
     (gdb) print &y
-    Address requested for identifier "y" which is in register $rbx
-    (gdb) i r rbx
-    rbx            0x3039              12345
-    (gdb) x/4xb 0x7fffffffdb04
-    0x7fffffffdb04: 0x39    0x30    0x00    0x00
+    Address requested for identifier "y" which is in register $x19
+    (gdb) i r x19
+    x19            0x3039              12345
+    (gdb) x/4xb 0x7fffffffed7c
+    0x7fffffffed7c: 0x39    0x30    0x00    0x00
     (gdb)
     ```
 
-    This shows that the `int` is stored little endian in memory, but the individual bytes are loaded into the register (`rbx`) in the correct order.
+    This shows that the `int` is stored little endian in memory, but the individual bytes are loaded into the register (`x19`) in the correct order.
