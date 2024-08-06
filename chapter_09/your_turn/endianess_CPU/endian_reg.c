@@ -1,7 +1,6 @@
-/* endianReg.c
- * Stores user int in memory then copies to register var.
- * Use gdb to observe endianess.
- */
+// Store user int in memory then copies to register var.
+// Use gdb to observe endianess.
+
 
 #include <stdio.h>
 
