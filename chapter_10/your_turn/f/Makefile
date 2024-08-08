@@ -1,6 +1,6 @@
 # Build test_f program
 
-objects = test_f.o f.0
+objects = test_f.o f.o
 genasm = -S -Wall -fno-unwind-tables -fno-asynchronous-unwind-tables
 CFLAGS = -g -Wall -march=native
 CC = gcc
