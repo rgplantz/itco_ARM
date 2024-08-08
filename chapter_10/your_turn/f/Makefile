@@ -18,4 +18,4 @@ test_f.s: test_f.c f.h
 clean:
 	rm -f $(objects)
 allclean: clean
-	rm do_nothing
+	rm test_f
