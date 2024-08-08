@@ -1,9 +1,6 @@
-/* fiftySix.h
- * Returns 56
- */
+// Returns 56
 
-#ifndef FIFTYSIX_H
-#define FIFTYSIX_H
-int fiftySix(void);
+#ifndef FIFTY_SIX_H
+#define FIFTY_SIX_H
+int fifty_six(void);
 #endif
-
