@@ -2,8 +2,8 @@
 
 #include <stdio.h>
 #include "twelve.h"
-#include "thirtyFour.h"
-#include "fiftySix.h"
+#include "thirty_four.h"
+#include "fifty_six.h"
 
 int main(void)
 {
