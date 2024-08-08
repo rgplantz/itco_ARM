@@ -6,5 +6,5 @@
         .global fifty_six
         .type   fifty_six, %function
 fifty_six:
-        mov     w0, wzr
+        mov     w0, 56
         ret
