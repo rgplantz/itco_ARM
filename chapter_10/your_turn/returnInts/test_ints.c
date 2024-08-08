@@ -1,6 +1,4 @@
-/* test_ints.c
- * Tests three functions that return ints.
- */
+// Tests three functions that return ints.
 
 #include <stdio.h>
 #include "twelve.h"
@@ -12,11 +10,10 @@ int main(void)
   int return1, return2, return3;
 
   return1 = twelve();
-  return2 = thirtyFour();
-  return3 = fiftySix();
+  return2 = thirty_four();
+  return3 = fifty_six();
   printf("The returned ints are: %i, %i, and %i.\n",
          return1, return2, return3);
 
   return 0;
 }
-
