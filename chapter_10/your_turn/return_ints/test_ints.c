@@ -7,13 +7,13 @@
 
 int main(void)
 {
-  int return1, return2, return3;
+    int return1, return2, return3;
 
-  return1 = twelve();
-  return2 = thirty_four();
-  return3 = fifty_six();
-  printf("The returned ints are: %i, %i, and %i.\n",
-         return1, return2, return3);
+    return1 = twelve();
+    return2 = thirty_four();
+    return3 = fifty_six();
+    printf("The returned ints are: %i, %i, and %i.\n",
+          return1, return2, return3);
 
-  return 0;
+    return 0;
 }
