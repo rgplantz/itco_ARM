@@ -1,15 +1,15 @@
-# Build test_f program
+# Build test_ints program
 
-objects = test_f.o f.o
+objects = test_ints.o twelve.o thirty_four.o fifty_six.o
 genasm = -S -Wall -fno-unwind-tables -fno-asynchronous-unwind-tables
 CFLAGS = -g -Wall -march=native
 CC = gcc
 ASFLAGS = --gstabs
 AS = as
 
-test_f: $(objects)
+test_ints: $(objects) twelve.h thirty_four.h fifty_six.h
 
-test_f.s: test_f.c f.h
+test_ints.s: test_ints.c f.h
 	$(CC) $(genasm) -o temp $<
 	expand -t 8 temp > $@
 	rm temp
@@ -18,4 +18,4 @@ test_f.s: test_f.c f.h
 clean:
 	rm -f $(objects)
 allclean: clean
-	rm test_f
+	rm test_ints
