@@ -1,9 +1,6 @@
-/* thirtyFour.h
- * Returns 34
- */
+// Returns 34
 
-#ifndef THIRTYFOUR_H
-#define THIRTYFOUR_H
-int thirtyFour(void);
+#ifndef THIRTY_FOUR_H
+#define THIRTY_FOUR_H
+int thirty_four(void);
 #endif
-
