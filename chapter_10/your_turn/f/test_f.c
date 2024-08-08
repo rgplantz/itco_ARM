@@ -1,16 +1,14 @@
-/* test_f.c
- * Tests f() function.
- */
+// Tests f() function.
 
 #include <stdio.h>
 #include "f.h"
 
 int main(void)
 {
-  int returnValue;
-  returnValue = f();
-  printf("f returned %i.\n", returnValue);
+    int return_value;
+    return_value = f();
+    printf("f returned %i.\n", return_value);
 
-  return 0;
+    return 0;
 }
 
