@@ -1,4 +1,4 @@
-// Tests three functions that return ints.
+// Test three functions that return ints.
 
 #include <stdio.h>
 #include "twelve.h"

@@ -1,4 +1,4 @@
-// Returns 56
+// Return 56.
 
 #ifndef FIFTY_SIX_H
 #define FIFTY_SIX_H

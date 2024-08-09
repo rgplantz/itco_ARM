@@ -1,4 +1,4 @@
-// Returns 34
+// Return 34.
 
         .arch   armv8-a
         .text

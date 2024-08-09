@@ -1,4 +1,4 @@
-// Returns 12
+// Return 12.
 
 #ifndef TWELVE_H
 #define TWELVE_H

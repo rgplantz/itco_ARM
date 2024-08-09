@@ -1,4 +1,4 @@
-// Returns 34
+// Return 34.
 
 #ifndef THIRTY_FOUR_H
 #define THIRTY_FOUR_H
