@@ -47,7 +47,7 @@ title: Chapter 10
               ret
       ```
 
-3. Return three integers.
+3. Return three xintegers.
     * test_ints.c
       ```c
     // Test three functions that return ints.
