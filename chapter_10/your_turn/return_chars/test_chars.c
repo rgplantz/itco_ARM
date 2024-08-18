@@ -7,7 +7,7 @@
 
 int main(void)
 {
-    char return1, return2, return3;
+    unsigned char return1, return2, return3;
 
     return1 = exclaim();
     return2 = upper_oh();
