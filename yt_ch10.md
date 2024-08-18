@@ -46,7 +46,7 @@ title: Chapter 10
               mov     w0, wzr         // return 0;
               ret
       ```
-3. Return an integer
+3. Return three chars
     * test_f.c
       ```c
       // Tests f() function.
