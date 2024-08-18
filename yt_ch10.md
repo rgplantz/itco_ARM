@@ -138,7 +138,7 @@ title: Chapter 10
 4. Return three characters.
     * test_chars.c
       ```c
-      // Tests three functions that return chars.
+      // Test three functions that return chars.
 
       #include <stdio.h>
       #include "exclaim.h"
@@ -158,26 +158,69 @@ title: Chapter 10
           return 0;
       }
       ```
-    * f.h
+    * exclaim.h
       ```c
-      // Returns 0
+      // Return '!'.
 
-      #ifndef F_H
-      #define F_H
-      int f(void);
+      #ifndef EXCLAIM_H
+      #define EXCLAIM_H
+      char exclaim(void);
       #endif
       ```
-    * f.s
+    * exclaim.s
       ```asm
-      // Minimum components of a C function, in assembly language
-      // returns 0
+      // Return '!'.
 
               .arch   armv8-a
               .text
               .align  2
-              .global f
-              .type   f, %function
-      f:
-              mov     w0, wzr         // return 0;
+              .global exclaim
+              .type   exclaim, %function
+      exclaim:
+              mov     w0, '!'
+              ret
+      ```
+    * upper_oh.h
+      ```c
+      // Return 'O'.
+
+      #ifndef UPPER_OH_H
+      #define UPPER_OH_H
+      unsigned char upper_oh(void);
+      #endif
+      ```
+    * upper_oh.s
+      ```asm
+      // Return 'O'.
+
+              .arch   armv8-a
+              .text
+              .align  2
+              .global upper_oh
+              .type   upper_oh, %function
+      upper_oh:
+              mov     w0, 'O'
+              ret
+      ```
+    * tilde.h
+      ```c
+      // Return '~'.
+
+      #ifndef TILDE_H
+      #define TILDE_H
+      unsigned char tilde(void);
+      #endif
+      ```
+    * tilde.s
+      ```asm
+      // Return '~'.
+
+              .arch   armv8-a
+              .text
+              .align  2
+              .global tilde
+              .type   tilde, %function
+      tilde:
+              mov     w0, '~'
               ret
       ```
