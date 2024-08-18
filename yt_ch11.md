@@ -40,28 +40,64 @@ title: Chapter 11
     str	    w1, [sp, 28]
     bl	    printf
     ```
-2.  Return three integers.
-    * test_ints.c
-      ```c
-      // Test three functions that return ints.
+2.  Add and subtract two integers.
+    * add_sub.s
+      ```asm
+      // Add and subtract two integers.
+              .arch armv8-a
+      // Stack frame
+              .equ    x, 16
+              .equ    y, 20
+              .equ    sum, 24
+              .equ    diff, 28
+              .equ    FRAME, 32
+      // Constants 
+              .section .rodata
+      prompt:
+              .string "Enter an integer: "
+      input_format:
+              .string "%i"
+      result:
+              .string "Sum = %i, Difference = %i\n"
+      // Code
+              .text
+              .align  2
+              .global main
+              .type   main, %function
+      main:
+              stp     fp, lr, [sp, FRAME]!  // Create stack frame
+              mov     fp, sp                // Set our frame pointer
 
-      #include <stdio.h>
-      #include "twelve.h"
-      #include "thirty_four.h"
-      #include "fifty_six.h"
+              adr     x0, prompt            // prompt user
+              bl      printf
+              add     x1, sp, x             // address for input
+              adr     x0, input_format      // scanf format string
+              bl      scanf
 
-      int main(void)
-      {
-          int return1, return2, return3;
+              adr     x0, prompt            // prompt user
+              bl      printf
+              add     x1, sp, y             // address for input
+              adr     x0, input_format      // scanf format string
+              bl      scanf
 
-          return1 = twelve();
-          return2 = thirty_four();
-          return3 = fifty_six();
-          printf("The returned ints are: %i, %i, and %i.\n",
-                return1, return2, return3);
+              ldr     w0, [sp, x]           // get x
+              ldr     w1, [sp, y]           // and y
+              add     w3, w0, w1            // add them
+              str     w3, [sp, sum]         // sum = x + y
 
-          return 0;
-      }
+              ldr     w0, [sp, x]           // get x
+              ldr     w1, [sp, y]           // and y
+              sub     w3, w0, w1            // subtract them
+              str     w3, [sp, diff]        // diff = x - y
+
+              ldr     w2, [sp, diff]        // sum
+              ldr     w1, [sp, sum]         // difference
+              adr     x0, result            // address of format string
+              bl      printf
+
+              mov     w0, wzr
+              ldp     fp, lr, [sp], FRAME   // Delete stack frame
+              ret
       ```
     * twelve.h
       ```c
