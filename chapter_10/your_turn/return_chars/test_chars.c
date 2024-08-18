@@ -1,4 +1,4 @@
-// Tests three functions that return chars.
+// Test three functions that return chars.
 
 #include <stdio.h>
 #include "exclaim.h"
