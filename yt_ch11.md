@@ -1,52 +1,46 @@
 ---
 layout: default
-title: Chapter 10
+title: Chapter 11
 ---
 
-## Chapter 10
+## Chapter 11
 
-1.  I'll let you do this on your own.
-2.  Return an integer
-    * test_f.c
-      ```c
-      // Test f() function.
-
-      #include <stdio.h>
-      #include "f.h"
-
-      int main(void)
-      {
-          int return_value;
-          return_value = f();
-          printf("f returned %i.\n", return_value);
-
-          return 0;
-      }
-      ```
-    * f.h
-      ```c
-      // Return 0.
-
-      #ifndef F_H
-      #define F_H
-      int f(void);
-      #endif
-      ```
-    * f.s
-      ```asm
-      // Minimum components of a C function, in assembly language
-      // returns 0
-
-              .arch   armv8-a
-              .text
-              .align  2
-              .global f
-              .type   f, %function
-      f:
-              mov     w0, wzr         // return 0;
-              ret
-      ```
-3.  Return three integers.
+1.  The `diff` command shows that optimizing for speed (`-Ofast`) causes the compiler to align the constant data on address boundaries such that it loads faster.
+    ```
+    $ diff inc_int_1.s inc_int_2.s 
+    4,5c4
+    <       .section        .rodata.str1.8,"aMS",@progbits,1
+    <       .align  3
+    ---
+    >       .section        .rodata.str1.1,"aMS",@progbits,1
+    8d6
+    <       .align  3
+    11d8
+    <       .align  3
+    16d12
+    <       .p2align 4,,11
+    ```
+    Both optimizations use a faster algorithm to add 1 to the integer. With no optimization the addition is performed in `w0` and then moved to `w1` for the call to `printf`:
+    ```
+    ldr     w0, [sp, 28]
+    add     w0, w0, 1
+    str     w0, [sp, 28]
+    ldr     w0, [sp, 28]
+    mov     w1, w0
+    adrp    x0, .LC2
+    add     x0, x0, :lo12:.LC2
+    bl	    printf
+    ```
+    Both optimizations load the integer directly into `w1` and perform the addition there:
+    ```
+    ldr	    w1, [sp, 28]
+    adrp	  x0, .LC2
+    add	    x0, x0, :lo12:.LC2
+    add	    w1, w1, 1
+    str	    w1, [sp, 28]
+    bl	    printf
+    ```
+2.  Return three integers.
     * test_ints.c
       ```c
       // Test three functions that return ints.
@@ -135,7 +129,7 @@ title: Chapter 10
               mov     w0, 56
               ret
       ```
-4.  Return three characters.
+3.  Return three characters.
     * test_chars.c
       ```c
       // Test three functions that return chars.
