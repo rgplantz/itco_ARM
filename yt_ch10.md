@@ -46,6 +46,7 @@ title: Chapter 10
               mov     w0, wzr         // return 0;
               ret
       ```
+
 3. Return three integers.
     * test_ints.c
       ```c
