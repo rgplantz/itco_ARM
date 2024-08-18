@@ -40,132 +40,65 @@ title: Chapter 11
     str	    w1, [sp, 28]
     bl	    printf
     ```
-2.  Add and subtract two integers.
-    * add_sub.s
-      ```asm
-      // Add and subtract two integers.
-              .arch armv8-a
-      // Stack frame
-              .equ    x, 16
-              .equ    y, 20
-              .equ    sum, 24
-              .equ    diff, 28
-              .equ    FRAME, 32
-      // Constants 
-              .section .rodata
-      prompt:
-              .string "Enter an integer: "
-      input_format:
-              .string "%i"
-      result:
-              .string "Sum = %i, Difference = %i\n"
-      // Code
-              .text
-              .align  2
-              .global main
-              .type   main, %function
-      main:
-              stp     fp, lr, [sp, FRAME]!  // Create stack frame
-              mov     fp, sp                // Set our frame pointer
+2.  add_sub.s
+  ```asm
+  // Add and subtract two integers.
+          .arch armv8-a
+  // Stack frame
+          .equ    x, 16
+          .equ    y, 20
+          .equ    sum, 24
+          .equ    diff, 28
+          .equ    FRAME, 32
+  // Constants 
+          .section .rodata
+  prompt:
+          .string "Enter an integer: "
+  input_format:
+          .string "%i"
+  result:
+          .string "Sum = %i, Difference = %i\n"
+  // Code
+          .text
+          .align  2
+          .global main
+          .type   main, %function
+  main:
+          stp     fp, lr, [sp, FRAME]!  // Create stack frame
+          mov     fp, sp                // Set our frame pointer
 
-              adr     x0, prompt            // prompt user
-              bl      printf
-              add     x1, sp, x             // address for input
-              adr     x0, input_format      // scanf format string
-              bl      scanf
+          adr     x0, prompt            // prompt user
+          bl      printf
+          add     x1, sp, x             // address for input
+          adr     x0, input_format      // scanf format string
+          bl      scanf
 
-              adr     x0, prompt            // prompt user
-              bl      printf
-              add     x1, sp, y             // address for input
-              adr     x0, input_format      // scanf format string
-              bl      scanf
+          adr     x0, prompt            // prompt user
+          bl      printf
+          add     x1, sp, y             // address for input
+          adr     x0, input_format      // scanf format string
+          bl      scanf
 
-              ldr     w0, [sp, x]           // get x
-              ldr     w1, [sp, y]           // and y
-              add     w3, w0, w1            // add them
-              str     w3, [sp, sum]         // sum = x + y
+          ldr     w0, [sp, x]           // get x
+          ldr     w1, [sp, y]           // and y
+          add     w3, w0, w1            // add them
+          str     w3, [sp, sum]         // sum = x + y
 
-              ldr     w0, [sp, x]           // get x
-              ldr     w1, [sp, y]           // and y
-              sub     w3, w0, w1            // subtract them
-              str     w3, [sp, diff]        // diff = x - y
+          ldr     w0, [sp, x]           // get x
+          ldr     w1, [sp, y]           // and y
+          sub     w3, w0, w1            // subtract them
+          str     w3, [sp, diff]        // diff = x - y
 
-              ldr     w2, [sp, diff]        // sum
-              ldr     w1, [sp, sum]         // difference
-              adr     x0, result            // address of format string
-              bl      printf
+          ldr     w2, [sp, diff]        // sum
+          ldr     w1, [sp, sum]         // difference
+          adr     x0, result            // address of format string
+          bl      printf
 
-              mov     w0, wzr
-              ldp     fp, lr, [sp], FRAME   // Delete stack frame
-              ret
-      ```
-    * twelve.h
-      ```c
-      // Return 12.
-
-      #ifndef TWELVE_H
-      #define TWELVE_H
-      int twelve(void);
-      #endif
-        ```
-    * twelve.s
-      ```asm
-      // Return 12.
-
-              .arch   armv8-a
-              .text
-              .align  2
-              .global twelve
-              .type   twelve, %function
-      twelve:
-              mov     w0, 12
-              ret
-        ```
-    * thirty_four.h
-      ```c
-      // Return 34.
-
-      #ifndef THIRTY_FOUR_H
-      #define THIRTY_FOUR_H
-      int thirty_four(void);
-      #endif
-        ```
-    * thirty_four.s
-      ```asm
-      // Return 34.
-
-              .arch   armv8-a
-              .text
-              .align  2
-              .global thirty_four
-              .type   thirty_four, %function
-      thirty_four:
-              mov     w0, 34
-              ret
-      ```
-    * fifty_six.h
-      ```c
-      // Return 56.
-
-      #ifndef FIFTY_SIX_H
-      #define FIFTY_SIX_H
-      int fifty_six(void);
-      #endif
-        ```
-    * fifty_six.s
-      ```asm
-      // Return 56.
-
-              .arch   armv8-a
-              .text
-              .align  2
-              .global fifty_six
-              .type   fifty_six, %function
-      fifty_six:
-              mov     w0, 56
-              ret
-      ```
-3.  Return three characters.
+          mov     w0, wzr
+          ldp     fp, lr, [sp], FRAME   // Delete stack frame
+          ret
+  ```
+1.  Return three characters.
     * test_chars.c
       ```c
       // Test three functions that return chars.
