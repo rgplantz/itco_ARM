@@ -1,4 +1,4 @@
-// Returns upper_oh
+// Return 'O'.
 
         .arch   armv8-a
         .text

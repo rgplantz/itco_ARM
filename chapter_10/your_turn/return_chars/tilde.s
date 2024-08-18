@@ -1,4 +1,4 @@
-// Returns ~
+// Return '~'.
 
         .arch   armv8-a
         .text

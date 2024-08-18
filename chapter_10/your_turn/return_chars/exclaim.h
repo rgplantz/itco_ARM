@@ -1,6 +1,4 @@
-/* exclaim.h
- * Returns '!'
- */
+// Return '!'.
 
 #ifndef EXCLAIM_H
 #define EXCLAIM_H

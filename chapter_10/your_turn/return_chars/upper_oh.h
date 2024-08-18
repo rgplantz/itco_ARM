@@ -1,8 +1,6 @@
-/* upperOh.h
- * Returns 'O'
- */
+// Return 'O'.
 
-#ifndef UPPEROH_H
-#define UPPEROH_H
-char upperOh(void);
+#ifndef UPPER_OH_H
+#define UPPER_OH_H
+unsigned char upper_oh(void);
 #endif

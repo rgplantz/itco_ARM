@@ -1,9 +1,7 @@
-/* tilde.h
- * Returns '~'
- */
+// Return '~'.
 
 #ifndef TILDE_H
 #define TILDE_H
-char tilde(void);
+unsigned char tilde(void);
 #endif
 

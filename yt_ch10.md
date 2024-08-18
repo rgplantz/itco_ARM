@@ -46,7 +46,7 @@ title: Chapter 10
               mov     w0, wzr         // return 0;
               ret
       ```
-3. Return an integer.
+3. Return three integers.
     * test_ints.c
       ```c
     // Test three functions that return ints.
@@ -135,19 +135,25 @@ title: Chapter 10
             mov     w0, 56
             ret
       ```
-4. Return an integer
-    * test_f.c
+4. Return three characters.
+    * test_chars.c
       ```c
-      // Tests f() function.
+      // Tests three functions that return chars.
 
       #include <stdio.h>
-      #include "f.h"
+      #include "exclaim.h"
+      #include "upper_oh.h"
+      #include "tilde.h"
 
       int main(void)
       {
-          int return_value;
-          return_value = f();
-          printf("f returned %i.\n", return_value);
+          unsigned char return1, return2, return3;
+
+          return1 = exclaim();
+          return2 = upper_oh();
+          return3 = tilde();
+          printf("The returned chars are: %c, %c, and %c.\n",
+                return1, return2, return3);
 
           return 0;
       }
