@@ -98,92 +98,61 @@ title: Chapter 11
           ldp     fp, lr, [sp], FRAME   // Delete stack frame
           ret
   ```
-1.  Return three characters.
-    * test_chars.c
-      ```c
-      // Test three functions that return chars.
+3.  add_sub.s
+    ```asm
+    // Add and subtract two integers.
+            .arch armv8-a
+    // Stack frame
+            .equ    x, 16
+            .equ    y, 20
+            .equ    sum, 24
+            .equ    diff, 28
+            .equ    FRAME, 32
+    // Constants 
+            .section .rodata
+    prompt:
+            .string "Enter an integer: "
+    input_format:
+            .string "%i"
+    result:
+            .string "Sum = %i, Difference = %i\n"
+    // Code
+            .text
+            .align  2
+            .global main
+            .type   main, %function
+    main:
+            stp     fp, lr, [sp, FRAME]!  // Create stack frame
+            mov     fp, sp                // Set our frame pointer
 
-      #include <stdio.h>
-      #include "exclaim.h"
-      #include "upper_oh.h"
-      #include "tilde.h"
+            adr     x0, prompt            // Prompt user
+            bl      printf
+            add     x1, sp, x             // Address for input
+            adr     x0, input_format      // scanf format string
+            bl      scanf
 
-      int main(void)
-      {
-          unsigned char return1, return2, return3;
+            adr     x0, prompt            // Prompt user
+            bl      printf
+            add     x1, sp, y             // Address for input
+            adr     x0, input_format      // scanf format string
+            bl      scanf
 
-          return1 = exclaim();
-          return2 = upper_oh();
-          return3 = tilde();
-          printf("The returned chars are: %c, %c, and %c.\n",
-                return1, return2, return3);
+            ldr     w0, [sp, x]           // Get x
+            ldr     w1, [sp, y]           // and y
+            add     w3, w0, w1            // Add them
+            str     w3, [sp, sum]         // sum = x + y
 
-          return 0;
-      }
-      ```
-    * exclaim.h
-      ```c
-      // Return '!'.
+            ldr     w0, [sp, x]           // Get x
+            ldr     w1, [sp, y]           // and y
+            sub     w3, w0, w1            // Subtract them
+            str     w3, [sp, diff]        // diff = x - y
 
-      #ifndef EXCLAIM_H
-      #define EXCLAIM_H
-      char exclaim(void);
-      #endif
-      ```
-    * exclaim.s
-      ```asm
-      // Return '!'.
+            ldr     w2, [sp, diff]        // Sum
+            ldr     w1, [sp, sum]         // Difference
+            adr     x0, result            // Address of format string
+            bl      printf
 
-              .arch   armv8-a
-              .text
-              .align  2
-              .global exclaim
-              .type   exclaim, %function
-      exclaim:
-              mov     w0, '!'
-              ret
-      ```
-    * upper_oh.h
-      ```c
-      // Return 'O'.
-
-      #ifndef UPPER_OH_H
-      #define UPPER_OH_H
-      unsigned char upper_oh(void);
-      #endif
-      ```
-    * upper_oh.s
-      ```asm
-      // Return 'O'.
-
-              .arch   armv8-a
-              .text
-              .align  2
-              .global upper_oh
-              .type   upper_oh, %function
-      upper_oh:
-              mov     w0, 'O'
-              ret
-      ```
-    * tilde.h
-      ```c
-      // Return '~'.
-
-      #ifndef TILDE_H
-      #define TILDE_H
-      unsigned char tilde(void);
-      #endif
-      ```
-    * tilde.s
-      ```asm
-      // Return '~'.
-
-              .arch   armv8-a
-              .text
-              .align  2
-              .global tilde
-              .type   tilde, %function
-      tilde:
-              mov     w0, '~'
-              ret
-      ```
+            mov     w0, wzr
+            ldp     fp, lr, [sp], FRAME   // Delete stack frame
+            ret
+    ```
