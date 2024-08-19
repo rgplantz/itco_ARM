@@ -23,31 +23,31 @@ main:
         stp     fp, lr, [sp, FRAME]!  // Create stack frame
         mov     fp, sp                // Set our frame pointer
 
-        adr     x0, prompt            // prompt user
+        adr     x0, prompt            // Prompt user
         bl      printf
-        add     x1, sp, x             // address for input
+        add     x1, sp, x             // Address for input
         adr     x0, input_format      // scanf format string
         bl      scanf
 
-        adr     x0, prompt            // prompt user
+        adr     x0, prompt            // Prompt user
         bl      printf
-        add     x1, sp, y             // address for input
+        add     x1, sp, y             // Address for input
         adr     x0, input_format      // scanf format string
         bl      scanf
 
-        ldr     w0, [sp, x]           // get x
+        ldr     w0, [sp, x]           // Get x
         ldr     w1, [sp, y]           // and y
-        add     w3, w0, w1            // add them
+        add     w3, w0, w1            // Add them
         str     w3, [sp, sum]         // sum = x + y
 
-        ldr     w0, [sp, x]           // get x
+        ldr     w0, [sp, x]           // Get x
         ldr     w1, [sp, y]           // and y
-        sub     w3, w0, w1            // subtract them
+        sub     w3, w0, w1            // Subtract them
         str     w3, [sp, diff]        // diff = x - y
 
-        ldr     w2, [sp, diff]        // sum
-        ldr     w1, [sp, sum]         // difference
-        adr     x0, result            // address of format string
+        ldr     w2, [sp, diff]        // Sum
+        ldr     w1, [sp, sum]         // Difference
+        adr     x0, result            // Address of format string
         bl      printf
 
         mov     w0, wzr
