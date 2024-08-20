@@ -1,4 +1,4 @@
-// Add and subtract two integers; output sum and difference.
+// Add and subtract two integers.
        
 void sum_diff(int x, int y, int *sum, int *diff)
 {
