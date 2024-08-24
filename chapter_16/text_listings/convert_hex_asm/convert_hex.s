@@ -1,7 +1,7 @@
 // Get a hex number from the user and store it as an int.
         .arch armv8-a
 // Useful constant
-        .equ    MAX, 16
+        .equ    MAX, 8
 // Stack frame
         .equ    the_int, 16
         .equ    the_string, 20
