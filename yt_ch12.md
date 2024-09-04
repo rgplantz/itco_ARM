@@ -128,118 +128,43 @@ title: Chapter 12
     ```
     (gdb) x/2xw 0x55555555075c
     0x55555555075c <main+8>:        0x52a00033      0x320083f4
-    (gdb) si
-    20              mov     w20, 65537      // 2nd constant
     ```
-3.  add_sub.s
-    ```asm
-    // Add and subtract two integers.
-            .arch armv8-a
-    // Stack frame
-            .equ    x, 16
-            .equ    y, 20
-            .equ    sum, 24
-            .equ    diff, 28
-            .equ    FRAME, 32
-    // Constants 
-            .section .rodata
-    prompt:
-            .string "Enter an integer: "
-    input_format:
-            .string "%i"
-    result:
-            .string "Sum = %i, Difference = %i\n"
-    // Code
-            .text
-            .align  2
-            .global main
-            .type   main, %function
-    main:
-            stp     fp, lr, [sp, FRAME]!  // Create stack frame
-            mov     fp, sp                // Set our frame pointer
+    Consulting the Arm Architecture Reference Manual, I saw that the assembler substituted the `movz w19, 1, lsl 16` instruction for the first `mov` instruction to move `0x10000` into the `w19` register. The assembler substituted the `orr w20, wzr, 65537` instruction for the second `mov` instruction. When I tried 65538, the assembler gave an error message. Read the discussion of immediate data for bit masking on pages 328-329 to learn about what's going on here.
 
-            adr     x0, prompt            // prompt user
-            bl      printf
-            add     x1, sp, x             // address for input
-            adr     x0, input_format      // scanf format string
-            bl      scanf
+3.  Changing to 64-bit registers doesn't change the limits on constants.
+4.  I wrote a simple program to illustrate how C allows larger constants.
+    ```c
+    // Display a large constant.
 
-            adr     x0, prompt            // prompt user
-            bl      printf
-            add     x1, sp, y             // address for input
-            adr     x0, input_format      // scanf format string
-            bl      scanf
+    #include <stdio.h>
 
-            ldr     w0, [sp, x]           // get x
-            ldr     w1, [sp, y]           // and y
-            add     w3, w0, w1            // add them
-            str     w3, [sp, sum]         // sum = x + y
+    int main(void)
+    {
+        int an_int = 1000000000;
 
-            ldr     w0, [sp, x]           // get x
-            ldr     w1, [sp, y]           // and y
-            sub     w3, w0, w1            // subtract them
-            str     w3, [sp, diff]        // diff = x - y
+        printf("The integer is %i\n", an_int);
 
-            ldr     w2, [sp, diff]        // sum
-            ldr     w1, [sp, sum]         // difference
-            adr     x0, result            // address of format string
-            bl      printf
-
-            mov     w0, wzr
-            ldp     fp, lr, [sp], FRAME   // Delete stack frame
-            ret
+        return 0;
+    }
     ```
-4.  add_sub.s
-    ```asm
-    // Add and subtract two integers.
-            .arch armv8-a
-    // Stack frame
-            .equ    x, 16
-            .equ    y, 20
-            .equ    sum, 24
-            .equ    diff, 28
-            .equ    FRAME, 32
-    // Constants 
-            .section  .rodata
-    prompt:
-            .string "Enter an integer: "
-    input_format:
-            .string "%i"
-    result:
-            .string "Sum = %i, Difference = %i\n"
-    // Code
-            .text
-            .align  2
-            .global main
-            .type   main, %function
-    main:
-            stp     fp, lr, [sp, FRAME]!  // Create stack frame
-            mov     fp, sp                // Set our frame pointer
-
-            adr     x0, prompt            // Prompt user
-            bl      printf
-            add     x1, sp, x             // Address for input
-            adr     x0, input_format      // scanf format string
-            bl      scanf
-
-            adr     x0, prompt            // Prompt user
-            bl      printf
-            add     x1, sp, y             // Address for input
-            adr     x0, input_format      // scanf format string
-            bl      scanf
-
-            add     x3, sp, diff          // Place for difference
-            add     x2, sp, sum           // Place for sum
-            ldr     x1, [sp, y]           // y
-            ldr     x0, [sp, x]           // x
-            bl      sum_diff              // Do arithmetic
-
-            ldr     w2, [sp, diff]        // Difference
-            ldr     w1, [sp, sum]         // Sum
-            adr     x0, result            // Address of format string
-            bl      printf
-
-            mov     w0, wzr
-            ldp     fp, lr, [sp], FRAME   // Delete stack frame
-            ret
+    Running this program under `gdb` allows us to disassemble the machine code:
+    ```c
+    Breakpoint 1, main () at constant_size.c:7
+    7           int an_int = 1000000000;
+    (gdb) disassemble
+    Dump of assembler code for function main:
+      0x0000555555550754 <+0>:     stp     x29, x30, [sp, #-32]!
+      0x0000555555550758 <+4>:     mov     x29, sp
+    => 0x000055555555075c <+8>:     mov     w0, #0xca00                     // #51712
+      0x0000555555550760 <+12>:    movk    w0, #0x3b9a, lsl #16
+      0x0000555555550764 <+16>:    str     w0, [sp, #28]
+      0x0000555555550768 <+20>:    ldr     w1, [sp, #28]
+      0x000055555555076c <+24>:    adrp    x0, 0x555555550000
+      0x0000555555550770 <+28>:    add     x0, x0, #0x7a0
+      0x0000555555550774 <+32>:    bl      0x555555550630 <printf@plt>
+      0x0000555555550778 <+36>:    mov     w0, #0x0                        // #0
+      0x000055555555077c <+40>:    ldp     x29, x30, [sp], #32
+      0x0000555555550780 <+44>:    ret
+    End of assembler dump.
     ```
+    The C compiler uses two instructions, `mov` and `movk`, to move large constants into a register.
