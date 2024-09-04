@@ -6,8 +6,9 @@ title: Chapter 13
 ## Chapter 13
 
 1.  The compiler generates the same assembly language for the `while` and `for` loops. The difference is only in the C syntax. Both the `while` and `for` loops branch to the bottom of the loop body, where the loop termination condition is tested before branching to the top of the loop body:
+
     ```
-	      b	.L2
+        b	     .L2
 .L3:
         mov	    x2, 1
         ldr	    x1, [sp, 24]
@@ -22,6 +23,7 @@ title: Chapter 13
         cmp	    w0, 0
         bne	    .L3
     ```
+
     The `do-while` loop executes the loop body before testing the loop termination condition:
     ```
 .L2:
@@ -93,7 +95,7 @@ title: Chapter 13
     78c:   a8c27bfd        ldp     x29, x30, [sp], #32
     790:   d65f03c0        ret
     ```
-2.  I changed 65535 to 65536 and -65536 to 65537. Using `gdb` I set a breakpoint at the `mov w19, 65536` instruction. This allowed me to see the memory address of this instruction:
+1.  I changed 65535 to 65536 and -65536 to 65537. Using `gdb` I set a breakpoint at the `mov w19, 65536` instruction. This allowed me to see the memory address of this instruction:
     ```
     Breakpoint 1, main () at add_consts.s:19
     19              mov     w19, 65536       // 1st constant
@@ -109,8 +111,8 @@ title: Chapter 13
     ```
     Consulting the Arm Architecture Reference Manual, I saw that the assembler substituted the `movz w19, 1, lsl 16` instruction for the first `mov` instruction to move `0x10000` into the `w19` register. The assembler substituted the `orr w20, wzr, 65537` instruction for the second `mov` instruction. When I tried 65538, the assembler gave an error message. Read the discussion of immediate data for bit masking on pages 328-329 to learn about what's going on here.
 
-3.  Changing to 64-bit registers doesn't change the limits on constants.
-4.  I wrote a simple program to illustrate how C allows larger constants.
+2.  Changing to 64-bit registers doesn't change the limits on constants.
+3.  I wrote a simple program to illustrate how C allows larger constants.
     ```c
     // Display a large constant.
 
