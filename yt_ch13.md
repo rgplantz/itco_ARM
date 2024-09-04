@@ -5,59 +5,37 @@ title: Chapter 13
 
 ## Chapter 13
 
-1.  Let's look at the`adr` instruction in the listing file.
+1.  The compiler generates the same assembly language for the `while` and `for` loops. The difference is only in the C syntax. Both the `while` and `for` loops branch to the bottom of the loop body, where the loop termination condition is tested before branching to the top of the loop body:
     ```
-      29 002c 00000010 	        adr     x0, format            // Assume on same page
+	      b	.L2
+.L3:
+        mov	    x2, 1
+        ldr	    x1, [sp, 24]
+        mov	    w0, 1
+        bl	    write
+        ldr	    x0, [sp, 24]
+        add	    x0, x0, 1
+        str	    x0, [sp, 24]
+.L2:
+        ldr	    x0, [sp, 24]
+        ldrb	  w0, [x0]
+        cmp	    w0, 0
+        bne	    .L3
     ```
-    This shows that the machine code is `0x10000000`. Looking at Figure 12-10 in the book, we can see that the offset from the instruction to the address of the text string has not yet been inserted into the instruction. Let's look at the instruction when the program is loaded into memory.
+    The `do-while` loop executes the loop body before testing the loop termination condition:
     ```
-    (gdb) l
-    1       // Add three constants to show some machine code.
-    2               .arch armv8-a
-    3       // Stack frame
-    4               .equ    z, 28
-    5               .equ    FRAME, 32
-    6       // Constant data 
-    7               .section        .rodata
-    8       format:
-    9               .string "%i + %i + 456 = %i\n"
-    10      // Code
-    (gdb) 
-    11              .text
-    12              .align  2
-    13              .global main
-    14              .type   main, %function
-    15      main:
-    16              stp     fp, lr, [sp, FRAME]!  // Create stack frame
-    17              mov     fp, sp
-    18
-    19              mov     w19, 123              // 1st constant
-    20              mov     w20, -123             // 2nd constant
-    (gdb) 
-    21              add     w21, w19, w20         // Add them
-    22              add     w22, w21, 456         // Another constant
-    23              str     w22, [sp, z]          // Store sum
-    24
-    25              ldr     w3, [sp, z]           // Get sum
-    26              mov     w2, w20               // Get 2nd constant
-    27              orr     w2, wzr, w20          // Alias
-    28              mov     w1, w19               // Get 1st constant
-    29              adr     x0, format            // Assume on same page
-    30              bl      printf
-    ```
-    I set breakpoints at the beginning and at the `adr` instruction and ran the program.
-    ```
-    (gdb) b 16
-    Breakpoint 1 at 0x754: file add_consts.s, line 16.
-    (gdb) b 29
-    Breakpoint 2 at 0x780: file add_consts.s, line 29.
-    (gdb) r
-    Starting program: /home/bob/GitHub/itco_ARM/build/chapter_12/your_turn/add_consts_1/add_consts 
-    [Thread debugging using libthread_db enabled]
-    Using host libthread_db library "/lib/aarch64-linux-gnu/libthread_db.so.1".
-
-    Breakpoint 1, main () at add_consts.s:16
-    16              stp     fp, lr, [sp, FRAME]!  // Create stack frame
+.L2:
+        mov	    x2, 1
+        ldr	    x1, [sp, 24]
+        mov	    w0, 1
+        bl	    write
+        ldr	    x0, [sp, 24]
+        add	    x0, x0, 1
+        str	    x0, [sp, 24]
+        ldr	    x0, [sp, 24]
+        ldrb	  w0, [x0]
+        cmp	    w0, 0
+        bne	    .L2
     ```
     Next, I disassemble some of the code>
     ```
