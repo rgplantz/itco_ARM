@@ -115,28 +115,23 @@ title: Chapter 12
     78c:   a8c27bfd        ldp     x29, x30, [sp], #32
     790:   d65f03c0        ret
     ```
-2.
-    Both optimizations use a faster algorithm to add 1 to the integer. With no optimization the addition is performed in `w0` and then moved to `w1` for the call to `printf`:
+2.  I changed 65535 to 65536 and -65536 to 65537. Using `gdb` I set a breakpoint at the `mov w19, 65536` instruction. This allowed me to see the memory address of this instruction:
     ```
-    ldr     w0, [sp, 28]
-    add     w0, w0, 1
-    str     w0, [sp, 28]
-    ldr     w0, [sp, 28]
-    mov     w1, w0
-    adrp    x0, .LC2
-    add     x0, x0, :lo12:.LC2
-    bl	    printf
+    Breakpoint 1, main () at add_consts.s:19
+    19              mov     w19, 65536       // 1st constant
+    (gdb) i r x19 x20 pc
+    x19            0x7fffffffeef8      140737488350968
+    x20            0x1                 1
+    pc             0x55555555075c      0x55555555075c <main+8>
     ```
-    Both optimizations load the integer directly into `w1` and perform the addition there:
+    Using the address in the `pc` I looked at the machine code for each `mov` instruction:
     ```
-    ldr	    w1, [sp, 28]
-    adrp	  x0, .LC2
-    add	    x0, x0, :lo12:.LC2
-    add	    w1, w1, 1
-    str	    w1, [sp, 28]
-    bl	    printf
+    (gdb) x/2xw 0x55555555075c
+    0x55555555075c <main+8>:        0x52a00033      0x320083f4
+    (gdb) si
+    20              mov     w20, 65537      // 2nd constant
     ```
-1.  add_sub.s
+3.  add_sub.s
     ```asm
     // Add and subtract two integers.
             .arch armv8-a
@@ -194,7 +189,7 @@ title: Chapter 12
             ldp     fp, lr, [sp], FRAME   // Delete stack frame
             ret
     ```
-2.  add_sub.s
+4.  add_sub.s
     ```asm
     // Add and subtract two integers.
             .arch armv8-a
