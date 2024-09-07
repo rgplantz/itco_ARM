@@ -4,7 +4,8 @@
         .equ    NUL, 0
         .equ    STDOUT, 1
 // Stack frame
-        .equ    FRAME, 16
+        .equ    save19, 16
+        .equ    FRAME, 32
 // Constant data
         .section  .rodata
 message:
@@ -17,6 +18,7 @@ message:
 main:
         stp     fp, lr, [sp, -FRAME]! // Create stack frame
         mov     fp, sp                // Set our frame pointer
+        str     x19, [sp, save19]     // Save for caller
         adr     x19, message          // Address of message
 loop:
         ldrb    w0, [x19]             // Load character
@@ -30,5 +32,6 @@ loop:
         b       loop                  //   and continue
 done:
         mov     w0, wzr               // Return 0
+        ldr     x19, [sp, save19]     // Restore reg
         ldp     fp, lr, [sp], FRAME   // Delete stack frame
         ret
