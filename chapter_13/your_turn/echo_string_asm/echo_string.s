@@ -28,7 +28,7 @@ main:
         adr     x19, prompt           // Address of prompt message
 prompt_loop:
         ldrb    w0, [x19]             // Load character
-        cmp     w0, LF                // End of string?
+        cmp     w0, NUL               // End of string?
         b.eq    read_input            // Yes
         mov     w2, 1                 // No, one char
         mov     x1, x19               // Address of char
