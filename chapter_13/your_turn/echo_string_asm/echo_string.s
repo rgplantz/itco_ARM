@@ -8,7 +8,7 @@
         .equ    STDOUT, 1
 // Stack frame
         .equ    the_string, 16
-        .equ    save19, 32
+        .equ    save1920, 32
         .equ    FRAME, 48 
 // Constant data
         .section  .rodata
@@ -24,7 +24,7 @@ response:
 main:
         stp     fp, lr, [sp, -FRAME]! // Create stack frame
         mov     fp, sp                // Set our frame pointer
-        str     x19, [sp, save19]     // Save for caller
+        st9     x19, x20, [sp, save1920]  // Save for caller
         adr     x19, prompt           // Address of prompt message
 prompt_loop:
         ldrb    w0, [x19]             // Load character
@@ -38,6 +38,7 @@ prompt_loop:
         b       prompt_loop           //   and continue
 read_input:
         add     x19, sp, the_string   // Address of string storage
+        mov     w20, wzr              // Zero characters stored
 read_loop:
         mov     w2, 1                 // One char
         mov     x1, x19               // Place to store it
@@ -45,11 +46,13 @@ read_loop:
         bl      read
         ldrb    w0, [x19]             // Load character
         cmp     w0, LF                // End of input?
-        b.eq    done                  // Yes
-        ldrb    w0, [x19]             // Load most recent character
+        b.eq    terminate_string      // Yes
+        cmp     w20, MAX              // No, is storage array full?
+        b.ge    read_loop             // Yes, read but don't keep
         add     x19, x19, 1           // Increment pointer
-        cmp     w0, LF                // End of input?
-        b.ne    read_loop             // No, continue reading
+        add     x20, x20, 1           //     and counter
+        b       read_loop             // No, continue reading
+terminate_string:
         mov     w0, NUL               // Yes, string termination char
         strb    w0, [x19]             // Terminate the string
 
@@ -78,6 +81,6 @@ echo_loop:
         b       echo_loop             //   and continue
 done:
         mov     w0, wzr               // Return 0
-        ldr     x19, [sp, save19]     // Restore reg
+        ldp     x19, x20, [sp, save1920]  // Restore regs
         ldp     fp, lr, [sp], FRAME   // Delete stack frame
         ret
