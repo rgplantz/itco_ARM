@@ -50,11 +50,23 @@ read_loop:
         add     x19, x19, 1           // Increment pointer
         cmp     w0, LF                // End of input?
         b.ne    read_loop             // No, continue reading
-
         mov     w0, NUL               // Yes, string termination char
         strb    w0, [x19]             // Terminate the string
-        add     x19, sp, the_string   // Get beginning of string storage
+
+        adr     x19, response         // Address of response message
 response_loop:
+        ldrb    w0, [x19]             // Load character
+        cmp     w0, NUL               // End of string?
+        b.eq    echo                  // Yes
+        mov     w2, 1                 // No, one char
+        mov     x1, x19               // Address of char
+        mov     x0, STDOUT            // Write on screen
+        bl      write
+        add     x19, x19, 1           // Increment pointer
+        b       response_loop         //   and continue
+echo:
+        add     x19, sp, the_string   // Get beginning of string storage
+echo_loop:
         ldrb    w0, [x19]             // Load character
         cmp     w0, NUL               // End of string?
         b.eq    done                  // Yes
@@ -63,7 +75,7 @@ response_loop:
         mov     x0, STDOUT            // Write on screen
         bl      write
         add     x19, x19, 1           // Increment pointer
-        b       response_loop         //   and continue
+        b       echo_loop             //   and continue
 done:
         mov     w0, wzr               // Return 0
         ldr     x19, [sp, save19]     // Restore reg
