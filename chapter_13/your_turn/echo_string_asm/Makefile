@@ -1,15 +1,14 @@
-# Build hello_world program
+# Build echo_string program
 
-objects = hello_world.o
+objects = echo_string.o
 ASFLAGS = --gstabs
 AS = as
 CC = gcc
 
-hello_world: $(objects)
+echo_string: $(objects)
 
 .PHONY: clean allclean
 clean:
 	rm -f $(objects)
 allclean: clean
-	rm hello_world
-
+	rm echo_string
