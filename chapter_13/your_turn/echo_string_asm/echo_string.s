@@ -7,8 +7,8 @@
         .equ    STDIN, 0
         .equ    STDOUT, 1
 // Stack frame
-        .equ    the_string, 16
-        .equ    save1920, 32
+        .equ    save1920, 16
+        .equ    the_string, 32
         .equ    FRAME, 48 
 // Constant data
         .section  .rodata
@@ -24,7 +24,7 @@ response:
 main:
         stp     fp, lr, [sp, -FRAME]! // Create stack frame
         mov     fp, sp                // Set our frame pointer
-        st9     x19, x20, [sp, save1920]  // Save for caller
+        stp     x19, x20, [sp, save1920]  // Save for caller
         adr     x19, prompt           // Address of prompt message
 prompt_loop:
         ldrb    w0, [x19]             // Load character
