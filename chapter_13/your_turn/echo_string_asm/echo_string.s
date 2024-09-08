@@ -51,7 +51,8 @@ read_loop:
         cmp     w0, LF                // End of input?
         b.ne    read_loop             // No, continue reading
 
-        strb    NUL, [x19]            // Yes, terminate the string
+        mov     w0, NULL              // Yes, string termination char
+        strb    w0, [x19]             // Terminate the string
         add     x19, sp, the_string   // Get beginning of string storage
 response_loop:
         ldrb    w0, [x19]             // Load character
