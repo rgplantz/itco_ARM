@@ -16,6 +16,8 @@ prompt:
         .string "Enter up to 10 characters: "
 response:
         .string "You entered: "
+newline:
+        .string "\n"
 // Code
         .text
         .align  2
@@ -80,6 +82,10 @@ echo_loop:
         add     x19, x19, 1           // Increment pointer
         b       echo_loop             //   and continue
 done:
+        mov     w2, 1                 // One char
+        adr     x1, newline           // Address of newline char
+        mov     x0, STDOUT            // Write on screen
+        bl      write
         mov     w0, wzr               // Return 0
         ldp     x19, x20, [sp, save1920]  // Restore regs
         ldp     fp, lr, [sp], FRAME   // Delete stack frame
