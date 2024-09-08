@@ -44,7 +44,7 @@ read_loop:
         mov     x0, STDIN             // Read from keyboard
         bl      read
         ldrb    w0, [x19]             // Load character
-        cmp     w0, LF                // End of string?
+        cmp     w0, LF                // End of input?
         b.eq    done                  // Yes
         ldrb    w0, [x19]             // Load most recent character
         add     x19, x19, 1           // Increment pointer
