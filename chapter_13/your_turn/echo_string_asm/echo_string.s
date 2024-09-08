@@ -53,7 +53,7 @@ read_loop:
 
         strb    [x19], NUL            // Yes, terminate the string
         add     x19, sp, the_string   // Get beginning of string storage
-prompt_loop:
+response_loop:
         ldrb    w0, [x19]             // Load character
         cmp     w0, NUL               // End of string?
         b.eq    done                  // Yes
@@ -62,7 +62,7 @@ prompt_loop:
         mov     x0, STDOUT            // Write on screen
         bl      write
         add     x19, x19, 1           // Increment pointer
-        b       prompt_loop           //   and continue
+        b       response_loop         //   and continue
 done:
         mov     w0, wzr               // Return 0
         ldr     x19, [sp, save19]     // Restore reg
