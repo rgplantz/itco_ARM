@@ -65,7 +65,7 @@ main:
 
 // Open /dev/mem for read/write and syncing.        
         mov     w1, OPEN_FLAGS & 0xffff   // Move 32-bit flags
-        movk    w1, OPEN_FLAGS / 0xffff, lsl 16
+        movk    w1, OPEN_FLAGS / 0x10000, lsl 16
         adr     x0, dev_mem               // I/O device memory
         bl      open
         cmp     w0, -1                    // Check for error
@@ -74,7 +74,7 @@ main:
 
 // Map the GPIO registers to a main memory location so we can access them.
         movz    x5, PERIPHS & 0xffff, lsl 16
-        movk    x5, PERIPHS / 0xffff, lsl 32
+        movk    x5, PERIPHS / 0x10000, lsl 32
         mov     w4, w19                   // File descriptor
         mov     w3, MAP_SHARED            // Share with other processes
         mov     w2, PROT_RDWR             // Read/write this memory
