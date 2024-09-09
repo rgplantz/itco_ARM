@@ -2,7 +2,7 @@
         .arch armv8-a
 // Useful names
         .equ    N_TIMES, 10           // Number of flips
-        .equ    RAND_MID, 1073741823  // RAND_MAX/2
+        .equ    RAND_MID, 1073741822  // RAND_MAX/2
 // Stack frame
         .equ    save19, 28
         .equ    FRAME, 32
