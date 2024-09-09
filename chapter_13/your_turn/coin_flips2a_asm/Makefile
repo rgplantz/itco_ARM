@@ -1,15 +1,15 @@
-# Build coin_flips2 program
+# Build coin_flips2a program
 
-objects = coin_flips2.o
+objects = coin_flips2a.o
 ASFLAGS = --gstabs
 AS = as
 CC = gcc
 
-coin_flips2: $(objects)
+coin_flips2a: $(objects)
 
 .PHONY: clean allclean
 clean:
 	rm -f $(objects)
 allclean: clean
-	rm coin_flips2
+	rm coin_flips2a
 
