@@ -31,7 +31,8 @@ loop:
         mov     w1, RAND_TOP          // Top fourth
         cmp     w1, w0                // Above or below?
         b.hi    heads                 // Above -> heads
-        mov     w1, RAND_BOTTOM       // Bottom fourth
+        mov     w1, RAND_BOTTOM & 0xffff          // Bottom fourth; needs
+        movk    w1, RAND_BOTTOM / 0xffff, lsl 16  //    two instructions
         cmp     w1, w0                // Above or below?
         b.lo    heads                 // Below -> heads
         adr     x0, tails_msg         // Middle -> tails
