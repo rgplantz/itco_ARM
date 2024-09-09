@@ -28,7 +28,8 @@ loop:
         cmp     w19, w0               // Is i at end?
         b.hs    done                  // Yes
         bl      random                // No, get random number
-        mov     w1, RAND_TOP          // Top fourth
+        mov     w1, RAND_TOP & 0xffff           // Top fourth; needs
+        movk    w1, RAND_TOP / 0xffff, lsl 16   //    two instructions
         cmp     w1, w0                // Above or below?
         b.hi    heads                 // Above -> heads
         mov     w1, RAND_BOTTOM & 0xffff          // Bottom fourth; needs
