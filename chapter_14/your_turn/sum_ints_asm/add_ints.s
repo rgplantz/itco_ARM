@@ -22,6 +22,6 @@ loop:
         add     w0, w0, 1             // Next int
         add     w2, w0, w0            // Add to accmulator
         b       loop                  // And keep adding
-
+done:
         mov     w0, w2                // Return sum
         ret                           // Back to caller
