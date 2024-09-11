@@ -18,30 +18,30 @@ out_format:
         .global main
         .type   main, %function
 main:
-        sub     sp, sp, FRAME               // Allocate our stack frame
-        stp     fp, lr, [sp, frame_record]  // Create frame record
-        mov     fp, sp                      // Set our frame pointer
+        sub     sp, sp, FRAME   // Allocate our stack frame
+        stp     fp, lr, [sp]    // Create stack frame
+        mov     fp, sp          // Set our frame pointer
 
-        adr     x0, prompt                  // Ask for integer 
+        adr     x0, prompt      // Ask for integer 
         bl      printf
-        add     x1, sp, x                   // Place for first int
-        adr     x0, in_format               // scanf format string
-        bl      scanf                       // Get the int
+        add     x1, sp, x       // Place for first int
+        adr     x0, in_format   // scanf format string
+        bl      scanf           // Get the int
 
-        adr     x0, prompt                  // Ask for integer 
+        adr     x0, prompt      // Ask for integer 
         bl      printf
-        add     x1, sp, y                   // Place for second int
-        adr     x0, in_format               // scanf format string
-        bl      scanf                       // Get the int
+        add     x1, sp, y       // Place for second int
+        adr     x0, in_format   // scanf format string
+        bl      scanf           // Get the int
 
         ldr     w0, [sp, x]
         ldr     w1, [sp, y]
-        bl      add_ints                    // Add them
+        bl      add_ints        // Add them
         mov     w1, w0
         adr     x0, out_format
         bl      printf
 
-        mov     w0, wzr                     // Return 0
-        ldp     fp, lr, [sp, frame_record]  // Restore fp and lr
-        add     sp, sp, FRAME               // Delete stack frame
-        ret                                 // Back to caller
+        mov     w0, wzr         // Return 0
+        ldp     fp, lr, [sp]    // Restore fp and lr
+        add     sp, sp, FRAME   // Delete stack frame
+        ret                     // Back to caller
