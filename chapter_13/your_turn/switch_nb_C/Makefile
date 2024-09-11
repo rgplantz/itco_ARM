@@ -1,14 +1,14 @@
-# Build switch program
+# Build switch_nb program
 
-objects = switch.o
+objects = switch_nb.o
 genasm = -S -Wall -O0 -fno-unwind-tables -fno-asynchronous-unwind-tables
 
 CFLAGS = -g -Wall
 CC = gcc
 
-switch: $(objects)
+switch_nb: $(objects)
 
-switch.s: switch.c
+switch_nb.s: switch_nb.c
 	$(CC) $(genasm) -o temp $<
 	expand -t 8 temp > $@
 	rm temp
@@ -17,5 +17,5 @@ switch.s: switch.c
 clean:
 	rm -f $(objects)
 allclean: clean
-	rm switch
+	rm switch_nb
 
