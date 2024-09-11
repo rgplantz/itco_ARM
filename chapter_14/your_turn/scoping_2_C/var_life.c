@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include "add_const.h"
+#include "add_const2.h"
 #define INIT_X 12
 #define INIT_Y 34
 #define INIT_Z 56
@@ -19,6 +20,8 @@ int main(void)
     printf("In main:%12i %8i %8i\n", x, y, z);
     add_const();
     add_const();
+    add_const2();
+    add_const2();
     printf("In main:%12i %8i %8i\n", x, y, z);
     return 0;
 }
