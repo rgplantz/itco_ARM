@@ -20,7 +20,7 @@ loop:
         cmp     w0, w1                // Added all of them?
         b.hi    done                  // Yes
         add     w0, w0, 1             // Next int
-        add     w2, w0, w0            // Add to accmulator
+        add     w2, w2, w0            // Add to accmulator
         b       loop                  // And keep adding
 done:
         mov     w0, w2                // Return sum
