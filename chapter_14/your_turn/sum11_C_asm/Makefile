@@ -3,9 +3,11 @@
 objects = sum11ints.o add_eleven.o
 ASFLAGS = --gstabs
 AS = as
+CFLAGS = -g -Wall
 CC = gcc
 
 sum11ints: $(objects)
+sum11ints.o: add_eleven.h
 
 .PHONY: clean allclean
 clean:
