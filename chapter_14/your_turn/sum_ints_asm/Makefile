@@ -1,6 +1,6 @@
 # Build sum_ints program
 
-objects = sum_ints.o add_eleven.o
+objects = sum_ints.o add_ints.o
 ASFLAGS = --gstabs
 AS = as
 CC = gcc
