@@ -18,7 +18,7 @@ in_order:
         mov     w2, w0                // Accumulate sum in w2
 loop:
         cmp     w0, w1                // Added all of them?
-        b.hi    done                  // Yes
+        b.hs    done                  // Yes
         add     w0, w0, 1             // Next int
         add     w2, w2, w0            // Add to accmulator
         b       loop                  // And keep adding
