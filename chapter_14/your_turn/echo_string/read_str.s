@@ -14,39 +14,40 @@
 // Stack frame
         .equ    save1920, 16
         .equ    save21, 32
-        .equ    frame, 48 
+        .equ    FRAME, 48 
 // The code
         .text
         .align  2
         .global read_str
         .type   read_str, %function
 read_str:
-        stp     fp, lr, [sp, -frame]! // our stack frame
-        stp     x19, x20, [sp, save1920]  // preserve regs
+        stp     fp, lr, [sp, -FRAME]! // Create stack frame
+        mov     fp, sp                // Set our frame pointer
+        stp     x19, x20, [sp, save1920]  // Save regs
         str     x21, [sp, save21]
-        mov     x19, x0               // address of string
+        mov     x19, x0               // Address of string
         mov     w20, wzr              // count = 0
-        mov     w21, w1               // max chars
+        mov     w21, w1               // Max chars
 
 read_loop:
-        mov     w2, 1                 // read 1 byte
-        mov     x1, x19               // place to store current char
-        mov     w0, STDIN             // read from keyboard
+        mov     w2, 1                 // Read 1 byte
+        mov     x1, x19               // Place to store current char
+        mov     w0, STDIN             // Read from keyboard
         bl      read
 
-        ldrb    w0, [x19]             // get just read char
+        ldrb    w0, [x19]             // Get just read char
         cmp     w0, LF                // return key?
-        b.eq    end_input            // yes, end of input
-        cmp     w20, w21              // no, is caller's array full?
-        b.ge    read_loop              // yes, read but don't keep
+        b.eq    end_input             // Yes, end of input
+        cmp     w20, w21              // No, is caller's array full?
+        b.ge    read_loop             // Yes, read but don't keep
         add     x19, x19, 1           // no, next byte
         add     w20, w20, 1           // count++
-        b       read_loop              // back to reading
+        b       read_loop             // Back to reading
 end_input:
-        mov     w0, NUL               // string terminator
-        strb    wzr, [x19]            // replace LF
-        mov     w0, w20               // return count;
-        ldr     w21, [sp, save21]     // restore regs
+        mov     w0, NUL               // String terminator
+        strb    wzr, [x19]            // Replace LF
+        mov     w0, w20               // Return count
+        ldr     w21, [sp, save21]     // Restore regs
         ldp     x19, x20, [sp, save1920]
-        ldp     fp, lr, [sp], frame   // undo stack frame
-        ret                           // back to caller
+        ldp     fp, lr, [sp], FRAME   // Delete stack frame
+        ret

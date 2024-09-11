@@ -8,21 +8,22 @@
         .equ    STDOUT, 1
 // Stack frame
         .equ    a_char, 16
-        .equ    frame, 32 
+        .equ    FRAME, 32 
 // The code
         .text
         .align  2
         .global write_char
         .type   write_char, %function
 write_char:
-        stp     fp, lr, [sp, -frame]! // our stack frame
-        strb    w0, [sp, a_char]      // store input char
+        stp     fp, lr, [sp, -FRAME]! // Create stack frame
+        mov     fp, sp                // Set our frame pointer
+        strb    w0, [sp, a_char]      // Store input char
 
-        mov     w2, 1                 // write 1 byte
-        add     x1, sp, a_char        // address of char
-        mov     w0, STDOUT            // write to screen
+        mov     w2, 1                 // Write 1 byte
+        add     x1, sp, a_char        // Address of char
+        mov     w0, STDOUT            // Write to screen
         bl      write
 
-        mov     w0, wzr               // return 0
-        ldp     fp, lr, [sp], frame   // undo stack frame
-        ret                           // back to caller
+        mov     w0, wzr               // Return 0
+        ldp     fp, lr, [sp], FRAME   // Delete stack frame
+        ret
