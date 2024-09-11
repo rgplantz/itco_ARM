@@ -56,6 +56,6 @@ add_const:
         adr     x0, msg                 // message
         bl      printf
 
-        mov     w0, wzr                `// Return 0
+        mov     w0, wzr                 // Return 0
         ldp     fp, lr, [sp], FRAME     // Delete stack frame
         ret
