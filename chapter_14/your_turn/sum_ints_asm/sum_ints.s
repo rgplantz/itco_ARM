@@ -34,8 +34,8 @@ main:
         adr     x0, in_format               // scanf format string
         bl      scanf                       // Get the int
 
-        ldr     w0, x[sp]
-        ldr     w1, y[sp]
+        ldr     w0, [sp, x]
+        ldr     w1, [sp, y]
         bl      add_ints                    // Add them
         mov     w1, w0
         adr     x0, out_format
