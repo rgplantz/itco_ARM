@@ -12,7 +12,7 @@
 prompt:
         .string "Enter up to 50 alphabetic characters: "
 result:
-        .string "All lower: "
+        .string "Opposite case: "
         .text
         .align  2
         .global main
