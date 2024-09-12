@@ -13,7 +13,7 @@
 prompt:
         .string "Enter up to 21 octal characters: "
 format:
-        .string "0o%x = %i\n"
+        .string "0%o = %i\n"
         .text
         .align  2
         .global main
