@@ -13,7 +13,7 @@
 prompt:
         .string "Enter up to 21 octal characters: "
 format:
-        .string "0%o = %i\n"
+        .string "0%lo = %li\n"
         .text
         .align  2
         .global main
@@ -33,8 +33,8 @@ main:
         add     x0, sp, the_int       // Place to store int
         bl      octal_to_int          // Do conversion
 
-        ldr     w2, [sp, the_int]     // Load int
-        ldr     w1, [sp, the_int]     // printf shows this copy in hex
+        ldr     x2, [sp, the_int]     // Load int
+        ldr     x1, [sp, the_int]     // printf shows this copy in hex
         adr     x0, format            // Format string
         bl      printf
 
