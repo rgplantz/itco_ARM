@@ -1,24 +1,24 @@
-// Add two integers and show if there is overflow.
+// Add two integers and show if there is carry.
 
 #include <stdio.h>
 
 int main(void)
 {
-    int x, y, z, overflow;
+    unsigned int x, y, z, carry;
   
     printf("Enter an integer: ");
-    scanf("%i", &x);
+    scanf("%u", &x);
     printf("Enter an integer: ");
-    scanf("%i", &y);
+    scanf("%u", &y);
 
     asm ("adds %w0, %w2, %w3\n"
-        "cinc %w1, wzr, vs"
-        : "=r" (z), "=r" (overflow)
+        "cinc %w1, wzr, cs"
+        : "=r" (z), "=r" (carry)
         : "r" (x), "r" (y));
 
-    printf("%i + %i = %i\n", x, y, z);
-    if (overflow)
-        printf("** Overflow occurred **\n");
+    printf("%u + %u = %u\n", x, y, z);
+    if (carry)
+        printf("** Carry occurred **\n");
 
     return 0;
 }
