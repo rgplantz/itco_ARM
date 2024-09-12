@@ -1,4 +1,4 @@
-// Make an alphabetic text string uppercase.
+// Make an alphabetic text string lowercase.
         .arch armv8-a
 // Useful constant
         .equ    MAX,50                    // Character limit
@@ -12,7 +12,7 @@
 prompt:
         .string "Enter up to 50 alphabetic characters: "
 result:
-        .string "All upper: "
+        .string "All lower: "
         .text
         .align  2
         .global main
@@ -29,7 +29,7 @@ main:
 
         add     x1, sp, the_string    // Address of string
         mov     x0, x1                // Replace the string.
-        bl      to_upper              // Do conversion
+        bl      to_lower              // Do conversion
 
         adr     x0, result            // Show result
         bl      write_str
