@@ -1,6 +1,6 @@
-# Build convert_hex program
+# Build convert_hex_count program
 
-objects = convert_hex.o hex_to_int.o write_str.o read_str.o
+objects = convert_hex_count.o hex_to_int.o write_str.o read_str.o
 
 CFLAGS = -g -Wall
 CC = gcc
