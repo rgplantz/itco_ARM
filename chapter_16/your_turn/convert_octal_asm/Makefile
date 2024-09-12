@@ -1,17 +1,17 @@
-# Build convert_hex program
+# Build convert_octal program
 
-objects = convert_hex.o hex_to_int.o write_str.o read_str.o
+objects = convert_octal.o octal_to_int.o write_str.o read_str.o
 
 CFLAGS = -g -Wall
 CC = gcc
 ASFLAGS = --gstabs
 AS = as
 
-convert_hex: $(objects)
+convert_octal: $(objects)
 
 .PHONY: clean allclean
 clean:
 	rm -f $(objects)
 allclean: clean
-	rm convert_hex
+	rm convert_octal
 
