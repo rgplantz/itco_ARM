@@ -16,7 +16,7 @@ hex_to_int:
         mov     w3, wzr               // counter = 0;
 convert:
         ldrb    w4, [x1]              // Load character
-        cbz     4, done              // NUL character?
+        cbz     w4, done              // NUL character?
         and     x4, x4, INTPART       // 4-bit integer
         lsl     x2, x2, 3             // Make room for it
         orr     x2, x2, x4            // Insert new 3-bit integer
