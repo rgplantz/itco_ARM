@@ -22,7 +22,7 @@ loop:
         add     x0, x0, 1             // Increment destination pointer,
         add     x1, x1, 1             //   source pointer,
         add     w2, w2, 1             //   and counter,
-        b       convertLoop           //   and continue
+        b       loop                  //   and continue
 done:
         strb    w3, [x0]              // Terminating NUL got us here
         mov     w0, w2                // Return count
