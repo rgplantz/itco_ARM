@@ -7,11 +7,10 @@ CC = gcc
 ASFLAGS = --gstabs
 AS = as
 
-convert_hex: $(objects)
+convert_hex_count: $(objects)
 
 .PHONY: clean allclean
 clean:
 	rm -f $(objects)
 allclean: clean
-	rm convert_hex
-
+	rm convert_hex_count
