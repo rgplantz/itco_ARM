@@ -3,6 +3,6 @@
  
 #ifndef HEX_TO_INT_H
 #define HEX_TO_INT_H
-int hex_to_int(char *string_ptr, long int *int_ptr);
+int hex_to_int(int *int_ptr, char *string_ptr);
 #endif
 
