@@ -17,6 +17,6 @@ int main()
     read_str(the_string, MAX);
 
     count = hex_to_int(&the_int, the_string);
-    printf("The %i characters %lx = %li\n", count, the_int, the_int);
+    printf("The %i characters %x = %i\n", count, the_int, the_int);
     return 0;
 }
