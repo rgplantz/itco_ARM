@@ -9,9 +9,9 @@
 // Program code
         .text
         .align  2
-        .global hex_to_int
-        .type   hex_to_int, %function
-hex_to_int:
+        .global octal_to_int
+        .type   octal_to_int, %function
+octal_to_int:
         mov     x2, xzr               // result = 0;
         mov     w3, wzr               // counter = 0;
 convert:
