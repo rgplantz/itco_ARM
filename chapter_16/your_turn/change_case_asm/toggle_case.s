@@ -17,7 +17,7 @@ loop:
         ldrb    w3, [x1]              // Load character
         cbz     w3, done              // All done if NUL char
         movz    w4, TOGGLEMASK        // If not, do masking
-        xor     w3, w3, w4            // Toggle case
+        eor     w3, w3, w4            // Toggle case
         strb    w3, [x0]              // Store result
         add     x0, x0, 1             // Increment destination pointer,
         add     x1, x1, 1             //   source pointer,
