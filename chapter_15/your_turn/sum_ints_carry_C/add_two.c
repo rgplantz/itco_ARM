@@ -5,10 +5,10 @@
 unsigned int add_two(unsigned int *a, unsigned int b, unsigned int c)
 {
     unsigned int sum;
-    unsigned int carry = 0;   // Assume no overflow
+    unsigned int carry = 0;   // Assume no carry
   
     sum = b + c;
-    if ((sum < b) || (sum < c)) {
+    if ((sum < b) || (sum < c)) {   // sum wraps if carry
         carry = 1;
     }
     *a = sum;
