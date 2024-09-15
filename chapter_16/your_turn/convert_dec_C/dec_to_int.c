@@ -22,7 +22,7 @@ int dec_to_int(int *int_ptr, char *string_ptr)
     }
 
     while (*string_ptr != NUL) {
-        result = RADIX * result;
+        result = 2 * ((4 * result) + result);
         result += (int)(*string_ptr & INTMASK);
         string_ptr++;
         count++;
