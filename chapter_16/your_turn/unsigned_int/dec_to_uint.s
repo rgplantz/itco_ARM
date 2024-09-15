@@ -1,4 +1,4 @@
-// Convert decimal text string to unsigned int
+// Convert a decimal text string to unsigned int.
 // Calling sequence
 //    x0 <- place to store int
 //    x1 <- pointer to string
@@ -13,20 +13,20 @@
         .global dec_to_uint
         .type   dec_to_uint, %function
 dec_to_uint:
-        mov     w2, wzr               // count = 0;
-        mov     w3, wzr               // result = 0;
-        mov     w4, RADIX             // handy to have in reg
+        mov     w2, wzr               // count = 0
+        mov     w3, wzr               // result = 0
+        mov     w4, RADIX             // Handy to have in reg
 
 convert:
-        ldrb    w5, [x1]              // load character
+        ldrb    w5, [x1]              // Load character
         cbz     w5, done              // NUL char?
-        and     w5, w5, INTMASK       // no, mask to integer
-        mul     w3, w3, w4            // result times RADIX
-        add     w3, w3, w5            // add new integer
-        add     w2, w2, 1             // count++;
-        add     x1, x1, 1             // stringPtr++;
-        b       convert               // and continue
+        and     w5, w5, INTMASK       // No, mask to integer
+        mul     w3, w3, w4            // Result times RADIX
+        add     w3, w3, w5            // Add new integer
+        add     w2, w2, 1             // Increment count
+        add     x1, x1, 1             // Increment string pointer
+        b       convert               //    and continue
 done:
-        str     w3, [x0]              // output result
-        mov     w0, w2                // return counter
-        ret                           // back to caller
+        str     w3, [x0]              // Output result
+        mov     w0, w2                // Return counter
+        ret

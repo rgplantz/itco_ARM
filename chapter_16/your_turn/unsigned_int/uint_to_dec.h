@@ -1,4 +1,4 @@
-// Convert decimal text string to unsigned int.
+// Convert a decimal text string to unsigned int.
 
 #ifndef UINT_TO_DEC_H
 #define UINT_TO_DEC_H

@@ -1,4 +1,4 @@
-// Echos unsigned int
+// Echo an unsigned int.
 
 #include "get_uint.h"
 #include "put_uint.h"
