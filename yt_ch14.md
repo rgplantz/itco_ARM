@@ -85,155 +85,174 @@ title: Chapter 14
             mov     w0, w2                // Return sum
             ret                           // Back to caller
     ```
-2.  Program to echo characters entered on keyboard.
+4.  You will need these functions for many of the Your Turn exercises in the rest of the book.
+    ```c
+    // Writes a char to the standard output (screen).
+    // Calling sequence:
+    //       w0 <- char to be written
+    // returns 0
+
+    #ifndef WRITE_CHAR_H
+    #define WRITE_CHAR_H
+    int write_char(char);
+    #endif
+    ```
     ```asm
-    // Echo characters entered on keyboard.
-            .arch armv8-a
-    // Useful names
-            .equ    MAX, 10
-            .equ    NUL, 0
-            .equ    LF, 10          // '\n' in Linux
-            .equ    STDIN, 0
+    // Writes a char to the standard output (screen).
+    // Calling sequence:
+    //       w0 <- char to be written
+    // returns 0
+
+            .arch   armv8-a
+    // Useful constants
             .equ    STDOUT, 1
     // Stack frame
-            .equ    save1920, 16
-            .equ    the_string, 32
-            .equ    FRAME, 48 
-    // Constant data
-            .section  .rodata
-    prompt:
-            .string "Enter up to 10 characters: "
-    response:
-            .string "You entered: "
-    newline:
-            .string "\n"
-    // Code
+            .equ    a_char, 16
+            .equ    FRAME, 32 
+    // The code
             .text
             .align  2
-            .global main
-            .type   main, %function
-    main:
+            .global write_char
+            .type   write_char, %function
+    write_char:
             stp     fp, lr, [sp, -FRAME]! // Create stack frame
             mov     fp, sp                // Set our frame pointer
-            stp     x19, x20, [sp, save1920]  // Save for caller
-            adr     x19, prompt           // Address of prompt message
-    prompt_loop:
-            ldrb    w0, [x19]             // Load character
-            cmp     w0, NUL               // End of string?
-            b.eq    read_input            // Yes
-            mov     w2, 1                 // No, one char
-            mov     x1, x19               // Address of char
-            mov     x0, STDOUT            // Write on screen
-            bl      write
-            add     x19, x19, 1           // Increment pointer
-            b       prompt_loop           //   and continue
-    read_input:
-            add     x19, sp, the_string   // Address of string storage
-            mov     w20, wzr              // Zero characters stored
-    read_loop:
-            mov     w2, 1                 // One char
-            mov     x1, x19               // Place to store it
-            mov     x0, STDIN             // Read from keyboard
-            bl      read
-            ldrb    w0, [x19]             // Load character
-            cmp     w0, LF                // End of input?
-            b.eq    terminate_string      // Yes
-            cmp     w20, MAX              // No, is storage array full?
-            b.ge    read_loop             // Yes, read but don't keep
-            add     x19, x19, 1           // Increment pointer
-            add     x20, x20, 1           //     and counter
-            b       read_loop             // No, continue reading
-    terminate_string:
-            mov     w0, NUL               // Yes, string termination char
-            strb    w0, [x19]             // Terminate the string
+            strb    w0, [sp, a_char]      // Store input char
 
-            adr     x19, response         // Address of response message
-    response_loop:
-            ldrb    w0, [x19]             // Load character
-            cmp     w0, NUL               // End of string?
-            b.eq    echo                  // Yes
-            mov     w2, 1                 // No, one char
-            mov     x1, x19               // Address of char
-            mov     x0, STDOUT            // Write on screen
+            mov     w2, 1                 // Write 1 byte
+            add     x1, sp, a_char        // Address of char
+            mov     w0, STDOUT            // Write to screen
             bl      write
-            add     x19, x19, 1           // Increment pointer
-            b       response_loop         //   and continue
-    echo:
-            add     x19, sp, the_string   // Get beginning of string storage
-    echo_loop:
-            ldrb    w0, [x19]             // Load character
-            cmp     w0, NUL               // End of string?
-            b.eq    done                  // Yes
-            mov     w2, 1                 // No, one char
-            mov     x1, x19               // Address of char
-            mov     x0, STDOUT            // Write on screen
-            bl      write
-            add     x19, x19, 1           // Increment pointer
-            b       echo_loop             //   and continue
-    done:
-            mov     w2, 1                 // One char
-            adr     x1, newline           // Address of newline char
-            mov     x0, STDOUT            // Write on screen
-            bl      write
+
             mov     w0, wzr               // Return 0
+            ldp     fp, lr, [sp], FRAME   // Delete stack frame
+            ret
+    ```
+
+    ```c
+    // Writes a C-style text string to the standard output (screen).
+    // Calling sequence:
+    //       x0 <- address of string to be written
+    // returns number of characters written
+
+    #ifndef WRITE_STR_H
+    #define WRITE_STR_H
+    int write_str(char *);
+    #endif
+    ```
+
+    ```asm
+    // Writes a C-style text string to the standard output (screen).
+    // Calling sequence:
+    //       x0 <- address of string to be written
+    // returns number of characters written
+
+            .arch   armv8-a
+    // Useful constants
+            .equ    STDOUT, 1
+            .equ    NUL, 0
+    // Stack frame
+            .equ    save1920, 16
+            .equ    FRAME, 32 
+    // The code
+            .text
+            .align  2
+            .global write_str
+            .type   write_str, %function
+    write_str:
+            stp     fp, lr, [sp, -FRAME]! // Create stack frame
+            mov     fp, sp                // Set our frame pointer
+            stp     x19, x20, [sp, save1920]  // Save regs
+            mov     x19, x0               // Address of string
+            mov     w20, wzr              // count = 0
+    while:
+            ldrb    w0, [x19]             // Get a char
+            cmp     w0, NUL               // End of string?
+            b.eq     done                 // Yes, all done
+
+            mov     w2, 1                 // No, write 1 byte
+            mov     x1, x19               // Address of current char
+            mov     w0, STDOUT            // Write to screen
+            bl      write
+
+            add     x19, x19, 1           // Increment pointer var
+            add     w20, w20, 1           // count++
+            b       while                 // Back to top
+    done:
+            mov     w0, w20               // Return count
             ldp     x19, x20, [sp, save1920]  // Restore regs
             ldp     fp, lr, [sp], FRAME   // Delete stack frame
             ret
     ```
-3.  Top and bottom fourths are heads.
+
+    ```c
+    // Reads a line (through the '\n') from standard input. Does not
+    // stores '\n' and any characters beyond maximum. Appends NUL at
+    // end of stored characters. Allow maximum + 1 for character storage.
+    // Calling sequence:
+    //        x0 <- address of place to store string
+    //        w1 <- maximum characters to store
+    // returns number of characters read
+
+    #ifndef READ_STR_H
+    #define READ_STR_H
+    int read_str(char *, int);
+    #endif
+    ```
     ```asm
-    // Flip a coin, showing heads or tails.
-            .arch armv8-a
-    // Useful names
-            .equ    N_TIMES, 10           // Number of flips
-            .equ    RAND_BOTTOM, 536870911  // RAND_MAX/4
-            .equ    RAND_TOP, 1610612733  // 3*RAND_MAX/4
+    // Reads a line (through the '\n') from standard input. Does not
+    // stores '\n' and any characters beyond maximum. Appends NUL at
+    // end of stored characters. Allow maximum + 1 for character storage.
+    // Calling sequence:
+    //        x0 <- address of place to store string
+    //        w1 <- maximum characters to store
+    // returns number of characters read
+
+            .arch   armv8-a
+    // Useful constants
+            .equ    STDIN, 0
+            .equ    NUL, 0
+            .equ    LF, 10          // '\n' in Linux
     // Stack frame
-            .equ    save19, 28
-            .equ    FRAME, 32
-    // Constant data
-            .section  .rodata
-    heads_msg:
-            .string "heads"
-    tails_msg:
-            .string "tails"
-    // Code
+            .equ    save1920, 16
+            .equ    save21, 32
+            .equ    FRAME, 48 
+    // The code
             .text
             .align  2
-            .global main
-            .type   main, %function
-    main:
+            .global read_str
+            .type   read_str, %function
+    read_str:
             stp     fp, lr, [sp, -FRAME]! // Create stack frame
             mov     fp, sp                // Set our frame pointer
-            str     w19, [sp, save19]     // Save for i local var
-            mov     w19, wzr              // i = 0
-    loop:
-            mov     w0, N_TIMES           // Total number of times
-            cmp     w19, w0               // Is i at end?
-            b.hs    done                  // Yes
-            bl      random                // No, get random number
-            mov     w1, RAND_TOP & 0xffff           // Top fourth; needs
-            movk    w1, RAND_TOP / 0x10000, lsl 16   //    two instructions
-            cmp     w1, w0                // Above or below?
-            b.lo    heads                 // Above -> heads
-            mov     w1, RAND_BOTTOM & 0xffff          // Bottom fourth; needs
-            movk    w1, RAND_BOTTOM / 0x10000, lsl 16  //    two instructions
-            cmp     w1, w0                // Above or below?
-            b.hi    heads                 // Below -> heads
-            adr     x0, tails_msg         // Middle -> tails
-            bl      puts                  // Print message
-            b       continue              // Skip else part
-    heads:
-            adr     x0, heads_msg         // Heads message address
-            bl      puts                  // Print message
-    continue:
-            add     w19, w19, 1           // Increment i
-            b       loop                  //   and continue loop
-    done:
-            mov     w0, wzr               // Return 0
-            ldr     w19, [sp, save19]     // Restore reg
+            stp     x19, x20, [sp, save1920]  // Save regs
+            str     x21, [sp, save21]
+            mov     x19, x0               // Address of string
+            mov     w20, wzr              // count = 0
+            mov     w21, w1               // Max chars
+
+    read_loop:
+            mov     w2, 1                 // Read 1 byte
+            mov     x1, x19               // Place to store current char
+            mov     w0, STDIN             // Read from keyboard
+            bl      read
+
+            ldrb    w0, [x19]             // Get just read char
+            cmp     w0, LF                // return key?
+            b.eq    end_input             // Yes, end of input
+            cmp     w20, w21              // No, is caller's array full?
+            b.ge    read_loop             // Yes, read but don't keep
+            add     x19, x19, 1           // no, next byte
+            add     w20, w20, 1           // count++
+            b       read_loop             // Back to reading
+    end_input:
+            mov     w0, NUL               // String terminator
+            strb    wzr, [x19]            // Replace LF
+            mov     w0, w20               // Return count
+            ldr     w21, [sp, save21]     // Restore regs
+            ldp     x19, x20, [sp, save1920]
             ldp     fp, lr, [sp], FRAME   // Delete stack frame
-            ret                           // Back to caller
+            ret
     ```
 4.  The assembly language shows that the `b` to the default case at the end of cases 1, 2, and 3 is removed when the `break;` C statement is deleted. The switch is entered at the same point in the list of statements but all the subsequent statements are also executed:
     ```asm
