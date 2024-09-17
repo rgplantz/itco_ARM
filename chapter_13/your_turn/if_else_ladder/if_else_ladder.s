@@ -1,4 +1,4 @@
-// Three-way selection
+// Select one of three or default.
         .arch armv8-a
 // Useful names
         .equ    NTIMES, 10            // number of loops
