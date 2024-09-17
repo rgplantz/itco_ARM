@@ -254,145 +254,134 @@ title: Chapter 14
             ldp     fp, lr, [sp], FRAME   // Delete stack frame
             ret
     ```
-4.  The assembly language shows that the `b` to the default case at the end of cases 1, 2, and 3 is removed when the `break;` C statement is deleted. The switch is entered at the same point in the list of statements but all the subsequent statements are also executed:
+5.  Count times called
     ```asm
-    $ ./switch_nb 
-    i = 1
-    i = 2
-    i = 3
-    i > 3
-    i = 2
-    i = 3
-    i > 3
-    i = 3
-    i > 3
-    i > 3
-    i > 3
-    i > 3
-    i > 3
-    i > 3
-    i > 3
-    i > 3
-    ```
-5.  `if` statements.
-    ```
-    // Select one of three or default.
+    // Compare scope and lifetime of automatic, static,
+    // and global variables.
             .arch armv8-a
     // Useful names
-            .equ    NTIMES, 10            // number of loops
+            .equ    INIT_X, 12
+            .equ    INIT_Y, 34
+            .equ    INIT_Z, 56
     // Stack frame
-            .equ    save19, 16
+            .equ    x, 24
+            .equ    y, 28
             .equ    FRAME, 32
-    // Constant data
-            .section        .rodata
-    one_msg:
-            .string "i = 1"
-    two_msg:
-            .string "i = 2"
-    three_msg:
-            .string "i = 3"
-    over_msg:
-            .string "i > 3"
-    // Program code
+    // Code
+            .global z
+            .data
+            .align  2
+            .type   z, %object
+            .size   z, 4
+    z:
+            .word   INIT_Z
+            .section  .rodata
+    heading0:
+            .string "           automatic   static   global"
+    heading1:
+            .string "                   x        y        z"
+    msg:
+            .string "In main:%12i %8i %8i\n"
             .text
             .align  2
             .global main
             .type   main, %function
     main:
-            stp     fp, lr, [sp, -FRAME]! // Create stack frame
-            mov     fp, sp                // Set our frame pointer
-            str     x19, [sp, save19]     // Save reg
-            mov     w19, 1                // i = 1
-    loop:
-            cmp     x19, NTIMES           // Is i at end?
-            b.hi    all_done              // Yes, leave loop
-            cmp     w19, 1                // One?
-            b.ne    two                   // No
-            adr     x0, one_msg           // Yes, tell user
+            stp     fp, lr, [sp, -FRAME]!   // create our stack frame
+            mov     fp, sp                  // set our frame pointer
+
+            mov     w0, INIT_X
+            str     w0, [sp, x]             // x = INIT_X;
+            mov     w0, INIT_Y
+            str     w0, [sp, y]             // y = INIT_Y;
+            adr     x0, heading0            // print 2-line header
             bl      puts
-    two:
-            cmp     w19, 2                // Two?
-            b.ne    three                 // No
-            adr     x0, two_msg           // Yes
+            adr     x0, heading1
             bl      puts
-    three:
-            cmp     w19, 3                // Three?
-            b.ne    over                  // No
-            adr     x0, three_msg         // Yes
-            bl      puts
-    over:
-            cmp     w19, 3                // Less than 3?
-            b.le    less                  // Yes
-            adr     x0, over_msg
-            bl      puts
-    less:
-            add     w19, w19, 1           // i++
-            b       loop                  // And continue loop
-    all_done:
-            mov     w0, wzr               // Return 0
-            ldr     x21, [sp, save19]     // Restore reg
-            ldp     fp, lr, [sp], FRAME   // Delete stack frame
-            ret
-    ```asm
+
+            adr     x0, z 
+            ldr     w3, [x0]                // global z
+            ldr     w2, [sp, y]             // local y
+            ldr     w1, [sp, x]             // and local x
+            adr     x0, msg                 // show values
+            bl      printf
+
+            bl      add_const               // add constants
+            bl      add_const               //     twice
+
+            adr     x0, z                   // repeat display
+            ldr     w3, [x0]
+            ldr     w2, [sp, y]
+            ldr     w1, [sp, x]
+            adr     x0, msg
+            bl      printf
+
+            mov     w0, wzr                 // return 0
+            ldp     fp, lr, [sp], FRAME     // restore fp, lr, sp
+            ret                             // back to caller
     ```
-6.  `if-else` ladder.
+
     ```asm
-    // Select one of three or default.
+    // Add constant to automatic, static, global variables.
             .arch armv8-a
     // Useful names
-            .equ    NTIMES, 10            // number of loops
+            .equ    INIT_X, 78
+            .equ    INIT_Y, 90
+            .equ    ADDITION, 1000
     // Stack frame
-            .equ    save19, 16
+            .equ    x, 28
             .equ    FRAME, 32
-    // Constant data
-            .section        .rodata
-    one_msg:
-            .string "i = 1"
-    two_msg:
-            .string "i = 2"
-    three_msg:
-            .string "i = 3"
-    over_msg:
-            .string "i > 3"
-    // Program code
+    // Code
+            .data
+            .align  2
+            .type   y, %object
+            .size   y, 4
+    y:
+            .word   INIT_Y
+            .align  2
+            .type   count, %object
+            .size   count, 4
+    count:
+            .word   0
+            .section  .rodata
+    msg:
+            .string "In add_const:%7i %8i %8i, call number %i\n"
             .text
             .align  2
-            .global main
-            .type   main, %function
-    main:
-            stp     fp, lr, [sp, -FRAME]! // Create stack frame
-            mov     fp, sp                // Set our frame pointer
-            str     x19, [sp, save19]     // Save reg
-            mov     w19, 1                // i = 1
-    loop:
-            cmp     x19, NTIMES           // Is i at end?
-            b.hi    all_done              // Yes, leave loop
-            cmp     w19, 1                // One?
-            b.ne    two                   // No
-            adr     x0, one_msg           // Yes, tell user
-            bl      puts
-            b       continue
-    two:
-            cmp     w19, 2                // Two?
-            b.ne    three                 // No
-            adr     x0, two_msg           // Yes
-            bl      puts
-            b       continue
-    three:
-            cmp     w19, 3                // Three?
-            b.ne    over                  // No
-            adr     x0, three_msg         // Yes
-            bl      puts
-            b       continue
-    over:
-            adr     x0, over_msg
-            bl      puts
-    continue:
-            add     w19, w19, 1           // i++
-            b       loop                  // And continue loop
-    all_done:
-            mov     w0, wzr               // Return 0
-            ldr     x21, [sp, save19]     // Restore reg
-            ldp     fp, lr, [sp], FRAME   // Delete stack frame
+            .global add_const
+            .type   add_const, %function
+    add_const:
+            stp     fp, lr, [sp, -FRAME]!   // Create stack frame
+            mov     fp, sp                  // Set frame pointer
+
+            mov     w0, INIT_X
+            add     w0, w0, ADDITION        // Add constant
+            str     w0, [sp, x]             // x += ADDITION
+            adr     x0, y
+            ldr     w1, [x0]                // Load our y
+            add     w1, w1, ADDITION        // Add constant
+            str     w1, [x0]                // y += ADDITION    
+            adrp    x0, :got:z              // z page number
+            ldr     x0, [x0, :got_lo12:z]   // z address
+            ldr     w1, [x0]                // load z
+            add     w1, w1, ADDITION        // add constant
+            str     w1, [x0]                // z += ADDITION;
+
+            adr     x0, count
+            ldr     w4, [x0]                // Load our count
+            add     w4, w4, 1               // Increment
+            str     w4, [x0]    
+            adrp    x0, :got:z              // z page number
+            ldr     x0, [x0, :got_lo12:z]   // z address
+            ldr     w3, [x0]                // load z
+            adr     x0, y
+            ldr     w2, [x0]                // Load our y
+            ldr     w1, [sp, x]             // load our x
+            adr     x0, msg                 // message
+            bl      printf
+
+            mov     w0, wzr                 // Return 0
+            ldp     fp, lr, [sp], FRAME     // Delete stack frame
             ret
     ```
+6.  The name decoration of the static variable, `y`, is the same for both functions, `y.0`. This label is local to the file for each function, and the assembler figures out the offset to the label in each file.
