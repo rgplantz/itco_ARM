@@ -187,3 +187,6 @@ title: Chapter 13
             ldp     fp, lr, [sp], FRAME   // Delete stack frame
             ret                           // Back to caller
     ```
+4.  Top and bottom fourths are heads.
+    ```asm
+    ```
