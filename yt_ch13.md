@@ -187,6 +187,23 @@ title: Chapter 13
             ldp     fp, lr, [sp], FRAME   // Delete stack frame
             ret                           // Back to caller
     ```
-4.  Top and bottom fourths are heads.
+4.  The assembly language shows that the `b` to the default case at the end of cases 1, 2, and 3 is removed when the `break;` C statement is deleted. The switch is entered at the same point in the list of statements but all the subsequent statements are also executed:
     ```asm
+    $ ./switch_nb 
+    i = 1
+    i = 2
+    i = 3
+    i > 3
+    i = 2
+    i = 3
+    i > 3
+    i = 3
+    i > 3
+    i > 3
+    i > 3
+    i > 3
+    i > 3
+    i > 3
+    i > 3
+    i > 3
     ```
