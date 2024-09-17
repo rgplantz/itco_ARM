@@ -384,4 +384,4 @@ title: Chapter 14
             ldp     fp, lr, [sp], FRAME     // Delete stack frame
             ret
     ```
-6.  The name decoration of the static variable, `y`, is the same for both functions, `y.0`. This label is local to the file for each function, and the assembler figures out the offset to the label in each file.
+6.  The name decoration of the static variable, `y`, is the same for both functions, `y.0`. This label is local to the file for each function, and the assembler figures out the offset to the label when it assembles each file independently from the other files in the program.
