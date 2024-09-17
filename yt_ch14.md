@@ -5,37 +5,85 @@ title: Chapter 14
 
 ## Chapter 14
 
-1.  The compiler generates the same assembly language for the `while` and `for` loops. The difference is only in the C syntax. Both the `while` and `for` loops branch to the bottom of the loop body, where the loop termination condition is tested before branching to the top of the loop body:
+3.  Sum integers
     ```
-            b	     .L2
-    .L3:
-            mov	    x2, 1
-            ldr	    x1, [sp, 24]
-            mov	    w0, 1
-            bl	    write
-            ldr	    x0, [sp, 24]
-            add	    x0, x0, 1
-            str	    x0, [sp, 24]
-    .L2:
-            ldr	    x0, [sp, 24]
-            ldrb	  w0, [x0]
-            cmp	    w0, 0
-            bne	    .L3
+    // Sum the integers between two entered by user.
+            .arch armv8-a
+    // Stack frame
+            .equ    x, 16
+            .equ    y, 20
+            .equ    FRAME, 32
+    // Constant data
+            .section  .rodata
+            .align  3
+    prompt:
+            .string "Enter an integer: "
+    in_format:
+            .string "%i"
+    out_format:
+            .string "The sum is %i\n"
+            .text
+            .align  2
+            .global main
+            .type   main, %function
+    main:
+            sub     sp, sp, FRAME   // Allocate our stack frame
+            stp     fp, lr, [sp]    // Create stack frame
+            mov     fp, sp          // Set our frame pointer
+
+            adr     x0, prompt      // Ask for integer 
+            bl      printf
+            add     x1, sp, x       // Place for first int
+            adr     x0, in_format   // scanf format string
+            bl      scanf           // Get the int
+
+            adr     x0, prompt      // Ask for integer 
+            bl      printf
+            add     x1, sp, y       // Place for second int
+            adr     x0, in_format   // scanf format string
+            bl      scanf           // Get the int
+
+            ldr     w0, [sp, x]
+            ldr     w1, [sp, y]
+            bl      add_ints        // Add them
+            mov     w1, w0
+            adr     x0, out_format
+            bl      printf
+
+            mov     w0, wzr         // Return 0
+            ldp     fp, lr, [sp]    // Restore fp and lr
+            add     sp, sp, FRAME   // Delete stack frame
+            ret                     // Back to caller
     ```
-    The `do-while` loop executes the loop body before testing the loop termination condition:
+
     ```
-    .L2:
-            mov	    x2, 1
-            ldr	    x1, [sp, 24]
-            mov	    w0, 1
-            bl	    write
-            ldr	    x0, [sp, 24]
-            add	    x0, x0, 1
-            str	    x0, [sp, 24]
-            ldr	    x0, [sp, 24]
-            ldrb	  w0, [x0]
-            cmp	    w0, 0
-            bne	    .L2
+    // Add all integers between two integers and return the sum.
+    // Calling sequence:
+    //    w0 <- one integer
+    //    w1 <- another integer
+    //    Returns sum
+            .arch armv8-a
+            .text
+            .align  2
+            .global add_ints
+            .type   add_ints, %function
+    add_ints:
+            cmp     w0, w1                // Check for lower
+            b.lo    in_order
+            mov     w2, w0                // Out of order, swap
+            mov     w0, w1
+            mov     w1, w2
+    in_order:
+            mov     w2, w0                // Accumulate sum in w2
+    loop:
+            cmp     w0, w1                // Added all of them?
+            b.hs    done                  // Yes
+            add     w0, w0, 1             // Next int
+            add     w2, w2, w0            // Add to accmulator
+            b       loop                  // And keep adding
+    done:
+            mov     w0, w2                // Return sum
+            ret                           // Back to caller
     ```
 2.  Program to echo characters entered on keyboard.
     ```asm
