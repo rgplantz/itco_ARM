@@ -5,6 +5,8 @@ title: Chapter 14
 
 ## Chapter 14
 
+1.  No answer required.
+2.  No answer required.
 3.  Sum integers
     ```
     // Sum the integers between two entered by user.
