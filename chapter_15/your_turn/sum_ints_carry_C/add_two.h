@@ -1,4 +1,4 @@
-// Add two iunsigned ntegers and return 1 for carry, 0 for no carry.
+// Add two unsigned integers and return 1 for carry, 0 for no carry.
 
 #ifndef ADD_TWO_H
 #define ADD_TWO_H
