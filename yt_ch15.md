@@ -1,93 +1,61 @@
 ---
 layout: default
-title: Chapter 14
+title: Chapter 15
 ---
 
-## Chapter 14
+## Chapter 15
 
 1.  No answer required.
-2.  No answer required.
-3.  Sum integers
+2.  Sum integers
+    ```c
+    // Add two unsigned integers and show if there is carry.
+    #include <stdio.h>
+    #include "add_two.h"
+
+    int main(void)
+    {
+        unsigned int x, y, z, carry;
+      
+        printf("Enter an integer: ");
+        scanf("%u", &x);
+        printf("Enter an integer: ");
+        scanf("%u", &y);
+        carry = add_two(&z, x, y);
+        printf("%u + %u = %u\n", x, y, z);
+        if (carry)
+            printf("** Carry occurred **\n");
+
+        return 0;
+    }
     ```
-    // Sum the integers between two entered by user.
-            .arch armv8-a
-    // Stack frame
-            .equ    x, 16
-            .equ    y, 20
-            .equ    FRAME, 32
-    // Constant data
-            .section  .rodata
-            .align  3
-    prompt:
-            .string "Enter an integer: "
-    in_format:
-            .string "%i"
-    out_format:
-            .string "The sum is %i\n"
-            .text
-            .align  2
-            .global main
-            .type   main, %function
-    main:
-            sub     sp, sp, FRAME   // Allocate our stack frame
-            stp     fp, lr, [sp]    // Create stack frame
-            mov     fp, sp          // Set our frame pointer
-
-            adr     x0, prompt      // Ask for integer 
-            bl      printf
-            add     x1, sp, x       // Place for first int
-            adr     x0, in_format   // scanf format string
-            bl      scanf           // Get the int
-
-            adr     x0, prompt      // Ask for integer 
-            bl      printf
-            add     x1, sp, y       // Place for second int
-            adr     x0, in_format   // scanf format string
-            bl      scanf           // Get the int
-
-            ldr     w0, [sp, x]
-            ldr     w1, [sp, y]
-            bl      add_ints        // Add them
-            mov     w1, w0
-            adr     x0, out_format
-            bl      printf
-
-            mov     w0, wzr         // Return 0
-            ldp     fp, lr, [sp]    // Restore fp and lr
-            add     sp, sp, FRAME   // Delete stack frame
-            ret                     // Back to caller
     ```
+    // Add two iunsigned ntegers and return 1 for carry, 0 for no carry.
 
+    #ifndef ADD_TWO_H
+    #define ADD_TWO_H
+    unsigned int add_two(unsigned int *a, unsigned int b, unsigned int c);
+    #endif
     ```
-    // Add all integers between two integers and return the sum.
-    // Calling sequence:
-    //    w0 <- one integer
-    //    w1 <- another integer
-    //    Returns sum
-            .arch armv8-a
-            .text
-            .align  2
-            .global add_ints
-            .type   add_ints, %function
-    add_ints:
-            cmp     w0, w1                // Check for lower
-            b.lo    in_order
-            mov     w2, w0                // Out of order, swap
-            mov     w0, w1
-            mov     w1, w2
-    in_order:
-            mov     w2, w0                // Accumulate sum in w2
-    loop:
-            cmp     w0, w1                // Added all of them?
-            b.hs    done                  // Yes
-            add     w0, w0, 1             // Next int
-            add     w2, w2, w0            // Add to accmulator
-            b       loop                  // And keep adding
-    done:
-            mov     w0, w2                // Return sum
-            ret                           // Back to caller
     ```
-4.  You will need these functions for many of the Your Turn exercises in the rest of the book.
+    // Add two unsigned integers and return 1 for carry, 0 for no carry.
+
+    #include "add_two.h"
+
+    unsigned int add_two(unsigned int *a, unsigned int b, unsigned int c)
+    {
+        unsigned int sum;
+        unsigned int carry = 0;   // Assume no carry
+      
+        sum = b + c;
+        if ((sum < b) || (sum < c)) {   // sum wraps if carry
+            carry = 1;
+        }
+        *a = sum;
+
+        return carry;
+    }
+    ```
+3.  You will need these functions for many of the Your Turn exercises in the rest of the book.
     ```c
     // Writes a char to the standard output (screen).
     // Calling sequence:
@@ -256,7 +224,7 @@ title: Chapter 14
             ldp     fp, lr, [sp], FRAME   // Delete stack frame
             ret
     ```
-5.  Count times called
+4.  Count times called
     ```asm
     // Compare scope and lifetime of automatic, static,
     // and global variables.
@@ -386,4 +354,4 @@ title: Chapter 14
             ldp     fp, lr, [sp], FRAME     // Delete stack frame
             ret
     ```
-6.  The name decoration of the static variable, `y`, is the same for both functions, `y.0`. This label is local to the file for each function, and the assembler figures out the offset to the label when it assembles each file independently from the other files in the program.
+5.  The name decoration of the static variable, `y`, is the same for both functions, `y.0`. This label is local to the file for each function, and the assembler figures out the offset to the label when it assembles each file independently from the other files in the program.
