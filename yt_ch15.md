@@ -82,4 +82,31 @@ title: Chapter 15
         return 0;
     }
     ```
-5.  The name decoration of the static variable, `y`, is the same for both functions, `y.0`. This label is local to the file for each function, and the assembler figures out the offset to the label when it assembles each file independently from the other files in the program.
+4.  Registers for variables.
+    ```
+    // Add two integers and show if there is overflow.
+
+    #include <stdio.h>
+
+    int main(void)
+    {
+        int x, y;
+        register int z, overflow;
+      
+        printf("Enter an integer: ");
+        scanf("%i", &x);
+        printf("Enter an integer: ");
+        scanf("%i", &y);
+
+        asm ("adds %w0, %w2, %w3\n"
+            "cinc %w1, wzr, vs"
+            : "=r" (z), "=r" (overflow)
+            : "r" (x), "r" (y));
+
+        printf("%i + %i = %i\n", x, y, z);
+        if (overflow)
+            printf("** Overflow occurred **\n");
+
+        return 0;
+    }
+    ```
