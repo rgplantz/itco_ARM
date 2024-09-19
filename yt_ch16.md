@@ -82,33 +82,83 @@ title: Chapter 16
             mov     w0, w2                // Return count
             ret                           // Back to caller
     ```
-2.  Inline assembly to detect carry.
-    ```c
-    // Add two integers and show if there is carry.
+2.  Change case.
+    ```asm
+    // Make an alphabetic text string opposite case.
+            .arch armv8-a
+    // Useful constant
+            .equ    MAX,50                    // Character limit
+    // Stack frame
+            .equ    the_string, 16
+            .equ    FRAME, 80                 // Allows >51 bytes
+    // Code
+            .text
+            .section  .rodata
+            .align  3
+    prompt:
+            .string "Enter up to 50 alphabetic characters: "
+    result:
+            .string "Opposite case: "
+            .text
+            .align  2
+            .global main
+            .type   main, %function
+    main:
+            stp     fp, lr, [sp, -FRAME]! // Create stack frame
+            mov     fp, sp                // Set our frame pointer
+            adr     x0, prompt            // Prompt message
+            bl      write_str             // Ask for input
 
-    #include <stdio.h>
+            add     x0, sp, the_string    // Place to store string
+            mov     w1, MAX               // Limit number of input chars
+            bl      read_str              // Get from keyboard
 
-    int main(void)
-    {
-        unsigned int x, y, z, carry;
-      
-        printf("Enter an integer: ");
-        scanf("%u", &x);
-        printf("Enter an integer: ");
-        scanf("%u", &y);
+            add     x1, sp, the_string    // Address of string
+            mov     x0, x1                // Replace the string.
+            bl      toggle_case           // Do conversion
 
-        asm ("adds %w0, %w2, %w3\n"
-            "cinc %w1, wzr, cs"
-            : "=r" (z), "=r" (carry)
-            : "r" (x), "r" (y));
+            adr     x0, result            // Show result
+            bl      write_str
+            add     x0, sp, the_string    // Converted string
+            bl      write_str
+            mov     w0, '\n'              // Nice formatting
+            bl      write_char
 
-        printf("%u + %u = %u\n", x, y, z);
-        if (carry)
-            printf("** Carry occurred **\n");
-
-        return 0;
-    }
+            mov     w0, 0                 // Return 0
+            ldp     x29, x30, [sp], FRAME // Delete stack frame
+            ret
     ```
+    ```asm
+    // Toggle case of alphabetic letters in a C string.
+    // Calling sequence
+    //    x0 <- pointer to result
+    //    x1 <- pointer to string to convert
+    //    Return number of characters converted.
+            .arch armv8-a
+    // Useful constant
+            .equ    TOGGLEMASK, 0x20
+    // Program code
+            .text
+            .align  2
+            .global toggle_case
+            .type   toggle_case, %function
+    toggle_case:
+            mov     w2, wzr               // counter = 0
+    loop:
+            ldrb    w3, [x1]              // Load character
+            cbz     w3, done              // All done if NUL char
+            movz    w4, TOGGLEMASK        // If not, do masking
+            eor     w3, w3, w4            // Toggle case
+            strb    w3, [x0]              // Store result
+            add     x0, x0, 1             // Increment destination pointer,
+            add     x1, x1, 1             //   source pointer,
+            add     w2, w2, 1             //   and counter,
+            b       loop                  //   and continue
+    done:
+            strb    w3, [x0]              // Terminating NUL got us here
+            mov     w0, w2                // Return count
+            ret                           // Back to caller
+        ```
 3.  Registers for variables.
     ```
     // Add two integers and show if there is overflow.
