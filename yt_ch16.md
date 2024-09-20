@@ -187,3 +187,24 @@ title: Chapter 16
         return 0;
     }
     ```
+4.  Number of hex characters converted.
+    ```
+    ```
+5.  Convert octal to int.
+    ```
+    ```
+6.  Unsigned decimal string to unsigned int.
+    ```
+    ```
+7.  Multiplication algorithms comparison.
+    ```
+    ```
+8.  put_int and get_int functions.
+    ```
+    ```
+9.  put_uint and get_uint functions.
+    ```
+    ```
+10. Sum, difference, product, quotient, and remainder of two ints.
+    ```
+    ```
