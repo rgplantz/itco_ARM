@@ -158,7 +158,7 @@ title: Chapter 16
             strb    w3, [x0]              // Terminating NUL got us here
             mov     w0, w2                // Return count
             ret                           // Back to caller
-        ```
+    ```
 3.  Registers for variables.
     ```
     // Add two integers and show if there is overflow.
