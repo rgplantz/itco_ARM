@@ -290,7 +290,155 @@ title: Chapter 16
             ret                           // Back to caller
     ```
 6.  Unsigned decimal string to unsigned int.
+    ```c
+    // Echo an unsigned int.
+
+    #include "get_uint.h"
+    #include "put_uint.h"
+    #include "write_str.h"
+    #include "write_char.h"
+
+    int main(void)
+    {
+        int x;
+
+        write_str("Enter unsigned integer: ");
+        x = get_uint();
+        write_str("You entered: ");
+        put_uint(x);
+        write_char('\n');
+        
+        return 0;
+    }
     ```
+    ```c
+    // Read a decimal integer from keyboard and convert to an unsigned int.
+
+    #ifndef GET_UINT_H
+    #define GET_UINT_H
+    unsigned int get_uint(void);
+    #endif
+    ```
+    ```asm
+    // Read a decimal integer from keyboard and convert to an unsigned int.
+    // Calling sequence
+    //    returns the int
+            .arch armv8-a
+    // Useful constants
+            .equ    MAX, 10               // Maximum digits
+    // Stack frame
+            .equ    an_int, 16
+            .equ    a_string, 20
+            .equ    FRAME, 32
+    // Code
+            .text
+            .align  2
+            .global get_uint
+            .type   get_uint, %function
+    get_uint:
+            stp     fp, lr, [sp, -FRAME]! // Create stack frame
+            mov     fp, sp                // Our frame pointer
+
+            mov     w1, MAX
+            add     x0, sp, a_string      // Place to store input string
+            bl      read_str
+
+            add     x1, sp, a_string      // Address of input
+            add     x0, sp, an_int        // Place for output
+            bl      dec_to_uint           // Convert as unsigned int
+
+            ldr     w0, [sp, an_int]      // Return the int
+            ldp     x29, x30, [sp], FRAME // Delete stack frame
+            ret
+    ```
+    ```c
+    // Display an int on screen.
+
+    #ifndef PUT_UINT_H
+    #define PUT_UINT_H
+    int put_uint(unsigned int);
+    #endif
+    ```
+    ```asm
+    // Display an unsigned int on screen.
+            .arch armv8-a
+    // Calling sequence
+    //    w0 <- the int
+    //    returns 0
+    // Useful constants
+            .equ    MAX, 11               // Maximum digits
+    // Stack frame
+            .equ    an_int, 16
+            .equ    a_string, 20
+            .equ    FRAME, 32
+    // Code
+            .text
+            .align  2
+            .global put_uint
+            .type   put_uint, %function
+    put_uint:
+            stp     fp, lr, [sp, -FRAME]! // Create stack frame
+            mov     fp, sp                // Our frame pointer
+
+            mov     w1, w0                // Input
+            add     x0, sp, a_string      // Place for output string
+            bl      uint_to_dec           // Convert to text string
+
+            add     x0, sp, a_string      // Display the int
+            bl      write_str
+
+            mov     w0, 0                 // Return 0
+            ldp     x29, x30, [sp], FRAME // Delete stack frame
+            ret
+    ```
+    ```asm
+    // Convert a decimal text string to unsigned int.
+    // string representation.
+    // Calling sequence
+    //    x0 <- place to store string
+    //    w1 <- the int
+    //    returns number of characters in string
+            .arch armv8-a
+    // Useful constants
+            .equ    RADIX, 10             // number base
+            .equ    INT2CHAR, 0x30        // ascii zero
+    // Stack frame
+    // Stack frame
+            .equ    reverse, 0
+            .equ    FRAME, 16
+    // Code
+            .text
+            .align  2
+            .global uint_to_dec
+            .type   uint_to_dec, %function
+    uint_to_dec:
+            sub     sp, sp, FRAME         // Local string on stack
+
+            add     x3, sp, reverse       // Pointer to local string storage
+            strb    wzr, [x3]             // Create end with NUL
+            mov     w2, RADIX             // Put in register
+    do_while:
+            add     x3, x3, 1             // Increment local pointer
+            udiv    w4, w1, w2            // Compute quotient
+            msub    w5, w4, w2, w1        // remainder = quotient - RADIX * quotient
+            orr     w5, w5, INT2CHAR      // Convert to ascii
+            strb    w5, [x3]              // Store character
+            mov     w1, w4                // Remove remainder
+            cbnz    w1, do_while          // Continue if more left
+
+            mov     w6, wzr               // count = 0
+    copy:
+            ldrb    w5, [x3]              // Load character
+            strb    w5, [x0]              //    and store it
+            add     x0, x0, 1             // Increment to pointer
+            sub     x3, x3, 1             // Decrement from pointer
+            add     w6, w6, 1             // Increment counter
+            cbnz    w5, copy              // Continue until NUL char
+            strb    w5, [x0]              // Store NUL character
+
+            mov     w0, w6                // Return count;
+            add     sp, sp, FRAME         // Restore sp
+            ret
     ```
 7.  Multiplication algorithms comparison.
     ```
