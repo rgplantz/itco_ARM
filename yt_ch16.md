@@ -51,7 +51,7 @@ title: Chapter 16
             ldp     x29, x30, [sp], FRAME // Delete stack frame
             ret
     ```
-    ```
+    ```asm
     // Convert alphabetic letters in a C string to lowercase.
     // Calling sequence
     //    x0 <- pointer to result
@@ -160,7 +160,7 @@ title: Chapter 16
             ret                           // Back to caller
     ```
 3.  Registers for variables.
-    ```
+    ```c
     // Add two integers and show if there is overflow.
 
     #include <stdio.h>
@@ -188,7 +188,7 @@ title: Chapter 16
     }
     ```
 4.  Number of hex characters converted.
-    ```
+    ```c
     // Gets hex number from user and stores it as int.
 
     #include <stdio.h>
@@ -213,7 +213,81 @@ title: Chapter 16
     }
     ```
 5.  Convert octal to int.
+    ```asm
+    // Get an ocatal number from the user and store it as a long int.
+            .arch armv8-a
+    // Useful constant
+            .equ    MAX, 21
+    // Stack frame
+            .equ    the_int, 16
+            .equ    the_string, 24
+            .equ    FRAME, 48
+    // Code
+            .text
+            .section  .rodata
+            .align  3
+    prompt:
+            .string "Enter up to 21 octal characters: "
+    format:
+            .string "0%lo = %li\n"
+            .text
+            .align  2
+            .global main
+            .type   main, %function
+    main:
+            stp     fp, lr, [sp, -FRAME]! // Create stack frame
+            mov     fp, sp                // Our frame pointer
+
+            adr     x0, prompt            // Prompt message
+            bl      write_str             // Ask for input
+
+            add     x0, sp, the_string    // Place to store string
+            mov     w1, MAX               // Limit number of input chars
+            bl      read_str              // Get from keyboard
+
+            add     x1, sp, the_string    // Address of string
+            add     x0, sp, the_int       // Place to store int
+            bl      octal_to_int          // Do conversion
+
+            ldr     x2, [sp, the_int]     // Load int
+            ldr     x1, [sp, the_int]     // printf shows this copy in hex
+            adr     x0, format            // Format string
+            bl      printf
+
+            mov     w0, 0                 // Return 0
+            ldp     x29, x30, [sp], FRAME // Delete stack frame
+            ret
     ```
+    ```asm
+    // Convert an octal character string to a long int.
+    // Calling sequence
+    //    x0 <- pointer to long int result
+    //    x1 <- pointer to octal character string to convert
+    //    Return number of characters converted.
+            .arch armv8-a
+    // Useful constants
+            .equ    INTPART, 0x0f
+    // Program code
+            .text
+            .align  2
+            .global octal_to_int
+            .type   octal_to_int, %function
+    octal_to_int:
+            mov     x2, xzr               // result = 0;
+            mov     w3, wzr               // counter = 0;
+    convert:
+            ldrb    w4, [x1]              // Load character
+            cbz     w4, done              // NUL character?
+            and     x4, x4, INTPART       // 4-bit integer
+            lsl     x2, x2, 3             // Make room for it
+            orr     x2, x2, x4            // Insert new 3-bit integer
+            add     x1, x1, 1             // Increment source pointer
+            add     w3, w3, 1             //   and counter
+            b       convert               //   and continue
+    done:
+            str     x2, [x0]              // Output result
+            mov     w0, w3                // Return count
+            ret                           // Back to caller
     ```
 6.  Unsigned decimal string to unsigned int.
     ```
