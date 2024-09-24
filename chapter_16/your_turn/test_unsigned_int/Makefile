@@ -21,4 +21,3 @@ clean:
 	rm -f $(objects)
 allclean: clean
 	rm convert_unsigned_dec
-
