@@ -15,7 +15,7 @@ int main(void) {
     read_str(the_string, MAX);
 
     dec_to_uint(&the_int, the_string);
-    printf(%u is stored as 0x%x\n", the_int, the_int);
+    printf("%u is stored as 0x%x\n", the_int, the_int);
     
     return 0;
 }
