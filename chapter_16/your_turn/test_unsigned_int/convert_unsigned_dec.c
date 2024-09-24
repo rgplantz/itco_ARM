@@ -11,7 +11,7 @@ int main(void) {
     char the_string[ARRAY_SZ];
     int the_int;
     
-    write_str("Enter an integer: ");
+    write_str("Enter an unsigned integer: ");
     read_str(the_string, MAX);
 
     dec_to_uint(&the_int, the_string);
