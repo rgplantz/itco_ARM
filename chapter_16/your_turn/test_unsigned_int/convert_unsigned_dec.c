@@ -9,7 +9,7 @@
 
 int main(void) {
     char the_string[ARRAY_SZ];
-    int the_int;
+    unsigned int the_int;
     
     write_str("Enter an unsigned integer: ");
     read_str(the_string, MAX);
