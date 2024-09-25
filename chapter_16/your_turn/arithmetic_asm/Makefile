@@ -1,6 +1,6 @@
 # Build arithmetic program
 
-objects = arithmetic.o getInt.o putInt.o decToInt.o intToDec.o writeStr.o readStr.o
+objects = arithmetic.o sum.o difference.o product.o quotient.o put_int.o get_int.o write_str.o write_char.o read_str.o
 ASFLAGS = --gstabs
 AS = as
 CC = gcc
