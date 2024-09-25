@@ -159,7 +159,8 @@ title: Chapter 16
             mov     w0, w2                // Return count
             ret                           // Back to caller
     ```
-3.  Registers for variables.
+3.  To be done.
+4.  Registers for variables.
     ```c
     // Add two integers and show if there is overflow.
 
