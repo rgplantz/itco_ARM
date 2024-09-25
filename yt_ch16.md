@@ -160,7 +160,7 @@ title: Chapter 16
             ret                           // Back to caller
     ```
 3.  To be done.
-4.  Show number of hex characters converted. Notice that we wrote the hex_to_int function to return the number of characters, so we don't have to change it.
+4.  Show number of hex characters converted. Notice that we wrote the `hex_to_int` function to return the number of characters, so we don't have to change it.
     ```c
     // Gets hex number from user and stores it as int.
 
@@ -185,7 +185,7 @@ title: Chapter 16
         return 0;
     }
     ```
-5.  Convert octal to int.
+5.  Convert octal to `int`.
     ```asm
     // Get an ocatal number from the user and store it as a long int.
             .arch armv8-a
@@ -262,7 +262,7 @@ title: Chapter 16
             mov     w0, w3                // Return count
             ret                           // Back to caller
     ```
-6.  Unsigned decimal string to unsigned int.
+6.  Unsigned decimal string to `unsigned int`.
     ```c
     // Echo an unsigned int.
 
@@ -413,8 +413,8 @@ title: Chapter 16
             add     sp, sp, FRAME         // Restore sp
             ret
     ```
-7.  The assembly language for the two C algorithms is the same. Since RADIX is 10, the compiler used a shift and add algorithm for the '*' operation.
-8.  put_int and get_int functions.
+7.  The assembly language for the two C algorithms is the same. Since `RADIX` is 10, the compiler used a shift and add algorithm for the `*` operation.
+8.  `put_int` and `get_int` functions.
     ```c
     // Echo an unsigned int.
 
@@ -516,9 +516,9 @@ title: Chapter 16
             ldp     fp, lr, [sp], frame   // restore fp, lr, sp
             ret                           // back to caller
     ```
-9.  put_uint and get_uint functions.
+9.  `put_uint` and `get_uint` functions.
     ```
     ```
-10. Sum, difference, product, quotient, and remainder of two ints.
+10. Sum, difference, product, quotient, and remainder of two `int`s.
     ```
     ```
