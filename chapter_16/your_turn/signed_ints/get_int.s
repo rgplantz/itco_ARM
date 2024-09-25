@@ -1,4 +1,4 @@
-// Reads a decimal integer from keyboard and converts to an int.
+// Read a decimal integer from keyboard and convert to an int.
 // Calling sequence
 //    returns the int
         .arch armv8-a

@@ -1,4 +1,4 @@
-// Displays an int on screen
+// Display an int on the screen.
         .arch armv8-a
 // Calling sequence
 //    w0 <- the int
