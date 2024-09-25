@@ -415,7 +415,106 @@ title: Chapter 16
     ```
 7.  The assembly language for the two C algorithms is the same. Since RADIX is 10, the compiler used a shift and add algorithm for the '*' operation.
 8.  put_int and get_int functions.
+    ```c
+    // Echo an unsigned int.
+
+    #include "get_int.h"
+    #include "put_int.h"
+    #include "write_str.h"
+    #include "write_char.h"
+
+    int main(void)
+    {
+        int x;
+
+        write_str("Enter signed integer: ");
+        x = get_int();
+        write_str("You entered: ");
+        put_int(x);
+        write_char('\n');
+        
+        return 0;
+    }
     ```
+    ```c
+    // Read a decimal integer from keyboard and convert to an int.
+
+    #ifndef GET_INT_H
+    #define GET_INT_H
+    int get_int(void);
+    #endif
+    ```
+    ```asm
+    // Read a decimal integer from keyboard and convert to an int.
+    // Calling sequence
+    //    returns the int
+            .arch armv8-a
+    // Useful constants
+            .equ    MAX, 11                   // maximum digits
+    // Stack frame
+            .equ    an_int, 16
+            .equ    a_string, 20
+            .equ    frame, 32
+    // Code
+            .text
+            .align  2
+            .global get_int
+            .type   get_int, %function
+    get_int:
+            stp     fp, lr, [sp, -frame]! // create our stack frame
+            mov     fp, sp                // set our frame pointer
+
+            mov     w1, MAX
+            add     x0, sp, a_string      // place to store input string
+            bl      read_str
+
+            add     x1, sp, a_string      // input
+            add     x0, sp, an_int        // place for output
+            bl      dec_to_int            // convert as int
+
+            ldr     w0, [sp, an_int]      // return the int
+            ldp     fp, lr, [sp], frame   // restore fp, lr, sp
+            ret                           // back to caller
+    ```
+    ```c
+    // Display an int on the screen.
+
+    #ifndef PUT_INT_H
+    #define PUT_INT_H
+    int put_int(int);
+    #endif
+    ```
+    ```asm
+    // Display an int on the screen.
+            .arch armv8-a
+    // Calling sequence
+    //    w0 <- the int
+    //    returns 0
+    // Useful constants
+            .equ    MAX, 11               // maximum digits
+    // Stack frame
+            .equ    an_int, 16
+            .equ    a_string, 20
+            .equ    frame, 32
+    // Code
+            .text
+            .align  2
+            .global put_int
+            .type   put_int, %function
+    put_int:
+            stp     fp, lr, [sp, -frame]! // create our stack frame
+            mov     fp, sp                // set our frame pointer
+
+            mov     w1, w0                // input
+            add     x0, sp, a_string      // place for output string
+            bl      int_to_dec            // convert to text string
+
+            add     x0, sp, a_string      // display the int
+            bl      write_str
+
+            mov     w0, wzr               // return 0;
+            ldp     fp, lr, [sp], frame   // restore fp, lr, sp
+            ret                           // back to caller
     ```
 9.  put_uint and get_uint functions.
     ```
