@@ -414,8 +414,6 @@ title: Chapter 16
             ret
     ```
 7.  The assembly language for the two C algorithms is the same. Since RADIX is 10, the compiler used a shift and add algorithm for the '*' operation.
-    ```
-    ```
 8.  put_int and get_int functions.
     ```
     ```
