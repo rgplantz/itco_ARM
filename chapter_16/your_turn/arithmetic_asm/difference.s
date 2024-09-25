@@ -26,11 +26,11 @@ difference:
         mov     w19, w0               // Save inputs
         mov     w20, w1
 
-        ldr     w0, w19               // First integer
+        mov     w0, w19               // First integer
         bl      put_int
         adr     x0, plus              // +
         bl      write_char
-        ldr     w0, w20               // Second integer
+        mov     w0, w20               // Second integer
         bl      put_int
         adr     x0, equals            // =
         bl      write_str
