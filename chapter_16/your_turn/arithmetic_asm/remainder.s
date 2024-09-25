@@ -10,8 +10,8 @@
         .text
         .section  .rodata
         .align  3
-plus:
-        .string " + "
+mod:
+        .string " % "
 equals:
         .string " = "
         .text
@@ -28,7 +28,7 @@ sum:
 
         mov     w0, w19               // First integer
         bl      put_int
-        adr     x0, plus              // +
+        adr     x0, mod               // %
         bl      write_char
         mov     w0, w20               // Second integer
         bl      put_int

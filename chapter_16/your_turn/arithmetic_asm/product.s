@@ -10,7 +10,7 @@
         .text
         .section  .rodata
         .align  3
-plus:
+times:
         .string " * "
 equals:
         .string " = "
@@ -28,8 +28,8 @@ product:
 
         mov     w0, w19               // First integer
         bl      put_int
-        adr     x0, plus              // +
-        bl      write_char
+        adr     x0, times             // #
+        bl      write_str
         mov     w0, w20               // Second integer
         bl      put_int
         adr     x0, equals            // =
