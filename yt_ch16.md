@@ -160,31 +160,28 @@ title: Chapter 16
             ret                           // Back to caller
     ```
 3.  To be done.
-4.  Registers for variables.
+4.  Show number of hex characters converted. Notice that we wrote the hex_to_int function to return the number of characters, so we don't have to change it.
     ```c
-    // Add two integers and show if there is overflow.
+    // Gets hex number from user and stores it as int.
 
     #include <stdio.h>
+    #include "write_str.h"
+    #include "read_str.h"
+    #include "hex_to_int.h"
 
-    int main(void)
+    #define MAX 20
+
+    int main()
     {
-        int x, y;
-        register int z, overflow;
-      
-        printf("Enter an integer: ");
-        scanf("%i", &x);
-        printf("Enter an integer: ");
-        scanf("%i", &y);
+        char the_string[MAX];
+        int the_int;
+        int count;
+        
+        write_str("Enter up to 8 hex characters: ");
+        read_str(the_string, MAX);
 
-        asm ("adds %w0, %w2, %w3\n"
-            "cinc %w1, wzr, vs"
-            : "=r" (z), "=r" (overflow)
-            : "r" (x), "r" (y));
-
-        printf("%i + %i = %i\n", x, y, z);
-        if (overflow)
-            printf("** Overflow occurred **\n");
-
+        count = hex_to_int(&the_int, the_string);
+        printf("The %i characters %x = %i\n", count, the_int, the_int);
         return 0;
     }
     ```
