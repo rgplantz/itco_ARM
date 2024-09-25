@@ -40,6 +40,6 @@ quotient:
         bl      write_char
 
         sdiv    w0, w19, w20          // Return quotient
-        lsp     x19, x20, [sp, save1920]  // Restore registers
+        ldp     x19, x20, [sp, save1920]  // Restore registers
         ldp     x29, x30, [sp], FRAME // Delete stack frame
         ret

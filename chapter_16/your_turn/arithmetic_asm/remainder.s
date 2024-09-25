@@ -40,6 +40,6 @@ sum:
         bl      write_char
 
         add     w0, w19, w20          // Return sum
-        lsp     x19, x20, [sp, save1920]  // Restore registers
+        ldp     x19, x20, [sp, save1920]  // Restore registers
         ldp     x29, x30, [sp], FRAME // Delete stack frame
         ret
