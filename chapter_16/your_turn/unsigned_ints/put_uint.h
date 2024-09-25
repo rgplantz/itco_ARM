@@ -1,4 +1,4 @@
-// Display an int on screen.
+// Display an unsigned int on screen.
 
 #ifndef PUT_UINT_H
 #define PUT_UINT_H
