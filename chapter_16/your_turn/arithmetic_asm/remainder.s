@@ -10,8 +10,8 @@
         .text
         .section  .rodata
         .align  3
-div:
-        .string " / "
+rem:
+        .string " % "
 equals:
         .string " = "
         .text
@@ -28,7 +28,7 @@ remainder:
 
         mov     w0, w19               // First integer
         bl      put_int
-        adr     x0, div               // /
+        adr     x0, rem               // %
         bl      write_str
         mov     w0, w20               // Second integer
         bl      put_int
