@@ -34,12 +34,13 @@ quotient:
         bl      put_int
         adr     x0, equals            // =
         bl      write_str
-        sdiv    w0, w19, w20          // quotient
+        sdiv    w19, w19, w20         // Save quotient
+        mov     w0, w19               // For put_int
         bl      put_int
         mov     x0, '\n'
         bl      write_char
 
-        sdiv    w0, w19, w20          // Return quotient
+        mov     w0, w19               // Return quotient
         ldp     x19, x20, [sp, save1920]  // Restore registers
         ldp     x29, x30, [sp], FRAME // Delete stack frame
         ret

@@ -34,12 +34,14 @@ remainder:
         bl      put_int
         adr     x0, equals            // =
         bl      write_str
-        sdiv    w0, w19, w20          // remainder
+        sdiv    w1, w19, w20          // Quotient
+        msub    w19, w1, w20, w19     // Save remainder
+        mov     w0, w19               // For put_int
         bl      put_int
         mov     x0, '\n'
         bl      write_char
 
-        sdiv    w0, w19, w20          // Return remainder
+        mov     w0, w19               // Return remainder
         ldp     x19, x20, [sp, save1920]  // Restore registers
         ldp     x29, x30, [sp], FRAME // Delete stack frame
         ret
