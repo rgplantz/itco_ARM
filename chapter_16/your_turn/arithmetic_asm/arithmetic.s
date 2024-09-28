@@ -57,7 +57,7 @@ main:
 
         ldr     w0, [sp, x]           // Load x
         ldr     w1, [sp, y]           //    and y
-//        bl      remainder
+        bl      remainder
 
         mov     w0, wzr               // Return 0
         ldp     x29, x30, [sp], FRAME // Delete stack frame
