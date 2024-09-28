@@ -676,5 +676,295 @@ title: Chapter 16
             ret
     ```
 10. Sum, difference, product, quotient, and remainder of two `int`s.
+    ```asm
+    // Add, subtract, multiply, and divide two integers.
+            .arch armv8-a
+    // Stack frame
+            .equ    x, 16
+            .equ    y, 20
+            .equ    FRAME, 32
+    // Code
+            .text
+            .section  .rodata
+            .align  3
+    prompt:
+            .string "Enter an integer: "
+            .text
+            .align  2
+            .global main
+            .type   main, %function
+    main:
+            stp     fp, lr, [sp, -FRAME]! // Create stack frame
+            mov     fp, sp                // Our frame pointer
+
+            adr     x0, prompt            // Ask user for input
+            bl      write_str
+            bl      get_int               // Get x
+            str     w0, [sp, x]
+            adr     x0, prompt            // Ask user for input
+            bl      write_str
+            bl      get_int               // Get y
+            str     w0, [sp, y]
+
+            ldr     w0, [sp, x]           // Load x
+            ldr     w1, [sp, y]           //    and y
+            bl      sum
+
+            ldr     w0, [sp, x]           // Load x
+            ldr     w1, [sp, y]           //    and y
+            bl      difference
+
+            ldr     w0, [sp, x]           // Load x
+            ldr     w1, [sp, y]           //    and y
+            bl      product
+
+            ldr     w0, [sp, x]           // Load x
+            ldr     w1, [sp, y]           //    and y
+            bl      quotient
+
+            ldr     w0, [sp, x]           // Load x
+            ldr     w1, [sp, y]           //    and y
+            bl      remainder
+
+            mov     w0, wzr               // Return 0
+            ldp     x29, x30, [sp], FRAME // Delete stack frame
+            ret
     ```
+    ```asm
+    // Show sum of two integers, return sum.
+    // Calling sequence
+    //    w0 <- first integer
+    //    w1 <- second integer
+            .arch armv8-a
+    // Stack frame
+            .equ    save1920, 16
+            .equ    FRAME, 32
+    // Code
+            .text
+            .section  .rodata
+            .align  3
+    plus:
+            .string " + "
+    equals:
+            .string " = "
+            .text
+            .align  2
+            .global sum
+            .type   sum, %function
+    sum:
+            stp     fp, lr, [sp, -FRAME]! // Create stack frame
+            mov     fp, sp                // Our frame pointer
+            stp     x19, x20, [sp, save1920]  // Save registers
+
+            mov     w19, w0               // Save inputs
+            mov     w20, w1
+
+            mov     w0, w19               // First integer
+            bl      put_int
+            adr     x0, plus              // +
+            bl      write_str
+            mov     w0, w20               // Second integer
+            bl      put_int
+            adr     x0, equals            // =
+            bl      write_str
+            add     w0, w19, w20          // Sum
+            bl      put_int
+            mov     x0, '\n'
+            bl      write_char
+
+            add     w0, w19, w20          // Return sum
+            ldp     x19, x20, [sp, save1920]  // Restore registers
+            ldp     x29, x30, [sp], FRAME // Delete stack frame
+            ret
+    ```
+    ```asm
+    // Show difference between two integers, return difference.
+    // Calling sequence
+    //    w0 <- first integer
+    //    w1 <- second integer
+            .arch armv8-a
+    // Stack frame
+            .equ    save1920, 16
+            .equ    FRAME, 32
+    // Code
+            .text
+            .section  .rodata
+            .align  3
+    minus:
+            .string " - "
+    equals:
+            .string " = "
+            .text
+            .align  2
+            .global difference
+            .type   difference, %function
+    difference:
+            stp     fp, lr, [sp, -FRAME]! // Create stack frame
+            mov     fp, sp                // Our frame pointer
+            stp     x19, x20, [sp, save1920]  // Save registers
+
+            mov     w19, w0               // Save inputs
+            mov     w20, w1
+
+            mov     w0, w19               // First integer
+            bl      put_int
+            adr     x0, minus             // -
+            bl      write_str
+            mov     w0, w20               // Second integer
+            bl      put_int
+            adr     x0, equals            // =
+            bl      write_str
+            sub     w0, w19, w20          // difference
+            bl      put_int
+            mov     x0, '\n'
+            bl      write_char
+
+            sub     w0, w19, w20          // Return difference
+            ldp     x19, x20, [sp, save1920]  // Restore registers
+            ldp     x29, x30, [sp], FRAME // Delete stack frame
+            ret
+    ```
+    ```asm
+    // Show product of two integers, return product.
+    // Calling sequence
+    //    w0 <- first integer
+    //    w1 <- second integer
+            .arch armv8-a
+    // Stack frame
+            .equ    save1920, 16
+            .equ    FRAME, 32
+    // Code
+            .text
+            .section  .rodata
+            .align  3
+    times:
+            .string " * "
+    equals:
+            .string " = "
+            .text
+            .align  2
+            .global product
+            .type   product, %function
+    product:
+            stp     fp, lr, [sp, -FRAME]! // Create stack frame
+            mov     fp, sp                // Our frame pointer
+            stp     x19, x20, [sp, save1920]  // Save registers
+
+            mov     w19, w0               // Save inputs
+            mov     w20, w1
+
+            mov     w0, w19               // First integer
+            bl      put_int
+            adr     x0, times             // #
+            bl      write_str
+            mov     w0, w20               // Second integer
+            bl      put_int
+            adr     x0, equals            // =
+            bl      write_str
+            mul     w0, w19, w20          // product
+            bl      put_int
+            mov     x0, '\n'
+            bl      write_char
+
+            mul     w0, w19, w20          // Return product
+            ldp     x19, x20, [sp, save1920]  // Restore registers
+            ldp     x29, x30, [sp], FRAME // Delete stack frame
+            ret
+    ```
+    ```asm
+    // Show quotient of two integers, return quotient.
+    // Calling sequence
+    //    w0 <- first integer
+    //    w1 <- second integer
+            .arch armv8-a
+    // Stack frame
+            .equ    save1920, 16
+            .equ    FRAME, 32
+    // Code
+            .text
+            .section  .rodata
+            .align  3
+    div:
+            .string " / "
+    equals:
+            .string " = "
+            .text
+            .align  2
+            .global quotient
+            .type   quotient, %function
+    quotient:
+            stp     fp, lr, [sp, -FRAME]! // Create stack frame
+            mov     fp, sp                // Our frame pointer
+            stp     x19, x20, [sp, save1920]  // Save registers
+
+            mov     w19, w0               // Save inputs
+            mov     w20, w1
+
+            mov     w0, w19               // First integer
+            bl      put_int
+            adr     x0, div               // /
+            bl      write_str
+            mov     w0, w20               // Second integer
+            bl      put_int
+            adr     x0, equals            // =
+            bl      write_str
+            sdiv    w19, w19, w20         // Save quotient
+            mov     w0, w19               // For put_int
+            bl      put_int
+            mov     x0, '\n'
+            bl      write_char
+
+            mov     w0, w19               // Return quotient
+            ldp     x19, x20, [sp, save1920]  // Restore registers
+            ldp     x29, x30, [sp], FRAME // Delete stack frame
+            ret
+    ```
+    ```asm
+    // Show remainder from dividing two integers, return remainder.
+    // Calling sequence
+    //    w0 <- first integer
+    //    w1 <- second integer
+            .arch armv8-a
+    // Stack frame
+            .equ    save1920, 16
+            .equ    FRAME, 32
+    // Code
+            .text
+            .section  .rodata
+            .align  3
+    rem:
+            .string " % "
+    equals:
+            .string " = "
+            .text
+            .align  2
+            .global remainder
+            .type   remainder, %function
+    remainder:
+            stp     fp, lr, [sp, -FRAME]! // Create stack frame
+            mov     fp, sp                // Our frame pointer
+            stp     x19, x20, [sp, save1920]  // Save registers
+
+            mov     w19, w0               // Save inputs
+            mov     w20, w1
+
+            mov     w0, w19               // First integer
+            bl      put_int
+            adr     x0, rem               // %
+            bl      write_str
+            mov     w0, w20               // Second integer
+            bl      put_int
+            adr     x0, equals            // =
+            bl      write_str
+            sdiv    w1, w19, w20          // Quotient
+            msub    w19, w1, w20, w19     // Save remainder
+            mov     w0, w19               // For put_int
+            bl      put_int
+            mov     x0, '\n'
+            bl      write_char
+
+            mov     w0, w19               // Return remainder
+            ldp     x19, x20, [sp, save1920]  // Restore registers
+            ldp     x29, x30, [sp], FRAME // Delete stack frame
+            ret
     ```
