@@ -10,18 +10,6 @@
         .align  3
 prompt:
         .string "Enter an integer: "
-plus:
-        .string " + "
-minus:
-        .string " - "
-times:
-        .string " * "
-div:
-        .string " / "
-remainder:
-        .string " % "
-equals:
-        .string " = "
         .text
         .align  2
         .global main
