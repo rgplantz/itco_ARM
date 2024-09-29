@@ -1,6 +1,6 @@
-// Prints int array contents.
+// Print int array contents.
 
-#ifndef DISPLAYARRAY_H
-#define DISPLAYARRAY_H
-void displayArray(int *theArray, int nElements);
+#ifndef DISPLAY_ARRAY_H
+#define DISPLAY_ARRAY_H
+void display_array(int *the_array, int n_elements);
 #endif

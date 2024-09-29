@@ -1,11 +1,11 @@
-// Stores 2 x element number in each array element.
+// Store 2 x element number in each array element.
 
-#include "twiceIndex.h"
+#include "twice_index.h"
 
-void twiceIndex(int *theArray, int nElements) {
+void twice_index(int *the_array, int n_elements) {
   int i;
    
-    for (i = 0; i < nElements; i++) {
-        theArray[i] = 2 * i;
+    for (i = 0; i < n_elements; i++) {
+        the_array[i] = 2 * i;
   }
 }
