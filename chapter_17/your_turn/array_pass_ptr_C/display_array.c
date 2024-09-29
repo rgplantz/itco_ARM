@@ -8,7 +8,7 @@ void display_array(int *the_array, int n_elements) {
     int i;
     
     for (i = 0; i < n_elements; i++) {
-        write_str("int_array[");
+        write_str("array[");
         put_int(i);
         write_str("] = ");
         put_int(the_array[i]);
