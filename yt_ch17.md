@@ -5,159 +5,61 @@ title: Chapter 17
 
 ## Chapter 17
 
-1.  Lowercase
+1.  Using a pointer variable produces the same assembly language as using the array name.
+2.  16 * index in each array element.
     ```asm
-    // Make an alphabetic text string lowercase.
+    // Allocate an int array, store (16 * element number)
+    // in each element, and print array contents.
             .arch armv8-a
     // Useful constant
-            .equ    MAX,50                    // Character limit
+            .equ    N, 10                   // Array length
     // Stack frame
-            .equ    the_string, 16
-            .equ    FRAME, 80                 // Allows >51 bytes
+            .equ    my_array, 16
+            .equ    FRAME, 64
     // Code
-            .text
-            .section  .rodata
-            .align  3
-    prompt:
-            .string "Enter up to 50 alphabetic characters: "
-    result:
-            .string "All lower: "
             .text
             .align  2
             .global main
             .type   main, %function
     main:
-            stp     fp, lr, [sp, -FRAME]! // Create stack frame
-            mov     fp, sp                // Set our frame pointer
-            adr     x0, prompt            // Prompt message
-            bl      write_str             // Ask for input
+            stp     fp, lr, [sp, -FRAME]!   // Create stack frame
+            mov     fp, sp                  // Set our frame pointer
 
-            add     x0, sp, the_string    // Place to store string
-            mov     w1, MAX               // Limit number of input chars
-            bl      read_str              // Get from keyboard
+            mov     w1, N                   // Length of array
+            add     x0, sp, my_array        // Address of array
+            bl      sixteen_index           // Fill the array
 
-            add     x1, sp, the_string    // Address of string
-            mov     x0, x1                // Replace the string.
-            bl      to_lower              // Do conversion
+            mov     w1, N                   // Number of elements
+            add     x0, sp, my_array        // Address of array
+            bl      display_array           // Print array contents
 
-            adr     x0, result            // Show result
-            bl      write_str
-            add     x0, sp, the_string    // Converted string
-            bl      write_str
-            mov     w0, '\n'              // Nice formatting
-            bl      write_char
-
-            mov     w0, 0                 // Return 0
-            ldp     x29, x30, [sp], FRAME // Delete stack frame
+            mov     w0, wzr                 // Return 0
+            ldp     fp, lr, [sp], FRAME     // Delete stack frame
             ret
     ```
     ```asm
-    // Convert alphabetic letters in a C string to lowercase.
+    // Store (16 * element number) in each array element.
     // Calling sequence
-    //    x0 <- pointer to result
-    //    x1 <- pointer to string to convert
-    //    Return number of characters converted.
+    //    x0 <- address of array
+    //    w1 <- number of array elements
+    //    Return 0.
             .arch armv8-a
-    // Useful constant
-            .equ    LOWMASK, 0x20
-    // Program code
-            .text
-            .align  2
-            .global to_lower
-            .type   to_lower, %function
-    to_lower:
-            mov     w2, wzr               // counter = 0
-    loop:
-            ldrb    w3, [x1]              // Load character
-            cbz     w3, done              // All done if NUL char
-            movz    w4, LOWMASK           // If not, do masking
-            orr     w3, w3, w4            // Mask to lower
-            strb    w3, [x0]              // Store result
-            add     x0, x0, 1             // Increment destination pointer,
-            add     x1, x1, 1             //   source pointer,
-            add     w2, w2, 1             //   and counter,
-            b       loop                  //   and continue
-    done:
-            strb    w3, [x0]              // Terminating NUL got us here
-            mov     w0, w2                // Return count
-            ret                           // Back to caller
-    ```
-2.  Change case.
-    ```asm
-    // Make an alphabetic text string opposite case.
-            .arch armv8-a
-    // Useful constant
-            .equ    MAX,50                    // Character limit
-    // Stack frame
-            .equ    the_string, 16
-            .equ    FRAME, 80                 // Allows >51 bytes
     // Code
             .text
-            .section  .rodata
-            .align  3
-    prompt:
-            .string "Enter up to 50 alphabetic characters: "
-    result:
-            .string "Opposite case: "
-            .text
             .align  2
-            .global main
-            .type   main, %function
-    main:
-            stp     fp, lr, [sp, -FRAME]! // Create stack frame
-            mov     fp, sp                // Set our frame pointer
-            adr     x0, prompt            // Prompt message
-            bl      write_str             // Ask for input
-
-            add     x0, sp, the_string    // Place to store string
-            mov     w1, MAX               // Limit number of input chars
-            bl      read_str              // Get from keyboard
-
-            add     x1, sp, the_string    // Address of string
-            mov     x0, x1                // Replace the string.
-            bl      toggle_case           // Do conversion
-
-            adr     x0, result            // Show result
-            bl      write_str
-            add     x0, sp, the_string    // Converted string
-            bl      write_str
-            mov     w0, '\n'              // Nice formatting
-            bl      write_char
-
-            mov     w0, 0                 // Return 0
-            ldp     x29, x30, [sp], FRAME // Delete stack frame
-            ret
-    ```
-    ```asm
-    // Toggle case of alphabetic letters in a C string.
-    // Calling sequence
-    //    x0 <- pointer to result
-    //    x1 <- pointer to string to convert
-    //    Return number of characters converted.
-            .arch armv8-a
-    // Useful constant
-            .equ    TOGGLEMASK, 0x20
-    // Program code
-            .text
-            .align  2
-            .global toggle_case
-            .type   toggle_case, %function
-    toggle_case:
-            mov     w2, wzr               // counter = 0
+            .global sixteen_index
+            .type   sixteen_index, %function
+    sixteen_index:
+            mov     w2, wzr                // i = 0
     loop:
-            ldrb    w3, [x1]              // Load character
-            cbz     w3, done              // All done if NUL char
-            movz    w4, TOGGLEMASK        // If not, do masking
-            eor     w3, w3, w4            // Toggle case
-            strb    w3, [x0]              // Store result
-            add     x0, x0, 1             // Increment destination pointer,
-            add     x1, x1, 1             //   source pointer,
-            add     w2, w2, 1             //   and counter,
-            b       loop                  //   and continue
-    done:
-            strb    w3, [x0]              // Terminating NUL got us here
-            mov     w0, w2                // Return count
-            ret                           // Back to caller
+            lsl     w3, w2, 4              // 16 * i
+            str     w3, [x0, w2, uxtw 2]   // Current element address        
+            add     w2, w2, 1              // i++
+            cmp     w2, w1                 // At end?
+            b.lt    loop                   // No, continue filling
+
+            mov     w0, wzr                // Yes, return 0
+            ret
     ```
 3.  To be done.
 4.  Show number of hex characters converted. Notice that we wrote the `hex_to_int` function to return the number of characters, so we don't have to change it.
