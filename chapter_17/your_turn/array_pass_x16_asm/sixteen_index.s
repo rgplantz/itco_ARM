@@ -12,7 +12,7 @@
 sixteen_index:
         mov     w2, wzr                // i = 0
 loop:
-        add     w3, w2, 4              // 16 * i
+        lsl     w3, w2, 4              // 16 * i
         str     w3, [x0, w2, uxtw 2]   // Current element address        
         add     w2, w2, 1              // i++
         cmp     w2, w1                 // At end?
