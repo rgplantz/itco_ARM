@@ -1,4 +1,4 @@
-// Allocate an int array, store (2 * element number)
+// Allocate an int array, store (16 * element number)
 // in each element, and print array contents.
         .arch armv8-a
 // Useful constant
@@ -17,7 +17,7 @@ main:
 
         mov     w1, N                   // Length of array
         add     x0, sp, my_array        // Address of array
-        bl      twice_index             // Fill the array
+        bl      sixteen_index           // Fill the array
 
         mov     w1, N                   // Number of elements
         add     x0, sp, my_array        // Address of array
