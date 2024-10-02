@@ -7,7 +7,7 @@ using namespace std;
 int main(void)
 {
     Fraction my_fraction;
-    Fraction your_fraction;
+    Fraction your_fraction(12, 34);
 
     cout << "My fraction:" << '\n';
     my_fraction.display();
