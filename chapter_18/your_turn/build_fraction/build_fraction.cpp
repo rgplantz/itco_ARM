@@ -1,4 +1,4 @@
-// Gets two fractions from user and increments each by one
+// Create a fraction with user input and increment it by one.
 
 #include <iostream>
 #include "fraction.h"
