@@ -32,7 +32,7 @@ title: Chapter 19
     (gdb) b 28
     Breakpoint 1 at 0x7f8: file add_money.s, line 28.
     (gdb) r
-    Starting program: /home/bob/GitHub/itco_ARM/build/chapter_19/text_listings/add_money/add_money 
+    Starting program: /home/bob/text_listings/add_money/add_money 
     [Thread debugging using libthread_db enabled]
     Using host libthread_db library "/lib/aarch64-linux-gnu/libthread_db.so.1".
     Enter amount (use same sign for dollars and cents)
