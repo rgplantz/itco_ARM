@@ -1,5 +1,6 @@
 // Get 2 fractions from user and add 1.
 
+#include <iostream>
 #include "fraction.h"
 using namespace std;
 
