@@ -1,4 +1,4 @@
-// A simple Fraction class
+// A Fraction class with two constructors
 
 #include "fraction.h"
 #include <iostream>

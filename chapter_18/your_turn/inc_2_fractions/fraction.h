@@ -1,4 +1,4 @@
-// A simple Fraction class
+// A Fraction class with two constructors
 
 #ifndef FRACTION_H
 #define FRACTION_H
