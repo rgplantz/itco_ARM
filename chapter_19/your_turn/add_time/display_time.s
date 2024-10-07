@@ -29,7 +29,7 @@ display_time:
         bl      write_char
 
         mov     w1, 60                    // 60 seconds per minute
-        udiv    w20, w0, w1               // Minutes
+        udiv    w20, w19, w1              // Minutes
         msub    w19, w20, w1, w0          // Leaving seconds
 
         mov     w0, w20                   // Minutes
@@ -37,7 +37,7 @@ display_time:
         mov     w0, ':'                   // Some formatting
         bl      write_char
 
-        mov     w0, w20                   // Seconds
+        mov     w0, w19                   // Seconds
         bl      put_int
 
         mov     w0, wzr                   // Return 0
