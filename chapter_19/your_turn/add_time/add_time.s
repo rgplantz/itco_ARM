@@ -7,7 +7,7 @@
         .section  .rodata
         .align  3
 sum_msg:
-        .string "Sum = "
+        .string "Ends at "
 // Code
         .text
         .align  2
@@ -26,7 +26,7 @@ main:
         adr     x0, sum_msg               // Some formatting
         bl      write_str
         add     w0, w19, w20              // Add values
-//        bl      display_money             // Show result
+        bl      display_time             // Show result
         mov     w0, '\n'                  // Finish formatting
         bl      write_char
 
