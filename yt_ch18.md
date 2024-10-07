@@ -91,7 +91,7 @@ title: Chapter 18
 
         return 0;
     }
-        ```
+    ```
 2.  16 * index in each array element.
     ```asm
     // Allocate an int array, store (16 * element number)
