@@ -92,7 +92,63 @@ title: Chapter 18
         return 0;
     }
     ```
-2.  16 * index in each array element.
-    ```asm
-    // Allocate an int array, store (16 * element number)
+2.  Build a fraction with user input.
+    ```cpp
+    // Fraction class with two constructors
+
+    #ifndef FRACTION_H
+    #define FRACTION_H
+    class Fraction {
+    public:
+        Fraction() = default;     // tell compiler to generate default
+        Fraction(int n, int d) :numerator{n}, denominator{d} {};
+        ~Fraction() = default;
+        void display();           // displays fraction
+        void add_integer(int x);  // adds x to fraction
+    private:
+        int numerator {123};      // weird values so we can see
+        int denominator {456};    //    what compiler is doing
+    };
+    #endif
+    ```
+    ```cpp
+    // Fraction class with two constructors
+
+    #include <iostream>
+    #include "fraction.h"
+    using namespace std;
+
+    void Fraction::display()
+    {
+        cout << numerator << '/' << denominator << '\n';
+    }
+
+    void Fraction::add_integer(int x)
+    {
+        numerator += x * denominator;
+    }
+    ```
+    ```cpp
+    // Create a fraction with user input and increment it by one.
+
+    #include <iostream>
+    #include "fraction.h"
+    using namespace std;
+
+    int main(void)
+    {
+        int numerator, denominator;
+
+        cout << "Enter a numerator: ";
+        cin >> numerator;
+        cout << "Enter a denominator: ";
+        cin >> denominator;
+
+        Fraction x(numerator, denominator);
+        x.display();
+        x.add_integer(1);
+        x.display();
+
+        return 0;
+    }
     ```
