@@ -92,7 +92,11 @@ title: Chapter 18
         return 0;
     }
     ```
+<<<<<<< Updated upstream
 2.  Build a fraction with user input.
+=======
+2.  16 * index in each array element.
+>>>>>>> Stashed changes
     ```cpp
     // Fraction class with two constructors
 
