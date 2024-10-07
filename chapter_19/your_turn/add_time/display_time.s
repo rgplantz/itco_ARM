@@ -20,7 +20,7 @@ display_time:
         stp     x19, x20, [sp, save1920]  // For local vars
 
         mov     w1, 360                   // 360 seconds per hour
-        sdiv    w20, w0, w1               // Hours
+        udiv    w20, w0, w1               // Hours
         msub    w19, w20, w1, w0          // Leaving seconds
 
         mov     w0, w20                   // Hours
@@ -29,7 +29,7 @@ display_time:
         bl      write_char
 
         mov     w1, 60                    // 60 seconds per minute
-        sdiv    w20, w0, w1               // Minutes
+        udiv    w20, w0, w1               // Minutes
         msub    w19, w20, w1, w0          // Leaving seconds
 
         mov     w0, w20                   // Minutes
