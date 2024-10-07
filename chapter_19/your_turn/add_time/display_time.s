@@ -1,7 +1,7 @@
-// Display dollars and cents.
+// Display hours, minutes, and seconds.
         .arch armv8-a
 // Calling sequence
-//    w0 <- value in cents
+//    w0 <- value in seconds
 //    Return 0.
 // Stack frame
         .equ    save1920, 16
@@ -12,32 +12,32 @@
 // Code
         .text
         .align  2
-        .global display_money
-        .type   display_money, %function
-display_money:
+        .global display_time
+        .type   display_time, %function
+display_time:
         stp     fp, lr, [sp, -FRAME]!     // Create stack frame
         mov     fp, sp                    // Set our frame pointer
         stp     x19, x20, [sp, save1920]  // For local vars
 
-        mov     w1, 100                   // 100 cents per dollar
-        sdiv    w20, w0, w1               // Dollars
-        msub    w19, w20, w1, w0          // Leaving cents
+        mov     w1, 360                   // 360 seconds per hour
+        sdiv    w20, w0, w1               // Hours
+        msub    w19, w20, w1, w0          // Leaving seconds
 
-        mov     w0, '$'                   // Some formatting
-        bl      write_char
-        mov     w0, w20                   // Dollars
+        mov     w0, w20                   // Hours
         bl      put_int
+        mov     w0, ':'                   // Some formatting
+        bl      write_char
 
-        mov     w0, '.'                   // Some formatting
+        mov     w1, 60                    // 60 seconds per minute
+        sdiv    w20, w0, w1               // Minutes
+        msub    w19, w20, w1, w0          // Leaving seconds
+
+        mov     w0, w20                   // Minutes
+        bl      put_int
+        mov     w0, ':'                   // Some formatting
         bl      write_char
-        cmp     w19, wzr                  // Negative?
-        cneg    w19, w19, mi              // Make non-negative
-        cmp     w19, 10                   // Check for single digit
-        b.hs    no_zero                   // Two digits
-        mov     w0, '0'                   // One digit needs leading '0'
-        bl      write_char
-no_zero:
-        mov     w0, w19                   // Cents
+
+        mov     w0, w20                   // Seconds
         bl      put_int
 
         mov     w0, wzr                   // Return 0
