@@ -59,3 +59,5 @@ title: Chapter 19
         Cents: 01
     Sum = -$21474836.48
     ```
+4.  To be done/
+5.  Use doubles.
