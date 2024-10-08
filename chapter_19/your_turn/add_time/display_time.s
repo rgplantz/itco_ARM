@@ -19,7 +19,7 @@ display_time:
         mov     fp, sp                    // Set our frame pointer
         stp     x19, x20, [sp, save1920]  // For local vars
 
-        mov     w1, 360                   // 360 seconds per hour
+        mov     w1, 3600                  // 360 seconds per hour
         udiv    w20, w0, w1               // Hours
         msub    w19, w20, w1, w0          // Leaving seconds
 

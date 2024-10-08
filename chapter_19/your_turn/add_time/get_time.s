@@ -31,7 +31,7 @@ get_time:
         adr     x0, hours             // Ask for hours
         bl      write_str
         bl      get_int               // Hours
-        mov     w1, 360               // 360 seconds per hour
+        mov     w1, 3600              // 3600 seconds per hour
         mul     w19, w0, w1           // Scale
 
         adr     x0, minutes           // Ask for minutes
