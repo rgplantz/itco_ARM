@@ -24,7 +24,7 @@ display_time:
         msub    w19, w20, w1, w0          // Leaving seconds
 
         mov     w0, w20                   // Hours
-        bl      put_int
+        bl      put_uint
         mov     w0, ':'                   // Some formatting
         bl      write_char
 
@@ -33,12 +33,12 @@ display_time:
         msub    w19, w20, w1, w19         // Leaving seconds
 
         mov     w0, w20                   // Minutes
-        bl      put_int
+        bl      put_uint
         mov     w0, ':'                   // Some formatting
         bl      write_char
 
         mov     w0, w19                   // Seconds
-        bl      put_int
+        bl      put_uint
 
         mov     w0, wzr                   // Return 0
         ldp     x19, x29, [sp, save1920]  // Restore for caller
