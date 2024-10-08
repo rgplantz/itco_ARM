@@ -30,7 +30,7 @@ display_time:
 
         mov     w1, 60                    // 60 seconds per minute
         udiv    w20, w19, w1              // Minutes
-        msub    w19, w20, w1, w0          // Leaving seconds
+        msub    w19, w20, w1, w19         // Leaving seconds
 
         mov     w0, w20                   // Minutes
         bl      put_int
