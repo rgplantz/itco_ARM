@@ -6,8 +6,12 @@
 // Constant data
         .section  .rodata
         .align  3
-sum_msg:
-        .string "Ends at "
+start_time:
+        .string "Starting time: "
+delta_time:
+        .string "Duration time: "
+end_time:
+        .string "Ends at: "
 // Code
         .text
         .align  2
@@ -18,15 +22,19 @@ main:
         mov     fp, sp                    // Set our frame pointer
         stp     x19, x20, [sp, save1920]  // For local vars
 
+        adr     x0, start_time            // Ask for starting time
+        bl      write_str
         bl      get_time
         mov     w19, w0                   // Start time
+        adr     x0, delta_time            // Ask for duration time
+        bl      write_str
         bl      get_time
         mov     w20, w0                   // Delta time
 
-        adr     x0, sum_msg               // Some formatting
+        adr     x0, end_time              // Ending message
         bl      write_str
         add     w0, w19, w20              // Add values
-        bl      display_time             // Show result
+        bl      display_time              // Show ending time
         mov     w0, '\n'                  // Finish formatting
         bl      write_char
 
