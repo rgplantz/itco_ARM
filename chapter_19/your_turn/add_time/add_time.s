@@ -7,11 +7,11 @@
         .section  .rodata
         .align  3
 start_time:
-        .string "Starting time: "
+        .string "Starting time\n"
 delta_time:
-        .string "Duration time: "
+        .string "Duration time\n"
 end_time:
-        .string "Ends at: "
+        .string "Ends at "
 // Code
         .text
         .align  2
