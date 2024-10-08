@@ -8,8 +8,6 @@
 # Constant data
         .section  .rodata
         .align  3
-prompt:
-        .string "Enter time\n"
 hours:
         .string "      Hours: "
 minutes:
@@ -26,8 +24,6 @@ get_time:
         mov     fp, sp                // Set our frame pointer
         str     x19, [sp, save19]     // For local var
 
-        adr     x0, prompt            // Ask for time
-        bl      write_str
         adr     x0, hours             // Ask for hours
         bl      write_str
         bl      get_int               // Hours
