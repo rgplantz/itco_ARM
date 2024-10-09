@@ -61,10 +61,147 @@ title: Chapter 19
     ```
 4.  My solution does not indicate when the sum goes to the next day. It just shoes an hour value greater than 24.
     ```asm
+    // Add two time values.
+            .arch armv8-a
+    // Stack frame
+            .equ    save1920, 16
+            .equ    FRAME, 32
+    // Constant data
+            .section  .rodata
+            .align  3
+    start_time:
+            .string "Starting time\n"
+    delta_time:
+            .string "Duration time\n"
+    end_time:
+            .string "Ends at "
+    // Code
+            .text
+            .align  2
+            .global main
+            .type   main, %function
+    main:
+            stp     fp, lr, [sp, -FRAME]!     // Create stack frame
+            mov     fp, sp                    // Set our frame pointer
+            stp     x19, x20, [sp, save1920]  // For local vars
+
+            adr     x0, start_time            // Ask for starting time
+            bl      write_str
+            bl      get_time
+            mov     w19, w0                   // Start time
+            adr     x0, delta_time            // Ask for duration time
+            bl      write_str
+            bl      get_time
+            mov     w20, w0                   // Delta time
+
+            adr     x0, end_time              // Ending message
+            bl      write_str
+            add     w0, w19, w20              // Add values
+            bl      display_time              // Show ending time
+            mov     w0, '\n'                  // Finish formatting
+            bl      write_char
+
+            mov     w0, wzr                   // Return 0
+            ldp     x19, x20, [sp, save1920]  // Restore for caller
+            ldp     fp, lr, [sp], FRAME       // Delete stack frame
+            ret                               // Back to caller
     ```
     ```asm
+// Get hours, minute, and seconds from the keyboard.
+// Calling sequence
+//     Return integer amount as seconds.
+        .arch armv8-a
+// Stack frame
+        .equ    save19, 16
+        .equ    FRAME, 32
+# Constant data
+        .section  .rodata
+        .align  3
+hours:
+        .string "      Hours: "
+minutes:
+        .string "    Minutes: "
+seconds:
+        .string "    Seconds: "
+// Code
+        .text
+        .align  2
+        .global get_time
+        .type   get_time, %function
+get_time:
+        stp     fp, lr, [sp, -FRAME]! // Create stack frame
+        mov     fp, sp                // Set our frame pointer
+        str     x19, [sp, save19]     // For local var
+
+        adr     x0, hours             // Ask for hours
+        bl      write_str
+        bl      get_uint              // Hours
+        mov     w1, 3600              // 3600 seconds per hour
+        mul     w19, w0, w1           // Scale
+
+        adr     x0, minutes           // Ask for minutes
+        bl      write_str
+        bl      get_uint              // Minutes
+        mov     w1, 60                // 60 seconds per minute
+        mul     w0, w0, w1            // Scale
+        add     w19, w19, w0          // Add scaled minutes
+
+        adr     x0, seconds           // Ask for seconds
+        bl      write_str
+        bl      get_uint              // Seconds
+        add     w0, w19, w0           // Add seconds
+
+        ldr     x19, [sp, save19]     // Restore for caller
+        ldp     fp, lr, [sp], FRAME   // Delete stack frame
+        ret                           // Back to caller
     ```
     ```asm
+    // Display hours, minutes, and seconds.
+            .arch armv8-a
+    // Calling sequence
+    //    w0 <- value in seconds
+    //    Return 0.
+    // Stack frame
+            .equ    save1920, 16
+            .equ    FRAME, 32
+    # Constant data
+            .section  .rodata
+            .align  3
+    // Code
+            .text
+            .align  2
+            .global display_time
+            .type   display_time, %function
+    display_time:
+            stp     fp, lr, [sp, -FRAME]!     // Create stack frame
+            mov     fp, sp                    // Set our frame pointer
+            stp     x19, x20, [sp, save1920]  // For local vars
+
+            mov     w1, 3600                  // 360 seconds per hour
+            udiv    w20, w0, w1               // Hours
+            msub    w19, w20, w1, w0          // Leaving seconds
+
+            mov     w0, w20                   // Hours
+            bl      put_uint
+            mov     w0, ':'                   // Some formatting
+            bl      write_char
+
+            mov     w1, 60                    // 60 seconds per minute
+            udiv    w20, w19, w1              // Minutes
+            msub    w19, w20, w1, w19         // Leaving seconds
+
+            mov     w0, w20                   // Minutes
+            bl      put_uint
+            mov     w0, ':'                   // Some formatting
+            bl      write_char
+
+            mov     w0, w19                   // Seconds
+            bl      put_uint
+
+            mov     w0, wzr                   // Return 0
+            ldp     x19, x29, [sp, save1920]  // Restore for caller
+            ldp     fp, lr, [sp], FRAME       // Delete stack frame
+            ret                               // Back to caller
     ```
 5.  Use doubles.
     ```c
