@@ -59,7 +59,13 @@ title: Chapter 19
         Cents: 01
     Sum = -$21474836.48
     ```
-4.  To be done.
+4.  My solution does not indicate when the sum goes to the next day. It just shoes an hour value greater than 24.
+    ```asm
+    ```
+    ```asm
+    ```
+    ```asm
+    ```
 5.  Use doubles.
     ```c
     // Test the addition associativity of doubles.
