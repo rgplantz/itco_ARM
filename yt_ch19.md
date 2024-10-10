@@ -234,3 +234,17 @@ title: Chapter 19
         return 0;
     }
     ```
+    Two runs of this program gave the following results:
+    ```
+    bob@rpi5:~/chapter_19/your_turn/three_doubles_C $ ./three_doubles 
+    Enter a number: 10.1
+    Enter a number: 20.1
+    Enter a number: 30.1
+    60.300000 is the same as 60.300000
+    bob@rpi5:~/chapter_19/your_turn/three_doubles_C $ ./three_doubles 
+    Enter a number: 100.1
+    Enter a number: 200.1
+    Enter a number: 300.1
+    600.300000 is not the same as 600.300000
+    ```
+    We can conclude that addition of doubles is not associative.
