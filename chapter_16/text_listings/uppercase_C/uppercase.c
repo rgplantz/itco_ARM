@@ -6,7 +6,7 @@
 #include "write_char.h"
 #include "read_str.h"
 #define MAX 50
-#define ARRA_SZ MAX+1
+#define ARRAY_SZ MAX+1
 
 int main(void)
 {
