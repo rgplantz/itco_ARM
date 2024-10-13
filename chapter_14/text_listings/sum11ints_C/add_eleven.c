@@ -8,7 +8,6 @@ int add_eleven(int one, int two, int three, int four, int five, int six,
 {
     int sum = one + two + three + four + five + six
             + seven + eight + nine + ten + eleven;
-
     printf("Added them\n");
 
     return sum;
