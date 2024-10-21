@@ -8,6 +8,7 @@ Almost all programming problems have more than one solution. My solutions reflec
 
 Here are my solutions to the Your Turn exercises for each chapter:
 
+[Trying HTML](./try_html.html)
 [Chapter 1,](./yt_ch01.md)
 [Chapter 2,](./yt_ch02.md)
 [Chapter 3,](./yt_ch03.md)
