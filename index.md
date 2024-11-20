@@ -10,7 +10,6 @@ Here are my solutions to the Your Turn exercises for each chapter:
 
 [Chapter 1,](./yt_ch01.md)
 [Chapter 2,](./yt_ch02.md)
-[Chapter 2a,](./yt_ch02.html)
 [Chapter 3,](./yt_ch03.md)
 [Chapter 4,](./yt_ch04.md)
 [Chapter 5,](./yt_ch05.md)
