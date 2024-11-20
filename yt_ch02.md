@@ -5,7 +5,7 @@ title: Chapter 2
 <style type="text/css">
     ol ol { list-style-type: lower-alpha; }
     ol > li::before{
-      content: "2."
+      content: "2." counters;
     }
 </style>
 
