@@ -3,7 +3,25 @@ layout: default
 title: Chapter 2
 ---
 <style type="text/css">
-    ol ol { list-style-type: lower-alpha; }
+ol {
+    counter-reset: exercise;
+}
+ol li {
+    counter-increment: exercise;
+}
+ol li::before {
+    content: "2." counter(exercise) ".";
+}
+
+ol ol {
+  counter-reset: item;
+}
+ol ol li {
+  counter-increment: item;
+}
+ol ol li::before {
+  content: "(" counter(item, lower-latin) ")";
+}
 </style>
 
 ## Chapter 2
