@@ -103,7 +103,6 @@ title: Chapter 2
     | D  |`0x44`| J  |`0x4a`| P  |`0x50`| V  |`0x56`|
     | E  |`0x45`| K  |`0x4b`| Q  |`0x51`| W  |`0x57`|
     | F  |`0x46`| L  |`0x4c`| R  |`0x52`| X  |`0x58`|
-
 14. Punctuation
   
     |char| code |char| code |char| code |char| code |char| code |
@@ -115,7 +114,6 @@ title: Chapter 2
     | $  |`0x24`| +  |`0x2b`| <  |`0x3c`| ]  |`0x5d`| ~  |`0x7e`|
     | %  |`0x25`| ,  |`0x2c`| =  |`0x3d`| ^  |`0x5e`|
     | &  |`0x26`| -  |`0x2d`| >  |`0x3e`| _  |`0x5f`|
-
 15. dec2Hex
     
 ```c
@@ -134,7 +132,6 @@ int main(void)
     return 0;
 }
 ```
-
 16. hex2Dec.c
   
 ```c
@@ -153,5 +150,4 @@ int main(void)
     return 0;
 }
 ```
-
 17. The integer is -1, and the string is `0xffffffff`.
