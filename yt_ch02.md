@@ -2,14 +2,17 @@
 layout: default
 title: Chapter 2
 ---
+<style type="text/css">
+    ol ol { list-style-type: lower-alpha; }
+</style>
 
 ## Chapter 2
 
 1.  Binary to hexadecimal
-    a.  `0100 0101 0110 0111` = `4567`
-    b.  `1000 1001 1010 1011` = `89ab`
-    c.  `1111 1110 1101 1100` = `fedc`
-    d.  `0000 0010 0101 0010` = `0252`
+    1.  `0100 0101 0110 0111` = `4567`
+    2.  `1000 1001 1010 1011` = `89ab`
+    3.  `1111 1110 1101 1100` = `fedc`
+    4.  `0000 0010 0101 0010` = `0252`
 2.  Hexadecimal to binary
     1.  `83af` = `1000 0011 1010 1111`
     2.  `9001` = `1001 0000 0000 0001`
