@@ -93,8 +93,8 @@ title: Chapter 2
     | d  |`0x64`| j  |`0x6a`| p  |`0x70`| v  |`0x76`|
     | e  |`0x65`| k  |`0x6b`| q  |`0x71`| w  |`0x77`|
     | f  |`0x66`| l  |`0x6c`| r  |`0x72`| x  |`0x78`|
-    
 13. Uppercase
+  
     |char| code |char| code |char| code |char| code |char| code |
     |----|------|----|------|----|------|----|------|----|------|
     | A  |`0x41`| G  |`0x47`| M  |`0x4d`| S  |`0x53`| Y  |`0x59`| 
@@ -103,7 +103,9 @@ title: Chapter 2
     | D  |`0x44`| J  |`0x4a`| P  |`0x50`| V  |`0x56`|
     | E  |`0x45`| K  |`0x4b`| Q  |`0x51`| W  |`0x57`|
     | F  |`0x46`| L  |`0x4c`| R  |`0x52`| X  |`0x58`|
+
 14. Punctuation
+  
     |char| code |char| code |char| code |char| code |char| code |
     |----|------|----|------|----|------|----|------|----|------|
     |spc |`0x20`| '  |`0x27`| .  |`0x2e`| ?  |`0x3f`| ` |`0x60`|
@@ -113,7 +115,9 @@ title: Chapter 2
     | $  |`0x24`| +  |`0x2b`| <  |`0x3c`| ]  |`0x5d`| ~  |`0x7e`|
     | %  |`0x25`| ,  |`0x2c`| =  |`0x3d`| ^  |`0x5e`|
     | &  |`0x26`| -  |`0x2d`| >  |`0x3e`| _  |`0x5f`|
+
 15. dec2Hex
+    
 ```c
 // Convert from decimal to hexadecimal
 
@@ -130,7 +134,9 @@ int main(void)
     return 0;
 }
 ```
+
 16. hex2Dec.c
+  
 ```c
 // Convert from hexadecimal to decimal
 
@@ -147,4 +153,5 @@ int main(void)
     return 0;
 }
 ```
+
 17. The integer is -1, and the string is `0xffffffff`.
