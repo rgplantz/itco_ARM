@@ -83,7 +83,8 @@ title: Chapter 2
     4.  D: `0x44`
     5.  E: `0x45`
     6.  F: `0x46`
-12. Lowercase  
+12. Lowercase
+  
     |char| code |char| code |char| code |char| code |char| code |
     |----|------|----|------|----|------|----|------|----|------|
     | a  |`0x61`| g  |`0x67`| m  |`0x6d`| s  |`0x73`| y  |`0x79`| 
@@ -92,6 +93,7 @@ title: Chapter 2
     | d  |`0x64`| j  |`0x6a`| p  |`0x70`| v  |`0x76`|
     | e  |`0x65`| k  |`0x6b`| q  |`0x71`| w  |`0x77`|
     | f  |`0x66`| l  |`0x6c`| r  |`0x72`| x  |`0x78`|
+    
 13. Uppercase
     |char| code |char| code |char| code |char| code |char| code |
     |----|------|----|------|----|------|----|------|----|------|
