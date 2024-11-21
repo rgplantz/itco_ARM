@@ -76,13 +76,16 @@ title: Chapter 2
     6.  65535 = `ffff`
     7.  4660 = `1234`
     8.  43981 = `abcd`
-11. Uppercase A - F
-    1.  A: `0x41`
-    2.  B: `0x42`
-    3.  C: `0x43`
-    4.  D: `0x44`
-    5.  E: `0x45`
-    6.  F: `0x46`
+11. Since there are 12 values, we need 4 bits.
+  
+    |grade| code |grade| code |
+    |-----|------|-----|------|
+    | A   |`0x0` | C   |`0x6` |
+    | A-  |`0x1` | C-  |`0x7` |
+    | B+  |`0x2` | D+  |`0x8` |
+    | B   |`0x3` | D   |`0x9` |
+    | B-  |`0x4` | D-  |`0xa` |
+    | C+  |`0x5` | F   |`0xb` |
 12. Lowercase
   
     |char| code |char| code |char| code |char| code |char| code |
