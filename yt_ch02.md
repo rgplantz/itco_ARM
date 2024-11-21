@@ -79,7 +79,7 @@ title: Chapter 2
 11. Since there are 12 values, we need 4 bits.
   
     |grade| code |grade| code |
-    |-----|------|-----|------|
+    |:---:|:----:|:---:|:----:|
     | A   |`0x0` | C   |`0x6` |
     | A-  |`0x1` | C-  |`0x7` |
     | B+  |`0x2` | D+  |`0x8` |
