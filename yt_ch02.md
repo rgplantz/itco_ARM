@@ -83,7 +83,7 @@ title: Chapter 2
     4.  D: `0x44`
     5.  E: `0x45`
     6.  F: `0x46`
-12. Lowercase
+12. Lowercase  
     |char| code |char| code |char| code |char| code |char| code |
     |----|------|----|------|----|------|----|------|----|------|
     | a  |`0x61`| g  |`0x67`| m  |`0x6d`| s  |`0x73`| y  |`0x79`| 
