@@ -4,7 +4,7 @@ list_title: Helpful Hints
 ---
 
 ## Errata for the book
-As of 2025.09.12, I have not learned of any errors in the book. Of course, nothing is perfect. As I learn of errors, the corrections will be posted here.
+[First printing.](/ARM_corrections.md)
 
 ## Solutions to Your Turn Exercises
 Almost all programming problems have more than one solution. My solutions reflect my programming style, which is to emphasize simplicity and readability.
