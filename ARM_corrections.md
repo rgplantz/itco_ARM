@@ -2,7 +2,7 @@
 layout: default
 title: ARM Corrections
 ---
-{% include mathjax.html %}
+
 # ARM Corrections
 
 *Updated 2025-12-25*
